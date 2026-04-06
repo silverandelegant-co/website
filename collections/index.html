@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <title>The Collection — Silver & Elegant</title>
+  <meta name="description" content="Browse all handcrafted silver jewellery by Silver & Elegant. Rings, necklaces, and bracelets — each with a story.">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-inner">
+      <a href="../index2.html" class="nav-logo">Silver &amp; Elegant</a>
+      <ul class="nav-links" id="nav-links">
+        <li class="nav-item has-dropdown">
+          <a href="../collections/index.html" id="nav-collections">Collections</a>
+          <div class="nav-dropdown">
+            <a href="../collections/index.html">All Pieces</a>
+            <a href="../collections/index.html?filter=rings">Rings</a>
+            <a href="../collections/index.html?filter=necklaces">Necklaces</a>
+            <a href="../collections/index.html?filter=bracelets">Bracelets</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="../about/index.html">About</a></li>
+        <li class="nav-item"><a href="../contact/index.html">Contact</a></li>
+        <li class="nav-item">
+          <a href="https://www.instagram.com/silverandelegantco/" class="nav-icon" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <div class="page-hero" id="page-hero">
+    <div class="container">
+      <span class="label reveal">Jewellery</span>
+      <h1 class="reveal reveal-delay-1">The Collection</h1>
+    </div>
+  </div>
+
+  <!-- Collections -->
+  <section class="section" id="collections-section">
+    <div class="container">
+      <!-- Filters -->
+      <div class="filter-bar reveal" id="filter-bar">
+        <button class="filter-btn active" data-filter="all" id="filter-all">All Pieces</button>
+        <button class="filter-btn" data-filter="rings" id="filter-rings">Rings</button>
+        <button class="filter-btn" data-filter="necklaces" id="filter-necklaces">Necklaces</button>
+        <button class="filter-btn" data-filter="bracelets" id="filter-bracelets">Bracelets</button>
+      </div>
+
+      <!-- Grid -->
+      <div class="collections-grid" id="collections-grid">
+        <!-- JS renders cards -->
+      </div>
+
+      <!-- Wolf & Badger CTA -->
+      <div class="section-footer reveal" style="margin-top:5rem; border-top:1px solid var(--c-border); padding-top:3rem;">
+        <span class="label" style="display:block; margin-bottom:0.8rem;">Shop Online</span>
+        <p style="font-family:var(--font-serif);font-style:italic;color:var(--c-muted);margin-bottom:1.5rem;">All pieces are available to purchase on Wolf &amp; Badger.</p>
+        <a href="https://www.wolfandbadger.com/" target="_blank" rel="noopener" class="btn btn-dark" id="wb-shop-link">Visit Wolf &amp; Badger</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">Silver &amp; Elegant</span>
+        <p>Artistry in the making.</p>
+      </div>
+      <div class="footer-center"><div class="footer-mark"></div></div>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/silverandelegantco/" class="footer-link" target="_blank" rel="noopener" id="footer-instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+          Follow the process
+        </a>
+        <a href="mailto:info@silverandelegant.co" class="footer-link" id="footer-email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          info@silverandelegant.co
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2025 Silver &amp; Elegant. All rights reserved.</div>
+  </footer>
+
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

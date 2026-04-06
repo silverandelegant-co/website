@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <title>Silver & Elegant — Handcrafted Silver Jewellery</title>
+  <meta name="description" content="Silver & Elegant creates handcrafted sterling silver jewellery. Each piece carries a story — shaped by hand, finished by fire. Available on Wolf & Badger.">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index2.html" class="nav-logo">Silver &amp; Elegant</a>
+      <ul class="nav-links" id="nav-links">
+        <li class="nav-item has-dropdown">
+          <a href="collections/index.html" id="nav-collections">Collections</a>
+          <div class="nav-dropdown">
+            <a href="collections/index.html">All Pieces</a>
+            <a href="collections/index.html?filter=rings">Rings</a>
+            <a href="collections/index.html?filter=necklaces">Necklaces</a>
+            <a href="collections/index.html?filter=bracelets">Bracelets</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="about/index.html">About</a></li>
+        <li class="nav-item"><a href="contact/index.html">Contact</a></li>
+        <li class="nav-item">
+          <a href="https://www.instagram.com/silverandelegantco/" class="nav-icon" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-tagline reveal">Handcrafted Silver Jewellery</div>
+      <h1 class="hero-title reveal reveal-delay-1">Silver &amp; Elegant</h1>
+      <p class="hero-sub reveal reveal-delay-2">Artistry in the making.</p>
+      <a href="collections/index.html" class="btn btn-outline reveal reveal-delay-3" id="hero-cta">Explore the Collection</a>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Featured Pieces -->
+  <section class="section featured" id="featured">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Featured Work</span>
+        <h2>Selected Pieces</h2>
+      </div>
+      <div class="pieces-grid" id="featured-grid">
+        <!-- JS renders cards -->
+      </div>
+      <div class="section-footer reveal">
+        <a href="collections/index.html" class="btn btn-text" id="view-all-link">View all pieces →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Craft -->
+  <section class="craft-section" id="craft">
+    <div class="craft-inner">
+      <div class="craft-image reveal">
+        <img src="assets/about-workshop.png" alt="Silversmith at work in the workshop">
+      </div>
+      <div class="craft-content reveal reveal-delay-1">
+        <span class="label">The Craft</span>
+        <h2>Each piece is a record of its making.</h2>
+        <p>Every mark left by the hammer is a decision. Silver remembers pressure, heat, and intention. The process is visible in the finished form — nothing is hidden, nothing is erased.</p>
+        <a href="about/index.html" class="btn btn-text-light" id="craft-about-link">About the maker →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wolf & Badger strip -->
+  <div class="wb-strip" id="wb-strip">
+    <p>Available exclusively on <a href="https://www.wolfandbadger.com/" target="_blank" rel="noopener">Wolf &amp; Badger</a></p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">Silver &amp; Elegant</span>
+        <p>Artistry in the making.</p>
+      </div>
+      <div class="footer-center">
+        <div class="footer-mark"></div>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/silverandelegantco/" class="footer-link" target="_blank" rel="noopener" id="footer-instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+          Follow the process
+        </a>
+        <a href="mailto:info@silverandelegant.co" class="footer-link" id="footer-email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          info@silverandelegant.co
+        </a>
+        <a href="https://www.wolfandbadger.com/" class="footer-link" target="_blank" rel="noopener" id="footer-wb">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          Wolf &amp; Badger
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Silver &amp; Elegant. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
