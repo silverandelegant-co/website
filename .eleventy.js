@@ -2,6 +2,7 @@ module.exports = function(eleventyConfig) {
   // Copy the `assets` and `admin` folders directly to the output
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/admin");
+  eleventyConfig.addPassthroughCopy("CNAME");
 
   // Output configuration
   return {
