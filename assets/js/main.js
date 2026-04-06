@@ -6,12 +6,19 @@
   'use strict';
 
   /* ── Helpers ───────────────────────────────────────────── */
-  function $(selector, context) {
-    return (context || document).querySelector(selector);
-  }
-  function $$(selector, context) {
-    return Array.from((context || document).querySelectorAll(selector));
-  }
+  const $ = (selector, context) => (context || document).querySelector(selector);
+  const $$ = (selector, context) => Array.from((context || document).querySelectorAll(selector));
+
+  /* ── 0. Analytics ──────────────────────────────────────── */
+  const gaObj = document.createElement('script');
+  gaObj.async = true;
+  gaObj.src = 'https://www.googletagmanager.com/gtag/js?id=G-963J5RQ48V';
+  document.head.appendChild(gaObj);
+  
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function(){ window.dataLayer.push(arguments); };
+  gtag('js', new Date());
+  gtag('config', 'G-963J5RQ48V');
 
   /* ── Data path ─────────────────────────────────────────── */
   function dataPath() {
