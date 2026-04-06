@@ -3,6 +3,8 @@ backend:
   repo: silverandelegant-co/website # Update if the repo name differs
   branch: main # Branch to update
   app_id: Ov23liZ7SDbEj0FY9Pxt
+  base_url: https://github.com
+  auth_endpoint: login/oauth/authorize
 
 media_folder: "assets/pieces"
 public_folder: "assets/pieces" # Setting to same ensures internal paths match fetch logic
