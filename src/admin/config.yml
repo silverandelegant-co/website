@@ -3,14 +3,14 @@ backend:
   repo: silverandelegant-co/website # Update if the repo name differs
   branch: main # Branch to update
 
-media_folder: "assets/pieces"
+media_folder: "src/assets/pieces"
 public_folder: "assets/pieces" # Setting to same ensures internal paths match fetch logic
 
 collections:
   - name: "site_data"
     label: "Site Data"
     files:
-      - file: "data/collections.json"
+      - file: "src/_data/site.json"
         label: "Website Content"
         name: "content"
         fields:

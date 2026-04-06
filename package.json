@@ -1,0 +1,12 @@
+{
+  "name": "silverandelegant",
+  "version": "1.0.0",
+  "description": "Silver & Elegant Portfolio Built with Eleventy",
+  "scripts": {
+    "start": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

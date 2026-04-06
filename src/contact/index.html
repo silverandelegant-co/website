@@ -1,0 +1,52 @@
+---
+layout: base.njk
+title: Contact — Silver & Elegant
+description: Get in touch with Silver & Elegant for private enquiries, commissions, and press.
+---
+  <div class="contact-layout">
+
+    <!-- Header -->
+    <div class="contact-intro reveal" style="padding-top:8rem;">
+      <span class="label">Enquiries</span>
+      <h1 style="margin-top:0.8rem; font-size:clamp(2.5rem,5vw,4rem);">Get in Touch</h1>
+      <p>For private commissions, stockist enquiries, and press, please write to us below.</p>
+    </div>
+
+    <!-- Form -->
+    <form class="reveal" id="contact-form" action="mailto:{{ site.settings.email | default('info@silverandelegant.co') }}" method="GET" style="margin-top:3rem;">
+      <div class="form-group">
+        <label class="form-label" for="contact-name">Your Name</label>
+        <input class="form-input" type="text" id="contact-name" name="name" required autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="contact-email">Email Address</label>
+        <input class="form-input" type="email" id="contact-email" name="email" required autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="contact-subject">Subject</label>
+        <input class="form-input" type="text" id="contact-subject" name="subject" placeholder="e.g. Commission enquiry">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="contact-message">Message</label>
+        <textarea class="form-textarea" id="contact-message" name="body" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-dark" id="contact-submit" style="width:100%;text-align:center;padding:1rem;">Send Message</button>
+    </form>
+
+    <!-- Direct links -->
+    <div class="contact-links reveal">
+      <a href="mailto:{{ site.settings.email | default('info@silverandelegant.co') }}" class="contact-link" id="contact-email-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        {{ site.settings.email | default('info@silverandelegant.co') }}
+      </a>
+      <a href="{{ site.settings.instagram | default('https://www.instagram.com/silverandelegantco/') }}" class="contact-link" target="_blank" rel="noopener" id="contact-instagram-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+        @silverandelegantco
+      </a>
+      <a href="{{ site.settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" class="contact-link" target="_blank" rel="noopener" id="contact-wb-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        Shop on Wolf &amp; Badger
+      </a>
+    </div>
+
+  </div>

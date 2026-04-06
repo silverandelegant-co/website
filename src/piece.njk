@@ -1,0 +1,59 @@
+---
+layout: base.njk
+pagination:
+  data: site.pieces
+  size: 1
+  alias: piece
+permalink: "piece/{{ piece.id }}/index.html"
+eleventyComputed:
+  title: "{{ piece.name }} — Silver & Elegant"
+---
+
+  <!-- Piece container -->
+  <div id="piece-container">
+
+    <!-- Hero Image -->
+    <div style="padding-top:5rem; background:var(--c-cream);">
+      <img id="piece-hero-img" class="piece-hero-img" src="/{{ piece.images[0] }}" alt="{{ piece.name }}">
+    </div>
+
+    <!-- Breadcrumb -->
+    <div style="border-bottom:1px solid var(--c-border); padding: 1rem 2rem;">
+      <div style="max-width:1200px; margin:0 auto;">
+        <nav aria-label="Breadcrumb" style="font-family:var(--font-sans);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-muted);">
+          <a href="/collections/" style="color:var(--c-muted);">Collections</a>
+          <span style="margin:0 0.6rem;">—</span>
+          <span id="piece-collection" style="color:var(--c-ink);">{{ piece.collection | capitalize }}</span>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Piece Layout -->
+    <div class="piece-layout">
+
+      <!-- Sidebar -->
+      <aside class="piece-sidebar">
+        <h1 id="piece-name">{{ piece.name }}</h1>
+        <div class="piece-divider"></div>
+        <div>
+          <p class="piece-materials-label">Materials</p>
+          <ul class="piece-materials-list" id="piece-materials">
+            {% for material in piece.materials %}
+              <li>{{ material }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="piece-divider"></div>
+        <div style="display:flex;flex-direction:column;gap:0.8rem;">
+          <a href="{{ piece.wolfandbadger | default(site.settings.wolfandbadger) }}" id="piece-wb-link" target="_blank" rel="noopener" class="btn btn-dark" style="text-align:center;">Available on Wolf &amp; Badger</a>
+          <a href="/contact/index.html" class="btn btn-outline-dark" style="text-align:center;">Private Enquiry</a>
+        </div>
+        <div class="piece-divider"></div>
+        <a href="/collections/index.html" class="btn btn-text" style="font-size:0.68rem;">← Back to all pieces</a>
+      </aside>
+
+      <!-- Story -->
+      <article class="piece-story" id="piece-story" style="white-space: pre-line;">{{ piece.story }}</article>
+
+    </div>
+  </div>

@@ -1,0 +1,47 @@
+---
+layout: base.njk
+title: The Collection — Silver & Elegant
+description: Browse all handcrafted silver jewellery by Silver & Elegant. Rings, necklaces, and bracelets — each with a story.
+---
+  <!-- Page Hero -->
+  <div class="page-hero" id="page-hero">
+    <div class="container">
+      <span class="label reveal">Jewellery</span>
+      <h1 class="reveal reveal-delay-1">The Collection</h1>
+    </div>
+  </div>
+
+  <!-- Collections -->
+  <section class="section" id="collections-section">
+    <div class="container">
+      <!-- Filters -->
+      <div class="filter-bar reveal" id="filter-bar">
+        <button class="filter-btn active" data-filter="all" id="filter-all">All Pieces</button>
+        <button class="filter-btn" data-filter="rings" id="filter-rings">Rings</button>
+        <button class="filter-btn" data-filter="necklaces" id="filter-necklaces">Necklaces</button>
+        <button class="filter-btn" data-filter="bracelets" id="filter-bracelets">Bracelets</button>
+      </div>
+
+      <!-- Grid -->
+      <div class="collections-grid" id="collections-grid">
+        {% for piece in site.pieces %}
+          <a href="/piece/{{ piece.id }}/index.html" class="piece-card reveal piece-item" data-category="{{ piece.collection }}">
+            <div class="piece-image">
+              <img src="/{{ piece.images[0] }}" alt="{{ piece.name }} frontend image" loading="lazy">
+            </div>
+            <div class="piece-info">
+              <h3>{{ piece.name }}</h3>
+              <p class="piece-cat">{{ piece.collection | capitalize }}</p>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+
+      <!-- Wolf & Badger CTA -->
+      <div class="section-footer reveal" style="margin-top:5rem; border-top:1px solid var(--c-border); padding-top:3rem;">
+        <span class="label" style="display:block; margin-bottom:0.8rem;">Shop Online</span>
+        <p style="font-family:var(--font-serif);font-style:italic;color:var(--c-muted);margin-bottom:1.5rem;">All pieces are available to purchase on Wolf &amp; Badger.</p>
+        <a href="{{ site.settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" target="_blank" rel="noopener" class="btn btn-dark" id="wb-shop-link">Visit Wolf &amp; Badger</a>
+      </div>
+    </div>
+  </section>

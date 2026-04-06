@@ -1,0 +1,66 @@
+---
+layout: base.njk
+title: Silver & Elegant — Handcrafted Silver Jewellery
+---
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-tagline reveal">{{ site.settings.tagline | default("Handcrafted Silver Jewellery") }}</div>
+      <h1 class="hero-title reveal reveal-delay-1">Silver &amp; Elegant</h1>
+      <p class="hero-sub reveal reveal-delay-2">Artistry in the making.</p>
+      <a href="/collections/index.html" class="btn btn-outline reveal reveal-delay-3" id="hero-cta">Explore the Collection</a>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Featured Pieces -->
+  <section class="section featured" id="featured">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Featured Work</span>
+        <h2>Selected Pieces</h2>
+      </div>
+      <div class="pieces-grid" id="featured-grid">
+        {% for piece in site.pieces %}
+          {% if piece.featured %}
+          <a href="/piece/{{ piece.id }}/index.html" class="piece-card reveal">
+            <div class="piece-image">
+              <img src="/{{ piece.images[0] }}" alt="{{ piece.name }} frontend image" loading="lazy">
+            </div>
+            <div class="piece-info">
+              <h3>{{ piece.name }}</h3>
+              <p class="piece-cat">{{ piece.collection | capitalize }}</p>
+            </div>
+          </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="section-footer reveal">
+        <a href="/collections/index.html" class="btn btn-text" id="view-all-link">View all pieces →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Craft -->
+  <section class="craft-section" id="craft">
+    <div class="craft-inner">
+      <div class="craft-image reveal">
+        <img src="/assets/about-workshop.png" alt="Silversmith at work in the workshop">
+      </div>
+      <div class="craft-content reveal reveal-delay-1">
+        <span class="label">The Craft</span>
+        <h2>Each piece is a record of its making.</h2>
+        <p>Every mark left by the hammer is a decision. Silver remembers pressure, heat, and intention. The process is visible in the finished form — nothing is hidden, nothing is erased.</p>
+        <a href="/about/index.html" class="btn btn-text-light" id="craft-about-link">About the maker →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wolf & Badger strip -->
+  <div class="wb-strip" id="wb-strip">
+    <p>Available exclusively on <a href="{{ site.settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" target="_blank" rel="noopener">Wolf &amp; Badger</a></p>
+  </div>
