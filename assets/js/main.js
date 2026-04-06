@@ -20,7 +20,9 @@
   }
 
   async function loadPieces() {
-    const res = await fetch(`${dataPath()}data/collections.json`);
+    // Append a timestamp to bypass aggressive browser caching
+    const cacheBuster = new Date().getTime();
+    const res = await fetch(`${dataPath()}data/collections.json?v=${cacheBuster}`);
     return res.json();
   }
 
