@@ -1,0 +1,42 @@
+backend:
+  name: github
+  repo: silverandelegant-co/website # Update if the repo name differs
+  branch: main # Branch to update
+  app_id: Ov23liZ7SDbEj0FY9Pxt
+
+media_folder: "assets/pieces"
+public_folder: "assets/pieces" # Setting to same ensures internal paths match fetch logic
+
+collections:
+  - name: "site_data"
+    label: "Site Data"
+    files:
+      - file: "data/collections.json"
+        label: "Website Content"
+        name: "content"
+        fields:
+          - label: "Settings"
+            name: "settings"
+            widget: "object"
+            fields:
+              - { label: "Instagram URL", name: "instagram", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Wolf & Badger URL", name: "wolfandbadger", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+          
+          - label: "Jewellery Pieces"
+            name: "pieces"
+            widget: "list"
+            fields:
+              - { label: "ID (URL slug - lowercase, no spaces)", name: "id", widget: "string" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Collection", name: "collection", widget: "select", options: ["rings", "necklaces", "bracelets"] }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+              - { label: "Story", name: "story", widget: "text" }
+              - { label: "Materials", name: "materials", widget: "list" }
+              - { label: "Featured (Show on home page?)", name: "featured", widget: "boolean", default: false }
+              - { label: "Wolf & Badger Listing URL (Optional)", name: "wolfandbadger", widget: "string", required: false }
+              - label: "Images"
+                name: "images"
+                widget: "list"
+                field: { label: "Image", name: "image", widget: "image" }

@@ -13,10 +13,15 @@
     return Array.from((context || document).querySelectorAll(selector));
   }
 
-  /* ── Data Loading ──────────────────────────────────────── */
+  /* ── Data path ─────────────────────────────────────────── */
+  function dataPath() {
+    const depth = window.location.pathname.replace(/\/$/, '').split('/').length - 2;
+    return depth > 0 ? '../'.repeat(depth) : '';
+  }
+
   async function loadPieces() {
-    // Return statically loaded global data to avoid CORS errors on file://
-    return window.SITE_DATA;
+    const res = await fetch(`${dataPath()}data/collections.json`);
+    return res.json();
   }
 
   /* ── 1. Nav: scroll behaviour ──────────────────────────── */
