@@ -42,6 +42,36 @@
       }
     ]
   },
+  "press": {
+    "heading": "Press & Recognition",
+    "articles": [
+      {
+        "title": "NOT JUST A LABEL — 'Black Sheep' Selection: Pioneers of Independent Design",
+        "content": "Our design house has been honoured with the 'Black Sheep' status by NOT JUST A LABEL (NJAL), one of the world's most significant authorities on independent fashion. Being showcased on NJAL’s global homepage as a brand with a pioneering vision marks a foundational turning point for Silver & Elegant. This selection—which rejects categorisation, pushes the boundaries of independent fashion, and advocates for ethical production—affirms our commitment to standing at the intersection of architectural innovation and enduring craftsmanship.",
+        "link": ""
+      },
+      {
+        "title": "PAUL COSTELLOE AW26 — London Fashion Week (The Waldorf Hilton, London): Wearable Art on the Runway",
+        "content": "We were proud to be one of the official jewellery partners for the Paul Costelloe Autumn/Winter 2026 collection, the debut show under William Costelloe’s creative direction at London Fashion Week. Hosted in the enchanting atmosphere of The Waldorf Hilton, our pieces were integrated into the runway through the meticulous curation of the creative team and stylist Borna Prikaski. This partnership served as a powerful expression of our traditional craft heritage and experimental architectural lines on the high-fashion stage.",
+        "link": ""
+      },
+      {
+        "title": "BOREHAMWOOD TIMES: From Local Roots to the London Fashion Week Runway",
+        "content": "Our journey, stretching from local roots to global runways, was featured in the editorial pages of the Borehamwood Times. The article documents our design methodology—spanning from traditional silversmithing disciplines to the mathematical precision of software code—and our brand’s debut on the London Fashion Week opening show stage within its first year.",
+        "link": "https://www.times-series.co.uk/news/25908149.silver-elegant-co-borehamwood-london-fashion-week/"
+      },
+      {
+        "title": "FLANELLE MAGAZINE: The Interaction of Shadow and Metal",
+        "content": "Our hand-crafted silver and bronze structures were featured in an editorial for the prestigious avant-garde fashion publication, Flanelle Magazine. The shoot highlights the sharp geometry and the interaction between shadow and metallic surfaces inherent in our designs. Photography: Izabela Wojnarowska | Styling: Tia Oguri | Hair & Makeup: Karoliina Villem | Retouch: Daria Sheyanova | Model: Yitian Lu | Hair Design: Anne Veck",
+        "link": ""
+      },
+      {
+        "title": "KALTBLUT MAGAZINE — \"THE DISH\": Contemporary Jewellery Engineering and Avant-Garde Creative Direction",
+        "content": "Silver & Elegant designs were curated for \"THE DISH,\" a digital editorial exploring the boundaries of contemporary jewellery engineering and avant-garde creative direction. Published in KALTBLUT Magazine, this exclusive selection emphasises the sculptural posture and structural strength of jewellery on the body. Creative Team: Doma Dovgialo, Borna Prikaski, Yassine V.K, Ambra Castelli, Giulia Oldani, Tobia Bartolini, Christina Lomas, Scarlett Leatham, Shyy Sachdev. Featured Brands: Alice Skewis Jewellery, Capsule Eleven, Vicki Sarge, Silver & Elegant, Annabel B. Jewellery.",
+        "link": ""
+      }
+    ]
+  },
   "contact": {
     "heading": "Get in Touch",
     "intro": "For private commissions, stockist enquiries, and press, please write to us below."
