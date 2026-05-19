@@ -33,23 +33,27 @@ eleventyComputed:
 
       <!-- Sidebar -->
       <aside class="piece-sidebar">
-        <h1 id="piece-name">{{ piece.name }}</h1>
-        <div class="piece-divider"></div>
-        <div>
-          <p class="piece-materials-label">Materials</p>
-          <ul class="piece-materials-list" id="piece-materials">
-            {% for material in piece.materials %}
-              <li>{{ material }}</li>
-            {% endfor %}
-          </ul>
+        <div class="piece-meta">
+          <h1 id="piece-name">{{ piece.name }}</h1>
+          <div class="piece-divider"></div>
+          <div>
+            <p class="piece-materials-label">Materials</p>
+            <ul class="piece-materials-list" id="piece-materials">
+              {% for material in piece.materials %}
+                <li>{{ material }}</li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
-        <div class="piece-divider"></div>
-        <div style="display:flex;flex-direction:column;gap:0.8rem;">
-          <a href="{{ piece.wolfandbadger | default(site.settings.wolfandbadger) }}" id="piece-wb-link" target="_blank" rel="noopener" class="btn btn-dark" style="text-align:center;">Available on Wolf &amp; Badger</a>
-          <a href="/contact/index.html" class="btn btn-outline-dark" style="text-align:center;">Private Enquiry</a>
+        <div class="piece-actions">
+          <div class="piece-divider"></div>
+          <div style="display:flex;flex-direction:column;gap:0.8rem;">
+            <a href="{{ piece.wolfandbadger | default(site.settings.wolfandbadger) }}" id="piece-wb-link" target="_blank" rel="noopener" class="btn btn-dark" style="text-align:center;">Available on Wolf &amp; Badger</a>
+            <a href="/contact/index.html" class="btn btn-outline-dark" style="text-align:center;">Private Enquiry</a>
+          </div>
+          <div class="piece-divider"></div>
+          <a href="/collections/index.html" class="btn btn-text" style="font-size:0.68rem;">← Back to all pieces</a>
         </div>
-        <div class="piece-divider"></div>
-        <a href="/collections/index.html" class="btn btn-text" style="font-size:0.68rem;">← Back to all pieces</a>
       </aside>
 
       <!-- Story -->

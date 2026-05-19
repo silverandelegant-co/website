@@ -858,6 +858,18 @@ h3 {
   gap: 1.4rem;
 }
 
+.piece-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.piece-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
 .piece-sidebar .piece-collection {
   font-family: var(--font-sans);
   font-size: 0.68rem;
@@ -1095,10 +1107,24 @@ h3 {
 
   .piece-layout {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
   .piece-sidebar {
-    position: static;
+    display: contents;
+  }
+
+  .piece-meta {
+    order: 1;
+  }
+
+  .piece-story {
+    order: 2;
+    padding-top: 0;
+  }
+
+  .piece-actions {
+    order: 3;
   }
 
   .about-intro {
