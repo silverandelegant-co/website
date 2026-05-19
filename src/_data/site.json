@@ -296,5 +296,76 @@
         "/assets/pieces/SilvernElegant (11).jpg"
       ]
     }
+  ],
+  "posts": [
+    {
+      "id": "architecture-of-permanence",
+      "title": "The Architecture of Permanence: Generative Design in Jewellery",
+      "date": "2026-05-18",
+      "category": "Philosophy",
+      "summary": "An inside look at how we utilize software algorithms as our creative partner to discover geometric patterns that outlive transient trends.",
+      "featured_image": "/assets/pieces/SilvernElegant (3).jpg",
+      "featured": true,
+      "sections": [
+        {
+          "type": "text_block",
+          "body": "We do not design jewellery; we construct architectural narratives sealed in silver and bronze within the physical realm. In an era dominated by rapid consumption, transient trends, and disposable fashion, we believe that the most enduring objects are those calculated with mathematical intelligence and crafted with immense discipline.\n\nFor us, design begins not with a quick pencil sketch, but with a foundational question: How can we build permanence?"
+        },
+        {
+          "type": "blockquote",
+          "quote": "By fusing the logic of software with the soul of craft, we create 'Future Heirlooms' designed to outlive their makers."
+        },
+        {
+          "type": "text_block",
+          "body": "Yet, digital perfection is only half the story. To bring these rational models into our physical reality, we melt traditional craftsmanship with digital geometry. Every generative framework is cast using the ancient lost-wax casting technique and finished by hand. The tools leave microscopic hammer marks on the silver—intentional stamps of the human spirit. What the code proposes, the hand sculpts. What the hand finishes, time preserves."
+        }
+      ]
+    },
+    {
+      "id": "silver-remembers",
+      "title": "Silver Remembers: The Hand, the Hammer, and the Fire",
+      "date": "2026-04-12",
+      "category": "Craftsmanship",
+      "summary": "Reflecting on the lost-wax casting technique and why traditional hand-working remains the soul of modern architectural jewellery.",
+      "featured_image": "/assets/about-workshop.png",
+      "featured": false,
+      "sections": [
+        {
+          "type": "text_block",
+          "body": "Metal is not a passive canvas. Silver is an active collaborator, possessing memory, mood, and boundaries. When subjected to intense heat and the rhythmic pressure of the hammer, it reacts, remembers, and holds its form. It records every choice made in the quiet studio.\n\nIn our London home workshop, we embrace this dialogue daily."
+        },
+        {
+          "type": "blockquote",
+          "quote": "In a world optimized for speed and synthetic automation, we believe the human touch is the ultimate luxury."
+        },
+        {
+          "type": "text_block",
+          "body": "Every ring, earring, and cuff we craft relies on the ancient discipline of lost-wax casting. This technique, preserved across millennia, begins by hand-carving a scale model of the structural concept in jewellers' wax. The tactile nature of wax carving allows us to refine the edges, softening computational severity with natural warmth.\n\nOnce cast, the piece faces the crucible of finishing. We choose not to erase the toolmarks entirely. The tiny ridges left by the file and the textured surface of the hammer are kept intact. They tell the story of creation, serving as physical proof of a dedicated human touch. We make our decisions visible, ensuring that the wearer carries a record of authentic, deliberate creation on their body."
+        }
+      ]
+    },
+    {
+      "id": "runway-debut",
+      "title": "The Runway Debut: Partnering with Paul Costelloe AW26",
+      "date": "2026-02-15",
+      "category": "Press",
+      "summary": "Highlighting our journey from the Borehamwood workshop to the runways of London Fashion Week at The Waldorf Hilton.",
+      "featured_image": "/assets/pieces/WhatsApp Image 2026-05-17 at 07.31.50 (2).jpeg",
+      "featured": false,
+      "sections": [
+        {
+          "type": "text_block",
+          "body": "A milestone year for Silver & Elegant. We were immensely proud to serve as an official jewellery partner for the Paul Costelloe Autumn/Winter 2026 collection, which debuted during London Fashion Week inside the historical Waldorf Hilton.\n\nUnder the creative direction of William Costelloe, the collection highlighted architectural shapes and rich textures, establishing a perfect dialogue for our sculptural jewellery."
+        },
+        {
+          "type": "blockquote",
+          "quote": "Bringing our geometric silver and bronze structures from the London home studio onto the high-fashion runway represents an incredible validation of our design language."
+        },
+        {
+          "type": "text_block",
+          "body": "Curated carefully by stylist Borna Prikaski and the fashion house's design team, our golden bronze structures and handcrafted crystal drops made their runway debut, adding raw metallic elegance to the fluid, high-fashion silhouettes.\n\nThis runway collaboration served as a perfect test of our core philosophy: that sculptural jewellery is not merely an accessory, but wearable art that command space and commands attention. Seeing the play of the runway lights against the hand-hammered textures of our golden Crustacea drops highlighted the beautiful tension between raw organic strength and high-fashion refinement.\n\nWe extend our deep gratitude to the Paul Costelloe team for welcoming us into their creative sanctuary. We look forward to the next horizon in wearable architecture."
+        }
+      ]
+    }
   ]
 }

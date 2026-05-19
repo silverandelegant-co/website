@@ -81,3 +81,29 @@ collections:
                 name: "images"
                 widget: "list"
                 field: { label: "Image", name: "image", widget: "image" }
+
+          - label: "Journal Posts"
+            name: "posts"
+            widget: "list"
+            fields:
+              - { label: "ID (URL slug - lowercase, no spaces)", name: "id", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date", name: "date", widget: "datetime" }
+              - { label: "Category", name: "category", widget: "select", options: ["Philosophy", "Craftsmanship", "Press", "Exhibitions"] }
+              - { label: "Summary (Snippet for listing)", name: "summary", widget: "text" }
+              - { label: "Featured Image", name: "featured_image", widget: "image" }
+              - { label: "Featured Post? (Show at top of Journal)", name: "featured", widget: "boolean", default: false }
+              - label: "Content Sections"
+                name: "sections"
+                widget: "list"
+                types:
+                  - label: "Text Block"
+                    name: "text_block"
+                    widget: "object"
+                    fields:
+                      - { label: "Text Content", name: "body", widget: "markdown" }
+                  - label: "Blockquote"
+                    name: "blockquote"
+                    widget: "object"
+                    fields:
+                      - { label: "Quote", name: "quote", widget: "string" }

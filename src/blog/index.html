@@ -1,0 +1,74 @@
+---
+layout: base.njk
+title: "Journal — Silver & Elegant"
+description: "Insights, philosophies, craftsmanship notes, and LFW runway updates from Silver & Elegant."
+---
+  <!-- Page Hero -->
+  <div class="page-hero" id="page-hero">
+    <div class="container">
+      <span class="label reveal">The Journal</span>
+      <h1 class="reveal reveal-delay-1">Studio Notebook</h1>
+    </div>
+  </div>
+
+  <!-- Journal Section -->
+  <section class="blog-layout" id="journal-section">
+    <div class="container">
+      
+      {# Identify Featured Post #}
+      {% set featuredPost = null %}
+      {% for post in site.posts | reverse %}
+        {% if post.featured and not featuredPost %}
+          {% set featuredPost = post %}
+        {% endif %}
+      {% endfor %}
+      {% if not featuredPost and site.posts.length > 0 %}
+        {% set featuredPost = site.posts | reverse | first %}
+      {% endif %}
+
+      {# Render Featured Post #}
+      {% if featuredPost %}
+      <article class="blog-featured reveal" id="featured-post">
+        <a href="/blog/{{ featuredPost.id }}/index.html" class="blog-featured-image">
+          <img src="/{{ featuredPost.featured_image | imgpath }}" alt="{{ featuredPost.title }} featured image" loading="lazy">
+        </a>
+        <div class="blog-featured-content">
+          <div class="blog-featured-meta">
+            <span class="blog-category">{{ featuredPost.category | default("Philosophy") }}</span>
+            <span>&bull;</span>
+            <time datetime="{{ featuredPost.date | dateIso }}">{{ featuredPost.date | postDate }}</time>
+          </div>
+          <a href="/blog/{{ featuredPost.id }}/index.html">
+            <h2 class="blog-featured-title">{{ featuredPost.title }}</h2>
+          </a>
+          <p class="blog-featured-excerpt">{{ featuredPost.summary }}</p>
+          <a href="/blog/{{ featuredPost.id }}/index.html" class="btn btn-outline-dark" style="align-self:flex-start;">Read Article</a>
+        </div>
+      </article>
+      {% endif %}
+
+      {# Grid of Remaining Posts #}
+      <div class="blog-grid" id="posts-grid">
+        {% for post in site.posts | reverse %}
+          {% if post.id != featuredPost.id %}
+          <article class="blog-card reveal" id="post-card-{{ loop.index }}">
+            <a href="/blog/{{ post.id }}/index.html" class="blog-card-image">
+              <img src="/{{ post.featured_image | imgpath }}" alt="{{ post.title }} card thumbnail" loading="lazy">
+            </a>
+            <div class="blog-card-meta">
+              <span class="blog-category">{{ post.category | default("Craftsmanship") }}</span>
+              <span>&bull;</span>
+              <time datetime="{{ post.date | dateIso }}">{{ post.date | postDate }}</time>
+            </div>
+            <a href="/blog/{{ post.id }}/index.html">
+              <h3 class="blog-card-title">{{ post.title }}</h3>
+            </a>
+            <p class="blog-card-summary">{{ post.summary }}</p>
+            <a href="/blog/{{ post.id }}/index.html" class="btn btn-text" style="align-self:flex-start; margin-top:auto; font-size:0.75rem; letter-spacing:0.05em; padding-left:0;">Read entry →</a>
+          </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+    </div>
+  </section>
