@@ -14,7 +14,7 @@ eleventyComputed:
 
     <!-- Hero Image -->
     <div style="padding-top:5rem; background:var(--c-cream);">
-      <img id="piece-hero-img" class="piece-hero-img" src="/{{ piece.images[0] }}" alt="{{ piece.name }}">
+      <img id="piece-hero-img" class="piece-hero-img" src="/{{ piece.images[0] | imgpath }}" alt="{{ piece.name }}">
     </div>
 
     <!-- Breadcrumb -->
