@@ -32,9 +32,9 @@ permalink: "/preview/index.html"
             <div class="piece-image">
               <img src="/{{ piece.images[0] | imgpath }}" alt="{{ piece.name }} frontend image" loading="lazy">
             </div>
-            <div class="piece-info">
-              <h3>{{ piece.name }}</h3>
-              <p class="piece-cat">{{ piece.collection | capitalize }}</p>
+            <div class="piece-card-content">
+              <h3 class="piece-name">{{ piece.name }}</h3>
+              <p class="piece-collection">{{ piece.collection | capitalize }}</p>
             </div>
           </a>
           {% endif %}

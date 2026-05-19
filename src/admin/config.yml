@@ -52,7 +52,7 @@ collections:
             fields:
               - { label: "ID (URL slug - lowercase, no spaces)", name: "id", widget: "string" }
               - { label: "Name", name: "name", widget: "string" }
-              - { label: "Collection", name: "collection", widget: "select", options: ["rings", "necklaces", "bracelets"] }
+              - { label: "Collection", name: "collection", widget: "select", options: ["rings", "necklaces", "bracelets", "earrings"] }
               - { label: "Tagline", name: "tagline", widget: "string" }
               - { label: "Story", name: "story", widget: "text" }
               - { label: "Materials", name: "materials", widget: "list" }

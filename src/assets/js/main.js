@@ -74,16 +74,24 @@
     const filterBtns = $$('[data-filter]');
     const pieces = $$('.piece-item', collectionsGrid);
 
+    const emptyState = $('#collections-empty');
+
     function applyFilter(filter) {
+      let visibleCount = 0;
       pieces.forEach(p => {
         if (filter === 'all' || p.dataset.category === filter) {
           p.style.display = '';
           setTimeout(() => p.classList.add('visible'), 50); // slight delay for reveal transition
+          visibleCount++;
         } else {
           p.style.display = 'none';
           p.classList.remove('visible');
         }
       });
+      
+      if (emptyState) {
+        emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
     }
 
     // Apply init filter
