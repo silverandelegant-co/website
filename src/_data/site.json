@@ -5,6 +5,37 @@
     "wolfandbadger": "https://www.wolfandbadger.com/us/designers/silver-elegant-co/",
     "tagline": "Curated Sculptural Jewellery for the Conscious Collector."
   },
+  "about": {
+    "hero_image": "/assets/about-workshop.png",
+    "heading1": "Silver is patient.",
+    "heading2": "So is the work.",
+    "body": [
+      "Every piece begins not with metal but with an idea — sometimes a line in a sketchbook, sometimes a shape noticed in the world. Silver & Elegant was built on the belief that jewellery should carry its own history.",
+      "Made in a small studio with hand tools, each piece passes through dozens of decisions before it is finished. The form, the finish, the weight — nothing is incidental. The work takes the time it takes.",
+      "Silver & Elegant jewellery is available on Wolf & Badger, selected by their team as part of their collection of independent designers."
+    ],
+    "process_steps": [
+      {
+        "num": "01",
+        "title": "Sketch",
+        "description": "Each piece begins as a drawing — a study of form, proportion, and intention before a single tool is picked up."
+      },
+      {
+        "num": "02",
+        "title": "Form",
+        "description": "Sterling silver sheet or wire is cut, shaped, and worked by hand. No two sessions produce the same result — the material makes its own decisions."
+      },
+      {
+        "num": "03",
+        "title": "Finish",
+        "description": "The surface is treated to reveal its character — polished, oxidised, or left with the texture of the hammer. Nothing is erased."
+      }
+    ]
+  },
+  "contact": {
+    "heading": "Get in Touch",
+    "intro": "For private commissions, stockist enquiries, and press, please write to us below."
+  },
   "pieces": [
     {
       "id": "crustacea-i",

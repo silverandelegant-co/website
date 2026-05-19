@@ -22,6 +22,29 @@ collections:
               - { label: "Email", name: "email", widget: "string" }
               - { label: "Wolf & Badger URL", name: "wolfandbadger", widget: "string" }
               - { label: "Tagline", name: "tagline", widget: "string" }
+
+          - label: "About Page"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Hero Image", name: "hero_image", widget: "image" }
+              - { label: "Heading Line 1", name: "heading1", widget: "string" }
+              - { label: "Heading Line 2", name: "heading2", widget: "string" }
+              - { label: "Body Paragraphs", name: "body", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+              - label: "Process Steps"
+                name: "process_steps"
+                widget: "list"
+                fields:
+                  - { label: "Number", name: "num", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Contact Page"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro Text", name: "intro", widget: "text" }
           
           - label: "Jewellery Pieces"
             name: "pieces"

@@ -1,62 +1,57 @@
 ---
-layout: base.njk
-title: About — Silver & Elegant
-description: The story of Silver & Elegant — handcrafted sterling silver jewellery made in a small studio, one piece at a time.
+layout: "base.njk"
+title: "About — Silver & Elegant"
+description: "The story of Silver & Elegant — handcrafted sterling silver jewellery made in a small studio, one piece at a time."
 ---
-  <!-- Workshop Hero -->
-  <div style="padding-top:5rem;">
-    <img src="/assets/about-workshop.png" alt="Silversmith at work" class="about-hero-img reveal">
-  </div>
+<!-- Workshop Hero -->
+<div style="padding-top:5rem;">
+  <img src="/{{ site.about.hero_image | default('assets/about-workshop.png') | imgpath }}" alt="Silversmith at work"
+    class="about-hero-img reveal">
+</div>
 
-  <!-- About Content -->
-  <div class="about-layout">
+<!-- About Content -->
+<div class="about-layout">
 
-    <!-- Intro -->
-    <div class="about-intro">
-      <div class="about-intro-label reveal">
-        <span class="label">The Maker</span>
-      </div>
-      <div class="about-body">
-        <h1 class="reveal" style="margin-bottom:2rem; font-size:clamp(2rem,4vw,3.5rem);">
-          Silver is patient.<br>
-          <em>So is the work.</em>
-        </h1>
-        <p class="reveal">Every piece begins not with metal but with an idea — sometimes a line in a sketchbook, sometimes a shape noticed in the world. Silver & Elegant was built on the belief that jewellery should carry its own history.</p>
-        <p class="reveal">Made in a small studio with hand tools, each piece passes through dozens of decisions before it is finished. The form, the finish, the weight — nothing is incidental. The work takes the time it takes.</p>
-        <p class="reveal">Silver & Elegant jewellery is available on Wolf & Badger, selected by their team as part of their collection of independent designers.</p>
-        <div class="reveal" style="margin-top:2.5rem;">
-          <a href="{{ site.settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" target="_blank" rel="noopener" class="btn btn-outline-dark" id="about-wb-link">Shop on Wolf &amp; Badger</a>
-        </div>
+  <!-- Intro -->
+  <div class="about-intro">
+    <div class="about-intro-label reveal">
+      <span class="label">The Maker</span>
+    </div>
+    <div class="about-body">
+      <h1 class="reveal" style="margin-bottom:2rem; font-size:clamp(2rem,4vw,3.5rem);">
+        {{ site.about.heading1 }}<br>
+        <em>{{ site.about.heading2 }}</em>
+      </h1>
+      {% for para in site.about.body %}
+      <p class="reveal">{{ para }}</p>
+      {% endfor %}
+      <div class="reveal" style="margin-top:2.5rem;">
+        <a href="{{ site.settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" target="_blank"
+          rel="noopener" class="btn btn-outline-dark" id="about-wb-link">Shop on Wolf &amp; Badger</a>
       </div>
     </div>
+  </div>
 
-    <!-- Process -->
-    <div>
-      <div class="reveal" style="margin-bottom:2rem;">
-        <span class="label">The Process</span>
-      </div>
-      <div class="process-grid">
-        <div class="process-step reveal">
-          <span class="step-num">01</span>
-          <h3>Sketch</h3>
-          <p>Each piece begins as a drawing — a study of form, proportion, and intention before a single tool is picked up.</p>
-        </div>
-        <div class="process-step reveal reveal-delay-1">
-          <span class="step-num">02</span>
-          <h3>Form</h3>
-          <p>Sterling silver sheet or wire is cut, shaped, and worked by hand. No two sessions produce the same result — the material makes its own decisions.</p>
-        </div>
-        <div class="process-step reveal reveal-delay-2">
-          <span class="step-num">03</span>
-          <h3>Finish</h3>
-          <p>The surface is treated to reveal its character — polished, oxidised, or left with the texture of the hammer. Nothing is erased.</p>
-        </div>
-      </div>
+  <!-- Process -->
+  <div>
+    <div class="reveal" style="margin-bottom:2rem;">
+      <span class="label">The Process</span>
     </div>
-
+    <div class="process-grid">
+      {% for step in site.about.process_steps %}
+      <div class="process-step reveal {% if loop.index0 > 0 %}reveal-delay-{{ loop.index0 }}{% endif %}">
+        <span class="step-num">{{ step.num }}</span>
+        <h3>{{ step.title }}</h3>
+        <p>{{ step.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
   </div>
 
-  <!-- Wolf & Badger strip -->
-  <div class="wb-strip">
-    <p>Find all pieces on <a href="{{ site.settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" target="_blank" rel="noopener">Wolf &amp; Badger</a></p>
-  </div>
+</div>
+
+<!-- Wolf & Badger strip -->
+<div class="wb-strip">
+  <p>Find all pieces on <a href="{{ site.settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}"
+      target="_blank" rel="noopener">Wolf &amp; Badger</a></p>
+</div>
