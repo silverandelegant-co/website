@@ -32,11 +32,25 @@
   /* ── 2. Mobile nav toggle ──────────────────────────────── */
   const navToggle = $('#nav-toggle');
   const navLinks  = $('#nav-links');
+  const navOverlay = $('#nav-overlay');
   if (navToggle && navLinks) {
     navToggle.addEventListener('click', () => {
       const open = navLinks.classList.toggle('open');
+      if (navOverlay) navOverlay.classList.toggle('open', open);
       navToggle.setAttribute('aria-expanded', String(open));
       navToggle.classList.toggle('open', open);
+      
+      if (open) {
+        nav.classList.add('nav-menu-open');
+        nav.classList.remove('nav-menu-closing');
+      } else {
+        nav.classList.remove('nav-menu-open');
+        nav.classList.add('nav-menu-closing');
+        setTimeout(() => {
+          nav.classList.remove('nav-menu-closing');
+        }, 300);
+      }
+      
       document.body.style.overflow = open ? 'hidden' : '';
     });
 
@@ -44,7 +58,15 @@
     document.addEventListener('click', (e) => {
       if (!nav.contains(e.target) && navLinks.classList.contains('open')) {
         navLinks.classList.remove('open');
+        if (navOverlay) navOverlay.classList.remove('open');
         navToggle.classList.remove('open');
+        
+        nav.classList.remove('nav-menu-open');
+        nav.classList.add('nav-menu-closing');
+        setTimeout(() => {
+          nav.classList.remove('nav-menu-closing');
+        }, 300);
+        
         document.body.style.overflow = '';
       }
     });
