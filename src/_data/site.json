@@ -130,6 +130,159 @@
       "images": [
         "/assets/pieces/WhatsApp Image 2026-05-19 at 11.59.29.jpeg"
       ]
+    },
+    {
+      "id": "stepped-bevel-studs",
+      "name": "Stepped Bevel Studs",
+      "collection": "earrings",
+      "tagline": "Brutalist architecture translated into geometric sterling gold and crystal studs.",
+      "story": "Inspired by Brutalist architecture, these studs serve as geometric skeletons. The stepped bronze frame, enveloped in a rich 22K gold lustre, echoes the monumental ceilings of ancient sanctuaries. At its core, a brilliant clear crystal captures the light, contrasting with the deep shadows of the hand-carved metal.\n\nHandcrafted via the ancient lost-wax technique by a single master artisan, they bridge the gap between generative precision and the organic warmth of human touch.",
+      "materials": [
+        "22K Gold Plated Bronze",
+        "Clear Crystal Center",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic",
+        "Handcrafted via Traditional Lost-Wax Technique"
+      ],
+      "featured": true,
+      "wolfandbadger": "https://www.wolfandbadger.com/",
+      "images": [
+        "/assets/pieces/SilvernElegant (3).jpg"
+      ]
+    },
+    {
+      "id": "shadowed-bevel-studs",
+      "name": "Shadowed Bevel Studs",
+      "collection": "earrings",
+      "tagline": "Smoky quartz suspended in stepped architectural bronze frames.",
+      "story": "The enigmatic twin to our Bevel series, these studs pair warm-toned architectural bronze with the smoky, deep shadows of natural quartz. Light is not meant to reflect here, but to be absorbed into the depths of the smoky stone, creating a quiet, atmospheric play of shadow.\n\nConceptualised as future heirlooms, each pair features unique natural inclusions in the quartz, ensuring a bespoke micro-architecture for its keeper.",
+      "materials": [
+        "22K Gold Plated Bronze",
+        "Natural Smoky Quartz",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic",
+        "Handcrafted via Traditional Lost-Wax Technique"
+      ],
+      "featured": true,
+      "wolfandbadger": "https://www.wolfandbadger.com/",
+      "images": [
+        "/assets/pieces/SilvernElegant (4).jpg"
+      ]
+    },
+    {
+      "id": "stellar-asteroidea-studs",
+      "name": "Stellar Asteroidea Studs",
+      "collection": "earrings",
+      "tagline": "Deep-sea starfish fractals sculpted in gold-lustred bronze and marquise crystals.",
+      "story": "Drawing inspiration from the hidden fractals of the deep sea, these studs merge the organic symmetry of the starfish with celestial alignments. Each marquise-cut crystal is set to mimic the algorithmic scattering of light beneath the waves, contrasting beautifully with the raw strength of the bronze base.\n\nThese are not mere accessories, but wearable artefacts carrying the silent geometry of the ocean and the cosmos.",
+      "materials": [
+        "22K Gold Plated Bronze",
+        "Marquise-Cut Crystals",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic",
+        "Handcrafted via Traditional Lost-Wax Technique"
+      ],
+      "featured": true,
+      "wolfandbadger": "https://www.wolfandbadger.com/",
+      "images": [
+        "/assets/pieces/SilvernElegant (5).jpg"
+      ]
+    },
+    {
+      "id": "pegasus-pedestal-earrings",
+      "name": "Pegasus Pedestal Earrings",
+      "collection": "earrings",
+      "tagline": "Mythological horse heads with emerald eyes and suspended golden spheres.",
+      "story": "A striking dialogue between mythological weight and physical equilibrium. Finely sculpted horse heads, adorned with emerald-green stone eyes, carry an air of ancient nobility. Suspended below, a textured gold sphere challenges gravity, grounding the piece with a tactile, highly sculptural finish.\n\nThe organic surface marks are intentional signatures of the maker, a testament to authentic craftsmanship in a machine-made age.",
+      "materials": [
+        "22K Gold Plated Bronze",
+        "Emerald-Green Stones",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic",
+        "Handcrafted via Traditional Lost-Wax Technique"
+      ],
+      "featured": true,
+      "wolfandbadger": "https://www.wolfandbadger.com/",
+      "images": [
+        "/assets/pieces/SilvernElegant (6).jpg"
+      ]
+    },
+    {
+      "id": "baroque-chelonia-earrings",
+      "name": "Baroque Chelonia Earrings",
+      "collection": "earrings",
+      "tagline": "Computational turtle shells and natural baroque pearls in gold lattice.",
+      "story": "A celebration of nature's slowest, most patient creations: the evolutionary geometry of the turtle shell and the organic growth of the baroque pearl. The turquoise-toned body is enveloped in a gold lattice, generated computationally to simulate natural shell structures.\n\nDangling below, asymmetric baroque pearls introduce nature's beautiful imperfections—no two pearls are alike, making your pair entirely bespoke.",
+      "materials": [
+        "22K Gold Plated Bronze with Turquoise-Toned Enclosure",
+        "Natural Asymmetric Baroque Pearls",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic",
+        "Handcrafted via Traditional Lost-Wax Technique"
+      ],
+      "featured": true,
+      "wolfandbadger": "https://www.wolfandbadger.com/",
+      "images": [
+        "/assets/pieces/SilvernElegant (7).jpg"
+      ]
+    },
+    {
+      "id": "crocodile-artefacts",
+      "name": "Crocodile Artefacts",
+      "collection": "earrings",
+      "tagline": "Intricate textures of crocodile skin cast in tactile 22K gold-lustred bronze.",
+      "story": "A symbol of survival, resilience, and enduring legacy. The intricate textures of crocodile skin are cast in architectural bronze with a 22K gold lustre, transforming wild form into a minimalist, tactile sculpture.",
+      "materials": [
+        "22K Gold Plated Bronze",
+        "Intricate Crocodile Texture",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic",
+        "Handcrafted via Traditional Lost-Wax Technique"
+      ],
+      "featured": true,
+      "wolfandbadger": "https://www.wolfandbadger.com/",
+      "images": [
+        "/assets/pieces/SilvernElegant (8).jpg",
+        "/assets/pieces/SilvernElegant (10).jpg"
+      ]
+    },
+    {
+      "id": "sodalite-eye-earrings",
+      "name": "Sodalite Eye Earrings",
+      "collection": "earrings",
+      "tagline": "Talismanic eye studs featuring brushed gold lashes and deep blue sodalite.",
+      "story": "A modern, brutalist reimagining of the ancient talismanic eye. Brushed gold lashes frame a central, deep blue sodalite stone, which holds its own unique cosmic map of natural veins.\n\nThese earrings balance geometric rationality with deep symbolic meaning, serving as a soulful, protective statement for the discerning collector.",
+      "materials": [
+        "22K Gold Plated Bronze",
+        "Natural Sodalite Stones",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic",
+        "Handcrafted via Traditional Lost-Wax Technique"
+      ],
+      "featured": true,
+      "wolfandbadger": "https://www.wolfandbadger.com/",
+      "images": [
+        "/assets/pieces/SilvernElegant (9).jpg"
+      ]
+    },
+    {
+      "id": "sacred-scarab-drops",
+      "name": "Sacred Scarab Drops",
+      "collection": "earrings",
+      "tagline": "Hand-set marquise zircons and textured golden spheres in high-fashion Scarab drops.",
+      "story": "The ancient Egyptian symbol of rebirth, reimagined through the brilliance of hand-set marquise zircons. The brilliant, shimmering body of the scarab contrasts with the earthy, matte weight of a textured golden sphere suspended below.\n\nAn elegant, high-fashion testament to the cycle of time and structural permanence.",
+      "materials": [
+        "22K Gold Plated Bronze",
+        "Hand-Set Marquise Zircons",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic",
+        "Handcrafted via Traditional Lost-Wax Technique"
+      ],
+      "featured": true,
+      "wolfandbadger": "https://www.wolfandbadger.com/",
+      "images": [
+        "/assets/pieces/SilvernElegant (11).jpg"
+      ]
     }
   ]
 }
