@@ -2,59 +2,62 @@
   "settings": {
     "instagram": "https://www.instagram.com/silverandelegantco/",
     "email": "info@silverandelegant.co",
-    "wolfandbadger": "https://www.wolfandbadger.com/",
-    "tagline": "Handcrafted Silver Jewellery"
+    "wolfandbadger": "https://www.wolfandbadger.com/us/designers/silver-elegant-co/",
+    "tagline": "Curated Sculptural Jewellery for the Conscious Collector."
   },
   "pieces": [
     {
-      "id": "forma-i",
-      "name": "Forma I",
+      "id": "crustacea-i",
+      "name": "Crustacea I Earrings",
       "collection": "rings",
-      "tagline": "Shaped by hand, finished by fire.",
-      "story": "Forma I began as a single sheet of sterling silver, slowly coaxed into form over twelve hours of careful hammering. Its asymmetric profile is deliberate — a record of the process, not a departure from it.\n\nThe surface holds the memory of each strike: not polished away, but preserved as texture. Where most rings seek perfection through uniformity, Forma I finds it through honesty.\n\nNo two are identical. Each one is a separate conversation between maker and material.",
+      "tagline": "Untamed opulence, hand-sculpted for a commanding presence.",
+      "story": "A bold, sculptural tribute to resilience and raw organic form, Crustacea I captures the untamed opulence of the deep. Each piece is meticulously pavé-set with brilliant crystals that trace a powerful, fluid anatomy, accented by striking ruby-red and onyx-black stones. Hand-sculpted in architectural bronze and finished with a 22K gold lustre, they seamlessly blend high-fashion maximalism with refined artisanal depth.\n\nHandcrafted via the traditional lost-wax technique by a single master artisan, these limited-edition artefacts balance a commanding weight with engineered comfort, finished with hypoallergenic silver posts. The subtle surface variations are intentional signatures of the maker, serving as tangible proof of a human touch in a machine-made age.",
       "materials": [
-        "Sterling Silver 925",
-        "Oxidised patina finish",
-        "Hand-hammered texture"
+        "22ct Gold Plated Bronze",
+        "Hand-hammered texture",
+        "High-quality craftsmanship"
       ],
       "featured": true,
-      "wolfandbadger": "https://www.wolfandbadger.com/",
+      "wolfandbadger": "https://www.wolfandbadger.com/us/crystal-lobster-drop-earrings/",
       "images": [
-        "assets/pieces/forma-i-main.png"
+        "/assets/pieces/WhatsApp Image 2026-05-17 at 07.31.50 (2).jpeg"
       ]
     },
     {
-      "id": "arc",
-      "name": "Arc",
+      "id": "reptilia-i",
+      "name": "Reptilia I Earrings",
       "collection": "necklaces",
-      "tagline": "A line that curves back to its beginning.",
-      "story": "Arc is drawn from the geometry of natural growth — the way a branch bends under weight, or a wave reaches its peak before falling. A single length of sterling silver wire, bent by hand and fused at the tension point.\n\nCast on a fine trace chain, it moves with the wearer. The pendant catches light differently at every angle, shifting from a stark line to a soft curve depending on how it falls.\n\nIt is, in the simplest sense, a study in what a line can become.",
+      "tagline": "Primordial power reframed into a modern masterpiece of wearable art.",
+      "story": "An Online Exclusive. A powerful tribute to strength, endurance, and ancient symbolism, Reptilia I captures the primordial power of its namesake through bold, architectural lines. Each piece is hand-shaped in textured bronze and enveloped in a radiant, heavy layer of 22K gold lustre, transforming a raw organic form into a sophisticated statement of modern luxury.\n\nTrue to our philosophy of transparent craft, these limited-edition artefacts balance an assertive, commanding scale with an engineered, weightless comfort. Finished with hypoallergenic sterling silver posts, the deliberate surface textures remain as the proud signature of the master artisan—serving as tangible proof of a human touch in a machine-made age.",
       "materials": [
-        "Sterling Silver 925",
-        "Fine trace chain, 45cm",
-        "Lobster clasp"
+        "22K Gold Plated Bronze",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic",
+        "Handcrafted via Traditional Lost-Wax Technique"
       ],
       "featured": true,
-      "wolfandbadger": "https://www.wolfandbadger.com/",
+      "wolfandbadger": "https://www.wolfandbadger.com/us/crocodile-earrings/",
       "images": [
-        "assets/pieces/arc-main.png"
+        "/assets/pieces/WhatsApp Image 2026-05-19 at 11.59.26.jpeg"
       ]
     },
     {
-      "id": "loop",
-      "name": "Loop",
+      "id": "orbita-i",
+      "name": "Orbita I Earrings",
       "collection": "bracelets",
-      "tagline": "Silver folded back on itself.",
-      "story": "Loop explores the elegance of a single continuous form. A strip of sterling silver, hammered flat, curved by hand into an open cuff that holds its shape whilst remaining light against the wrist.\n\nThe hammered exterior creates a surface that catches light in motion. The interior is left smooth — a deliberate contrast that rewards looking closely.\n\nThe open form is not a compromise. It is the point.",
+      "tagline": "Concentric celestial geometry balances with the warm glow of natural stones.",
+      "story": "Inspired by celestial orbits and architectural rotations, Orbita I features concentric, hand-hammered circles that evoke the rhythmic, silent movement of the cosmos. Accented by the soft, warm glow of natural peach gemstones, the design masterfully balances structural geometry with organic warmth. Hand-sculpted in architectural bronze and finished with a rich 22K gold lustre, they serve as a quietly powerful statement for the discerning collector.\n\nHandcrafted via the traditional lost-wax technique by a single master artisan, these limited-edition artefacts balance a bold, graphic silhouette with engineered, weightless comfort. Reflecting our commitment to transparent craft, the organic surface textures remain as intentional signatures of the maker—tangible proof of a human touch in a machine-made age.",
       "materials": [
-        "Sterling Silver 925",
-        "Hand-hammered exterior",
-        "Polished interior"
+        "22K Gold Plated Bronze",
+        "Natural Peach Gemstones",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic",
+        "Handcrafted via Traditional Lost-Wax Technique"
       ],
       "featured": true,
       "wolfandbadger": "https://www.wolfandbadger.com/",
       "images": [
-        "assets/pieces/loop-main.png"
+        "/assets/pieces/WhatsApp Image 2026-05-19 at 11.59.29.jpeg"
       ]
     }
   ]
