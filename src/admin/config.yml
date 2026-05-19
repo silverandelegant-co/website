@@ -21,6 +21,7 @@ collections:
               - { label: "Instagram URL", name: "instagram", widget: "string" }
               - { label: "Email", name: "email", widget: "string" }
               - { label: "Wolf & Badger URL", name: "wolfandbadger", widget: "string" }
+              - { label: "More4id URL", name: "more4id", widget: "string" }
               - { label: "Tagline", name: "tagline", widget: "string" }
 
           - label: "About Page"
@@ -75,6 +76,7 @@ collections:
               - { label: "Materials", name: "materials", widget: "list" }
               - { label: "Featured (Show on home page?)", name: "featured", widget: "boolean", default: false }
               - { label: "Wolf & Badger Listing URL (Optional)", name: "wolfandbadger", widget: "string", required: false }
+              - { label: "More4id Listing URL (Optional)", name: "more4id", widget: "string", required: false }
               - label: "Images"
                 name: "images"
                 widget: "list"

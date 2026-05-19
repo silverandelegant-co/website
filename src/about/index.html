@@ -26,9 +26,11 @@ description: "The story of Silver & Elegant — handcrafted sterling silver jewe
       
       {% if loop.last %}
       <!-- Call to action on the last section -->
-      <div class="reveal" style="margin-top:2.5rem;">
+      <div class="reveal" style="margin-top:2.5rem; display:flex; gap:1rem; flex-wrap:wrap;">
         <a href="{{ site.settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" target="_blank"
           rel="noopener" class="btn btn-outline-dark" id="about-wb-link">Shop on Wolf &amp; Badger</a>
+        <a href="{{ site.settings.more4id | default('https://www.more4id.com/') }}" target="_blank"
+          rel="noopener" class="btn btn-outline-dark" id="about-more4id-link">Shop on More4id</a>
       </div>
       {% endif %}
     </div>
@@ -53,8 +55,9 @@ description: "The story of Silver & Elegant — handcrafted sterling silver jewe
 
 </div>
 
-<!-- Wolf & Badger strip -->
+<!-- Retailers strip -->
 <div class="wb-strip">
   <p>Find all pieces on <a href="{{ site.settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}"
-      target="_blank" rel="noopener">Wolf &amp; Badger</a></p>
+      target="_blank" rel="noopener">Wolf &amp; Badger</a> and <a href="{{ site.settings.more4id | default('https://www.more4id.com/') }}"
+      target="_blank" rel="noopener">More4id</a></p>
 </div>

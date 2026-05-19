@@ -48,7 +48,12 @@ eleventyComputed:
         <div class="piece-actions">
           <div class="piece-divider"></div>
           <div style="display:flex;flex-direction:column;gap:0.8rem;">
-            <a href="{{ piece.wolfandbadger | default(site.settings.wolfandbadger) }}" id="piece-wb-link" target="_blank" rel="noopener" class="btn btn-dark" style="text-align:center;">Available on Wolf &amp; Badger</a>
+            {% if piece.wolfandbadger and piece.wolfandbadger != "https://www.wolfandbadger.com/" %}
+              <a href="{{ piece.wolfandbadger }}" id="piece-wb-link" target="_blank" rel="noopener" class="btn btn-dark" style="text-align:center;">Available on Wolf &amp; Badger</a>
+            {% endif %}
+            {% if piece.more4id and piece.more4id != "https://www.more4id.com/" %}
+              <a href="{{ piece.more4id }}" id="piece-more4id-link" target="_blank" rel="noopener" class="btn btn-dark" style="text-align:center;">Available on More4id</a>
+            {% endif %}
             <a href="/contact/index.html" class="btn btn-outline-dark" style="text-align:center;">Private Enquiry</a>
           </div>
           <div class="piece-divider"></div>
