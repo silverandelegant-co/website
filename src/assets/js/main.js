@@ -89,7 +89,7 @@
     // Apply init filter
     applyFilter(activeFilter);
     filterBtns.forEach(btn => {
-      if (btn.dataset.filter === activeFilter) btn.classList.add('active');
+      btn.classList.toggle('active', btn.dataset.filter === activeFilter);
       btn.addEventListener('click', () => {
         activeFilter = btn.dataset.filter;
         filterBtns.forEach(b => b.classList.remove('active'));
