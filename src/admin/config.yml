@@ -28,9 +28,13 @@ collections:
             widget: "object"
             fields:
               - { label: "Hero Image", name: "hero_image", widget: "image" }
-              - { label: "Heading Line 1", name: "heading1", widget: "string" }
-              - { label: "Heading Line 2", name: "heading2", widget: "string" }
-              - { label: "Body Paragraphs", name: "body", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+              - label: "Sections"
+                name: "sections"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Body", name: "body", widget: "text" }
               - label: "Process Steps"
                 name: "process_steps"
                 widget: "list"

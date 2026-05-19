@@ -12,27 +12,30 @@ description: "The story of Silver & Elegant — handcrafted sterling silver jewe
 <!-- About Content -->
 <div class="about-layout">
 
-  <!-- Intro -->
+  {% for section in site.about.sections %}
+  <!-- Section: {{ section.label }} -->
   <div class="about-intro">
     <div class="about-intro-label reveal">
-      <span class="label">The Maker</span>
+      <span class="label">{{ section.label }}</span>
     </div>
     <div class="about-body">
       <h1 class="reveal" style="margin-bottom:2rem; font-size:clamp(2rem,4vw,3.5rem);">
-        {{ site.about.heading1 }}<br>
-        <em>{{ site.about.heading2 }}</em>
+        {{ section.title }}
       </h1>
-      {% for para in site.about.body %}
-      <p class="reveal">{{ para }}</p>
-      {% endfor %}
+      <p class="reveal">{{ section.body }}</p>
+      
+      {% if loop.last %}
+      <!-- Call to action on the last section -->
       <div class="reveal" style="margin-top:2.5rem;">
         <a href="{{ site.settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" target="_blank"
           rel="noopener" class="btn btn-outline-dark" id="about-wb-link">Shop on Wolf &amp; Badger</a>
       </div>
+      {% endif %}
     </div>
   </div>
+  {% endfor %}
 
-  <!-- Process -->
+  <!-- Process Grid -->
   <div>
     <div class="reveal" style="margin-bottom:2rem;">
       <span class="label">The Process</span>
