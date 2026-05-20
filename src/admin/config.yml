@@ -8,169 +8,169 @@ public_folder: "assets/pieces" # Setting to same ensures internal paths match fe
 
 collections:
   - name: "settings"
-    label: "Global Settings"
+    label: "Genel Ayarlar"
     files:
       - file: "src/_data/settings.json"
-        label: "Store Settings & Links"
+        label: "Mağaza Ayarları ve Bağlantılar"
         name: "settings"
         fields:
-          - { label: "Instagram URL", name: "instagram", widget: "string" }
-          - { label: "Email", name: "email", widget: "string" }
-          - { label: "Wolf & Badger URL", name: "wolfandbadger", widget: "string" }
-          - { label: "More4id URL", name: "more4id", widget: "string" }
-          - { label: "Homepage Tagline", name: "tagline", widget: "string" }
+          - { label: "Instagram Adresi", name: "instagram", widget: "string" }
+          - { label: "E-posta Adresi", name: "email", widget: "string" }
+          - { label: "Wolf & Badger Adresi", name: "wolfandbadger", widget: "string" }
+          - { label: "More4id Adresi", name: "more4id", widget: "string" }
+          - { label: "Ana Sayfa Tanıtım Yazısı", name: "tagline", widget: "string" }
 
   - name: "pages"
-    label: "Page Content"
+    label: "Sayfa İçerikleri"
     files:
       - file: "src/_data/about.json"
-        label: "About Page"
+        label: "Hakkımızda Sayfası"
         name: "about"
         fields:
-          - { label: "Hero Image", name: "hero_image", widget: "image" }
-          - label: "Sections"
+          - { label: "Giriş (Hero) Görseli", name: "hero_image", widget: "image" }
+          - label: "Bölümler"
             name: "sections"
             widget: "list"
             fields:
-              - { label: "Label", name: "label", widget: "string" }
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Body", name: "body", widget: "text" }
-          - label: "Process Steps"
+              - { label: "Etiket", name: "label", widget: "string" }
+              - { label: "Başlık", name: "title", widget: "string" }
+              - { label: "Metin", name: "body", widget: "text" }
+          - label: "Süreç Adımları"
             name: "process_steps"
             widget: "list"
             fields:
-              - { label: "Number", name: "num", widget: "string" }
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Numara", name: "num", widget: "string" }
+              - { label: "Başlık", name: "title", widget: "string" }
+              - { label: "Açıklama", name: "description", widget: "text" }
 
       - file: "src/_data/press.json"
-        label: "Press Page"
+        label: "Basın Sayfası"
         name: "press"
         fields:
-          - { label: "Heading", name: "heading", widget: "string" }
-          - label: "Articles"
+          - { label: "Ana Başlık", name: "heading", widget: "string" }
+          - label: "Makaleler / Haberler"
             name: "articles"
             widget: "list"
             fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Content", name: "content", widget: "text" }
-              - { label: "External Link (Optional)", name: "link", widget: "string", required: false }
+              - { label: "Başlık", name: "title", widget: "string" }
+              - { label: "İçerik", name: "content", widget: "text" }
+              - { label: "Harici Bağlantı (İsteğe Bağlı)", name: "link", widget: "string", required: false }
 
       - file: "src/_data/contact.json"
-        label: "Contact Page"
+        label: "İletişim Sayfası"
         name: "contact"
         fields:
-          - { label: "Heading", name: "heading", widget: "string" }
-          - { label: "Intro Text", name: "intro", widget: "text" }
+          - { label: "Ana Başlık", name: "heading", widget: "string" }
+          - { label: "Giriş Metni", name: "intro", widget: "text" }
 
   - name: "pieces"
-    label: "Jewellery Catalog"
+    label: "Takı Kataloğu"
     files:
       - file: "src/_data/earrings.json"
-        label: "Earrings List"
+        label: "Küpeler Listesi"
         name: "earrings"
         fields:
-          - label: "Earrings"
+          - label: "Küpeler"
             name: "pieces"
             widget: "list"
             fields: &piece_fields
-              - { label: "ID (URL slug - lowercase, no spaces)", name: "id", widget: "string" }
-              - { label: "Name", name: "name", widget: "string" }
-              - { label: "Collection", name: "collection", widget: "select", options: ["rings", "necklaces", "bracelets", "earrings"] }
-              - { label: "Tagline", name: "tagline", widget: "string" }
-              - { label: "Story", name: "story", widget: "text" }
-              - { label: "Materials", name: "materials", widget: "list" }
-              - { label: "Featured (Show on home page?)", name: "featured", widget: "boolean", default: false }
-              - { label: "Wolf & Badger Listing URL (Optional)", name: "wolfandbadger", widget: "string", required: false }
-              - { label: "More4id Listing URL (Optional)", name: "more4id", widget: "string", required: false }
-              - label: "Images"
+              - { label: "ID (URL kalıcı bağlantısı - küçük harf, boşluksuz)", name: "id", widget: "string" }
+              - { label: "Ürün Adı", name: "name", widget: "string" }
+              - { label: "Koleksiyon / Kategori", name: "collection", widget: "select", options: [{ label: "Yüzükler", value: "rings" }, { label: "Kolyeler", value: "necklaces" }, { label: "Bilezikler", value: "bracelets" }, { label: "Küpeler", value: "earrings" }] }
+              - { label: "Kısa Tanıtım Yazısı", name: "tagline", widget: "string" }
+              - { label: "Ürün Hikayesi", name: "story", widget: "text" }
+              - { label: "Kullanılan Malzemeler", name: "materials", widget: "list" }
+              - { label: "Öne Çıkarılan (Ana sayfada gösterilsin mi?)", name: "featured", widget: "boolean", default: false }
+              - { label: "Wolf & Badger Ürün Sayfası Linki (İsteğe Bağlı)", name: "wolfandbadger", widget: "string", required: false }
+              - { label: "More4id Ürün Sayfası Linki (İsteğe Bağlı)", name: "more4id", widget: "string", required: false }
+              - label: "Ürün Görselleri"
                 name: "images"
                 widget: "list"
-                field: { label: "Image", name: "image", widget: "image" }
+                field: { label: "Görsel", name: "image", widget: "image" }
 
       - file: "src/_data/rings.json"
-        label: "Rings List"
+        label: "Yüzükler Listesi"
         name: "rings"
         fields:
-          - label: "Rings"
+          - label: "Yüzükler"
             name: "pieces"
             widget: "list"
             fields: *piece_fields
 
       - file: "src/_data/necklaces.json"
-        label: "Necklaces List"
+        label: "Kolyeler Listesi"
         name: "necklaces"
         fields:
-          - label: "Necklaces"
+          - label: "Kolyeler"
             name: "pieces"
             widget: "list"
             fields: *piece_fields
 
       - file: "src/_data/bracelets.json"
-        label: "Bracelets List"
+        label: "Bilezikler Listesi"
         name: "bracelets"
         fields:
-          - label: "Bracelets"
+          - label: "Bilezikler"
             name: "pieces"
             widget: "list"
             fields: *piece_fields
 
   - name: "posts"
-    label: "Journal Feed"
+    label: "Günlük / Blog"
     files:
       - file: "src/_data/posts_philosophy.json"
-        label: "Philosophy Articles"
+        label: "Felsefe Yazıları"
         name: "posts_philosophy"
         fields:
-          - label: "Philosophy Posts"
+          - label: "Felsefe Gönderileri"
             name: "posts"
             widget: "list"
             fields: &post_fields
-              - { label: "ID (URL slug - lowercase, no spaces)", name: "id", widget: "string" }
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Date", name: "date", widget: "datetime" }
-              - { label: "Category", name: "category", widget: "select", options: ["Philosophy", "Craftsmanship", "Press", "Exhibitions"] }
-              - { label: "Summary (Snippet for listing)", name: "summary", widget: "text" }
-              - { label: "Featured Image", name: "featured_image", widget: "image" }
-              - { label: "Featured Post? (Show at top of Journal)", name: "featured", widget: "boolean", default: false }
-              - label: "Content Sections"
+              - { label: "ID (URL kalıcı bağlantısı - küçük harf, boşluksuz)", name: "id", widget: "string" }
+              - { label: "Yazı Başlığı", name: "title", widget: "string" }
+              - { label: "Tarih", name: "date", widget: "datetime" }
+              - { label: "Kategori", name: "category", widget: "select", options: [{ label: "Felsefe", value: "Philosophy" }, { label: "Zanaatkarlık", value: "Craftsmanship" }, { label: "Basın", value: "Press" }, { label: "Sergiler", value: "Exhibitions" }] }
+              - { label: "Özet (Liste ekranı için kısa özet)", name: "summary", widget: "text" }
+              - { label: "Öne Çıkan Görsel", name: "featured_image", widget: "image" }
+              - { label: "Öne Çıkarılan Yazı? (Günlüğün en üstünde gösterilsin mi?)", name: "featured", widget: "boolean", default: false }
+              - label: "İçerik Bölümleri"
                 name: "sections"
                 widget: "list"
                 types:
-                  - label: "Text Block"
+                  - label: "Metin Bloğu"
                     name: "text_block"
                     widget: "object"
                     fields:
-                      - { label: "Text Content", name: "body", widget: "markdown" }
-                  - label: "Blockquote"
+                      - { label: "Metin İçeriği", name: "body", widget: "markdown" }
+                  - label: "Alıntı"
                     name: "blockquote"
                     widget: "object"
                     fields:
-                      - { label: "Quote", name: "quote", widget: "string" }
+                      - { label: "Alıntı Metni", name: "quote", widget: "string" }
 
       - file: "src/_data/posts_craftsmanship.json"
-        label: "Craftsmanship Notes"
+        label: "Zanaatkarlık Notları"
         name: "posts_craftsmanship"
         fields:
-          - label: "Craftsmanship Posts"
+          - label: "Zanaatkarlık Gönderileri"
             name: "posts"
             widget: "list"
             fields: *post_fields
 
       - file: "src/_data/posts_press.json"
-        label: "Press & LFW Columns"
+        label: "Basın & LFW Köşe Yazıları"
         name: "posts_press"
         fields:
-          - label: "Press Posts"
+          - label: "Basın Gönderileri"
             name: "posts"
             widget: "list"
             fields: *post_fields
 
       - file: "src/_data/posts_exhibitions.json"
-        label: "Exhibition Records"
+        label: "Sergi Kayıtları"
         name: "posts_exhibitions"
         fields:
-          - label: "Exhibition Posts"
+          - label: "Sergi Gönderileri"
             name: "posts"
             widget: "list"
             fields: *post_fields
