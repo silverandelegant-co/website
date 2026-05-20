@@ -17,13 +17,13 @@ description: "Insights, philosophies, craftsmanship notes, and LFW runway update
       
       {# Identify Featured Post #}
       {% set featuredPost = null %}
-      {% for post in site.posts | reverse %}
+      {% for post in posts.posts | reverse %}
         {% if post.featured and not featuredPost %}
           {% set featuredPost = post %}
         {% endif %}
       {% endfor %}
-      {% if not featuredPost and site.posts.length > 0 %}
-        {% set featuredPost = site.posts | reverse | first %}
+      {% if not featuredPost and posts.posts.length > 0 %}
+        {% set featuredPost = posts.posts | reverse | first %}
       {% endif %}
 
       {# Render Featured Post #}
@@ -49,7 +49,7 @@ description: "Insights, philosophies, craftsmanship notes, and LFW runway update
 
       {# Grid of Remaining Posts #}
       <div class="blog-grid" id="posts-grid">
-        {% for post in site.posts | reverse %}
+        {% for post in posts.posts | reverse %}
           {% if post.id != featuredPost.id %}
           <article class="blog-card reveal" id="post-card-{{ loop.index }}">
             <a href="/blog/{{ post.id }}/index.html" class="blog-card-image">

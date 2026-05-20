@@ -1,0 +1,37 @@
+{
+  "hero_image": "/assets/about-workshop.png",
+  "sections": [
+    {
+      "label": "Philosophy",
+      "title": "The Architecture of Possibilities",
+      "body": "We do not design jewellery; we construct architectural narratives sealed in silver and bronze within the physical realm. Silver & Elegant was founded on the belief that the most enduring objects are those calculated with high mathematical intelligence and crafted with immense discipline. Each piece is a \"Future Heirloom\"—complex enough to be computed algorithmically, yet durable enough to outlive its creator. By distancing ourselves from the reflexes of fast consumption and transient trends, we establish permanence as our definitive design standard."
+    },
+    {
+      "label": "Process",
+      "title": "Code and Hammer",
+      "body": "Every design begins not with a sketch, but with a structural problem: What form should permanence take? We utilise generative design algorithms as our creative partners. Our code and simulations analyse thousands of structural possibilities simultaneously, allowing us to discover geometric forms of a complexity unattainable by the human hand alone. To bring this rational architecture into the physical world, we must refine it through traditional craftsmanship. Shaped by the hands of a master using the lost-wax casting technique, the metals bear the marks of human soul and imperfection, contrasting against digital precision. What the code proposes, the hand shapes. What the hand creates, time preserves."
+    },
+    {
+      "label": "Creator",
+      "title": "A Union of Two Worlds",
+      "body": "I am Esen Tunalı Sarı. The vision behind Silver & Elegant was forged in the historic jewellery quarters of Istanbul, where my childhood unfolded. As the child of a family that migrated from Bulgaria, I grew up amidst masters of silver and diamond setting, where craftsmanship was not merely a technique, but a daily discipline of life. The software engineering background I acquired years later allowed me to merge this traditional craft with the millimetric precision of algorithms. Today, in our home studio in Borehamwood, London, we melt these two opposing worlds into a single language. We do not manufacture like a factory, nor do we hide solely in the past; we bring together the intelligence of technology and the heart of craftsmanship."
+    }
+  ],
+  "process_steps": [
+    {
+      "num": "01",
+      "title": "Sketch",
+      "description": "Each piece begins as a drawing — a study of form, proportion, and intention before a single tool is picked up."
+    },
+    {
+      "num": "02",
+      "title": "Form",
+      "description": "Sterling silver sheet or wire is cut, shaped, and worked by hand. No two sessions produce the same result — the material makes its own decisions."
+    },
+    {
+      "num": "03",
+      "title": "Finish",
+      "description": "The surface is treated to reveal its character — polished, oxidised, or left with the texture of the hammer. Nothing is erased."
+    }
+  ]
+}

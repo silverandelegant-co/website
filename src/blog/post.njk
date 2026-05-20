@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 pagination:
-  data: site.posts
+  data: posts.posts
   size: 1
   alias: post
 permalink: "/blog/{{ post.id }}/index.html"
@@ -51,7 +51,7 @@ permalink: "/blog/{{ post.id }}/index.html"
       <h2>Other Journal Entries</h2>
       <div class="blog-grid">
         {% set count = 0 %}
-        {% for otherPost in site.posts | reverse %}
+        {% for otherPost in posts.posts | reverse %}
           {% if otherPost.id != post.id and count < 3 %}
             {% set count = count + 1 %}
             <article class="blog-card reveal" id="suggested-card-{{ loop.index }}">

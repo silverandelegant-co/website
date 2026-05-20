@@ -39,7 +39,7 @@
         <li class="nav-item"><a href="/blog/index.html">Journal</a></li>
         <li class="nav-item"><a href="/contact/index.html">Contact</a></li>
         <li class="nav-item">
-          <a href="{{ site.settings.instagram | default('https://www.instagram.com/silverandelegantco/') }}" class="nav-icon" target="_blank" rel="noopener" aria-label="Instagram">
+          <a href="{{ settings.instagram | default('https://www.instagram.com/silverandelegantco/') }}" class="nav-icon" target="_blank" rel="noopener" aria-label="Instagram">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
               <circle cx="12" cy="12" r="4"/>
@@ -67,19 +67,19 @@
         <div class="footer-mark"></div>
       </div>
       <div class="footer-links">
-        <a href="{{ site.settings.instagram | default('https://www.instagram.com/silverandelegantco/') }}" class="footer-link" target="_blank" rel="noopener" id="footer-instagram">
+        <a href="{{ settings.instagram | default('https://www.instagram.com/silverandelegantco/') }}" class="footer-link" target="_blank" rel="noopener" id="footer-instagram">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
           Follow the process
         </a>
-        <a href="mailto:{{ site.settings.email | default('info@silverandelegant.co') }}" class="footer-link" id="footer-email">
+        <a href="mailto:{{ settings.email | default('info@silverandelegant.co') }}" class="footer-link" id="footer-email">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-          {{ site.settings.email | default('info@silverandelegant.co') }}
+          {{ settings.email | default('info@silverandelegant.co') }}
         </a>
-        <a href="{{ site.settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" class="footer-link" target="_blank" rel="noopener" id="footer-wb">
+        <a href="{{ settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" class="footer-link" target="_blank" rel="noopener" id="footer-wb">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           Wolf &amp; Badger
         </a>
-        <a href="{{ site.settings.more4id | default('https://www.more4id.com/') }}" class="footer-link" target="_blank" rel="noopener" id="footer-more4id">
+        <a href="{{ settings.more4id | default('https://www.more4id.com/') }}" class="footer-link" target="_blank" rel="noopener" id="footer-more4id">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           More4id
         </a>

@@ -25,7 +25,7 @@ description: Browse all handcrafted silver jewellery by Silver & Elegant. Rings,
 
       <!-- Grid -->
       <div class="collections-grid" id="collections-grid">
-        {% for piece in site.pieces %}
+        {% for piece in pieces.pieces %}
           <a href="/piece/{{ piece.id }}/index.html" class="piece-card reveal piece-item" data-category="{{ piece.collection }}">
             <div class="piece-image">
               <img src="/{{ piece.images[0] | imgpath }}" alt="{{ piece.name }} frontend image" loading="lazy">
@@ -49,8 +49,8 @@ description: Browse all handcrafted silver jewellery by Silver & Elegant. Rings,
         <span class="label" style="display:block; margin-bottom:0.8rem;">Shop Online</span>
         <p style="font-family:var(--font-serif);font-style:italic;color:var(--c-muted);margin-bottom:1.5rem;">All pieces are available to purchase online through our retail partners.</p>
         <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
-          <a href="{{ site.settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" target="_blank" rel="noopener" class="btn btn-dark" id="wb-shop-link">Visit Wolf &amp; Badger</a>
-          <a href="{{ site.settings.more4id | default('https://www.more4id.com/') }}" target="_blank" rel="noopener" class="btn btn-outline-dark" id="more4id-shop-link">Visit More4id</a>
+          <a href="{{ settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" target="_blank" rel="noopener" class="btn btn-dark" id="wb-shop-link">Visit Wolf &amp; Badger</a>
+          <a href="{{ settings.more4id | default('https://www.more4id.com/') }}" target="_blank" rel="noopener" class="btn btn-outline-dark" id="more4id-shop-link">Visit More4id</a>
         </div>
       </div>
     </div>

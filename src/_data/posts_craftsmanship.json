@@ -1,0 +1,27 @@
+{
+  "posts": [
+    {
+      "id": "silver-remembers",
+      "title": "Silver Remembers: The Hand, the Hammer, and the Fire",
+      "date": "2026-04-12",
+      "category": "Craftsmanship",
+      "summary": "Reflecting on the lost-wax casting technique and why traditional hand-working remains the soul of modern architectural jewellery.",
+      "featured_image": "/assets/about-workshop.png",
+      "featured": false,
+      "sections": [
+        {
+          "type": "text_block",
+          "body": "Metal is not a passive canvas. Silver is an active collaborator, possessing memory, mood, and boundaries. When subjected to intense heat and the rhythmic pressure of the hammer, it reacts, remembers, and holds its form. It records every choice made in the quiet studio.\n\nIn our London home workshop, we embrace this dialogue daily."
+        },
+        {
+          "type": "blockquote",
+          "quote": "In a world optimized for speed and synthetic automation, we believe the human touch is the ultimate luxury."
+        },
+        {
+          "type": "text_block",
+          "body": "Every ring, earring, and cuff we craft relies on the ancient discipline of lost-wax casting. This technique, preserved across millennia, begins by hand-carving a scale model of the structural concept in jewellers' wax. The tactile nature of wax carving allows us to refine the edges, softening computational severity with natural warmth.\n\nOnce cast, the piece faces the crucible of finishing. We choose not to erase the toolmarks entirely. The tiny ridges left by the file and the textured surface of the hammer are kept intact. They tell the story of creation, serving as physical proof of a dedicated human touch. We make our decisions visible, ensuring that the wearer carries a record of authentic, deliberate creation on their body."
+        }
+      ]
+    }
+  ]
+}

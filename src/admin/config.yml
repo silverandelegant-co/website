@@ -7,67 +7,73 @@ media_folder: "src/assets/pieces"
 public_folder: "assets/pieces" # Setting to same ensures internal paths match fetch logic
 
 collections:
-  - name: "site_data"
-    label: "Site Data"
+  - name: "settings"
+    label: "Global Settings"
     files:
-      - file: "src/_data/site.json"
-        label: "Website Content"
-        name: "content"
+      - file: "src/_data/settings.json"
+        label: "Store Settings & Links"
+        name: "settings"
         fields:
-          - label: "Settings"
-            name: "settings"
-            widget: "object"
-            fields:
-              - { label: "Instagram URL", name: "instagram", widget: "string" }
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "Wolf & Badger URL", name: "wolfandbadger", widget: "string" }
-              - { label: "More4id URL", name: "more4id", widget: "string" }
-              - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Instagram URL", name: "instagram", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Wolf & Badger URL", name: "wolfandbadger", widget: "string" }
+          - { label: "More4id URL", name: "more4id", widget: "string" }
+          - { label: "Homepage Tagline", name: "tagline", widget: "string" }
 
-          - label: "About Page"
-            name: "about"
-            widget: "object"
-            fields:
-              - { label: "Hero Image", name: "hero_image", widget: "image" }
-              - label: "Sections"
-                name: "sections"
-                widget: "list"
-                fields:
-                  - { label: "Label", name: "label", widget: "string" }
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Body", name: "body", widget: "text" }
-              - label: "Process Steps"
-                name: "process_steps"
-                widget: "list"
-                fields:
-                  - { label: "Number", name: "num", widget: "string" }
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Description", name: "description", widget: "text" }
-
-          - label: "Press Page"
-            name: "press"
-            widget: "object"
-            fields:
-              - { label: "Heading", name: "heading", widget: "string" }
-              - label: "Articles"
-                name: "articles"
-                widget: "list"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Content", name: "content", widget: "text" }
-                  - { label: "External Link (Optional)", name: "link", widget: "string", required: false }
-
-          - label: "Contact Page"
-            name: "contact"
-            widget: "object"
-            fields:
-              - { label: "Heading", name: "heading", widget: "string" }
-              - { label: "Intro Text", name: "intro", widget: "text" }
-          
-          - label: "Jewellery Pieces"
-            name: "pieces"
+  - name: "pages"
+    label: "Page Content"
+    files:
+      - file: "src/_data/about.json"
+        label: "About Page"
+        name: "about"
+        fields:
+          - { label: "Hero Image", name: "hero_image", widget: "image" }
+          - label: "Sections"
+            name: "sections"
             widget: "list"
             fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+          - label: "Process Steps"
+            name: "process_steps"
+            widget: "list"
+            fields:
+              - { label: "Number", name: "num", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+      - file: "src/_data/press.json"
+        label: "Press Page"
+        name: "press"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - label: "Articles"
+            name: "articles"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Content", name: "content", widget: "text" }
+              - { label: "External Link (Optional)", name: "link", widget: "string", required: false }
+
+      - file: "src/_data/contact.json"
+        label: "Contact Page"
+        name: "contact"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Intro Text", name: "intro", widget: "text" }
+
+  - name: "pieces"
+    label: "Jewellery Catalog"
+    files:
+      - file: "src/_data/earrings.json"
+        label: "Earrings List"
+        name: "earrings"
+        fields:
+          - label: "Earrings"
+            name: "pieces"
+            widget: "list"
+            fields: &piece_fields
               - { label: "ID (URL slug - lowercase, no spaces)", name: "id", widget: "string" }
               - { label: "Name", name: "name", widget: "string" }
               - { label: "Collection", name: "collection", widget: "select", options: ["rings", "necklaces", "bracelets", "earrings"] }
@@ -82,10 +88,44 @@ collections:
                 widget: "list"
                 field: { label: "Image", name: "image", widget: "image" }
 
-          - label: "Journal Posts"
+      - file: "src/_data/rings.json"
+        label: "Rings List"
+        name: "rings"
+        fields:
+          - label: "Rings"
+            name: "pieces"
+            widget: "list"
+            fields: *piece_fields
+
+      - file: "src/_data/necklaces.json"
+        label: "Necklaces List"
+        name: "necklaces"
+        fields:
+          - label: "Necklaces"
+            name: "pieces"
+            widget: "list"
+            fields: *piece_fields
+
+      - file: "src/_data/bracelets.json"
+        label: "Bracelets List"
+        name: "bracelets"
+        fields:
+          - label: "Bracelets"
+            name: "pieces"
+            widget: "list"
+            fields: *piece_fields
+
+  - name: "posts"
+    label: "Journal Feed"
+    files:
+      - file: "src/_data/posts_philosophy.json"
+        label: "Philosophy Articles"
+        name: "posts_philosophy"
+        fields:
+          - label: "Philosophy Posts"
             name: "posts"
             widget: "list"
-            fields:
+            fields: &post_fields
               - { label: "ID (URL slug - lowercase, no spaces)", name: "id", widget: "string" }
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Date", name: "date", widget: "datetime" }
@@ -107,3 +147,30 @@ collections:
                     widget: "object"
                     fields:
                       - { label: "Quote", name: "quote", widget: "string" }
+
+      - file: "src/_data/posts_craftsmanship.json"
+        label: "Craftsmanship Notes"
+        name: "posts_craftsmanship"
+        fields:
+          - label: "Craftsmanship Posts"
+            name: "posts"
+            widget: "list"
+            fields: *post_fields
+
+      - file: "src/_data/posts_press.json"
+        label: "Press & LFW Columns"
+        name: "posts_press"
+        fields:
+          - label: "Press Posts"
+            name: "posts"
+            widget: "list"
+            fields: *post_fields
+
+      - file: "src/_data/posts_exhibitions.json"
+        label: "Exhibition Records"
+        name: "posts_exhibitions"
+        fields:
+          - label: "Exhibition Posts"
+            name: "posts"
+            widget: "list"
+            fields: *post_fields

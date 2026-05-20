@@ -7,7 +7,7 @@ permalink: "/index.html"
   <section class="hero" id="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <div class="hero-tagline reveal">{{ site.settings.tagline | default("Handcrafted Silver Jewellery") }}</div>
+      <div class="hero-tagline reveal">{{ settings.tagline | default("Handcrafted Silver Jewellery") }}</div>
       <h1 class="hero-title reveal reveal-delay-1">Silver &amp; Elegant</h1>
       <p class="hero-sub reveal reveal-delay-2">Artistry in the making.</p>
       <a href="/collections/index.html" class="btn btn-outline reveal reveal-delay-3" id="hero-cta">Explore the Collection</a>
@@ -26,7 +26,7 @@ permalink: "/index.html"
         <h2>Selected Pieces</h2>
       </div>
       <div class="pieces-grid" id="featured-grid">
-        {% for piece in site.pieces %}
+        {% for piece in pieces.pieces %}
           {% if piece.featured %}
           <a href="/piece/{{ piece.id }}/index.html" class="piece-card reveal">
             <div class="piece-image">
@@ -62,5 +62,5 @@ permalink: "/index.html"
   </section>
 
   <div class="wb-strip" id="wb-strip">
-    <p>Available on <a href="{{ site.settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" target="_blank" rel="noopener">Wolf &amp; Badger</a> and <a href="{{ site.settings.more4id | default('https://www.more4id.com/') }}" target="_blank" rel="noopener">More4id</a></p>
+    <p>Available on <a href="{{ settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" target="_blank" rel="noopener">Wolf &amp; Badger</a> and <a href="{{ settings.more4id | default('https://www.more4id.com/') }}" target="_blank" rel="noopener">More4id</a></p>
   </div>

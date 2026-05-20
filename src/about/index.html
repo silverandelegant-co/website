@@ -5,14 +5,14 @@ description: "The story of Silver & Elegant — handcrafted sterling silver jewe
 ---
 <!-- Workshop Hero -->
 <div style="padding-top:5rem;">
-  <img src="/{{ site.about.hero_image | default('assets/about-workshop.png') | imgpath }}" alt="Silversmith at work"
+  <img src="/{{ about.hero_image | default('assets/about-workshop.png') | imgpath }}" alt="Silversmith at work"
     class="about-hero-img reveal">
 </div>
 
 <!-- About Content -->
 <div class="about-layout">
 
-  {% for section in site.about.sections %}
+  {% for section in about.sections %}
   <!-- Section: {{ section.label }} -->
   <div class="about-intro">
     <div class="about-intro-label reveal">
@@ -27,9 +27,9 @@ description: "The story of Silver & Elegant — handcrafted sterling silver jewe
       {% if loop.last %}
       <!-- Call to action on the last section -->
       <div class="reveal" style="margin-top:2.5rem; display:flex; gap:1rem; flex-wrap:wrap;">
-        <a href="{{ site.settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" target="_blank"
+        <a href="{{ settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" target="_blank"
           rel="noopener" class="btn btn-outline-dark" id="about-wb-link">Shop on Wolf &amp; Badger</a>
-        <a href="{{ site.settings.more4id | default('https://www.more4id.com/') }}" target="_blank"
+        <a href="{{ settings.more4id | default('https://www.more4id.com/') }}" target="_blank"
           rel="noopener" class="btn btn-outline-dark" id="about-more4id-link">Shop on More4id</a>
       </div>
       {% endif %}
@@ -43,7 +43,7 @@ description: "The story of Silver & Elegant — handcrafted sterling silver jewe
       <span class="label">The Process</span>
     </div>
     <div class="process-grid">
-      {% for step in site.about.process_steps %}
+      {% for step in about.process_steps %}
       <div class="process-step reveal {% if loop.index0 > 0 %}reveal-delay-{{ loop.index0 }}{% endif %}">
         <span class="step-num">{{ step.num }}</span>
         <h3>{{ step.title }}</h3>
@@ -55,9 +55,8 @@ description: "The story of Silver & Elegant — handcrafted sterling silver jewe
 
 </div>
 
-<!-- Retailers strip -->
 <div class="wb-strip">
-  <p>Find all pieces on <a href="{{ site.settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}"
-      target="_blank" rel="noopener">Wolf &amp; Badger</a> and <a href="{{ site.settings.more4id | default('https://www.more4id.com/') }}"
+  <p>Find all pieces on <a href="{{ settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}"
+      target="_blank" rel="noopener">Wolf &amp; Badger</a> and <a href="{{ settings.more4id | default('https://www.more4id.com/') }}"
       target="_blank" rel="noopener">More4id</a></p>
 </div>
