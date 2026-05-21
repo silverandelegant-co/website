@@ -1,7 +1,8 @@
 ---
 layout: "base.njk"
 title: "About — Silver & Elegant"
-description: "The story of Silver & Elegant — handcrafted sterling silver jewellery made in a small studio, one piece at a time."
+description: "The story of Silver & Elegant — handcrafted sterling silver jewellery made in a small studio, one piece at
+a time."
 ---
 <!-- Workshop Hero -->
 <div style="padding-top:5rem;">
@@ -23,14 +24,22 @@ description: "The story of Silver & Elegant — handcrafted sterling silver jewe
         {{ section.title }}
       </h1>
       <p class="reveal">{{ section.body }}</p>
-      
+
       {% if loop.last %}
       <!-- Call to action on the last section -->
       <div class="reveal" style="margin-top:2.5rem; display:flex; gap:1rem; flex-wrap:wrap;">
-        <a href="{{ settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" target="_blank"
-          rel="noopener" class="btn btn-outline-dark" id="about-wb-link">Shop on Wolf &amp; Badger</a>
-        <a href="{{ settings.more4id | default('https://www.more4id.com/') }}" target="_blank"
-          rel="noopener" class="btn btn-outline-dark" id="about-more4id-link">Shop on More4id</a>
+        {% if settings.wolfandbadger %}
+        <a href="{{ settings.wolfandbadger }}" target="_blank" rel="noopener" class="btn btn-outline-dark"
+          id="about-wb-link">Shop on Wolf &amp; Badger</a>
+        {% endif %}
+        {% if settings.more4id %}
+        <a href="{{ settings.more4id }}" target="_blank" rel="noopener" class="btn btn-outline-dark"
+          id="about-more4id-link">Shop on More4id</a>
+        {% endif %}
+        {% if settings.njal %}
+        <a href="{{ settings.njal }}" target="_blank" rel="noopener" class="btn btn-outline-dark"
+          id="about-njal-link">Profile on Not Just A Label</a>
+        {% endif %}
       </div>
       {% endif %}
     </div>
@@ -55,8 +64,63 @@ description: "The story of Silver & Elegant — handcrafted sterling silver jewe
 
 </div>
 
-<div class="wb-strip">
-  <p>Find all pieces on <a href="{{ settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}"
-      target="_blank" rel="noopener">Wolf &amp; Badger</a> and <a href="{{ settings.more4id | default('https://www.more4id.com/') }}"
-      target="_blank" rel="noopener">More4id</a></p>
+{% if settings.wolfandbadger or settings.more4id or settings.njal %}
+<div class="wb-strip" id="wb-strip"
+  style="background: var(--c-cream); border-top: 1px solid var(--c-border); border-bottom: 1px solid var(--c-border); padding: 5rem 2rem; text-align: center;">
+  <div
+    style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 2.5rem; align-items: center;">
+    <span
+      style="font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-muted);">Available
+      On</span>
+    <div
+      style="display: flex; flex-wrap: wrap; justify-content: center; gap: 4.5rem; align-items: stretch; width: 100%;">
+
+      {% if settings.wolfandbadger %}
+      <a href="{{ settings.wolfandbadger }}" target="_blank" rel="noopener"
+        style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-decoration: none; color: var(--c-ink); opacity: 0.75; transition: all 0.3s var(--ease); max-width: 200px; flex: 1 1 180px;"
+        onmouseover="this.style.opacity='1'; this.style.transform='translateY(-2px)'"
+        onmouseout="this.style.opacity='0.75'; this.style.transform='translateY(0)'">
+        <div
+          style="height: 40px; display: flex; align-items: center; justify-content: center; width: 100%; color: var(--c-ink);">
+          {% include "logos/wolf-and-badger.svg" %}
+        </div>
+        <span
+          style="font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-muted); margin-top: 0.8rem;">Official
+          Store →</span>
+      </a>
+      {% endif %}
+
+      {% if settings.more4id %}
+      <a href="{{ settings.more4id }}" target="_blank" rel="noopener"
+        style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-decoration: none; color: var(--c-ink); opacity: 0.75; transition: all 0.3s var(--ease); max-width: 200px; flex: 1 1 180px;"
+        onmouseover="this.style.opacity='1'; this.style.transform='translateY(-2px)'"
+        onmouseout="this.style.opacity='0.75'; this.style.transform='translateY(0)'">
+        <div
+          style="height: 40px; display: flex; align-items: center; justify-content: center; width: 100%; color: var(--c-ink);">
+          {% include "logos/more4id.svg" %}
+        </div>
+        <span
+          style="font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-muted); margin-top: 0.8rem;">Official
+          Store →</span>
+      </a>
+      {% endif %}
+
+      {% if settings.njal %}
+      <a href="{{ settings.njal }}" target="_blank" rel="noopener"
+        style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-decoration: none; color: var(--c-ink); opacity: 0.75; transition: all 0.3s var(--ease); max-width: 200px; flex: 1 1 180px;"
+        onmouseover="this.style.opacity='1'; this.style.transform='translateY(-2px)'"
+        onmouseout="this.style.opacity='0.75'; this.style.transform='translateY(0)'">
+        <div
+          style="height: 40px; display: flex; align-items: center; justify-content: center; width: 100%; color: var(--c-ink);">
+          {% include "logos/njal.svg" %}
+        </div>
+        <span
+          style="font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-muted); margin-top: 0.8rem;">Designer
+          Profile →</span>
+      </a>
+      {% endif %}
+
+    </div>
+  </div>
 </div>
+{% endif %}

@@ -43,14 +43,24 @@ description: "Get in touch with Silver & Elegant for private enquiries, commissi
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
         @silverandelegantco
       </a>
-      <a href="{{ settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" class="contact-link" target="_blank" rel="noopener" id="contact-wb-link">
+      {% if settings.wolfandbadger %}
+      <a href="{{ settings.wolfandbadger }}" class="contact-link" target="_blank" rel="noopener" id="contact-wb-link">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         Shop on Wolf &amp; Badger
       </a>
-      <a href="{{ settings.more4id | default('https://www.more4id.com/') }}" class="contact-link" target="_blank" rel="noopener" id="contact-more4id-link">
+      {% endif %}
+      {% if settings.more4id %}
+      <a href="{{ settings.more4id }}" class="contact-link" target="_blank" rel="noopener" id="contact-more4id-link">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         Shop on More4id
       </a>
+      {% endif %}
+      {% if settings.njal %}
+      <a href="{{ settings.njal }}" class="contact-link" target="_blank" rel="noopener" id="contact-njal-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        Profile on Not Just A Label
+      </a>
+      {% endif %}
     </div>
 
   </div>

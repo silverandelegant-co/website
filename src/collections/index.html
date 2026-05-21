@@ -3,55 +3,69 @@ layout: base.njk
 title: The Collection — Silver & Elegant
 description: Browse all handcrafted silver jewellery by Silver & Elegant. Rings, necklaces, and bracelets — each with a story.
 ---
-  <!-- Page Hero -->
-  <div class="page-hero" id="page-hero">
-    <div class="container">
-      <span class="label reveal">Jewellery</span>
-      <h1 class="reveal reveal-delay-1">The Collection</h1>
+<!-- Page Hero -->
+<div class="page-hero" id="page-hero">
+  <div class="container">
+    <span class="label reveal">Jewellery</span>
+    <h1 class="reveal reveal-delay-1">The Collection</h1>
+  </div>
+</div>
+
+<!-- Collections -->
+<section class="section" id="collections-section">
+  <div class="container">
+    <!-- Filters -->
+    <div class="filter-bar reveal" id="filter-bar">
+      <button class="filter-btn active" data-filter="all" id="filter-all">All Pieces</button>
+      <button class="filter-btn" data-filter="rings" id="filter-rings">Rings</button>
+      <button class="filter-btn" data-filter="necklaces" id="filter-necklaces">Necklaces</button>
+      <button class="filter-btn" data-filter="bracelets" id="filter-bracelets">Bracelets</button>
+      <button class="filter-btn" data-filter="earrings" id="filter-earrings">Earrings</button>
+    </div>
+
+    <!-- Grid -->
+    <div class="collections-grid" id="collections-grid">
+      {% for piece in pieces.pieces %}
+      <a href="/piece/{{ piece.id }}/index.html" class="piece-card reveal piece-item"
+        data-category="{{ piece.collection }}">
+        <div class="piece-image">
+          <img src="/{{ piece.images[0] | imgpath }}" alt="{{ piece.name }} frontend image" loading="lazy">
+        </div>
+        <div class="piece-card-content">
+          <h3 class="piece-name">{{ piece.name }}</h3>
+          <p class="piece-collection">{{ piece.collection | capitalize }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+
+    <!-- Empty State -->
+    <div id="collections-empty" style="display:none; text-align:center; padding:5rem 1rem;">
+      <h3 style="font-family:var(--font-serif); font-size:2rem; font-weight:400; margin-bottom:1rem;">Nothing here yet.
+      </h3>
+      <p style="color:var(--c-muted); max-width:500px; margin:0 auto; line-height:1.6;">We are currently working on new
+        pieces for this collection. Please check back soon or explore our other creations.</p>
+    </div>
+
+    <!-- Shop CTA -->
+    <div class="section-footer reveal" style="margin-top:5rem; border-top:1px solid var(--c-border); padding-top:3rem;">
+      <span class="label" style="display:block; margin-bottom:0.8rem;">Shop Online</span>
+      <p style="font-family:var(--font-serif);font-style:italic;color:var(--c-muted);margin-bottom:1.5rem;">All pieces
+        are available to purchase online through our retail partners.</p>
+      <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+        {% if settings.wolfandbadger %}
+        <a href="{{ settings.wolfandbadger }}" target="_blank" rel="noopener" class="btn btn-outline-dark"
+          id="wb-shop-link">Visit Wolf &amp; Badger</a>
+        {% endif %}
+        {% if settings.more4id %}
+        <a href="{{ settings.more4id }}" target="_blank" rel="noopener" class="btn btn-outline-dark"
+          id="more4id-shop-link">Visit More4id</a>
+        {% endif %}
+        {% if settings.njal %}
+        <a href="{{ settings.njal }}" target="_blank" rel="noopener" class="btn btn-outline-dark"
+          id="njal-shop-link">Visit Not Just A Label</a>
+        {% endif %}
+      </div>
     </div>
   </div>
-
-  <!-- Collections -->
-  <section class="section" id="collections-section">
-    <div class="container">
-      <!-- Filters -->
-      <div class="filter-bar reveal" id="filter-bar">
-        <button class="filter-btn active" data-filter="all" id="filter-all">All Pieces</button>
-        <button class="filter-btn" data-filter="rings" id="filter-rings">Rings</button>
-        <button class="filter-btn" data-filter="necklaces" id="filter-necklaces">Necklaces</button>
-        <button class="filter-btn" data-filter="bracelets" id="filter-bracelets">Bracelets</button>
-        <button class="filter-btn" data-filter="earrings" id="filter-earrings">Earrings</button>
-      </div>
-
-      <!-- Grid -->
-      <div class="collections-grid" id="collections-grid">
-        {% for piece in pieces.pieces %}
-          <a href="/piece/{{ piece.id }}/index.html" class="piece-card reveal piece-item" data-category="{{ piece.collection }}">
-            <div class="piece-image">
-              <img src="/{{ piece.images[0] | imgpath }}" alt="{{ piece.name }} frontend image" loading="lazy">
-            </div>
-            <div class="piece-card-content">
-              <h3 class="piece-name">{{ piece.name }}</h3>
-              <p class="piece-collection">{{ piece.collection | capitalize }}</p>
-            </div>
-          </a>
-        {% endfor %}
-      </div>
-
-      <!-- Empty State -->
-      <div id="collections-empty" style="display:none; text-align:center; padding:5rem 1rem;">
-        <h3 style="font-family:var(--font-serif); font-size:2rem; font-weight:400; margin-bottom:1rem;">Nothing here yet.</h3>
-        <p style="color:var(--c-muted); max-width:500px; margin:0 auto; line-height:1.6;">We are currently working on new pieces for this collection. Please check back soon or explore our other creations.</p>
-      </div>
-
-      <!-- Shop CTA -->
-      <div class="section-footer reveal" style="margin-top:5rem; border-top:1px solid var(--c-border); padding-top:3rem;">
-        <span class="label" style="display:block; margin-bottom:0.8rem;">Shop Online</span>
-        <p style="font-family:var(--font-serif);font-style:italic;color:var(--c-muted);margin-bottom:1.5rem;">All pieces are available to purchase online through our retail partners.</p>
-        <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
-          <a href="{{ settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" target="_blank" rel="noopener" class="btn btn-dark" id="wb-shop-link">Visit Wolf &amp; Badger</a>
-          <a href="{{ settings.more4id | default('https://www.more4id.com/') }}" target="_blank" rel="noopener" class="btn btn-outline-dark" id="more4id-shop-link">Visit More4id</a>
-        </div>
-      </div>
-    </div>
-  </section>
+</section>
