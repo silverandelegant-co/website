@@ -12,9 +12,43 @@ eleventyComputed:
   <!-- Piece container -->
   <div id="piece-container">
 
-    <!-- Hero Image -->
-    <div style="padding-top:5rem; background:var(--c-cream);">
-      <img id="piece-hero-img" class="piece-hero-img" src="/{{ piece.images[0] | imgpath }}" alt="{{ piece.name }}">
+    <!-- Hero Image Section -->
+    <div style="padding-top: 5rem; background: var(--c-cream); display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+      <div style="width: 100%; max-width: 800px; margin: 0 auto; display: flex; justify-content: center; padding: 0 2rem;">
+        <img id="piece-hero-img" class="piece-hero-img" src="/{{ piece.images[0] | imgpath }}" alt="{{ piece.name }}" style="max-height: 80vh; object-fit: contain; transition: opacity 0.3s ease;">
+      </div>
+      
+      {% if piece.images and piece.images.length > 1 %}
+      <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 2rem 2rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;" id="piece-gallery-thumbnails">
+        {% for img in piece.images %}
+          <div style="width: 80px; height: 80px; cursor: pointer; border: 1px solid {% if loop.first %}var(--c-ink){% else %}var(--c-border){% endif %}; background: #fff; display: flex; align-items: center; justify-content: center; overflow: hidden; opacity: {% if loop.first %}1{% else %}0.6{% endif %}; transition: all 0.25s var(--ease);"
+               class="piece-thumb"
+               onclick="updateHeroImage(this, '/{{ img | imgpath }}')">
+            <img src="/{{ img | imgpath }}" alt="{{ piece.name }} view {{ loop.index }}" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        {% endfor %}
+      </div>
+      
+      <script>
+        function updateHeroImage(thumbElement, newSrc) {
+          const hero = document.getElementById('piece-hero-img');
+          hero.style.opacity = '0';
+          setTimeout(() => {
+            hero.src = newSrc;
+            hero.style.opacity = '1';
+          }, 200);
+          
+          const thumbs = document.querySelectorAll('.piece-thumb');
+          thumbs.forEach(thumb => {
+            thumb.style.borderColor = 'var(--c-border)';
+            thumb.style.opacity = '0.6';
+          });
+          
+          thumbElement.style.borderColor = 'var(--c-ink)';
+          thumbElement.style.opacity = '1';
+        }
+      </script>
+      {% endif %}
     </div>
 
     <!-- Breadcrumb -->
