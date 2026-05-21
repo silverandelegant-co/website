@@ -82,7 +82,20 @@
 
             <!-- Story (For pieces) or Summary (For Posts/Articles) -->
             <div class="space-y-2">
-              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400" x-text="getActiveCatalogType() === 'pieces_list' ? 'Ürün Hikayesi' : 'Özet'"></label>
+              <div class="flex items-center justify-between">
+                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400" x-text="getActiveCatalogType() === 'pieces_list' ? 'Ürün Hikayesi' : 'Özet'"></label>
+                <button type="button" 
+                  @click="openFullscreenEditor(
+                    getActiveCatalogType() === 'pieces_list' ? 'Detaylı Ürün Hikayesi' : 'Yazı Özet İçeriği',
+                    'Tam ekran distraction-free modunda içeriğinizi kaleme alın.',
+                    editingItem._desc_field,
+                    (val) => { editingItem._desc_field = val; }
+                  )"
+                  class="px-2.5 py-1 bg-slate-950 border border-slate-800 hover:border-slate-700 text-gold-400 hover:text-gold-300 text-[10px] font-semibold rounded-lg flex items-center space-x-1.5 transition-all">
+                  <i class="fa-solid fa-expand"></i>
+                  <span>Tam Ekran Yap</span>
+                </button>
+              </div>
               
               <!-- WYSIWYG editor container -->
               <div 
@@ -98,9 +111,14 @@
                           ['bold', 'italic', 'underline'],
                           [{ 'header': [1, 2, 3, false] }],
                           [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                          ['link', 'clean']
+                          ['link', 'image', 'clean']
                         ]
                       }
+                    });
+                    
+                    // Register custom gallery image insertion handler (no this. prefix inside scope)
+                    quill.getModule('toolbar').addHandler('image', () => {
+                      openMediaLibraryModal('quill', quill);
                     });
                     
                     // Sync initial value
@@ -224,8 +242,21 @@
                         <span class="inline-flex px-2 py-0.5 rounded bg-gold-950/40 text-gold-300 text-[9px] uppercase tracking-wider font-semibold" x-text="getBlockLabel(sec.type)"></span>
 
                         <!-- Text Block details -->
-                        <div x-show="sec.type === 'text_block'" class="space-y-1">
-                          <label class="text-[9px] uppercase tracking-wider text-slate-500">Metin İçeriği (Markdown destekler)</label>
+                        <div x-show="sec.type === 'text_block'" class="space-y-2">
+                          <div class="flex items-center justify-between">
+                            <label class="text-[9px] uppercase tracking-wider text-slate-500">Metin İçeriği (Markdown destekler)</label>
+                            <button type="button"
+                              @click="openFullscreenEditor(
+                                'Metin İçerik Bloğu',
+                                'Distraction-free modunda blog içeriğinizi oluşturun.',
+                                sec.body,
+                                (val) => { sec.body = val; }
+                              )"
+                              class="px-2 py-0.5 bg-slate-900 border border-slate-800 hover:border-slate-700 text-gold-400 hover:text-gold-300 text-[9px] font-semibold rounded flex items-center space-x-1 transition-all">
+                              <i class="fa-solid fa-expand"></i>
+                              <span>Tam Ekran Yap</span>
+                            </button>
+                          </div>
                           
                           <!-- WYSIWYG block body editor -->
                           <div 
@@ -241,10 +272,16 @@
                                       ['bold', 'italic', 'underline'],
                                       [{ 'header': [1, 2, 3, false] }],
                                       [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                                      ['link', 'clean']
+                                      ['link', 'image', 'clean']
                                     ]
                                   }
                                 });
+                                
+                                // Register custom gallery image insertion handler (no this. prefix inside scope)
+                                quill.getModule('toolbar').addHandler('image', () => {
+                                  openMediaLibraryModal('quill', quill);
+                                });
+                                
                                 quill.root.innerHTML = marked.parse(sec.body || '');
                                 const turndownService = new TurndownService({ headingStyle: 'atx' });
                                 quill.on('text-change', (delta, oldDelta, source) => {

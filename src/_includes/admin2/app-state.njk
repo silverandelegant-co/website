@@ -71,6 +71,13 @@
       mediaTargetProperty: null,
       mediaTargetIndex: -1,
       
+      // Global Fullscreen Editor States
+      fullscreenEditorOpen: false,
+      fullscreenEditorTitle: '',
+      fullscreenEditorSubtitle: '',
+      fullscreenEditorContent: '',
+      fullscreenEditorCallback: null,
+      
       allSlugs: [],
 
       initApp() {
@@ -285,7 +292,12 @@
       selectMediaFile(file) {
         const relativePath = '/' + file.path.replace(/^\/+/, '');
         
-        if (this.mediaTargetIndex !== -1 && this.mediaTargetObject) {
+        if (this.mediaTargetObject === 'quill') {
+          const quill = this.mediaTargetProperty;
+          const range = quill.getSelection();
+          const index = range ? range.index : quill.getLength();
+          quill.insertEmbed(index, 'image', relativePath);
+        } else if (this.mediaTargetIndex !== -1 && this.mediaTargetObject) {
           this.mediaTargetObject[this.mediaTargetIndex] = relativePath;
         } else if (this.mediaTargetProperty && this.mediaTargetObject) {
           this.mediaTargetObject[this.mediaTargetProperty] = relativePath;
@@ -293,6 +305,21 @@
         
         this.mediaLibraryOpen = false;
         this.showToast('Görsel başarıyla seçildi.', 'success');
+      },
+
+      openFullscreenEditor(title, subtitle, initialContent, callback) {
+        this.fullscreenEditorTitle = title;
+        this.fullscreenEditorSubtitle = subtitle;
+        this.fullscreenEditorContent = initialContent || '';
+        this.fullscreenEditorCallback = callback;
+        this.fullscreenEditorOpen = true;
+      },
+
+      closeFullscreenEditor(saveChanges) {
+        if (saveChanges && this.fullscreenEditorCallback) {
+          this.fullscreenEditorCallback(this.fullscreenEditorContent);
+        }
+        this.fullscreenEditorOpen = false;
       },
 
       async uploadNewImage(event) {
