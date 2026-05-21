@@ -211,6 +211,8 @@
       "featured": true,
       "wolfandbadger": "https://www.wolfandbadger.com/",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/SilvernElegant (9).jpg"
       ]
@@ -231,6 +233,8 @@
       "featured": true,
       "wolfandbadger": "https://www.wolfandbadger.com/",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/SilvernElegant (11).jpg"
       ]
@@ -251,6 +255,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/44.jpg"
       ]
@@ -270,6 +276,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/45.jpg"
       ]
@@ -290,6 +298,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/46.jpg"
       ]
@@ -310,6 +320,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/47.jpg"
       ]
@@ -331,6 +343,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/48.jpg"
       ]
@@ -351,6 +365,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/49.jpg"
       ]
@@ -371,6 +387,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/51.jpg"
       ]
@@ -392,6 +410,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/52.jpg"
       ]
@@ -413,6 +433,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/53.jpg"
       ]
@@ -433,6 +455,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/54.jpg"
       ]
@@ -453,6 +477,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/55.jpg"
       ]
@@ -473,6 +499,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/56.jpg"
       ]
@@ -493,6 +521,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/57.jpg"
       ]
@@ -513,6 +543,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/58.jpg"
       ]
@@ -534,6 +566,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/59.jpg"
       ]
@@ -555,6 +589,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/60.jpg"
       ]
@@ -575,6 +611,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/61.jpg"
       ]
@@ -596,6 +634,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/62.jpg"
       ]
@@ -616,6 +656,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/63.jpg"
       ]
@@ -636,6 +678,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/64.jpg"
       ]
@@ -656,12 +700,14 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/65.jpg"
       ]
     },
     {
-      "id": "monolith-amethyst-dome-earrings",
+      "id": "monolith-amethyst-dome-earrings2",
       "name": "Monolith Amethyst Dome Earrings",
       "collection": "earrings",
       "tagline": "A generative dome of fractured light paired with the architectural weight of an emerald-cut deep amethyst crystal.",
@@ -676,6 +722,8 @@
       "featured": false,
       "wolfandbadger": "",
       "more4id": "",
+      "njal": "",
+      "video_url": "",
       "images": [
         "/assets/pieces/66.jpg"
       ]
