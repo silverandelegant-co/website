@@ -62,29 +62,38 @@ permalink: "/index.html"
   </section>
 
   {% if settings.wolfandbadger or settings.more4id or settings.njal %}
-  <div class="wb-strip" id="wb-strip" style="background: var(--c-cream); border-top: 1px solid var(--c-border); border-bottom: 1px solid var(--c-border); padding: 4.5rem 2rem; text-align: center;">
-    <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; align-items: center;">
+  <div class="wb-strip" id="wb-strip" style="background: var(--c-cream); border-top: 1px solid var(--c-border); border-bottom: 1px solid var(--c-border); padding: 5rem 2rem; text-align: center;">
+    <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 2.5rem; align-items: center;">
       <span style="font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-muted);">Available On</span>
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2.2rem; align-items: center; font-family: var(--font-serif); font-size: clamp(1.2rem, 3.5vw, 1.8rem); line-height: 1.2;">
-        {% if settings.wolfandbadger %}
-          <a href="{{ settings.wolfandbadger }}" target="_blank" rel="noopener" style="color: var(--c-ink); text-decoration: none; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">Wolf &amp; Badger</a>
-        {% endif %}
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 4.5rem; align-items: stretch; width: 100%;">
         
-        {% if settings.wolfandbadger and (settings.more4id or settings.njal) %}
-          <span style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--c-border);">/</span>
+        {% if settings.wolfandbadger %}
+        <a href="{{ settings.wolfandbadger }}" target="_blank" rel="noopener" style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-decoration: none; color: var(--c-ink); opacity: 0.75; transition: all 0.3s var(--ease); max-width: 200px; flex: 1 1 180px;" onmouseover="this.style.opacity='1'; this.style.transform='translateY(-2px)'" onmouseout="this.style.opacity='0.75'; this.style.transform='translateY(0)'">
+          <div style="height: 40px; display: flex; align-items: center; justify-content: center; width: 100%; color: var(--c-ink);">
+            {% include "logos/wolf-and-badger.svg" %}
+          </div>
+          <span style="font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-muted); margin-top: 0.8rem;">Official Store →</span>
+        </a>
         {% endif %}
 
         {% if settings.more4id %}
-          <a href="{{ settings.more4id }}" target="_blank" rel="noopener" style="color: var(--c-ink); text-decoration: none; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">More4id</a>
-        {% endif %}
-
-        {% if settings.more4id and settings.njal %}
-          <span style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--c-border);">/</span>
+        <a href="{{ settings.more4id }}" target="_blank" rel="noopener" style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-decoration: none; color: var(--c-ink); opacity: 0.75; transition: all 0.3s var(--ease); max-width: 200px; flex: 1 1 180px;" onmouseover="this.style.opacity='1'; this.style.transform='translateY(-2px)'" onmouseout="this.style.opacity='0.75'; this.style.transform='translateY(0)'">
+          <div style="height: 40px; display: flex; align-items: center; justify-content: center; width: 100%; color: var(--c-ink);">
+            {% include "logos/more4id.svg" %}
+          </div>
+          <span style="font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-muted); margin-top: 0.8rem;">Official Store →</span>
+        </a>
         {% endif %}
 
         {% if settings.njal %}
-          <a href="{{ settings.njal }}" target="_blank" rel="noopener" style="color: var(--c-ink); text-decoration: none; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">Not Just A Label</a>
+        <a href="{{ settings.njal }}" target="_blank" rel="noopener" style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-decoration: none; color: var(--c-ink); opacity: 0.75; transition: all 0.3s var(--ease); max-width: 200px; flex: 1 1 180px;" onmouseover="this.style.opacity='1'; this.style.transform='translateY(-2px)'" onmouseout="this.style.opacity='0.75'; this.style.transform='translateY(0)'">
+          <div style="height: 40px; display: flex; align-items: center; justify-content: center; width: 100%; color: var(--c-ink);">
+            {% include "logos/njal.svg" %}
+          </div>
+          <span style="font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-muted); margin-top: 0.8rem;">Designer Profile →</span>
+        </a>
         {% endif %}
+
       </div>
     </div>
   </div>
