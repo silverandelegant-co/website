@@ -49,10 +49,13 @@ eleventyComputed:
           <div class="piece-divider"></div>
           <div style="display:flex;flex-direction:column;gap:0.8rem;">
             {% if piece.wolfandbadger and piece.wolfandbadger != "https://www.wolfandbadger.com/" %}
-              <a href="{{ piece.wolfandbadger }}" id="piece-wb-link" target="_blank" rel="noopener" class="btn btn-dark" style="text-align:center;">Available on Wolf &amp; Badger</a>
+              <a href="{{ piece.wolfandbadger }}" id="piece-wb-link" target="_blank" rel="noopener" class="btn btn-dark" style="text-align:center; line-height:1.5; padding:0.8rem 1.5rem;">Available on<br>Wolf &amp; Badger</a>
             {% endif %}
             {% if piece.more4id and piece.more4id != "https://www.more4id.com/" %}
-              <a href="{{ piece.more4id }}" id="piece-more4id-link" target="_blank" rel="noopener" class="btn btn-dark" style="text-align:center;">Available on More4id</a>
+              <a href="{{ piece.more4id }}" id="piece-more4id-link" target="_blank" rel="noopener" class="btn btn-dark" style="text-align:center; line-height:1.5; padding:0.8rem 1.5rem;">Available on<br>More4id</a>
+            {% endif %}
+            {% if piece.njal and piece.njal != "https://notjustalabel.com/" %}
+              <a href="{{ piece.njal }}" id="piece-njal-link" target="_blank" rel="noopener" class="btn btn-dark" style="text-align:center; line-height:1.5; padding:0.8rem 1.5rem;">Available on<br>Not Just A Label</a>
             {% endif %}
             <a href="/contact/index.html" class="btn btn-outline-dark" style="text-align:center;">Private Enquiry</a>
           </div>

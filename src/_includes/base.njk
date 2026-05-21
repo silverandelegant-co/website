@@ -63,27 +63,43 @@
         <span class="footer-logo">Silver &amp; Elegant</span>
         <p>Artistry in the making.</p>
       </div>
+      {% if settings.instagram or settings.email or settings.wolfandbadger or settings.more4id or settings.njal %}
       <div class="footer-center">
         <div class="footer-mark"></div>
       </div>
       <div class="footer-links">
-        <a href="{{ settings.instagram | default('https://www.instagram.com/silverandelegantco/') }}" class="footer-link" target="_blank" rel="noopener" id="footer-instagram">
+        {% if settings.instagram %}
+        <a href="{{ settings.instagram }}" class="footer-link" target="_blank" rel="noopener" id="footer-instagram">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
           Follow the process
         </a>
-        <a href="mailto:{{ settings.email | default('info@silverandelegant.co') }}" class="footer-link" id="footer-email">
+        {% endif %}
+        {% if settings.email %}
+        <a href="mailto:{{ settings.email }}" class="footer-link" id="footer-email">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-          {{ settings.email | default('info@silverandelegant.co') }}
+          {{ settings.email }}
         </a>
-        <a href="{{ settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" class="footer-link" target="_blank" rel="noopener" id="footer-wb">
+        {% endif %}
+        {% if settings.wolfandbadger %}
+        <a href="{{ settings.wolfandbadger }}" class="footer-link" target="_blank" rel="noopener" id="footer-wb">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           Wolf &amp; Badger
         </a>
-        <a href="{{ settings.more4id | default('https://www.more4id.com/') }}" class="footer-link" target="_blank" rel="noopener" id="footer-more4id">
+        {% endif %}
+        {% if settings.more4id %}
+        <a href="{{ settings.more4id }}" class="footer-link" target="_blank" rel="noopener" id="footer-more4id">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           More4id
         </a>
+        {% endif %}
+        {% if settings.njal %}
+        <a href="{{ settings.njal }}" class="footer-link" target="_blank" rel="noopener" id="footer-njal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          Not Just A Label
+        </a>
+        {% endif %}
       </div>
+      {% endif %}
     </div>
     <div class="footer-bottom">
       &copy; 2025 Silver &amp; Elegant. All rights reserved.

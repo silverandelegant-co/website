@@ -18,6 +18,7 @@ collections:
           - { label: "E-posta Adresi", name: "email", widget: "string" }
           - { label: "Wolf & Badger Adresi", name: "wolfandbadger", widget: "string" }
           - { label: "More4id Adresi", name: "more4id", widget: "string" }
+          - { label: "Not Just A Label Adresi", name: "njal", widget: "string", required: false }
           - { label: "Ana Sayfa Tanıtım Yazısı", name: "tagline", widget: "string" }
 
   - name: "pages"
@@ -119,6 +120,7 @@ collections:
               - { label: "Öne Çıkarılan (Ana sayfada gösterilsin mi?)", name: "featured", widget: "boolean", default: false }
               - { label: "Wolf & Badger Ürün Sayfası Linki (İsteğe Bağlı)", name: "wolfandbadger", widget: "string", required: false }
               - { label: "More4id Ürün Sayfası Linki (İsteğe Bağlı)", name: "more4id", widget: "string", required: false }
+              - { label: "Not Just A Label Ürün Sayfası Linki (İsteğe Bağlı)", name: "njal", widget: "string", required: false }
               - { label: "YouTube Tanıtım Videosu Linki (İsteğe Bağlı)", name: "video_url", widget: "string", required: false }
               - label: "Ürün Görselleri"
                 name: "images"

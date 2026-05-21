@@ -61,6 +61,31 @@ permalink: "/index.html"
     </div>
   </section>
 
-  <div class="wb-strip" id="wb-strip">
-    <p>Available on <a href="{{ settings.wolfandbadger | default('https://www.wolfandbadger.com/') }}" target="_blank" rel="noopener">Wolf &amp; Badger</a> and <a href="{{ settings.more4id | default('https://www.more4id.com/') }}" target="_blank" rel="noopener">More4id</a></p>
+  {% if settings.wolfandbadger or settings.more4id or settings.njal %}
+  <div class="wb-strip" id="wb-strip" style="background: var(--c-cream); border-top: 1px solid var(--c-border); border-bottom: 1px solid var(--c-border); padding: 4.5rem 2rem; text-align: center;">
+    <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; align-items: center;">
+      <span style="font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-muted);">Available On</span>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2.2rem; align-items: center; font-family: var(--font-serif); font-size: clamp(1.2rem, 3.5vw, 1.8rem); line-height: 1.2;">
+        {% if settings.wolfandbadger %}
+          <a href="{{ settings.wolfandbadger }}" target="_blank" rel="noopener" style="color: var(--c-ink); text-decoration: none; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">Wolf &amp; Badger</a>
+        {% endif %}
+        
+        {% if settings.wolfandbadger and (settings.more4id or settings.njal) %}
+          <span style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--c-border);">/</span>
+        {% endif %}
+
+        {% if settings.more4id %}
+          <a href="{{ settings.more4id }}" target="_blank" rel="noopener" style="color: var(--c-ink); text-decoration: none; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">More4id</a>
+        {% endif %}
+
+        {% if settings.more4id and settings.njal %}
+          <span style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--c-border);">/</span>
+        {% endif %}
+
+        {% if settings.njal %}
+          <a href="{{ settings.njal }}" target="_blank" rel="noopener" style="color: var(--c-ink); text-decoration: none; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">Not Just A Label</a>
+        {% endif %}
+      </div>
+    </div>
   </div>
+  {% endif %}
