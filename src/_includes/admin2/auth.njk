@@ -1,0 +1,39 @@
+<!-- AUTHENTICATION VIEW -->
+<div x-show="!isAuthenticated" class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black">
+  <div class="max-w-md w-full space-y-8 bg-slate-900/40 border border-slate-800/80 backdrop-blur-xl p-8 rounded-2xl shadow-2xl relative overflow-hidden">
+    <!-- Glow Decor -->
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-gold-500/10 rounded-full blur-[80px]"></div>
+    
+    <div class="text-center relative z-10">
+      <h1 class="font-serif text-3xl md:text-4xl text-gold-300 font-semibold tracking-wider">Silver & Elegant</h1>
+      <p class="mt-3 text-slate-400 text-sm">Zanaatkar Yönetici Paneli & CMS v2</p>
+    </div>
+
+    <div class="mt-8 space-y-6 relative z-10">
+      <div>
+        <label for="pat-token" class="block text-sm font-medium text-slate-300">GitHub Personal Access Token (PAT)</label>
+        <div class="mt-2 relative">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <i class="fa-solid fa-key text-slate-500"></i>
+          </div>
+          <input id="pat-token" type="password" x-model="tokenInput" placeholder="ghp_..." 
+            class="block w-full pl-10 pr-3 py-3 bg-slate-950/60 border border-slate-800 rounded-xl text-slate-200 placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-gold-500 sm:text-sm transition-all" />
+        </div>
+        <p class="mt-3 text-xs text-slate-500 leading-relaxed">
+          Bu panel doğrudan GitHub API üzerinden çalışır. Değişiklikleri kaydetmek için <code class="text-gold-300 font-semibold">repo</code> yetkisine sahip bir Personal Access Token (PAT) girmelisiniz.
+          <a href="https://github.com/settings/tokens/new?scopes=repo&description=Silver%20and%20Elegant%20Admin" target="_blank" class="text-gold-400 hover:text-gold-300 underline font-medium block mt-1">
+            Token oluşturmak için buraya tıklayın <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </a>
+        </p>
+      </div>
+
+      <button @click="authenticate()" 
+        class="group relative w-full flex justify-center py-3.5 px-4 border border-transparent text-sm font-medium rounded-xl text-slate-950 bg-gold-400 hover:bg-gold-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gold-500 shadow-lg shadow-gold-500/10 hover:shadow-gold-500/20 active:scale-[0.98] transition-all">
+        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+          <i class="fa-solid fa-lock group-hover:text-slate-900 transition-colors"></i>
+        </span>
+        Yönetim Paneline Bağlan
+      </button>
+    </div>
+  </div>
+</div>

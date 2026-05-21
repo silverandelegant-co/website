@@ -1,0 +1,27 @@
+<!-- Markdown Formatting Toolbar -->
+<div class="flex items-center space-x-1 p-1 bg-slate-950 border border-slate-800 border-b-0 rounded-t-xl flex-wrap gap-y-1">
+  <button type="button" @click="insertMarkdownFormat('{{ targetId }}', 'bold')" title="Kalın (Bold)" 
+    class="w-7 h-7 rounded hover:bg-slate-800 text-slate-400 hover:text-slate-200 flex items-center justify-center transition-all">
+    <i class="fa-solid fa-bold text-xs"></i>
+  </button>
+  <button type="button" @click="insertMarkdownFormat('{{ targetId }}', 'italic')" title="İtalik (Italic)" 
+    class="w-7 h-7 rounded hover:bg-slate-800 text-slate-400 hover:text-slate-200 flex items-center justify-center transition-all">
+    <i class="fa-solid fa-italic text-xs"></i>
+  </button>
+  <button type="button" @click="insertMarkdownFormat('{{ targetId }}', 'heading')" title="Alt Başlık (Heading)" 
+    class="w-7 h-7 rounded hover:bg-slate-800 text-slate-400 hover:text-slate-200 flex items-center justify-center transition-all">
+    <i class="fa-solid fa-heading text-xs"></i>
+  </button>
+  <button type="button" @click="insertMarkdownFormat('{{ targetId }}', 'quote')" title="Alıntı (Blockquote)" 
+    class="w-7 h-7 rounded hover:bg-slate-800 text-slate-400 hover:text-slate-200 flex items-center justify-center transition-all">
+    <i class="fa-solid fa-quote-left text-xs"></i>
+  </button>
+  <button type="button" @click="insertMarkdownFormat('{{ targetId }}', 'link')" title="Link Ekle (Hyperlink)" 
+    class="w-7 h-7 rounded hover:bg-slate-800 text-slate-400 hover:text-slate-200 flex items-center justify-center transition-all">
+    <i class="fa-solid fa-link text-xs"></i>
+  </button>
+  <button type="button" @click="insertMarkdownFormat('{{ targetId }}', 'list')" title="Liste Ögesi (Unordered List)" 
+    class="w-7 h-7 rounded hover:bg-slate-800 text-slate-400 hover:text-slate-200 flex items-center justify-center transition-all">
+    <i class="fa-solid fa-list-ul text-xs"></i>
+  </button>
+</div>

@@ -1,0 +1,42 @@
+<!-- Header -->
+<header class="bg-slate-900/60 border-b border-slate-800 backdrop-blur-md sticky top-0 z-40">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <div class="flex items-center space-x-3 cursor-pointer" @click="activeCatalog = 'dashboard'">
+        <div class="w-10 h-10 rounded-lg bg-gold-500/10 border border-gold-500/20 flex items-center justify-center">
+          <i class="fa-solid fa-gem text-gold-400 text-lg"></i>
+        </div>
+        <div>
+          <h2 class="font-serif text-xl text-gold-300 font-semibold tracking-wide">Silver & Elegant</h2>
+          <span class="text-[10px] text-slate-500 uppercase tracking-widest block -mt-1">Dashboard v2.0</span>
+        </div>
+      </div>
+
+      <!-- User Controls / Media & Global Publish Link -->
+      <div class="flex items-center space-x-3.5">
+        <!-- Always Visible Global Publish Button (Transforms dynamically on unsaved changes) -->
+        <button @click="publishAllChanges()" 
+          class="px-4 py-2.5 rounded-xl text-xs font-bold tracking-wider transition-all flex items-center space-x-2 active:scale-95"
+          :class="catalogs.some(c => c.dirty) 
+            ? 'bg-gradient-to-r from-amber-500 via-gold-500 to-gold-600 hover:from-amber-400 hover:to-gold-400 text-slate-950 shadow-lg shadow-gold-500/10 hover:shadow-gold-500/20 animate-pulse cursor-pointer' 
+            : 'bg-slate-900 border border-slate-800 text-slate-600 cursor-not-allowed'"
+          :disabled="!catalogs.some(c => c.dirty)">
+          <i class="fa-solid fa-cloud-arrow-up text-xs" :class="catalogs.some(c => c.dirty) ? 'text-slate-950' : 'text-slate-600'"></i>
+          <span x-text="catalogs.some(c => c.dirty) ? `${catalogs.filter(c => c.dirty).length} Değişikliği Yayınla` : 'Değişiklik Yok'"></span>
+        </button>
+
+        <!-- Top Media Library Button -->
+        <button @click="openMediaLibraryModal(null)" 
+          class="px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-gold-500/30 text-gold-400 text-xs font-semibold tracking-wide transition-all flex items-center space-x-2">
+          <i class="fa-solid fa-images text-xs"></i>
+          <span>Medya Kütüphanesi</span>
+        </button>
+        
+        <button @click="logout()" title="Güvenli Çıkış"
+          class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 hover:border-red-500/30 hover:bg-red-950/20 text-slate-400 hover:text-red-400 flex items-center justify-center transition-all active:scale-95">
+          <i class="fa-solid fa-sign-out-alt"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,377 @@
+<!-- ISOLATED EDIT / ADD SLIDE-OVER DRAWER -->
+<div x-show="isEditing" class="fixed inset-0 overflow-hidden z-50" x-cloak>
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute inset-0 bg-slate-950/70 backdrop-blur-sm transition-opacity" @click="closeEditor()"></div>
+
+    <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+      <!-- Broadened Slide-over panel (changed from max-w-2xl to max-w-4xl for maximum screen space) -->
+      <div class="pointer-events-auto w-screen max-w-4xl transform transition-all duration-300"
+        x-show="isEditing"
+        x-transition:enter="transform ease-out duration-300"
+        x-transition:enter-start="translate-x-full"
+        x-transition:enter-end="translate-x-0"
+        x-transition:leave="transform ease-in duration-200"
+        x-transition:leave-start="translate-x-0"
+        x-transition:leave-end="translate-x-full">
+        
+        <div class="flex h-full flex-col overflow-y-scroll bg-slate-900 border-l border-slate-800 shadow-2xl">
+          
+          <!-- Editor Header -->
+          <div class="bg-slate-950 px-6 py-6 border-b border-slate-800 sticky top-0 z-10 flex items-center justify-between">
+            <div>
+              <h2 class="text-lg font-serif font-semibold text-gold-300" x-text="isNew ? 'Yeni Kayıt Oluştur' : 'Kaydı Düzenle'"></h2>
+              <span class="text-[10px] text-slate-500 uppercase tracking-widest block mt-0.5" x-text="activeCatalogLabel"></span>
+            </div>
+            <button @click="closeEditor()" 
+              class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-400 hover:text-slate-200 flex items-center justify-center transition-all">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <!-- Editor Form Body -->
+          <div class="flex-grow p-6 space-y-6">
+            
+            <!-- Product / Article Name/Title -->
+            <div class="space-y-2">
+              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400" x-text="getActiveCatalogType() === 'pieces_list' ? 'Ürün Adı' : 'Yazı / Makale Başlığı'"></label>
+              <input type="text" x-model="editingItem._title_field" @input="isNew ? autoSlugify() : null" 
+                class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-sm text-slate-200 focus:outline-none transition-all" />
+            </div>
+
+            <!-- URL Slug (ID) -->
+            <div class="space-y-2">
+              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400">URL Kalıcı Bağlantısı (Slug / ID)</label>
+              <input type="text" x-model="editingItem.id" @input="validateSlug()" placeholder="Örn: stellar-asteroidea-studs" 
+                class="block w-full bg-slate-950/60 border rounded-xl py-3 px-4 text-sm font-mono text-gold-400 focus:outline-none transition-all"
+                :class="errors.id ? 'border-red-500/50' : 'border-slate-800'" />
+              <div x-show="errors.id" class="text-xs text-red-400 mt-1 flex items-center space-x-1" x-cloak>
+                <i class="fa-solid fa-circle-exclamation text-[10px]"></i>
+                <span x-text="errors.id"></span>
+              </div>
+            </div>
+
+            <!-- Tagline or Date -->
+            <template x-if="getActiveCatalogType() === 'pieces_list'">
+              <div class="space-y-2">
+                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400">Kısa Tanıtım Yazısı (Tagline)</label>
+                <input type="text" x-model="editingItem.tagline" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-sm text-slate-200" />
+              </div>
+            </template>
+
+            <template x-if="getActiveCatalogType() !== 'pieces_list'">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="space-y-2">
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400">Yayınlanma Tarihi</label>
+                  <input type="date" x-model="editingItem.date" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-sm text-slate-200" />
+                </div>
+                <div class="space-y-2" x-show="getActiveCatalogType() === 'posts_list'">
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400">Kategori</label>
+                  <select x-model="editingItem.category" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-sm text-slate-300">
+                    <option value="Philosophy">Felsefe</option>
+                    <option value="Craftsmanship">Zanaatkarlık</option>
+                    <option value="Press">Basın</option>
+                    <option value="Exhibitions">Sergiler</option>
+                  </select>
+                </div>
+                <div class="space-y-2" x-show="getActiveCatalogType() === 'articles_list'">
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400">Harici Orijinal Makale Linki</label>
+                  <input type="text" x-model="editingItem.link" placeholder="İsteğe bağlı link..." class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-sm text-slate-200" />
+                </div>
+              </div>
+            </template>
+
+            <!-- Story (For pieces) or Summary (For Posts/Articles) -->
+            <div class="space-y-2">
+              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400" x-text="getActiveCatalogType() === 'pieces_list' ? 'Ürün Hikayesi' : 'Özet'"></label>
+              
+              <!-- WYSIWYG editor container -->
+              <div 
+                class="quill-wysiwyg-wrapper"
+                x-init="
+                  const watch = $watch;
+                  $nextTick(() => {
+                    const container = $el.querySelector('.quill-editor');
+                    const quill = new Quill(container, {
+                      theme: 'snow',
+                      modules: {
+                        toolbar: [
+                          ['bold', 'italic', 'underline'],
+                          [{ 'header': [1, 2, 3, false] }],
+                          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                          ['link', 'clean']
+                        ]
+                      }
+                    });
+                    
+                    // Sync initial value
+                    quill.root.innerHTML = marked.parse(editingItem._desc_field || '');
+                    
+                    // HTML to Markdown on user change (ignores programmatic 'api' inputs to prevent freeze loop)
+                    const turndownService = new TurndownService({ headingStyle: 'atx' });
+                    quill.on('text-change', (delta, oldDelta, source) => {
+                      if (source === 'user') {
+                        const currentHtml = quill.root.innerHTML;
+                        const markdown = turndownService.turndown(currentHtml);
+                        editingItem._desc_field = markdown;
+                      }
+                    });
+                    
+                    // Watch model for external updates (e.g. switching items or fetching)
+                    watch('editingItem._desc_field', (newVal) => {
+                      const currentMarkdown = turndownService.turndown(quill.root.innerHTML);
+                      if (newVal !== currentMarkdown) {
+                        quill.root.innerHTML = marked.parse(newVal || '');
+                      }
+                    });
+
+                    // Force sync when drawer opens (handles identical IDs correctly)
+                    watch('isEditing', (isOpen) => {
+                      if (isOpen) {
+                        quill.root.innerHTML = marked.parse(editingItem._desc_field || '');
+                      }
+                    });
+                  });
+                "
+              >
+                <div class="quill-editor" style="height: 350px;"></div>
+              </div>
+            </div>
+
+            <!-- Main Featured Switch -->
+            <div class="bg-slate-950/40 border border-slate-800 p-4 rounded-xl flex items-center justify-between">
+              <div>
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-300" x-text="getActiveCatalogType() === 'pieces_list' ? 'Öne Çıkarılan Ürün' : 'Öne Çıkan Yazı'"></h4>
+                <span class="text-[10px] text-slate-500 block mt-0.5">Vitrinde ya da sayfanın en üstünde gösterilsin mi?</span>
+              </div>
+              <button type="button" @click="editingItem.featured = !editingItem.featured"
+                class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none"
+                :class="editingItem.featured ? 'bg-gold-500' : 'bg-slate-800'">
+                <span class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-slate-950 shadow ring-0 transition duration-200 ease-in-out"
+                  :class="editingItem.featured ? 'translate-x-5' : 'translate-x-0'"></span>
+              </button>
+            </div>
+
+            <!-- PIECES (JEWELRY) SPECIFIC: Materials & Multiple Images -->
+            <template x-if="getActiveCatalogType() === 'pieces_list'">
+              <div class="space-y-5">
+                <!-- Materials list -->
+                <div class="space-y-3 border-t border-slate-800/80 pt-4">
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400">Kullanılan Malzemeler</label>
+                  <div class="space-y-2">
+                    <template x-for="(mat, idx) in editingItem.materials" :key="idx">
+                      <div class="flex items-center space-x-2">
+                        <input type="text" x-model="editingItem.materials[idx]" class="block flex-grow bg-slate-950/60 border border-slate-800 rounded-xl py-2 px-3 text-xs text-slate-300" />
+                        <button @click="editingItem.materials.splice(idx, 1)" class="w-8 h-8 rounded-lg bg-slate-950 hover:bg-red-950/20 border border-slate-800 text-slate-500 hover:text-red-400 flex items-center justify-center"><i class="fa-solid fa-times"></i></button>
+                      </div>
+                    </template>
+                  </div>
+                  <button @click="editingItem.materials.push('')" class="px-3 py-1.5 bg-slate-950 border border-slate-800 text-gold-400 text-[11px] font-semibold rounded-lg flex items-center space-x-1.5"><i class="fa-solid fa-plus text-[9px]"></i> <span>Ekle</span></button>
+                </div>
+
+                <!-- Images List with Media Library Integration -->
+                <div class="space-y-3 border-t border-slate-800/80 pt-4">
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400">Ürün Görselleri</label>
+                  <div class="space-y-3">
+                    <template x-for="(img, idx) in editingItem.images" :key="idx">
+                      <div class="bg-slate-950/40 border border-slate-800 p-3 rounded-xl flex items-center gap-4">
+                        <div class="w-14 h-14 bg-slate-950 rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center border border-slate-800">
+                          <img :src="'/' + img.replace(/^\/+/, '')" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/1e293b/a88653?text=Hata'" />
+                        </div>
+                        <div class="flex-grow space-y-1.5">
+                          <div class="flex space-x-2">
+                            <input type="text" x-model="editingItem.images[idx]" class="block flex-grow bg-slate-950/60 border border-slate-800 rounded-lg py-1.5 px-3 text-[11px] font-mono text-slate-300" readonly />
+                            <button @click="openMediaLibraryModal(editingItem.images, idx)" class="px-2.5 py-1.5 bg-slate-900 border border-slate-800 text-gold-400 text-[11px] font-semibold rounded-lg flex-shrink-0">Galeri</button>
+                          </div>
+                        </div>
+                        <button @click="editingItem.images.splice(idx, 1)" class="w-7 h-7 rounded-lg bg-slate-950 hover:bg-red-950/20 border border-slate-800 text-slate-500 hover:text-red-400 flex items-center justify-center"><i class="fa-solid fa-times text-[10px]"></i></button>
+                      </div>
+                    </template>
+                  </div>
+                  <button @click="editingItem.images.push('')" class="px-3 py-1.5 bg-slate-950 border border-slate-800 text-gold-400 text-[11px] font-semibold rounded-lg flex items-center space-x-1.5"><i class="fa-solid fa-plus text-[9px]"></i> <span>Görsel Yolu Ekle</span></button>
+                </div>
+              </div>
+            </template>
+
+            <!-- POSTS/ARTICLES SPECIFIC: Single Featured Image & Dynamic Section Builder -->
+            <template x-if="getActiveCatalogType() !== 'pieces_list'">
+              <div class="space-y-5 border-t border-slate-800/80 pt-4">
+                <!-- Featured Image Selection -->
+                <div class="space-y-2">
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400">Öne Çıkan Görsel</label>
+                  <div class="flex items-center space-x-2">
+                    <input type="text" x-model="editingItem.featured_image" class="block flex-grow bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs font-mono text-slate-300" readonly />
+                    <button @click="openMediaLibraryModal(editingItem, 'featured_image')" class="px-4 py-3 bg-slate-900 border border-slate-800 text-gold-400 text-xs font-semibold rounded-xl flex-shrink-0">Galeri</button>
+                  </div>
+                  <div class="w-32 h-20 bg-slate-950 rounded-lg overflow-hidden border border-slate-800">
+                    <img :src="'/' + (editingItem.featured_image || '').replace(/^\/+/, '')" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/200x100/1e293b/a88653?text=Yok'" />
+                  </div>
+                </div>
+
+                <!-- Dynamic Layout Section Builder -->
+                <div class="space-y-3 pt-4 border-t border-slate-800/80">
+                  <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-300">Sayfa İçerik Blokları (Sections)</h4>
+                  <div class="space-y-4">
+                    <template x-for="(sec, idx) in editingItem.sections" :key="idx">
+                      <div class="bg-slate-950 border border-slate-800/80 p-4 rounded-xl space-y-3 relative">
+                        <!-- Block Toolbar buttons -->
+                        <div class="absolute top-4 right-4 flex items-center space-x-2">
+                          <button @click="moveBlockUp(idx)" class="text-slate-500 hover:text-gold-400 disabled:opacity-20 text-[10px]" :disabled="idx === 0"><i class="fa-solid fa-arrow-up"></i></button>
+                          <button @click="moveBlockDown(idx)" class="text-slate-500 hover:text-gold-400 disabled:opacity-20 text-[10px]" :disabled="idx === editingItem.sections.length - 1"><i class="fa-solid fa-arrow-down"></i></button>
+                          <button @click="editingItem.sections.splice(idx, 1)" class="text-slate-500 hover:text-red-400 text-[10px] ml-1"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+
+                        <!-- Block Type Tag -->
+                        <span class="inline-flex px-2 py-0.5 rounded bg-gold-950/40 text-gold-300 text-[9px] uppercase tracking-wider font-semibold" x-text="getBlockLabel(sec.type)"></span>
+
+                        <!-- Text Block details -->
+                        <div x-show="sec.type === 'text_block'" class="space-y-1">
+                          <label class="text-[9px] uppercase tracking-wider text-slate-500">Metin İçeriği (Markdown destekler)</label>
+                          
+                          <!-- WYSIWYG block body editor -->
+                          <div 
+                            class="quill-wysiwyg-wrapper"
+                            x-init="
+                              const watch = $watch;
+                              $nextTick(() => {
+                                const container = $el.querySelector('.quill-editor');
+                                const quill = new Quill(container, {
+                                  theme: 'snow',
+                                  modules: {
+                                    toolbar: [
+                                      ['bold', 'italic', 'underline'],
+                                      [{ 'header': [1, 2, 3, false] }],
+                                      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                                      ['link', 'clean']
+                                    ]
+                                  }
+                                });
+                                quill.root.innerHTML = marked.parse(sec.body || '');
+                                const turndownService = new TurndownService({ headingStyle: 'atx' });
+                                quill.on('text-change', (delta, oldDelta, source) => {
+                                  if (source === 'user') {
+                                    const currentHtml = quill.root.innerHTML;
+                                    const markdown = turndownService.turndown(currentHtml);
+                                    if (sec.body !== markdown) {
+                                      sec.body = markdown;
+                                    }
+                                  }
+                                });
+
+                                // Two-way binding watcher for repeated loop blocks
+                                watch('sec.body', (newVal) => {
+                                  const currentMarkdown = turndownService.turndown(quill.root.innerHTML);
+                                  if (newVal !== currentMarkdown) {
+                                    quill.root.innerHTML = marked.parse(newVal || '');
+                                  }
+                                });
+                              });
+                            "
+                          >
+                            <div class="quill-editor" style="height: 300px;"></div>
+                          </div>
+                        </div>
+
+                        <!-- Blockquote details -->
+                        <div x-show="sec.type === 'blockquote'" class="space-y-2">
+                          <div class="space-y-1">
+                            <label class="text-[9px] uppercase tracking-wider text-slate-500">Alıntı Metni</label>
+                            <input type="text" x-model="sec.quote" class="block w-full bg-slate-900 border border-slate-800 rounded-lg py-1.5 px-3 text-xs text-slate-200" />
+                          </div>
+                          <div class="space-y-1">
+                            <label class="text-[9px] uppercase tracking-wider text-slate-500">Kaynak / Yazar (İsteğe Bağlı)</label>
+                            <input type="text" x-model="sec.author" class="block w-full bg-slate-900 border border-slate-800 rounded-lg py-1.5 px-3 text-xs text-slate-200" />
+                          </div>
+                        </div>
+
+                        <!-- Image Block details -->
+                        <div x-show="sec.type === 'image_block'" class="space-y-3">
+                          <div class="flex items-center space-x-2">
+                            <input type="text" x-model="sec.image" class="block flex-grow bg-slate-900 border border-slate-800 rounded-lg py-1.5 px-3 text-xs font-mono text-slate-300" readonly />
+                            <button @click="openMediaLibraryModal(sec, 'image')" class="px-2 py-1 bg-slate-900 border border-slate-800 text-gold-400 text-[10px] rounded flex-shrink-0">Seç</button>
+                          </div>
+                          <div class="w-24 h-16 bg-slate-900 rounded overflow-hidden border border-slate-850">
+                            <img :src="'/' + (sec.image || '').replace(/^\/+/, '')" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x50/1e293b/a88653?text=Yok'" />
+                          </div>
+                          <div class="grid grid-cols-2 gap-4">
+                            <div class="space-y-1">
+                              <label class="text-[9px] uppercase tracking-wider text-slate-500">Görsel Açıklaması (Alt)</label>
+                              <input type="text" x-model="sec.alt" class="block w-full bg-slate-900 border border-slate-800 rounded-lg py-1.5 px-3 text-xs text-slate-200" />
+                            </div>
+                            <div class="space-y-1">
+                              <label class="text-[9px] uppercase tracking-wider text-slate-500">Alt Yazı / Başlık</label>
+                              <input type="text" x-model="sec.caption" class="block w-full bg-slate-900 border border-slate-800 rounded-lg py-1.5 px-3 text-xs text-slate-200" />
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Video Block details -->
+                        <div x-show="sec.type === 'video_block'" class="space-y-2">
+                          <div class="space-y-1">
+                            <label class="text-[9px] uppercase tracking-wider text-slate-500">YouTube Linki</label>
+                            <input type="text" x-model="sec.video_url" class="block w-full bg-slate-905 border border-slate-800 rounded-lg py-1.5 px-3 text-xs text-slate-200" />
+                          </div>
+                          <div class="space-y-1">
+                            <label class="text-[9px] uppercase tracking-wider text-slate-500">Video Başlığı (İsteğe Bağlı)</label>
+                            <input type="text" x-model="sec.caption" class="block w-full bg-slate-900 border border-slate-800 rounded-lg py-1.5 px-3 text-xs text-slate-200" />
+                          </div>
+                        </div>
+
+                        <!-- Subheading Block details -->
+                        <div x-show="sec.type === 'subheading'" class="space-y-1">
+                          <label class="text-[9px] uppercase tracking-wider text-slate-500">Alt Başlık Metni</label>
+                          <input type="text" x-model="sec.text" class="block w-full bg-slate-900 border border-slate-800 rounded-lg py-1.5 px-3 text-xs text-slate-200" />
+                        </div>
+                      </div>
+                    </template>
+                  </div>
+
+                  <!-- Block Insertion buttons -->
+                  <div class="flex flex-wrap gap-2 pt-3">
+                    <button @click="addBlock('text_block')" class="px-2.5 py-1.5 bg-slate-950 border border-slate-800 text-[10px] font-semibold text-gold-400 hover:text-gold-300 rounded flex items-center space-x-1"><i class="fa-solid fa-plus"></i> <span>+ Metin Bloğu</span></button>
+                    <button @click="addBlock('blockquote')" class="px-2.5 py-1.5 bg-slate-950 border border-slate-800 text-[10px] font-semibold text-gold-400 hover:text-gold-300 rounded flex items-center space-x-1"><i class="fa-solid fa-plus"></i> <span>+ Alıntı</span></button>
+                    <button @click="addBlock('image_block')" class="px-2.5 py-1.5 bg-slate-950 border border-slate-800 text-[10px] font-semibold text-gold-400 hover:text-gold-300 rounded flex items-center space-x-1"><i class="fa-solid fa-plus"></i> <span>+ Görsel</span></button>
+                    <button @click="addBlock('video_block')" class="px-2.5 py-1.5 bg-slate-950 border border-slate-800 text-[10px] font-semibold text-gold-400 hover:text-gold-300 rounded flex items-center space-x-1"><i class="fa-solid fa-plus"></i> <span>+ Video</span></button>
+                    <button @click="addBlock('subheading')" class="px-2.5 py-1.5 bg-slate-950 border border-slate-800 text-[10px] font-semibold text-gold-400 hover:text-gold-300 rounded flex items-center space-x-1"><i class="fa-solid fa-plus"></i> <span>+ Alt Başlık</span></button>
+                  </div>
+                </div>
+              </div>
+            </template>
+
+            <!-- Shop & Ext Links for Takı Pieces -->
+            <template x-if="getActiveCatalogType() === 'pieces_list'">
+              <div class="space-y-4 border-t border-slate-800/80 pt-6">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-300">Mağaza ve Medya Bağlantıları</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div class="space-y-1.5">
+                    <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Wolf & Badger Linki</label>
+                    <input type="text" x-model="editingItem.wolfandbadger" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2 px-3 text-xs text-slate-300" />
+                  </div>
+                  <div class="space-y-1.5">
+                    <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">More4id Linki</label>
+                    <input type="text" x-model="editingItem.more4id" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2 px-3 text-xs text-slate-300" />
+                  </div>
+                  <div class="space-y-1.5">
+                    <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Not Just A Label Linki</label>
+                    <input type="text" x-model="editingItem.njal" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2 px-3 text-xs text-slate-300" />
+                  </div>
+                  <div class="space-y-1.5">
+                    <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">YouTube Video Linki</label>
+                    <input type="text" x-model="editingItem.video_url" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2 px-3 text-xs text-slate-300" />
+                  </div>
+                </div>
+              </div>
+            </template>
+
+          </div>
+
+          <!-- Editor Footer -->
+          <div class="bg-slate-950 px-6 py-5 border-t border-slate-800 sticky bottom-0 z-10 flex items-center justify-end space-x-3">
+            <button @click="closeEditor()" class="px-4 py-3 bg-slate-900 border border-slate-800 rounded-xl text-xs font-semibold text-slate-400 hover:text-slate-200">İptal</button>
+            <button @click="saveProduct()" class="px-5 py-3 bg-gold-500 hover:bg-gold-400 rounded-xl text-slate-950 text-xs font-semibold tracking-wide" :disabled="errors.id !== null">Kaydet</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

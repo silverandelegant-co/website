@@ -1,0 +1,742 @@
+<!-- ALPINE APPLICATION STATE CONTROLLER -->
+<script>
+  function adminApp() {
+    return {
+      token: '',
+      tokenInput: '',
+      isAuthenticated: false,
+      
+      repoOwner: 'silverandelegant-co',
+      repoName: 'website',
+      branch: 'main',
+      
+      // Comprehensive Meta-Driven Catalog definition matching your entire config.yml
+      catalogs: [
+        // Single settings files
+        { name: 'settings', label: 'Genel Ayarlar', path: 'src/_data/settings.json', type: 'single_object', data: {}, sha: '', dirty: false },
+        { name: 'contact', label: 'İletişim Sayfası', path: 'src/_data/contact.json', type: 'single_object', data: {}, sha: '', dirty: false },
+        { name: 'about', label: 'Hakkımızda Sayfası', path: 'src/_data/about.json', type: 'single_object', data: {}, sha: '', dirty: false },
+        
+        // Pieces
+        { name: 'earrings', label: 'Küpeler (Earrings)', path: 'src/_data/earrings.json', type: 'pieces_list', data: [], sha: '', dirty: false },
+        { name: 'rings', label: 'Yüzükler (Rings)', path: 'src/_data/rings.json', type: 'pieces_list', data: [], sha: '', dirty: false },
+        { name: 'necklaces', label: 'Kolyeler (Necklaces)', path: 'src/_data/necklaces.json', type: 'pieces_list', data: [], sha: '', dirty: false },
+        { name: 'bracelets', label: 'Bilezikler (Bracelets)', path: 'src/_data/bracelets.json', type: 'pieces_list', data: [], sha: '', dirty: false },
+        
+        // Press & Articles
+        { name: 'press', label: 'Basın / Makaleler', path: 'src/_data/press.json', type: 'articles_list', data: [], sha: '', dirty: false },
+
+        // Blog Posts
+        { name: 'posts_philosophy', label: 'Felsefe Yazıları', path: 'src/_data/posts_philosophy.json', type: 'posts_list', data: [], sha: '', dirty: false },
+        { name: 'posts_craftsmanship', label: 'Zanaatkarlık Notları', path: 'src/_data/posts_craftsmanship.json', type: 'posts_list', data: [], sha: '', dirty: false },
+        { name: 'posts_press', label: 'Basın & LFW Köşesi', path: 'src/_data/posts_press.json', type: 'posts_list', data: [], sha: '', dirty: false },
+        { name: 'posts_exhibitions', label: 'Sergi Kayıtları', path: 'src/_data/posts_exhibitions.json', type: 'posts_list', data: [], sha: '', dirty: false }
+      ],
+
+      // Getters for Grouping Dashboard & Sidebar
+      get pagesCatalogs() {
+        return this.catalogs.filter(c => c.type === 'single_object' || c.name === 'press');
+      },
+      get piecesCatalogs() {
+        return this.catalogs.filter(c => c.type === 'pieces_list');
+      },
+      get blogCatalogs() {
+        return this.catalogs.filter(c => c.type === 'posts_list');
+      },
+      
+      activeCatalog: 'dashboard',
+      searchQuery: '',
+      
+      globalLoading: false,
+      loadingText: 'Yükleniyor...',
+      
+      // Single Object States (Direct forms)
+      singleObjectData: {},
+      pressHeading: '', // special handler for press heading
+      
+      // Editor Panel States
+      isEditing: false,
+      isNew: false,
+      editingItem: {},
+      editingIndex: -1,
+      errors: { id: null },
+      
+      // Media Library States
+      mediaLibraryOpen: false,
+      mediaLoading: false,
+      mediaFiles: [],
+      mediaSearchQuery: '',
+      activeSelectedImage: '',
+      mediaTargetObject: null,
+      mediaTargetProperty: null,
+      mediaTargetIndex: -1,
+      
+      allSlugs: [],
+
+      initApp() {
+        const savedToken = localStorage.getItem('admin_pat');
+        if (savedToken) {
+          this.token = savedToken;
+          this.tokenInput = savedToken;
+          this.isAuthenticated = true;
+          this.loadAllCatalogs();
+          this.loadMediaLibrary();
+        }
+      },
+
+      async authenticate() {
+        if (!this.tokenInput.trim()) {
+          this.showToast('Lütfen geçerli bir GitHub Token (PAT) girin.', 'error');
+          return;
+        }
+        this.showLoading('Token doğrulanıyor...');
+        try {
+          const res = await fetch(`https://api.github.com/repos/${this.repoOwner}/${this.repoName}`, {
+            headers: { 'Authorization': `token ${this.tokenInput.trim()}` }
+          });
+          if (res.ok) {
+            this.token = this.tokenInput.trim();
+            localStorage.setItem('admin_pat', this.token);
+            this.isAuthenticated = true;
+            this.showToast('Giriş başarılı.', 'success');
+            await this.loadAllCatalogs();
+            await this.loadMediaLibrary();
+          } else {
+            throw new Error();
+          }
+        } catch (err) {
+          this.showToast('Giriş başarısız. Token bilgilerinizi kontrol edin.', 'error');
+        } finally {
+          this.hideLoading();
+        }
+      },
+
+      logout() {
+        localStorage.removeItem('admin_pat');
+        this.token = '';
+        this.tokenInput = '';
+        this.isAuthenticated = false;
+        this.activeCatalog = 'dashboard';
+      },
+
+      showLoading(text = 'Yükleniyor...') {
+        this.loadingText = text;
+        this.globalLoading = true;
+      },
+
+      hideLoading() {
+        this.globalLoading = false;
+      },
+
+      get activeCatalogLabel() {
+        if (this.activeCatalog === 'dashboard') return 'Genel Bakış';
+        const cat = this.catalogs.find(c => c.name === this.activeCatalog);
+        return cat ? cat.label : '';
+      },
+
+      getActiveCatalogType() {
+        const cat = this.catalogs.find(c => c.name === this.activeCatalog);
+        return cat ? cat.type : '';
+      },
+
+      selectCatalog(name) {
+        this.activeCatalog = name;
+        this.searchQuery = '';
+        
+        const cat = this.catalogs.find(c => c.name === name);
+        if (cat) {
+          if (cat.type === 'single_object') {
+            this.singleObjectData = JSON.parse(JSON.stringify(cat.data));
+          } else if (name === 'press') {
+            // Press has list and heading
+            this.pressHeading = cat.heading || '';
+          }
+        }
+      },
+
+      getActiveCatalogData() {
+        const cat = this.catalogs.find(c => c.name === this.activeCatalog);
+        return cat ? cat.data : [];
+      },
+
+      filteredItems() {
+        const items = this.getActiveCatalogData();
+        if (!this.searchQuery.trim()) return items;
+        
+        const q = this.searchQuery.trim().toLowerCase();
+        return items.filter(item => 
+          (item.name && item.name.toLowerCase().includes(q)) || 
+          (item.title && item.title.toLowerCase().includes(q)) ||
+          (item.id && item.id.toLowerCase().includes(q))
+        );
+      },
+
+      getItemImage(item) {
+        if (item.images && item.images.length > 0) return '/' + item.images[0].replace(/^\/+/, '');
+        if (item.featured_image) return '/' + item.featured_image.replace(/^\/+/, '');
+        return 'https://placehold.co/100x100/1e293b/a88653?text=Görsel+Yok';
+      },
+
+      async loadAllCatalogs() {
+        this.showLoading('Katalog verileri GitHub deposundan çekiliyor...');
+        this.allSlugs = [];
+        
+        try {
+          const promises = this.catalogs.map(async (cat) => {
+            const res = await fetch(`https://api.github.com/repos/${this.repoOwner}/${this.repoName}/contents/${cat.path}?ref=${this.branch}`, {
+              headers: { 'Authorization': `token ${this.token}` }
+            });
+            if (!res.ok) throw new Error(`${cat.label} indirilemedi.`);
+            
+            const jsonRes = await res.json();
+            cat.sha = jsonRes.sha;
+            
+            const content = decodeURIComponent(escape(atob(jsonRes.content.replace(/\s/g, ''))));
+            const parsed = JSON.parse(content);
+            
+            if (cat.type === 'single_object') {
+              cat.data = parsed;
+            } else if (cat.type === 'pieces_list') {
+              cat.data = parsed.pieces || [];
+            } else if (cat.type === 'articles_list') {
+              cat.data = parsed.articles || [];
+              cat.heading = parsed.heading || ''; // bind page heading too
+            } else if (cat.type === 'posts_list') {
+              cat.data = parsed.posts || [];
+            }
+            
+            // Register slugs for duplication checks
+            if (Array.isArray(cat.data)) {
+              cat.data.forEach(item => {
+                if (item.id) {
+                  this.allSlugs.push({
+                    id: item.id,
+                    catalogName: cat.name,
+                    catalogLabel: cat.label,
+                    productName: item.name || item.title
+                  });
+                }
+              });
+            }
+          });
+          
+          await Promise.all(promises);
+          this.showToast('Tüm kataloglar başarıyla yüklendi.', 'success');
+          
+          // Select catalog settings if loaded
+          this.selectCatalog(this.activeCatalog === 'dashboard' ? 'dashboard' : this.activeCatalog);
+        } catch (err) {
+          console.error(err);
+          this.showToast('Veriler indirilirken hata oluştu.', 'error');
+        } finally {
+          this.hideLoading();
+        }
+      },
+
+      // Media Library API Interactions
+      async loadMediaLibrary() {
+        this.mediaLoading = true;
+        try {
+          const res = await fetch(`https://api.github.com/repos/${this.repoOwner}/${this.repoName}/contents/src/assets/pieces?ref=${this.branch}`, {
+            headers: { 'Authorization': `token ${this.token}` }
+          });
+          if (res.ok) {
+            const files = await res.json();
+            this.mediaFiles = files.filter(f => f.type === 'file' && /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(f.name))
+                                   .map(f => ({
+                                     name: f.name,
+                                     path: f.path.replace(/^src\//, ''), // matches Passthrough copy output path
+                                     sha: f.sha,
+                                     size: f.size
+                                   }));
+          }
+        } catch (err) {
+          console.error(err);
+        } finally {
+          this.mediaLoading = false;
+        }
+      },
+
+      filteredMediaFiles() {
+        if (!this.mediaSearchQuery.trim()) return this.mediaFiles;
+        const q = this.mediaSearchQuery.trim().toLowerCase();
+        return this.mediaFiles.filter(f => f.name.toLowerCase().includes(q));
+      },
+
+      // Completely robust media modal open routine (Fixes header button NPE)
+      openMediaLibraryModal(targetObj, propertyNameOrIndex) {
+        this.mediaTargetObject = targetObj;
+        
+        if (typeof propertyNameOrIndex === 'number') {
+          this.mediaTargetProperty = null;
+          this.mediaTargetIndex = propertyNameOrIndex;
+          this.activeSelectedImage = (targetObj && targetObj[propertyNameOrIndex]) ? targetObj[propertyNameOrIndex] : '';
+        } else {
+          this.mediaTargetProperty = propertyNameOrIndex || null;
+          this.mediaTargetIndex = -1;
+          this.activeSelectedImage = (targetObj && propertyNameOrIndex) ? (targetObj[propertyNameOrIndex] || '') : '';
+        }
+        
+        this.mediaSearchQuery = '';
+        this.mediaLibraryOpen = true;
+        this.loadMediaLibrary();
+      },
+
+      selectMediaFile(file) {
+        const relativePath = '/' + file.path.replace(/^\/+/, '');
+        
+        if (this.mediaTargetIndex !== -1 && this.mediaTargetObject) {
+          this.mediaTargetObject[this.mediaTargetIndex] = relativePath;
+        } else if (this.mediaTargetProperty && this.mediaTargetObject) {
+          this.mediaTargetObject[this.mediaTargetProperty] = relativePath;
+        }
+        
+        this.mediaLibraryOpen = false;
+        this.showToast('Görsel başarıyla seçildi.', 'success');
+      },
+
+      async uploadNewImage(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        
+        // Make safe slug-like filename
+        let nameOnly = file.name.substring(0, file.name.lastIndexOf('.'));
+        let ext = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
+        
+        let cleanName = nameOnly.toLowerCase()
+                                .replace(/[^a-z0-9]/g, '-')
+                                .replace(/-+/g, '-')
+                                .replace(/^-|-$/g, '') + ext;
+        
+        this.showLoading('Görsel GitHub deposuna yükleniyor...');
+        
+        try {
+          const reader = new FileReader();
+          reader.onload = async (e) => {
+            const base64Content = e.target.result.split(',')[1];
+            
+            const res = await fetch(`https://api.github.com/repos/${this.repoOwner}/${this.repoName}/contents/src/assets/pieces/${cleanName}`, {
+              method: 'PUT',
+              headers: {
+                'Authorization': `token ${this.token}`,
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                message: `Upload media asset ${cleanName} via CMS Panel`,
+                content: base64Content,
+                branch: this.branch
+              })
+            });
+            
+            if (res.ok) {
+              this.showToast('Görsel yüklendi ve kütüphaneye eklendi.', 'success');
+              await this.loadMediaLibrary();
+              
+              // Automatically assign this newly uploaded image to our field
+              const newlyUploaded = this.mediaFiles.find(f => f.name === cleanName);
+              if (newlyUploaded) {
+                this.selectMediaFile(newlyUploaded);
+              }
+              this.hideLoading();
+            } else {
+              throw new Error();
+            }
+          };
+          reader.readAsDataURL(file);
+        } catch (err) {
+          this.hideLoading();
+          this.showToast('Görsel yüklenemedi. Yetkileri kontrol edin.', 'error');
+        }
+      },
+
+      formatBytes(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+      },
+
+      // Edit Drawer Functions
+      addNewItem() {
+        this.isNew = true;
+        this.editingIndex = -1;
+        this.errors.id = null;
+        
+        const type = this.getActiveCatalogType();
+        
+        if (type === 'pieces_list') {
+          this.editingItem = {
+            id: '',
+            _title_field: '', // binding pointer
+            collection: this.activeCatalog,
+            tagline: '',
+            _desc_field: '', // binding pointer
+            materials: [''],
+            featured: false,
+            wolfandbadger: '',
+            more4id: '',
+            njal: '',
+            video_url: '',
+            images: ['']
+          };
+        } else {
+          this.editingItem = {
+            id: '',
+            _title_field: '', // binding pointer for Title
+            date: new Date().toISOString().split('T')[0],
+            _desc_field: '', // binding pointer for Summary
+            category: 'Philosophy',
+            featured_image: '',
+            featured: false,
+            sections: [{ type: 'text_block', body: '' }]
+          };
+        }
+        
+        this.isEditing = true;
+      },
+
+      editItem(item, index) {
+        this.isNew = false;
+        this.editingIndex = index;
+        this.errors.id = null;
+        
+        this.editingItem = JSON.parse(JSON.stringify(item));
+        this.editingItem.originalId = item.id;
+        
+        // Map properties cleanly to common editor binding pointers
+        this.editingItem._title_field = item.name || item.title || '';
+        this.editingItem._desc_field = item.story || item.summary || '';
+        
+        if (this.getActiveCatalogType() === 'pieces_list') {
+          if (!this.editingItem.materials) this.editingItem.materials = [''];
+          if (!this.editingItem.images) this.editingItem.images = [''];
+        } else {
+          if (!this.editingItem.sections) this.editingItem.sections = [{ type: 'text_block', body: '' }];
+        }
+        
+        this.isEditing = true;
+      },
+
+      closeEditor() {
+        this.isEditing = false;
+        this.editingItem = {};
+        this.errors.id = null;
+      },
+
+      // Dynamic Block/Section managers inside editor
+      getBlockLabel(type) {
+        const map = {
+          text_block: 'Metin Bloğu ✍️',
+          blockquote: 'Alıntı Bloğu 💬',
+          image_block: 'Görsel Bloğu 🖼️',
+          video_url: 'Video Bloğu 🎥', // backward compat
+          video_block: 'Video Bloğu 🎥',
+          subheading: 'Alt Başlık 🔖'
+        };
+        return map[type] || 'Blok';
+      },
+
+      addBlock(type) {
+        const def = {
+          text_block: { type, body: '' },
+          blockquote: { type, quote: '', author: '' },
+          image_block: { type, image: '', alt: '', caption: '' },
+          video_block: { type, video_url: '', caption: '' },
+          subheading: { type, text: '' }
+        };
+        this.editingItem.sections.push(def[type] || { type, body: '' });
+      },
+
+      insertMarkdownFormat(textareaId, formatType) {
+        const textarea = document.getElementById(textareaId);
+        if (!textarea) return;
+        
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const text = textarea.value;
+        const selectedText = text.substring(start, end);
+        
+        let replacement = '';
+        
+        switch (formatType) {
+          case 'bold':
+            replacement = `**${selectedText || 'kalın yazılı metin'}**`;
+            break;
+          case 'italic':
+            replacement = `*${selectedText || 'italik yazılı metin'}*`;
+            break;
+          case 'heading':
+            replacement = `\n### ${selectedText || 'Başlık'}\n`;
+            break;
+          case 'link':
+            replacement = `[${selectedText || 'Bağlantı Başlığı'}](https://)`;
+            break;
+          case 'quote':
+            replacement = `\n> ${selectedText || 'Alıntı metni'}\n`;
+            break;
+          case 'list':
+            replacement = `\n- ${selectedText || 'Liste ögesi'}\n`;
+            break;
+        }
+        
+        textarea.value = text.substring(0, start) + replacement + text.substring(end);
+        textarea.focus();
+        
+        // Dispatch 'input' so Alpine.js x-model updates instantly
+        textarea.dispatchEvent(new Event('input', { bubbles: true }));
+        
+        // Select the newly formatted segment
+        textarea.setSelectionRange(start, start + replacement.length);
+      },
+
+      moveBlockUp(idx) {
+        if (idx === 0) return;
+        const temp = this.editingItem.sections[idx];
+        this.editingItem.sections[idx] = this.editingItem.sections[idx - 1];
+        this.editingItem.sections[idx - 1] = temp;
+      },
+
+      moveBlockDown(idx) {
+        if (idx === this.editingItem.sections.length - 1) return;
+        const temp = this.editingItem.sections[idx];
+        this.editingItem.sections[idx] = this.editingItem.sections[idx + 1];
+        this.editingItem.sections[idx + 1] = temp;
+      },
+
+      // Ordering table rows (In-Memory Local Updates)
+      moveItemUp(index) {
+        if (index === 0) return;
+        const items = this.getActiveCatalogData();
+        const temp = items[index];
+        items[index] = items[index - 1];
+        items[index - 1] = temp;
+        
+        const cat = this.catalogs.find(c => c.name === this.activeCatalog);
+        if (cat) cat.dirty = true;
+        this.showToast('Sıralama yerel belleğe kaydedildi. Değişiklikleri yukarıdaki gold butonla yayınlayabilirsiniz.', 'success');
+      },
+
+      moveItemDown(index) {
+        const items = this.getActiveCatalogData();
+        if (index === items.length - 1) return;
+        const temp = items[index];
+        items[index] = items[index + 1];
+        items[index + 1] = temp;
+        
+        const cat = this.catalogs.find(c => c.name === this.activeCatalog);
+        if (cat) cat.dirty = true;
+        this.showToast('Sıralama yerel belleğe kaydedildi. Değişiklikleri yukarıdaki gold butonla yayınlayabilirsiniz.', 'success');
+      },
+
+      autoSlugify() {
+        if (!this.editingItem._title_field) return;
+        let str = this.editingItem._title_field.toLowerCase().trim();
+        const trMap = {
+          'ç': 'c', 'ğ': 'g', 'ı': 'i', 'ö': 'o', 'ş': 's', 'ü': 'u',
+          'â': 'a', 'î': 'i', 'û': 'u'
+        };
+        for (let key in trMap) {
+          str = str.replace(new RegExp(key, 'g'), trMap[key]);
+        }
+        this.editingItem.id = str
+          .replace(/[^a-z0-9\s-]/g, '')
+          .replace(/\s+/g, '-')
+          .replace(/-+/g, '-')
+          .replace(/^-+|-+$/g, '');
+        this.validateSlug();
+      },
+
+      validateSlug() {
+        if (!this.editingItem.id) {
+          this.errors.id = '⚠️ Kalıcı bağlantı (ID) boş olamaz.';
+          return;
+        }
+        this.editingItem.id = this.editingItem.id.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-');
+        
+        const dup = this.allSlugs.find(s => 
+          s.id === this.editingItem.id && 
+          !(this.isNew === false && this.editingItem.originalId === s.id && this.activeCatalog === s.catalogName)
+        );
+        if (dup) {
+          this.errors.id = `⚠️ Bu ID başka bir üründe kullanılıyor: "${dup.productName}" (${dup.catalogLabel})`;
+        } else {
+          this.errors.id = null;
+        }
+      },
+
+      // Saves Single Static Files Locally
+      saveSingleObject() {
+        const cat = this.catalogs.find(c => c.name === this.activeCatalog);
+        if (!cat) return;
+        
+        cat.data = JSON.parse(JSON.stringify(this.singleObjectData));
+        cat.dirty = true;
+        this.showToast('Sayfa ayarları yerel belleğe kaydedildi. Değişiklikleri yayınlamak için yukarıdaki gold butonu kullanın.', 'success');
+      },
+
+      // Special local handler for press heading field
+      savePressHeadingOnly() {
+        const cat = this.catalogs.find(c => c.name === 'press');
+        if (!cat) return;
+        
+        cat.heading = this.pressHeading;
+        cat.dirty = true;
+        this.showToast('Basın başlığı yerel belleğe kaydedildi. Değişiklikleri yayınlamak için yukarıdaki gold butonu kullanın.', 'success');
+      },
+
+      // Saves Product / Post items locally in-memory
+      saveProduct() {
+        this.validateSlug();
+        if (this.errors.id) {
+          this.showToast('Formda hatalar var, lütfen düzeltin.', 'error');
+          return;
+        }
+        if (!this.editingItem._title_field.trim()) {
+          this.showToast('Lütfen başlığı girin.', 'error');
+          return;
+        }
+
+        const type = this.getActiveCatalogType();
+        
+        // Re-map binding values back to their schema names
+        if (type === 'pieces_list') {
+          this.editingItem.name = this.editingItem._title_field.trim();
+          this.editingItem.story = this.editingItem._desc_field.trim();
+          
+          this.editingItem.materials = this.editingItem.materials.map(m => m.trim()).filter(m => m !== '');
+          this.editingItem.images = this.editingItem.images.map(i => i.trim()).filter(i => i !== '');
+          
+          if (this.editingItem.materials.length === 0) this.editingItem.materials = ['Gümüş / Bronze Core'];
+          if (this.editingItem.images.length === 0) this.editingItem.images = ['/assets/pieces/WhatsApp Image 2026-05-19 at 11.59.29.jpeg'];
+        } else {
+          this.editingItem.title = this.editingItem._title_field.trim();
+          this.editingItem.summary = this.editingItem._desc_field.trim();
+        }
+
+        // Strip temporary properties
+        delete this.editingItem._title_field;
+        delete this.editingItem._desc_field;
+        delete this.editingItem.originalId;
+
+        const items = this.getActiveCatalogData();
+        if (this.isNew) {
+          items.push(this.editingItem);
+        } else {
+          items[this.editingIndex] = this.editingItem;
+        }
+
+        const cat = this.catalogs.find(c => c.name === this.activeCatalog);
+        if (cat) cat.dirty = true;
+
+        this.isEditing = false;
+        this.showToast('Değişiklikler yerel belleğe kaydedildi. Değişiklikleri yayınlamak için yukarıdaki gold butonu kullanın.', 'success');
+      },
+
+      // Delete items locally
+      deleteItem(index) {
+        const items = this.getActiveCatalogData();
+        const title = items[index].name || items[index].title;
+        if (!confirm(`"${title}" adlı kaydı silmek istediğinize emin misiniz?`)) return;
+        
+        items.splice(index, 1);
+        
+        const cat = this.catalogs.find(c => c.name === this.activeCatalog);
+        if (cat) cat.dirty = true;
+        this.showToast('Kayıt silindi (yerel). Değişiklikleri yayınlamak için yukarıdaki gold butonu kullanın.', 'success');
+      },
+
+      // BATCH PUBLISH TO GITHUB
+      async publishAllChanges() {
+        const dirty = this.catalogs.filter(c => c.dirty);
+        if (dirty.length === 0) {
+          this.showToast('Yayınlanacak değişiklik yok.', 'info');
+          return;
+        }
+        
+        if (!confirm(`${dirty.length} katalogta yaptığınız değişiklikleri toplu olarak GitHub'a göndermek ve canlı sitede yayınlamak istediğinize emin misiniz?`)) {
+          return;
+        }
+        
+        this.showLoading('Değişiklikler GitHub deposuna yayınlanıyor...');
+        
+        try {
+          for (let cat of dirty) {
+            let payload = {};
+            if (cat.type === 'single_object') {
+              payload = cat.data;
+            } else if (cat.type === 'pieces_list') {
+              payload = { pieces: cat.data };
+            } else if (cat.type === 'articles_list') {
+              payload = { heading: cat.heading, articles: cat.data };
+            } else if (cat.type === 'posts_list') {
+              payload = { posts: cat.data };
+            }
+            
+            const jsonString = JSON.stringify(payload, null, 2);
+            const base64Content = btoa(unescape(encodeURIComponent(jsonString)));
+            
+            const res = await fetch(`https://api.github.com/repos/${this.repoOwner}/${this.repoName}/contents/${cat.path}`, {
+              method: 'PUT',
+              headers: {
+                'Authorization': `token ${this.token}`,
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                message: `Publish batch updates for ${cat.label} via CMS Panel`,
+                content: base64Content,
+                sha: cat.sha,
+                branch: this.branch
+              })
+            });
+            
+            if (res.ok) {
+              const resJson = await res.json();
+              cat.sha = resJson.content.sha;
+              cat.dirty = false;
+            } else {
+              throw new Error(`GitHub ${cat.label} dosyasını güncelleyemedi.`);
+            }
+          }
+          
+          this.showToast('Tüm değişiklikler başarıyla yayınlandı! Dağıtım süreci başlatıldı.', 'success');
+          await this.loadAllCatalogs();
+        } catch (err) {
+          console.error(err);
+          this.showToast('Yayınlama sırasında bir hata oluştu. Bağlantınızı kontrol edin.', 'error');
+        } finally {
+          this.hideLoading();
+        }
+      },
+
+      // Premium Notifications Toasts
+      showToast(message, type = 'success') {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+        const toast = document.createElement('div');
+        
+        let bgColor = 'bg-slate-900/90 border-slate-800 text-slate-100';
+        let icon = '<i class="fa-solid fa-circle-check text-green-400 text-base"></i>';
+        if (type === 'success') {
+          bgColor = 'bg-slate-900/90 border-gold-500/20 text-slate-100';
+          icon = '<i class="fa-solid fa-circle-check text-gold-400 text-base"></i>';
+        } else if (type === 'error') {
+          bgColor = 'bg-red-950/90 border-red-900/20 text-red-100';
+          icon = '<i class="fa-solid fa-circle-exclamation text-red-400 text-base"></i>';
+        }
+
+        toast.className = `flex items-center gap-3 px-4 py-3.5 rounded-xl border backdrop-blur-md shadow-xl max-w-sm transition-all duration-300 transform translate-y-2 opacity-0 ${bgColor}`;
+        toast.innerHTML = `
+          ${icon}
+          <span class="text-xs font-semibold leading-relaxed">${message}</span>
+        `;
+        container.appendChild(toast);
+        setTimeout(() => toast.classList.remove('translate-y-2', 'opacity-0'), 50);
+        setTimeout(() => {
+          toast.classList.add('opacity-0', 'translate-y-[-4px]');
+          setTimeout(() => toast.remove(), 300);
+        }, 4000);
+      }
+    };
+  }
+</script>

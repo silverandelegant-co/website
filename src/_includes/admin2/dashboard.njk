@@ -1,0 +1,130 @@
+<!-- DASHBOARD GENERAL VIEW -->
+<div x-show="activeCatalog === 'dashboard'" class="space-y-8 animate-fade-in" x-cloak>
+  
+  <!-- Welcome Hero -->
+  <div class="bg-gradient-to-r from-slate-900/80 to-slate-900/30 border border-slate-800 p-8 rounded-2xl relative overflow-hidden">
+    <div class="absolute -right-20 -bottom-20 w-60 h-60 bg-gold-500/5 rounded-full blur-[60px]"></div>
+    <h3 class="font-serif text-2xl md:text-3xl text-slate-100 font-semibold tracking-wide">Merhaba Hamza!</h3>
+    <p class="mt-2 text-slate-400 text-sm max-w-xl leading-relaxed">
+      Zanaatkar Yönetim Paneli'ne hoş geldiniz. Değişiklikleri yerel olarak yapabilir ve tek tıklamayla tümünü birden GitHub'a yayınlayabilirsiniz. Sol menüyü veya aşağıdaki kartları kullanarak düzenlemeye başlayabilirsiniz.
+    </p>
+  </div>
+
+  <!-- Group 1: Pages & System Settings -->
+  <div class="space-y-4">
+    <div class="flex items-center space-x-2 border-b border-slate-800/60 pb-2">
+      <i class="fa-solid fa-folder-open text-gold-400 text-sm"></i>
+      <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Sayfalar & Genel Ayarlar</h4>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <template x-for="cat in pagesCatalogs" :key="cat.name">
+        <div class="bg-slate-900/20 border hover:border-slate-700/80 p-5 rounded-2xl flex flex-col justify-between transition-all hover:translate-y-[-2px]"
+          :class="cat.dirty ? 'border-amber-500/30 bg-amber-500/[0.01]' : 'border-slate-800'">
+          <div class="flex justify-between items-start">
+            <div>
+              <div class="flex items-center space-x-2">
+                <h5 class="font-serif text-base font-semibold text-slate-200" x-text="cat.label"></h5>
+                <span x-show="cat.dirty" class="px-2 py-0.5 text-[8px] bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full font-medium" x-cloak>Değişiklik Var</span>
+              </div>
+              <span class="text-[10px] text-slate-500 block mt-1" x-text="cat.path"></span>
+            </div>
+            <div class="w-9 h-9 rounded-xl bg-slate-950 flex items-center justify-center text-gold-400 border border-slate-800">
+              <i class="fa-solid text-xs" :class="cat.name === 'press' ? 'fa-newspaper' : 'fa-sliders'"></i>
+            </div>
+          </div>
+          
+          <div class="mt-5 flex items-center justify-between">
+            <div>
+              <span class="text-[9px] uppercase text-slate-500 tracking-wider block" x-text="cat.name === 'press' ? 'Kayıt Sayısı' : 'Tür'"></span>
+              <span class="text-sm font-semibold text-gold-300 font-mono" x-text="cat.name === 'press' ? `${cat.data.length} Makale` : 'Statik Sayfa'"></span>
+            </div>
+            <button @click="selectCatalog(cat.name)" 
+              class="px-3.5 py-1.5 bg-slate-950 hover:bg-gold-500/10 border border-slate-800 hover:border-gold-500/20 rounded-xl text-xs font-semibold text-gold-400 hover:text-gold-300 transition-all flex items-center space-x-1.5">
+              <span>Düzenle</span>
+              <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </button>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+
+  <!-- Group 2: Jewelry Categories -->
+  <div class="space-y-4 pt-4">
+    <div class="flex items-center space-x-2 border-b border-slate-800/60 pb-2">
+      <i class="fa-solid fa-gem text-gold-400 text-sm"></i>
+      <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Takı Katalogları</h4>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <template x-for="cat in piecesCatalogs" :key="cat.name">
+        <div class="bg-slate-900/20 border hover:border-slate-700/80 p-5 rounded-2xl flex flex-col justify-between transition-all hover:translate-y-[-2px]"
+          :class="cat.dirty ? 'border-amber-500/30 bg-amber-500/[0.01]' : 'border-slate-800'">
+          <div class="flex justify-between items-start">
+            <div>
+              <div class="flex items-center space-x-2">
+                <h5 class="font-serif text-base font-semibold text-slate-200" x-text="cat.label"></h5>
+                <span x-show="cat.dirty" class="px-2 py-0.5 text-[8px] bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full font-medium" x-cloak>Değişiklik Var</span>
+              </div>
+              <span class="text-[10px] text-slate-500 block mt-1" x-text="cat.path"></span>
+            </div>
+            <div class="w-9 h-9 rounded-xl bg-slate-950 flex items-center justify-center text-gold-400 border border-slate-800">
+              <i class="fa-solid fa-gem text-xs"></i>
+            </div>
+          </div>
+          
+          <div class="mt-5 flex items-center justify-between">
+            <div>
+              <span class="text-[9px] uppercase text-slate-500 tracking-wider block">Toplam Ürün</span>
+              <span class="text-sm font-semibold text-gold-300 font-mono" x-text="`${cat.data.length} Ürün`"></span>
+            </div>
+            <button @click="selectCatalog(cat.name)" 
+              class="px-3.5 py-1.5 bg-slate-950 hover:bg-gold-500/10 border border-slate-800 hover:border-gold-500/20 rounded-xl text-xs font-semibold text-gold-400 hover:text-gold-300 transition-all flex items-center space-x-1.5">
+              <span>Yönet</span>
+              <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </button>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+
+  <!-- Group 3: Blog Categories -->
+  <div class="space-y-4 pt-4">
+    <div class="flex items-center space-x-2 border-b border-slate-800/60 pb-2">
+      <i class="fa-solid fa-feather-pointed text-gold-400 text-sm"></i>
+      <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Günlük & Blog Kategorileri</h4>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <template x-for="cat in blogCatalogs" :key="cat.name">
+        <div class="bg-slate-900/20 border hover:border-slate-700/80 p-5 rounded-2xl flex flex-col justify-between transition-all hover:translate-y-[-2px]"
+          :class="cat.dirty ? 'border-amber-500/30 bg-amber-500/[0.01]' : 'border-slate-800'">
+          <div class="flex justify-between items-start">
+            <div>
+              <div class="flex items-center space-x-2">
+                <h5 class="font-serif text-base font-semibold text-slate-200" x-text="cat.label"></h5>
+                <span x-show="cat.dirty" class="px-2 py-0.5 text-[8px] bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full font-medium" x-cloak>Değişiklik Var</span>
+              </div>
+              <span class="text-[10px] text-slate-500 block mt-1" x-text="cat.path"></span>
+            </div>
+            <div class="w-9 h-9 rounded-xl bg-slate-950 flex items-center justify-center text-gold-400 border border-slate-800">
+              <i class="fa-solid fa-feather-pointed text-xs"></i>
+            </div>
+          </div>
+          
+          <div class="mt-5 flex items-center justify-between">
+            <div>
+              <span class="text-[9px] uppercase text-slate-500 tracking-wider block">Toplam Yazı</span>
+              <span class="text-sm font-semibold text-gold-300 font-mono" x-text="`${cat.data.length} Yazı`"></span>
+            </div>
+            <button @click="selectCatalog(cat.name)" 
+              class="px-3.5 py-1.5 bg-slate-950 hover:bg-gold-500/10 border border-slate-800 hover:border-gold-500/20 rounded-xl text-xs font-semibold text-gold-400 hover:text-gold-300 transition-all flex items-center space-x-1.5">
+              <span>Yönet</span>
+              <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </button>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+
+</div>

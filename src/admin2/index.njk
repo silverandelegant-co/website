@@ -1,0 +1,53 @@
+---
+permalink: /admin2/index.html
+---
+<!DOCTYPE html>
+<html lang="tr" class="h-full bg-slate-950">
+<head>
+  {% include "admin2/head.njk" %}
+</head>
+<body class="h-full text-slate-100 font-sans" x-data="adminApp()" x-init="initApp()">
+
+  <!-- Page Loader Spinner -->
+  {% include "admin2/loader.njk" %}
+
+  <!-- AUTHENTICATION VIEW -->
+  {% include "admin2/auth.njk" %}
+
+  <!-- MAIN APP PANEL (AUTHENTICATED) -->
+  <div x-show="isAuthenticated" class="min-h-full flex flex-col bg-slate-950" x-cloak>
+    
+    <!-- Header -->
+    {% include "admin2/header.njk" %}
+
+    <div class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col lg:flex-row gap-8">
+      <!-- SIDE NAVIGATION -->
+      {% include "admin2/sidebar.njk" %}
+
+      <!-- MAIN CONTENT SECTION -->
+      <main class="flex-grow min-w-0">
+        <!-- DASHBOARD GENERAL VIEW -->
+        {% include "admin2/dashboard.njk" %}
+
+        <!-- SINGLE FILE OBJECTS (DIRECT FIELD EDITING SCREEN) -->
+        {% include "admin2/settings-forms.njk" %}
+
+        <!-- LIST COLLECTIONS VIEW (Takı, Blog, Basın) -->
+        {% include "admin2/table-view.njk" %}
+      </main>
+    </div>
+
+    <!-- ISOLATED EDIT / ADD SLIDE-OVER DRAWER -->
+    {% include "admin2/editor-drawer.njk" %}
+
+    <!-- PREMIUM CUSTOM MEDIA LIBRARY MODAL -->
+    {% include "admin2/media-modal.njk" %}
+
+  </div>
+
+  <div id="toast-container" class="fixed bottom-6 right-6 z-[99999] flex flex-col gap-3"></div>
+
+  <!-- ALPINE APPLICATION LOGIC -->
+  {% include "admin2/app-state.njk" %}
+</body>
+</html>

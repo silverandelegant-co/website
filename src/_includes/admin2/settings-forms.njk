@@ -1,0 +1,247 @@
+<!-- SINGLE FILE OBJECTS (DIRECT FIELD EDITING SCREEN) -->
+<template x-if="getActiveCatalogType() === 'single_object'">
+  <div class="space-y-6 bg-slate-900/20 border border-slate-800 p-6 rounded-2xl relative">
+    <div class="flex items-center justify-between border-b border-slate-800/80 pb-4">
+      <div>
+        <h3 class="font-serif text-2xl font-semibold text-slate-100" x-text="activeCatalogLabel"></h3>
+        <p class="text-xs text-slate-500 mt-1">Bu sabit sayfaya ait metin ve ayarları doğrudan düzenleyin.</p>
+      </div>
+      <button @click="saveSingleObject()" 
+        class="px-5 py-2.5 bg-gold-500 hover:bg-gold-400 active:scale-95 border border-transparent rounded-xl text-slate-950 text-xs font-semibold tracking-wide transition-all flex items-center space-x-2">
+        <i class="fa-solid fa-floppy-disk"></i>
+        <span>Sayfayı Kaydet</span>
+      </button>
+    </div>
+
+    <div class="space-y-6 pt-4">
+      <!-- GENERAL SETTINGS fields -->
+      <div x-show="activeCatalog === 'settings'" class="space-y-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Instagram Adresi</label>
+            <input type="text" x-model="singleObjectData.instagram" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-gold-500 focus:border-gold-500" />
+          </div>
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">E-posta Adresi</label>
+            <input type="text" x-model="singleObjectData.email" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-gold-500 focus:border-gold-500" />
+          </div>
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Wolf & Badger Adresi</label>
+            <input type="text" x-model="singleObjectData.wolfandbadger" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-gold-500 focus:border-gold-500" />
+          </div>
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">More4id Adresi</label>
+            <input type="text" x-model="singleObjectData.more4id" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-gold-500 focus:border-gold-500" />
+          </div>
+        </div>
+        <div class="space-y-1.5">
+          <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Not Just A Label Adresi</label>
+          <input type="text" x-model="singleObjectData.njal" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-gold-500 focus:border-gold-500" />
+        </div>
+        <div class="space-y-1.5">
+          <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Ana Sayfa Tanıtım Yazısı (Tagline)</label>
+          <input type="text" x-model="singleObjectData.tagline" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-gold-500 focus:border-gold-500" />
+        </div>
+      </div>
+
+      <!-- CONTACT fields -->
+      <div x-show="activeCatalog === 'contact'" class="space-y-5">
+        <div class="space-y-1.5">
+          <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Ana Başlık</label>
+          <input type="text" x-model="singleObjectData.heading" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none" />
+        </div>
+        <div class="space-y-1.5">
+          <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Giriş Metni</label>
+          <!-- WYSIWYG rich text editor with Turndown conversion -->
+          <div 
+            class="quill-wysiwyg-wrapper"
+            x-init="
+              $nextTick(() => {
+                const container = $el.querySelector('.quill-editor');
+                const quill = new Quill(container, {
+                  theme: 'snow',
+                  modules: {
+                    toolbar: [
+                      ['bold', 'italic', 'underline'],
+                      [{ 'header': [1, 2, 3, false] }],
+                      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                      ['link', 'clean']
+                    ]
+                  }
+                });
+                quill.root.innerHTML = marked.parse(singleObjectData.intro || '');
+                const turndownService = new TurndownService({ headingStyle: 'atx' });
+                quill.on('text-change', (delta, oldDelta, source) => {
+                  if (source === 'user') {
+                    singleObjectData.intro = turndownService.turndown(quill.root.innerHTML);
+                  }
+                });
+                this.$watch('singleObjectData.intro', (newVal) => {
+                  const currentMarkdown = turndownService.turndown(quill.root.innerHTML);
+                  if (newVal !== currentMarkdown) {
+                    quill.root.innerHTML = marked.parse(newVal || '');
+                  }
+                });
+              });
+            "
+          >
+            <div class="quill-editor" style="height: 350px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABOUT (Hakkımızda) page -->
+      <div x-show="activeCatalog === 'about'" class="space-y-6">
+        <!-- Hero Image selection -->
+        <div class="space-y-2">
+          <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 font-sans">Giriş (Hero) Görseli</label>
+          <div class="flex items-center space-x-3">
+            <input type="text" x-model="singleObjectData.hero_image" class="block flex-grow bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs font-mono text-slate-300 focus:outline-none" readonly />
+            <button @click="openMediaLibraryModal(singleObjectData, 'hero_image')"
+              class="px-4 py-3 bg-slate-900 border border-slate-800 hover:border-gold-500/20 text-gold-400 text-xs font-semibold rounded-xl flex-shrink-0">
+              Görsel Seç
+            </button>
+          </div>
+          <!-- Image preview -->
+          <div class="mt-2 w-32 h-20 bg-slate-950 rounded-lg overflow-hidden border border-slate-800">
+            <img :src="'/' + (singleObjectData.hero_image || '').replace(/^\/+/, '')" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/200x100/1e293b/a88653?text=Yok'" />
+          </div>
+        </div>
+
+        <!-- Sections list editing -->
+        <div class="space-y-3 pt-4 border-t border-slate-800/80">
+          <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-300">Bölümler (Sections)</h4>
+          <div class="space-y-3">
+            <template x-for="(sec, idx) in singleObjectData.sections" :key="idx">
+              <div class="bg-slate-950/40 border border-slate-800/80 p-4 rounded-xl space-y-3 relative">
+                <button @click="singleObjectData.sections.splice(idx, 1)" class="absolute top-4 right-4 text-slate-500 hover:text-red-400 text-xs">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+                <div class="grid grid-cols-2 gap-4 pr-8">
+                  <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-wider text-slate-500">Etiket</label>
+                    <input type="text" x-model="sec.label" class="block w-full bg-slate-900 border border-slate-800 rounded-lg py-1.5 px-3 text-xs text-slate-300" />
+                  </div>
+                  <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-wider text-slate-500">Başlık</label>
+                    <input type="text" x-model="sec.title" class="block w-full bg-slate-900 border border-slate-800 rounded-lg py-1.5 px-3 text-xs text-slate-300" />
+                  </div>
+                </div>
+                <div class="space-y-1">
+                  <label class="text-[9px] uppercase tracking-wider text-slate-500">Metin İçeriği</label>
+                  
+                  <!-- WYSIWYG section body editor -->
+                  <div 
+                    class="quill-wysiwyg-wrapper"
+                    x-init="
+                      $nextTick(() => {
+                        const container = $el.querySelector('.quill-editor');
+                        const quill = new Quill(container, {
+                          theme: 'snow',
+                          modules: {
+                            toolbar: [
+                              ['bold', 'italic', 'underline'],
+                              [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                              ['link', 'clean']
+                            ]
+                          }
+                        });
+                        quill.root.innerHTML = marked.parse(sec.body || '');
+                        const turndownService = new TurndownService({ headingStyle: 'atx' });
+                        quill.on('text-change', (delta, oldDelta, source) => {
+                          if (source === 'user') {
+                            sec.body = turndownService.turndown(quill.root.innerHTML);
+                          }
+                        });
+                        this.$watch('sec.body', (newVal) => {
+                          const currentMarkdown = turndownService.turndown(quill.root.innerHTML);
+                          if (newVal !== currentMarkdown) {
+                            quill.root.innerHTML = marked.parse(newVal || '');
+                          }
+                        });
+                      });
+                    "
+                  >
+                    <div class="quill-editor" style="height: 250px;"></div>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+          <button @click="singleObjectData.sections.push({ label: '', title: '', body: '' })"
+            class="px-3.5 py-2 bg-slate-950 hover:bg-slate-800 border border-slate-800 text-gold-400 text-xs font-semibold rounded-xl flex items-center space-x-1.5">
+            <i class="fa-solid fa-plus text-[9px]"></i>
+            <span>Yeni Bölüm Ekle</span>
+          </button>
+        </div>
+
+        <!-- Process Steps list editing -->
+        <div class="space-y-3 pt-4 border-t border-slate-800/80">
+          <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-300">Süreç Adımları (Process Steps)</h4>
+          <div class="space-y-3">
+            <template x-for="(step, idx) in singleObjectData.process_steps" :key="idx">
+              <div class="bg-slate-950/40 border border-slate-800/80 p-4 rounded-xl space-y-3 relative">
+                <button @click="singleObjectData.process_steps.splice(idx, 1)" class="absolute top-4 right-4 text-slate-500 hover:text-red-400 text-xs">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+                <div class="grid grid-cols-3 gap-4 pr-8">
+                  <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-wider text-slate-500">Numara</label>
+                    <input type="text" x-model="step.num" class="block w-full bg-slate-900 border border-slate-800 rounded-lg py-1.5 px-3 text-xs text-slate-300" />
+                  </div>
+                  <div class="space-y-1 col-span-2">
+                    <label class="text-[9px] uppercase tracking-wider text-slate-500">Başlık</label>
+                    <input type="text" x-model="step.title" class="block w-full bg-slate-900 border border-slate-800 rounded-lg py-1.5 px-3 text-xs text-slate-300" />
+                  </div>
+                </div>
+                <div class="space-y-1">
+                  <label class="text-[9px] uppercase tracking-wider text-slate-500">Açıklama</label>
+
+                  <!-- WYSIWYG step description editor -->
+                  <div 
+                    class="quill-wysiwyg-wrapper"
+                    x-init="
+                      $nextTick(() => {
+                        const container = $el.querySelector('.quill-editor');
+                        const quill = new Quill(container, {
+                          theme: 'snow',
+                          modules: {
+                            toolbar: [
+                              ['bold', 'italic', 'underline'],
+                              ['link', 'clean']
+                            ]
+                          }
+                        });
+                        quill.root.innerHTML = marked.parse(step.description || '');
+                        const turndownService = new TurndownService({ headingStyle: 'atx' });
+                        quill.on('text-change', (delta, oldDelta, source) => {
+                          if (source === 'user') {
+                            step.description = turndownService.turndown(quill.root.innerHTML);
+                          }
+                        });
+                        this.$watch('step.description', (newVal) => {
+                          const currentMarkdown = turndownService.turndown(quill.root.innerHTML);
+                          if (newVal !== currentMarkdown) {
+                            quill.root.innerHTML = marked.parse(newVal || '');
+                          }
+                        });
+                      });
+                    "
+                  >
+                    <div class="quill-editor" style="height: 200px;"></div>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+          <button @click="singleObjectData.process_steps.push({ num: '', title: '', description: '' })"
+            class="px-3.5 py-2 bg-slate-950 hover:bg-slate-800 border border-slate-800 text-gold-400 text-xs font-semibold rounded-xl flex items-center space-x-1.5">
+            <i class="fa-solid fa-plus text-[9px]"></i>
+            <span>Yeni Adım Ekle</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</template>
