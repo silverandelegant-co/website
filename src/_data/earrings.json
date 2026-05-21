@@ -614,7 +614,8 @@
       "njal": "",
       "video_url": "",
       "images": [
-        "/assets/pieces/61.jpg"
+        "/assets/pieces/61.jpg",
+        "/assets/pieces/66.jpg"
       ]
     },
     {
@@ -704,28 +705,6 @@
       "video_url": "",
       "images": [
         "/assets/pieces/65.jpg"
-      ]
-    },
-    {
-      "id": "monolith-amethyst-dome-earrings2",
-      "name": "Monolith Amethyst Dome Earrings",
-      "collection": "earrings",
-      "tagline": "A generative dome of fractured light paired with the architectural weight of an emerald-cut deep amethyst crystal.",
-      "story": "A sculptural dialogue between the fractured illumination of the skies and the monumental silence of structured form. The upper crystalline dome, capturing a restless ring of light, echoes the organic cluster of star formations mapped by contemporary logic. Suspended directly below, the uncompromising, sharp silhouette of the violet monolith introduces an unyielding architectural gravity to the design. The profound depth of the amethyst core evokes the sacred, quiet atmosphere of ancient sanctuaries, while its rigid geometry acts as a seal of modern permanence. Engineering a calculated tension between celestial softness and raw structural form, these future heirlooms behave as wearable monuments for the independent mind.",
-      "materials": [
-        "22K Gold-Plated Bronze Core",
-        "Upper Crystalline Dome with Marquise and Round-Cut Clear Crystals",
-        "Lower Emerald-Cut Deep Amethyst Purple Crystal Block",
-        "Posts and Ear Contacts: 100% Sterling Silver",
-        "100% Nickel-Free & Hypoallergenic"
-      ],
-      "featured": false,
-      "wolfandbadger": "",
-      "more4id": "",
-      "njal": "",
-      "video_url": "",
-      "images": [
-        "/assets/pieces/66.jpg"
       ]
     }
   ]
