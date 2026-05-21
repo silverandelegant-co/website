@@ -1,0 +1,78 @@
+---
+layout: base.njk
+pagination:
+  data: press.articles
+  size: 1
+  alias: article
+permalink: "/press/{{ article.id }}/index.html"
+eleventyComputed:
+  title: "{{ article.title }} — Silver & Elegant"
+  description: "{{ article.summary }}"
+---
+<article class="post-layout">
+  
+  <!-- Press Header -->
+  <header class="post-header reveal">
+    <div class="post-meta">
+      <span class="blog-category">Press</span>
+      {% if article.date %}
+        <span>&bull;</span>
+        <time datetime="{{ article.date | dateIso }}">{{ article.date | postDate }}</time>
+      {% endif %}
+    </div>
+    <h1 class="post-title" style="font-size: clamp(2rem, 4vw, 3.2rem); max-width: 900px; margin: 0 auto 2rem auto;">{{ article.title }}</h1>
+  </header>
+
+  <!-- Press Hero Image -->
+  {% if article.featured_image %}
+  <div class="post-hero-image reveal reveal-delay-1" style="max-width: 800px; margin-bottom: 4rem;">
+    <img src="/{{ article.featured_image | imgpath }}" alt="{{ article.title }}">
+  </div>
+  {% endif %}
+
+  <!-- Press Body -->
+  <div class="post-body reveal reveal-delay-2">
+    {% for section in article.sections %}
+      {% if section.type == "text_block" %}
+        {{ section.body | markdown | safe }}
+      {% elif section.type == "blockquote" %}
+        <blockquote>
+          <p>{{ section.quote }}</p>
+          {% if section.author %}
+            <cite style="display: block; font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 0.05em; color: var(--c-muted); margin-top: 0.8rem; text-transform: uppercase; font-style: normal;">— {{ section.author }}</cite>
+          {% endif %}
+        </blockquote>
+      {% elif section.type == "image_block" %}
+        <figure class="post-image-block">
+          <img src="/{{ section.image | imgpath }}" alt="{{ section.alt | default(article.title) }}" loading="lazy">
+          {% if section.caption %}
+            <figcaption>{{ section.caption }}</figcaption>
+          {% endif %}
+        </figure>
+      {% elif section.type == "subheading" %}
+        <h2>{{ section.text }}</h2>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <!-- External Link & Navigation Footer -->
+  <footer class="post-footer reveal" style="flex-direction: column; gap: 2rem; align-items: flex-start; margin-top: 6rem;">
+    {% if article.link %}
+    <div style="width: 100%; padding-bottom: 2rem; border-bottom: 1px solid var(--c-border); margin-bottom: 1rem;">
+      <p style="font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-muted); margin-bottom: 0.8rem;">Official Publication</p>
+      <a href="{{ article.link }}" target="_blank" rel="noopener" class="btn btn-outline-dark" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; border-color: var(--c-ink); padding: 0.6rem 1.2rem; font-size: 0.75rem;">
+        Read Original Feature
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
+      </a>
+    </div>
+    {% endif %}
+    
+    <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+      <a href="/press/index.html" class="btn btn-text" style="font-size:0.75rem; letter-spacing:0.05em; padding-left:0;">← Back to Press & Recognition</a>
+    </div>
+  </footer>
+
+</article>

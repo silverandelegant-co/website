@@ -33,7 +33,19 @@ permalink: "/blog/{{ post.id }}/index.html"
         {% elif section.type == "blockquote" %}
           <blockquote>
             <p>{{ section.quote }}</p>
+            {% if section.author %}
+              <cite style="display: block; font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 0.05em; color: var(--c-muted); margin-top: 0.8rem; text-transform: uppercase; font-style: normal;">— {{ section.author }}</cite>
+            {% endif %}
           </blockquote>
+        {% elif section.type == "image_block" %}
+          <figure class="post-image-block">
+            <img src="/{{ section.image | imgpath }}" alt="{{ section.alt | default(post.title) }}" loading="lazy">
+            {% if section.caption %}
+              <figcaption>{{ section.caption }}</figcaption>
+            {% endif %}
+          </figure>
+        {% elif section.type == "subheading" %}
+          <h2>{{ section.text }}</h2>
         {% endif %}
       {% endfor %}
     </div>

@@ -52,9 +52,39 @@ collections:
             name: "articles"
             widget: "list"
             fields:
+              - { label: "ID (URL kalıcı bağlantısı - küçük harf, boşluksuz)", name: "id", widget: "string" }
               - { label: "Başlık", name: "title", widget: "string" }
-              - { label: "İçerik", name: "content", widget: "text" }
-              - { label: "Harici Bağlantı (İsteğe Bağlı)", name: "link", widget: "string", required: false }
+              - { label: "Yayın Tarihi", name: "date", widget: "datetime" }
+              - { label: "Özet (Liste ekranı için kısa özet)", name: "summary", widget: "text" }
+              - { label: "Öne Çıkan Görsel (İsteğe Bağlı)", name: "featured_image", widget: "image", required: false }
+              - { label: "Harici Orijinal Makale Linki (İsteğe Bağlı)", name: "link", widget: "string", required: false }
+              - label: "İçerik Bölümleri"
+                name: "sections"
+                widget: "list"
+                types:
+                  - label: "Metin Bloğu"
+                    name: "text_block"
+                    widget: "object"
+                    fields:
+                      - { label: "Metin İçeriği", name: "body", widget: "markdown" }
+                  - label: "Alıntı"
+                    name: "blockquote"
+                    widget: "object"
+                    fields:
+                      - { label: "Alıntı Metni", name: "quote", widget: "string" }
+                      - { label: "Alıntı Sahibi / Kaynak (İsteğe Bağlı)", name: "author", widget: "string", required: false }
+                  - label: "Görsel Bloğu"
+                    name: "image_block"
+                    widget: "object"
+                    fields:
+                      - { label: "Görsel", name: "image", widget: "image" }
+                      - { label: "Görsel Açıklaması (Alt)", name: "alt", widget: "string", required: false }
+                      - { label: "Görsel Başlığı / Alt Yazı", name: "caption", widget: "string", required: false }
+                  - label: "Alt Başlık"
+                    name: "subheading"
+                    widget: "object"
+                    fields:
+                      - { label: "Alt Başlık Metni", name: "text", widget: "string" }
 
       - file: "src/_data/contact.json"
         label: "İletişim Sayfası"
@@ -147,6 +177,19 @@ collections:
                     widget: "object"
                     fields:
                       - { label: "Alıntı Metni", name: "quote", widget: "string" }
+                      - { label: "Alıntı Sahibi / Kaynak (İsteğe Bağlı)", name: "author", widget: "string", required: false }
+                  - label: "Görsel Bloğu"
+                    name: "image_block"
+                    widget: "object"
+                    fields:
+                      - { label: "Görsel", name: "image", widget: "image" }
+                      - { label: "Görsel Açıklaması (Alt)", name: "alt", widget: "string", required: false }
+                      - { label: "Görsel Başlığı / Alt Yazı", name: "caption", widget: "string", required: false }
+                  - label: "Alt Başlık"
+                    name: "subheading"
+                    widget: "object"
+                    fields:
+                      - { label: "Alt Başlık Metni", name: "text", widget: "string" }
 
       - file: "src/_data/posts_craftsmanship.json"
         label: "Zanaatkarlık Notları"
