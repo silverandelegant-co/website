@@ -65,4 +65,21 @@ eleventyComputed:
       <article class="piece-story" id="piece-story" style="white-space: pre-line;">{{ piece.story }}</article>
 
     </div>
+
+    {% if piece.video_url and piece.video_url | youtubeEmbed %}
+    <div style="border-top:1px solid var(--c-border); padding: 5rem 2rem; background: var(--c-cream);">
+      <div style="max-width:800px; margin:0 auto; display:flex; flex-direction:column; gap:2rem;">
+        <span style="font-family:var(--font-sans); font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--c-muted); text-align:center;">Narrative Video</span>
+        <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; max-width:100%; border:1px solid var(--c-border); background:#000;">
+          <iframe 
+            src="{{ piece.video_url | youtubeEmbed }}" 
+            style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
   </div>

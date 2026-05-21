@@ -41,6 +41,22 @@ module.exports = function(eleventyConfig) {
     return markdownIt.render(content);
   });
 
+  // Extract YouTube ID and return the standard embed URL
+  eleventyConfig.addFilter("youtubeEmbed", (url) => {
+    if (!url) return "";
+    let videoId = "";
+    const watchMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/i);
+    if (watchMatch && watchMatch[1]) {
+      videoId = watchMatch[1];
+    } else {
+      const directIdMatch = url.match(/^[a-zA-Z0-9_-]{11}$/);
+      if (directIdMatch) {
+        videoId = url;
+      }
+    }
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : "";
+  });
+
   // Output configuration
   return {
     dir: {

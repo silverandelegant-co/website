@@ -80,6 +80,12 @@ collections:
                       - { label: "Görsel", name: "image", widget: "image" }
                       - { label: "Görsel Açıklaması (Alt)", name: "alt", widget: "string", required: false }
                       - { label: "Görsel Başlığı / Alt Yazı", name: "caption", widget: "string", required: false }
+                  - label: "Video Bloğu"
+                    name: "video_block"
+                    widget: "object"
+                    fields:
+                      - { label: "YouTube Video Linki", name: "video_url", widget: "string" }
+                      - { label: "Video Başlığı / Alt Yazı (İsteğe Bağlı)", name: "caption", widget: "string", required: false }
                   - label: "Alt Başlık"
                     name: "subheading"
                     widget: "object"
@@ -113,6 +119,7 @@ collections:
               - { label: "Öne Çıkarılan (Ana sayfada gösterilsin mi?)", name: "featured", widget: "boolean", default: false }
               - { label: "Wolf & Badger Ürün Sayfası Linki (İsteğe Bağlı)", name: "wolfandbadger", widget: "string", required: false }
               - { label: "More4id Ürün Sayfası Linki (İsteğe Bağlı)", name: "more4id", widget: "string", required: false }
+              - { label: "YouTube Tanıtım Videosu Linki (İsteğe Bağlı)", name: "video_url", widget: "string", required: false }
               - label: "Ürün Görselleri"
                 name: "images"
                 widget: "list"
@@ -185,6 +192,12 @@ collections:
                       - { label: "Görsel", name: "image", widget: "image" }
                       - { label: "Görsel Açıklaması (Alt)", name: "alt", widget: "string", required: false }
                       - { label: "Görsel Başlığı / Alt Yazı", name: "caption", widget: "string", required: false }
+                  - label: "Video Bloğu"
+                    name: "video_block"
+                    widget: "object"
+                    fields:
+                      - { label: "YouTube Video Linki", name: "video_url", widget: "string" }
+                      - { label: "Video Başlığı / Alt Yazı (İsteğe Bağlı)", name: "caption", widget: "string", required: false }
                   - label: "Alt Başlık"
                     name: "subheading"
                     widget: "object"
