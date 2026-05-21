@@ -14,8 +14,6 @@
       "featured": true,
       "wolfandbadger": "https://www.wolfandbadger.com/us/crystal-lobster-drop-earrings/",
       "more4id": "",
-      "njal": "",
-      "video_url": "",
       "images": [
         "/assets/pieces/WhatsApp Image 2026-05-17 at 07.31.50 (2).jpeg"
       ]
@@ -35,8 +33,6 @@
       "featured": true,
       "wolfandbadger": "https://www.wolfandbadger.com/us/crocodile-earrings/",
       "more4id": "",
-      "njal": "",
-      "video_url": "",
       "images": [
         "/assets/pieces/WhatsApp Image 2026-05-19 at 11.59.26.jpeg"
       ]
@@ -57,8 +53,6 @@
       "featured": true,
       "wolfandbadger": "https://www.wolfandbadger.com/",
       "more4id": "",
-      "njal": "",
-      "video_url": "",
       "images": [
         "/assets/pieces/WhatsApp Image 2026-05-19 at 11.59.29.jpeg"
       ]
@@ -79,8 +73,6 @@
       "featured": true,
       "wolfandbadger": "https://www.wolfandbadger.com/",
       "more4id": "",
-      "njal": "",
-      "video_url": "",
       "images": [
         "/assets/pieces/SilvernElegant (3).jpg"
       ]
@@ -101,8 +93,6 @@
       "featured": true,
       "wolfandbadger": "https://www.wolfandbadger.com/",
       "more4id": "",
-      "njal": "",
-      "video_url": "",
       "images": [
         "/assets/pieces/SilvernElegant (4).jpg"
       ]
@@ -123,8 +113,6 @@
       "featured": true,
       "wolfandbadger": "https://www.wolfandbadger.com/",
       "more4id": "",
-      "njal": "",
-      "video_url": "",
       "images": [
         "/assets/pieces/SilvernElegant (5).jpg"
       ]
@@ -145,8 +133,6 @@
       "featured": true,
       "wolfandbadger": "https://www.wolfandbadger.com/",
       "more4id": "",
-      "njal": "",
-      "video_url": "",
       "images": [
         "/assets/pieces/SilvernElegant (6).jpg"
       ]
@@ -167,8 +153,6 @@
       "featured": true,
       "wolfandbadger": "https://www.wolfandbadger.com/",
       "more4id": "",
-      "njal": "",
-      "video_url": "",
       "images": [
         "/assets/pieces/SilvernElegant (7).jpg"
       ]
@@ -189,8 +173,6 @@
       "featured": true,
       "wolfandbadger": "https://www.wolfandbadger.com/",
       "more4id": "",
-      "njal": "",
-      "video_url": "",
       "images": [
         "/assets/pieces/SilvernElegant (8).jpg",
         "/assets/pieces/SilvernElegant (10).jpg"
@@ -212,8 +194,6 @@
       "featured": true,
       "wolfandbadger": "https://www.wolfandbadger.com/",
       "more4id": "",
-      "njal": "",
-      "video_url": "",
       "images": [
         "/assets/pieces/SilvernElegant (9).jpg"
       ]
@@ -234,10 +214,331 @@
       "featured": true,
       "wolfandbadger": "https://www.wolfandbadger.com/",
       "more4id": "",
-      "njal": "",
-      "video_url": "",
       "images": [
         "/assets/pieces/SilvernElegant (11).jpg"
+      ]
+    },
+    {
+      "id": "laurel-coin-pearl-drop-earrings",
+      "name": "Laurel Coin Pearl Drop Earrings",
+      "collection": "earrings",
+      "tagline": "Ancient laurel-wreathed medallions modernised through structured, 22K gold-plated bronze and lustrous freshwater pearls.",
+      "story": "A whisper from antiquity meets the sharp silence of the contemporary avant-garde. These earrings are a poetic dialogue between power and permanence, resurrecting ancient symbols of triumph into wearable narratives. The raw, deliberate textures on the surface evoke the monumental weight of lost empires, while the solitary pearl introduces a soft, emotional vulnerability to the structural strength. Fusing the imperfect beauty of human emotion with the precision of a new era, these pieces stand as miniature monuments- capturing the essence of legacy and reshaping it for the modern collector.",
+      "materials": [
+        "22K Gold-Plated Bronze Core",
+        "Hand-Selected Natural Freshwater Pearl Centres",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic",
+        "Handcrafted via Traditional Lost-Wax Technique and Generative Design Integration"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "images": [
+        "/assets/pieces/44.jpg"
+      ]
+    },
+    {
+      "id": "monolith-eroded-cuff-bracelet",
+      "name": "Monolith Eroded Cuff Bracelet",
+      "collection": "earrings",
+      "tagline": "A sculptural cuff bracelet capturing the monumental weight of brutalist forms and the poetic textures of time-worn surfaces.",
+      "story": "A tribute to the twin forces of erosion and permanence. This cuff captures the raw, profound character of a brutalist monument that has withstood the elements for centuries. Every crevice, ridge, and intentional imperfection on its surface forms a micro-narrative—born from the collision of generative geometric intelligence and the unpredictable depths of human emotion. Enveloping the wrist like a protective yet vulnerable piece of wearable architecture, this statement piece speaks of structural legacy and the silent power of an unyielding silhouette.",
+      "materials": [
+        "22K Gold-Plated Bronze",
+        "Adjustable Open-Cuff Design",
+        "100% Nickel-Free & Hypoallergenic",
+        "Handcrafted via Traditional Lost-Wax Technique with Generative Texture Engineering"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "images": [
+        "/assets/pieces/45.jpg"
+      ]
+    },
+    {
+      "id": "orbit-enamel-coral-studs",
+      "name": "Orbit Enamel Coral Studs",
+      "collection": "earrings",
+      "tagline": "Avant-garde geometric form meets the graphic contrast of deep black enamel and striking coral tones.",
+      "story": "A bold dialogue between modernist geometry and a retro-futuristic silhouette. These studs function as a visual eclipse, where the absolute depth of black enamel collides with the vibrant, unyielding energy of a crimson core. The structured golden arcs frames this tension, creating an architectural balance on the ear. Fusing the calculated precision of generative design lines with the raw emotional resonance of contrasting tones, this piece stands as an unapologetic statement of independent elegance.",
+      "materials": [
+        "22K Gold-Plated Bronze Core",
+        "Hand-Applied Black Enamel Detailing",
+        "Acrylic Cabochon Coral Red Centre",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "images": [
+        "/assets/pieces/46.jpg"
+      ]
+    },
+    {
+      "id": "nefertiti-avant-garde-studs",
+      "name": "Nefertiti Avant-Garde Studs",
+      "collection": "earrings",
+      "tagline": "The iconic silhouette of ancient majesty reimagined through generative lattice geometry and the profound depth of cobalt enamel.",
+      "story": "A sculptural manifestation of unyielding sovereignty and absolute grace. These studs bring one of history’s most enigmatic profiles into a poetic convergence with futuristic design intelligence. While the noble composure of the silhouette carries the profound weight of human legacy, the fluid, openwork lattice of the crown echoes the intricate structures of avant-garde architecture. The deep, infinite blue—evoking the night sky of ancient empires—interlocks with the permanent radiance of gold, creating an evocative balance between power and poise. These future heirlooms serve as wearable monuments, redefining the concept of majesty for the contemporary collector.",
+      "materials": [
+        "22K Gold-Plated Bronze Core",
+        "Hand-Applied Lapis / Cobalt Blue Enamel Detailing",
+        "Generative Openwork Crown Structure",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "images": [
+        "/assets/pieces/47.jpg"
+      ]
+    },
+    {
+      "id": "monolith-square-drop-earrings",
+      "name": "Monolith Square Drop Earrings",
+      "collection": "earrings",
+      "tagline": "Brutalist square geometry meets the poetic contrast of a deep black centre and light-capturing clear crystals.",
+      "story": "Inspired by the monumental ceilings of ancient sanctuaries and the uncompromising lines of brutalist architecture. These drop earrings act as a geometric seal, containing a mystical narrative within a strict, rational square. The raw, hammered textures of the gilded surface celebrate the beautiful imperfections of human emotion, while the precise grid of light-reflecting elements introduces a calculated, rhythmic elegance. At the absolute core, a solid void of deep black anchors the entire silhouette, creating a moment of modern, powerful silence. Engineering a deliberate dialogue between physical structure and unseen depth, these pieces stand as future heirlooms for the independent mind.",
+      "materials": [
+        "22K Gold-Plated Bronze Core",
+        "Matte, Textured Organic Metal Finish",
+        "Square-Cut Black Enamel Centre",
+        "Inset Clear Crystal Accents",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "images": [
+        "/assets/pieces/48.jpg"
+      ]
+    },
+    {
+      "id": "origami-elephant-enamel-studs",
+      "name": "Origami Elephant Enamel Studs",
+      "collection": "earrings",
+      "tagline": "The ancient symbol of wisdom and memory reimagined through generative low-poly geometry and a winter-toned enamel palette.",
+      "story": "A profound, ancestral memory stretching across time is meticulously reconstructed through the sharp, rational lines of tomorrow. In this piece, the silhouette of nature’s most majestic guardian undergoes a digital crystallisation, transforming into an abstract monument of form. Each sharp, geometric facet rises like a protective shield, preserving fragments of a timeless legacy, while the delicate intersections of icy blue and pearlescent tones introduce a poetic weightlessness to the powerful posture. Uniting the unyielding strength of the natural world with the complex structural intelligence of machine logic, these studs stand as modern amulets of silent wisdom.",
+      "materials": [
+        "22K Gold-Plated Bronze Framework",
+        "Hand-Applied Multi-Tonal Enamel (Ice Blue, Pearlescent White, Slate Grey)",
+        "Generative Low-Poly Geometric Structure",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "images": [
+        "/assets/pieces/49.jpg"
+      ]
+    },
+    {
+      "id": "equestrian-dynasty-drop-earrings",
+      "name": "Equestrian Dynasty Drop Earrings",
+      "collection": "earrings",
+      "tagline": "The majestic, twin equestrian silhouette captured in deep, shimmering black, punctuated by turquoise eyes and lustrous pearl drops.",
+      "story": "A sculptural exploration of duality, nobility, and unyielding spirit. These twin silhouettes, standing back-to-back, evoke the monumental weight of ancient dynastic crests and mythological guardians. The deep, micro-shimmering black surface behaves like a fragment of the midnight sky caught in motion, while the piercing turquoise gaze introduces a protective, talismanic soul to the structured forms. Suspended below, a singular pearlescent droplet provides a luminous, fluid contrast to the powerful shadow of the design. Fusing the calculated precision of contemporary lines with the rich emotional depth of historic allegories, these earrings exist as wearable monuments for the modern collector.",
+      "materials": [
+        "Bespoke Shimmering Black Resin / Illusion Core",
+        "Mini Natural Turquoise Inset Eyes",
+        "Droplet Natural Baroque Pearl Pendants",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "images": [
+        "/assets/pieces/50.jpg"
+      ]
+    },
+    {
+      "id": "equestrian-fringe-drop-earrings",
+      "name": "Equestrian Fringe Drop Earrings",
+      "collection": "earrings",
+      "tagline": "A majestic equestrian silhouette fused with the defiant brilliance of fuchsia stones and the kinetic elegance of cascading fluid chains.",
+      "story": "A sculptural manifestation of regal posture and pure, kinetic movement. This piece traces the lines of ancient dynastic heritage, translating a solid, architectural form into fluid poetry. The rich, textured gold framework and the defiant sparks of vivid fuchsia whisper tales of unyielding power and wild elegance. Where the sculpture yields, a heavy cascade of fine chains descends toward the shoulders, acting as rhythmic elements that respond to time and gesture. Restlessly capturing light and shadow with every turn of the head, these earrings behave as living monuments—redefining structural legacy for the contemporary avant-garde.",
+      "materials": [
+        "22K Gold-Plated Bronze Core",
+        "Micro-Pavé Fuchsia / Ruby-Toned Crystals",
+        "Multi-Strand Fluid Fringe Drop Chains",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "images": [
+        "/assets/pieces/51.jpg"
+      ]
+    },
+    {
+      "id": "cathedral-sapphire-drop-earrings",
+      "name": "Cathedral Sapphire Drop Earrings",
+      "collection": "earrings",
+      "tagline": "Architectural majesty meets regal allure, fusing an emerald-cut sapphire centre with a crystalline halo and organic pearl drops.",
+      "story": "Evoking the profound illumination that pierces the windows of an ancient cathedral. These drop earrings exist as a deliberate dialogue between strict, rational geometry and a mystic, sovereign grandeur. The absolute depth of the sapphire blue core captures a silent, infinite cosmos, while the surrounding crystalline structure radiates this energy with calculated, architectural precision. Suspended at the base, a singular baroque pearl introduces an organic, emotional vulnerability to the otherwise unyielding lines of the design. Blending the monumental weight of historic legacy with a sharp, independent silhouette, these future heirlooms behave as wearable monuments of pure poise.",
+      "materials": [
+        "22K Gold-Plated Bronze Core",
+        "Emerald-Cut Deep Sapphire Blue Crystal Centre",
+        "Baguette and Marquise-Cut Clear Crystal Halo",
+        "Droplet Natural Baroque Pearl Pendants",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "images": [
+        "/assets/pieces/52.jpg"
+      ]
+    },
+    {
+      "id": "sovereign-lily-enamel-studs",
+      "name": "Sovereign Lily Enamel Studs",
+      "collection": "earrings",
+      "tagline": "The iconic heraldic lily reimagined through sharp avant-garde lines, contrasting deep black enamel with a crystalline halo and a central pearl core.",
+      "story": "An ancestral symbol of sovereignty, purity, and unyielding posture is meticulously deconstructed and reborn through contemporary design logic. These studs elevate a historical emblem into a poetic dialogue between graphic weight and luminescent soft power. The absolute silence of the black enamel curves provides a sharp, calculated contrast to the precise ring of fractured light surrounding it. At the absolute heart, a solitary pearl introduces a soft, emotional vulnerability to the rigid symmetry of the design. Blending the monumental weight of dynastic legacy with a defiant, independent silhouette, these future heirlooms behave as modern seals of pure poise.",
+      "materials": [
+        "22K Gold-Plated Bronze Core",
+        "Hand-Applied Black Enamel Inlays",
+        "Micro-Pavé Clear Crystal Framework",
+        "Central Elliptical Natural Pearl Cabochon",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "images": [
+        "/assets/pieces/53.jpg"
+      ]
+    },
+    {
+      "id": "crater-pearl-drop-earrings",
+      "name": "Crater Pearl Drop Earrings",
+      "collection": "earrings",
+      "tagline": "Raw, concave brutalist structures combined with the timeless, poetic luminescence of a central natural pearl.",
+      "story": "A profound homage to the destructive yet beautiful passage of time upon metal, celebrating absolute grace within intentional imperfection. These drop earrings exist as protective, concave vessels—reminiscent of brutalist structural alcoves or the poetic craters of a distant celestial body—designed to gather and cradle the surrounding light. The raw, deeply eroded textures of the gilded surface mirror the complex, weathered layers of human emotion. At the absolute center, a pristine, smooth pearl rests in total stillness, acting as a luminous counterweight to the wild, unyielding architecture around it. Fusing the brutal weight of form with the soft power of organic sentiment, these pieces stand as wearable monuments of pure poise.",
+      "materials": [
+        "22K Gold-Plated Bronze Core",
+        "Heavy Textured, Eroded Concave Surface",
+        "Central Cabochon Natural Pearl",
+        "Ear Wires / Hooks: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "images": [
+        "/assets/pieces/54.jpg"
+      ]
+    },
+    {
+      "id": "hypnotic-spiral-labradorite-earrings",
+      "name": "Hypnotic Spiral Labradorite Earrings",
+      "collection": "earrings",
+      "tagline": "Sculptural concentric spirals capturing the infinite rhythm of time, centered by the mystical aurora of an oval labradorite stone.",
+      "story": "A hypnotic exploration into the endless, undulating cycles of existence and human emotion. These cascading gilded vortexes pull historical symbolism into a powerful dialogue with contemporary avant-garde architecture. While the raw, irregular grooves on the surface celebrate the beautiful, weathered permanence of true craftsmanship, the stone at the core acts as an atmospheric gravity well—capturing fractured blue and green light within its depths like a trapped aurora. Engineering a poetic tension between the tangible weight of structured form and the unseen mystery of inner light, these future heirlooms stand as wearable monuments for the modern collector.",
+      "materials": [
+        "22K Gold-Plated Bronze Core",
+        "Heavy Textured, Concentric Spiral Finish",
+        "Central Oval-Cut Natural Labradorite Stone",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "images": [
+        "/assets/pieces/55.jpg"
+      ]
+    },
+    {
+      "id": "ancient-shield-cats-eye-earrings",
+      "name": "Ancient Shield Cat's Eye Earrings",
+      "collection": "earrings",
+      "tagline": "Sculptural hammered shield structures holding the cosmic alignment and enigmatic linear light of a central cat's eye stone.",
+      "story": "A protective talisman emerging from antiquity, meticulously reshaped by the sharp silence of the contemporary avant-garde. These earrings operate as wearable monuments, transforming the raw, ancestral concept of a defensive shield into an architectural dialogue on permanence. The heavily hammered, irregular indentations across the gilded surface celebrate the weathered beauty of human experience and resilience, while the stone at the core acts as a focal point of intuition—capturing a singular, sharp streak of light across its misty blue depths like a cosmic alignment. Engineering a beautiful tension between the heavy, protective form and the fluid mystery of inner sight, these future heirlooms stand as powerful statements for the independent mind.",
+      "materials": [
+        "22K Gold-Plated Bronze Core",
+        "Heavy Hammered, Amorphous Shield Surface",
+        "Central Round Faceted Blue Cat's Eye Crystal",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "images": [
+        "/assets/pieces/56.jpg"
+      ]
+    },
+    {
+      "id": "imperial-cavalry-pearl-earrings",
+      "name": "Imperial Cavalry Pearl Earrings",
+      "collection": "earrings",
+      "tagline": "A majestic equestrian silhouette adorned with the subtle brilliance of champagne crystals, finished with lustrous baroque pearl drops.",
+      "story": "A sculptural exploration of regal posture, pride, and unyielding spirit. Tracing the lines of ancient dynastic heritage, these earrings elevate an equestrian arketype into a powerful dialogue between architectural weight and fluid grace. The rich, intricately textured gold framework and the deep sparks of champagne elements whisper tales of sovereign power and untamed elegance. Yielding at the base, a singular pearlescent droplet introduces an organic, emotional vulnerability to the structural strength of the design. Restlessly capturing light and shadow with every turn of the head, these future heirlooms stand as wearable monuments engineered for the contemporary avant-garde.",
+      "materials": [
+        "22K Gold-Plated Bronze Core",
+        "Micro-Pavé Champagne and Smoky-Toned Crystals",
+        "Droplet Natural Baroque Pearl Pendants",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "images": [
+        "/assets/pieces/57.jpg"
+      ]
+    },
+    {
+      "id": "oceanic-abyssal-pearl-studs",
+      "name": "Oceanic Abyssal Pearl Studs",
+      "collection": "earrings",
+      "tagline": "Sculptural abyssal tentacles capturing fluid motion, crowned by the singular, luminescent geometry of an amorphous baroque pearl.",
+      "story": "A mysterious narrative rising from the deepest, unexplored shadows of the oceanic abyss. These statement studs translate the fluid, adaptive, and restlessly undulating forms of underwater life into an architectural dialogue on wearable art. The intricately textured gilded tentacles twist with deliberate, dramatic power, capturing the allure of the unknown, while the massive, amorphous baroque pearl—completely unique in each iteration—serves as a crown of pure, natural genius. Engineering a poetic tension between the heavy movement of structured form and the soft, organic luminescence of the sea, these future heirlooms stand as provocative monuments for the modern collector.",
+      "materials": [
+        "22K Gold-Plated Bronze Core",
+        "Highly Textured, Intricate Kinetic Surface Design",
+        "Statement Natural Amorphous Baroque Pearl",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "images": [
+        "/assets/pieces/58.jpg"
+      ]
+    },
+    {
+      "id": "mystic-scarab-amethyst-earrings",
+      "name": "Mystic Scarab Amethyst Earrings",
+      "collection": "earrings",
+      "tagline": "The ancient symbol of rebirth and transformation, capturing the mystic aura of a cabochon amethyst and fluid baroque pearl drops.",
+      "story": "A sacred guardian drifting across boundaries of time, meticulously awakened by the sharp silence of the contemporary avant-garde. The scarab silhouette—an ancestral seal of eternal renewal and transformation—is elevated here into an architectural dialogue on protective strength. While the intricately sculpted gold framework whispers of historical permanence, the deep violet heart of the amethyst captures the mystic depth of an unseen cosmos within its smooth, polished surface. Yielding at the base, a singular pearlescent droplet introduces a soft, organic vulnerability to the unyielding lines of the design. Engineering a calculated tension between historic symbolism and structural layout, these future heirlooms stand as wearable monuments for the modern collector.",
+      "materials": [
+        "22K Gold-Plated Bronze Core",
+        "Central Oval Cabochon Natural Amethyst Stone",
+        "Micro-Pavé Clear Crystal Inset Accents on Head",
+        "Droplet Natural Baroque Pearl Pendants",
+        "Posts and Ear Contacts: 100% Sterling Silver",
+        "100% Nickel-Free & Hypoallergenic"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "images": [
+        "/assets/pieces/59.jpg"
       ]
     }
   ]
