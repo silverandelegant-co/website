@@ -3,7 +3,7 @@
   <div class="absolute inset-0 overflow-hidden">
     <div class="absolute inset-0 bg-slate-950/70 backdrop-blur-sm transition-opacity" @click="closeEditor()"></div>
 
-    <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+    <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-4 sm:pl-10">
       <!-- Broadened Slide-over panel (changed from max-w-2xl to max-w-4xl for maximum screen space) -->
       <div class="pointer-events-auto w-screen max-w-4xl transform transition-all duration-300"
         x-show="isEditing"
@@ -29,7 +29,7 @@
           </div>
 
           <!-- Editor Form Body -->
-          <div class="flex-grow p-6 space-y-6">
+          <div class="flex-grow p-4 sm:p-6 space-y-5 sm:space-y-6">
             
             <!-- Product / Article Name/Title -->
             <div class="space-y-2">
