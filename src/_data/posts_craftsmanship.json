@@ -15,7 +15,8 @@
         },
         {
           "type": "blockquote",
-          "quote": "In a world optimized for speed and synthetic automation, we believe the human touch is the ultimate luxury."
+          "quote": "In a world optimized for speed and synthetic automation, we believe the human touch is the ultimate luxury.",
+          "author": ""
         },
         {
           "type": "text_block",
@@ -80,6 +81,26 @@
         {
           "type": "text_block",
           "body": "At SILVER & ELEGANT, we often speak of our work as 'architectural'. However, unlike a building that stands still, our structures are designed to inhabit the most dynamic landscape of all: the human body.\n\nA piece of SILVER & ELEGANT jewellery is not merely an object; it is an exercise in kinetic architecture. When we model a ring or a pendant, we do not just consider the geometry of the metal; we calculate how that metal will move, catch the light, and respond to the wearer’s natural rhythm. Whether it is the fluid weight of gold, the sharp precision of silver, or the rugged depth of bronze, each piece is engineered to balance perfectly against the skin.\n\nWe believe that a piece of jewellery should feel like an extension of the wearer’s own anatomy. This is why our designs prioritise ergonomics as much as aesthetics. We study how a chain drapes across the collarbone or how a ring interacts with the movement of the hand. By marrying our generative design processes with traditional hand-finishing, we ensure that SILVER & ELEGANT designs do not simply 'sit' on the body—they dance with it. You are not just wearing a sculpture; you are participating in its movement."
+        }
+      ]
+    },
+    {
+      "id": "the-sacred-scarab-reimagined",
+      "title": "The Sacred Scarab Reimagined: An Architectural Metamorphosis",
+      "date": "2026-05-22T09:43:00",
+      "category": "Craftsmanship",
+      "summary": "Discover the story behind SILVER & ELEGANT’s latest statement earrings: a brilliant-cut diamond and ruby scarab talisman balanced by a minimalist, brushed gold sphere.",
+      "featured_image": "/assets/pieces/BANNER.jpeg",
+      "featured": false,
+      "sections": [
+        {
+          "type": "text_block",
+          "body": "**The Sacred Scarab Reimagined: An Architectural Metamorphosis**\n\nAt **SILVER & ELEGANT**, we view jewellery not merely as adornment, but as wearable architecture—objects of permanence that carry a profound narrative across generations. Our latest creation brings this philosophy to life by transforming an ancient symbol of rebirth and protection, the scarab beetle, into a contemporary sculptural masterpiece.\n\nEvery element of this design speaks to the rigorous structural balance that defines our brand:\n\n- **The Architecture of Light:** The upper body of the scarab features an intricate mosaic of brilliant-cut diamonds, meticulously set within a polished framework to catch and refract light from every angle.\n- **Primal Accents:** Crowns of custom-cut rubies rest at the apex of the form, introducing a rich, fiery contrast that injects raw energy into the geometric precision.\n- **The Minimalist Counterpart:** Suspended below this brilliant display is a flawless, solid gold sphere with a brushed, matte finish. This clean, geometric anchor serves as a visual palette cleanser, balancing the intricate detail above with a calm, brutalist weight.\n\nThis piece encapsulates the core of **SILVER & ELEGANT**: a continuous dialogue between historic mystique and modern structural form. It is designed for those who appreciate the weight of history and the clean lines of modern design."
+        },
+        {
+          "type": "video_block",
+          "caption": "",
+          "video_url": "https://youtu.be/h8iDG12lWM0"
         }
       ]
     }
