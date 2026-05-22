@@ -1,24 +1,3 @@
 {
-  "pieces": [
-    {
-      "id": "test",
-      "collection": "rings",
-      "tagline": "test",
-      "materials": [
-        "Gümüş / Bronze Core"
-      ],
-      "featured": false,
-      "wolfandbadger": "",
-      "more4id": "",
-      "njal": "",
-      "video_url": "",
-      "images": [
-        "/assets/pieces/background-start.png",
-        "/assets/pieces/screenshot.png"
-      ],
-      "name": "test",
-      "story": "test",
-      "_desc_field": ""
-    }
-  ]
+  "pieces": []
 }
