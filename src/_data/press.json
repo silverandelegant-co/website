@@ -57,9 +57,22 @@
       "sections": [
         {
           "type": "text_block",
-          "body": "Our hand-crafted silver and bronze structures were featured in an editorial for the prestigious avant-garde fashion publication, **Flanelle Magazine**.\n\nThe shoot highlights the sharp geometry and the interaction between shadow and metallic surfaces inherent in our designs.\n\n* **Photography**: Izabela Wojnarowska\n* **Styling**: Tia Oguri\n* **Hair & Makeup**: Karoliina Villem\n* **Retouch**: Daria Sheyanova\n* **Model**: Yitian Lu\n* **Hair Design**: Anne Veck"
+          "body": "Our hand-crafted silver and bronze structures were featured in an editorial for the prestigious avant-garde fashion publication, **Flanelle Magazine**.\n\nThe shoot highlights the sharp geometry and the interaction between shadow and metallic surfaces inherent in our designs."
+        },
+        {
+          "type": "image_block",
+          "image": "/assets/pieces/NEW7.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "type": "image_block",
+          "image": "/assets/pieces/NEW4.jpg",
+          "alt": "",
+          "caption": ""
         }
-      ]
+      ],
+      "_desc_field": ""
     },
     {
       "id": "kaltblut-magazine",
