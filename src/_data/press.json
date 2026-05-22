@@ -84,9 +84,16 @@
       "sections": [
         {
           "type": "text_block",
-          "body": "Silver & Elegant designs were curated for **\"THE DISH,\"** a digital editorial exploring the boundaries of contemporary jewellery engineering and avant-garde creative direction.\n\nPublished in **KALTBLUT Magazine**, this exclusive selection emphasises the sculptural posture and structural strength of jewellery on the body.\n\n* **Creative Team**: Doma Dovgialo, Borna Prikaski, Yassine V.K, Ambra Castelli, Giulia Oldani, Tobia Bartolini, Christina Lomas, Scarlett Leatham, Shyy Sachdev.\n* **Featured Brands**: Alice Skewis Jewellery, Capsule Eleven, Vicki Sarge, Silver & Elegant, Annabel B. Jewellery."
+          "body": "Silver & Elegant designs were curated for **\"THE DISH,\"** a digital editorial exploring the boundaries of contemporary jewellery engineering and avant-garde creative direction.\n\nPublished in **KALTBLUT Magazine**, this exclusive selection emphasises the sculptural posture and structural strength of jewellery on the body."
+        },
+        {
+          "type": "image_block",
+          "image": "/assets/pieces/ff.png",
+          "alt": "",
+          "caption": ""
         }
-      ]
+      ],
+      "_desc_field": ""
     }
   ]
 }
