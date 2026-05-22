@@ -68,6 +68,8 @@
       mediaSearchQuery: '',
       activeSelectedImage: '',
       activeSelectedImages: [],
+      pendingImageUploads: [],
+      pendingImageDeletes: [],
       mediaTargetObject: null,
       mediaTargetProperty: null,
       mediaTargetIndex: -1,
@@ -271,6 +273,16 @@
         return this.mediaFiles.filter(f => f.name.toLowerCase().includes(q));
       },
 
+      resolveImagePath(path) {
+        if (!path) return '';
+        const clean = path.replace(/^\/+/, '');
+        const pending = (this.pendingImageUploads || []).find(img => img.path === 'src/' + clean || img.path === clean || img.path.endsWith('/' + clean.split('/').pop()));
+        if (pending) {
+          return pending.blobUrl;
+        }
+        return path.startsWith('/') ? path : '/' + path;
+      },
+
       // Completely robust media modal open routine (Fixes header button NPE)
       openMediaLibraryModal(targetObj, propertyNameOrIndex) {
         this.mediaTargetObject = targetObj;
@@ -353,51 +365,37 @@
         this.insertSelectedMedia();
       },
 
-      async deleteSelectedMedia() {
+      deleteSelectedMedia() {
         if (this.activeSelectedImages.length === 0) return;
         
         const count = this.activeSelectedImages.length;
-        if (!confirm(`Seçilen ${count} görseli GitHub deposundan kalıcı olarak silmek istediğinize emin misiniz? Bu işlem geri alınamaz!`)) {
+        if (!confirm(`Seçilen ${count} görseli silinmek üzere işaretlemek istediğinize emin misiniz? Yayınla butonuna bastığınızda kalıcı olarak silinecektir.`)) {
           return;
         }
         
-        this.showLoading('Görseller siliniyor...');
+        if (!this.pendingImageDeletes) this.pendingImageDeletes = [];
         
-        try {
-          for (let relativePath of this.activeSelectedImages) {
-            const cleanPath = relativePath.replace(/^\/+/, '');
-            const file = this.mediaFiles.find(f => f.path === cleanPath || ('src/' + f.path) === cleanPath);
-            if (!file) continue;
-            
-            const deleteUrl = `https://api.github.com/repos/${this.repoOwner}/${this.repoName}/contents/src/${file.path}`;
-            
-            const res = await fetch(deleteUrl, {
-              method: 'DELETE',
-              headers: {
-                'Authorization': `token ${this.token}`,
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                message: `Delete media asset ${file.name} via CMS Panel`,
-                sha: file.sha,
-                branch: this.branch
-              })
+        this.activeSelectedImages.forEach(relativePath => {
+          const cleanPath = relativePath.replace(/^\/+/, '');
+          const file = this.mediaFiles.find(f => f.path === cleanPath || ('src/' + f.path) === cleanPath);
+          
+          // 1. If it was a newly uploaded pending image, just remove it from pendingImageUploads!
+          const pendingIdx = (this.pendingImageUploads || []).findIndex(img => img.path === 'src/' + cleanPath || img.path === cleanPath);
+          if (pendingIdx !== -1) {
+            this.pendingImageUploads.splice(pendingIdx, 1);
+          } else if (file) {
+            // 2. Otherwise add to pendingImageDeletes
+            this.pendingImageDeletes.push({
+              path: `src/${file.path}`
             });
-            
-            if (!res.ok) {
-              throw new Error(`${file.name} silinemedi.`);
-            }
           }
           
-          this.showToast('Seçilen görseller başarıyla silindi.', 'success');
-          this.activeSelectedImages = [];
-          await this.loadMediaLibrary();
-        } catch (err) {
-          console.error(err);
-          this.showToast('Görsel silinirken bir hata oluştu. Lütfen yetkilerinizi kontrol edin.', 'error');
-        } finally {
-          this.hideLoading();
-        }
+          // Remove from local mediaFiles list immediately so it disappears from gallery
+          this.mediaFiles = this.mediaFiles.filter(f => f.path !== cleanPath && ('src/' + f.path) !== cleanPath);
+        });
+        
+        this.showToast('Görsel(ler) silinmek üzere işaretlendi. Yayınla butonuna bastığınızda GitHub\'dan silinecektir.', 'success');
+        this.activeSelectedImages = [];
       },
 
       downloadSelectedMedia() {
@@ -480,55 +478,54 @@
                                 .replace(/-+/g, '-')
                                 .replace(/^-|-$/g, '') + ext;
         
-        this.showLoading('Görsel GitHub deposuna yükleniyor...');
+        this.showLoading('Görsel yerel belleğe hazırlanıyor...');
         
         try {
           const reader = new FileReader();
           reader.onload = async (e) => {
             try {
               const base64Content = e.target.result.split(',')[1];
+              const blobUrl = URL.createObjectURL(file);
+              const relativePath = `/assets/pieces/${cleanName}`;
               
-              const res = await fetch(`https://api.github.com/repos/${this.repoOwner}/${this.repoName}/contents/src/assets/pieces/${cleanName}`, {
-                method: 'PUT',
-                headers: {
-                  'Authorization': `token ${this.token}`,
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                  message: `Upload media asset ${cleanName} via CMS Panel`,
-                  content: base64Content,
-                  branch: this.branch
-                })
+              // 1. Add to pending uploads
+              if (!this.pendingImageUploads) this.pendingImageUploads = [];
+              this.pendingImageUploads.push({
+                name: cleanName,
+                path: `src/assets/pieces/${cleanName}`,
+                content: base64Content,
+                blobUrl: blobUrl,
+                size: file.size
               });
               
-              if (res.ok) {
-                this.showToast('Görsel yüklendi ve kütüphaneye eklendi.', 'success');
-                
-                // Immediately select the uploaded image path for the active field
-                // This bypasses any GitHub API caching or propagation delay when reloading the media library!
-                const relativePath = `/assets/pieces/${cleanName}`;
-                if (this.mediaTargetObject === 'quill') {
-                  const quill = this.mediaTargetProperty;
-                  const range = quill.getSelection();
-                  const index = range ? range.index : quill.getLength();
-                  quill.insertEmbed(index, 'image', relativePath);
-                } else if (this.mediaTargetIndex !== -1 && this.mediaTargetObject) {
-                  this.mediaTargetObject[this.mediaTargetIndex] = relativePath;
-                } else if (this.mediaTargetProperty && this.mediaTargetObject) {
-                  this.mediaTargetObject[this.mediaTargetProperty] = relativePath;
-                }
-                
-                this.mediaLibraryOpen = false;
-                
-                // Refresh the background library silently so the newly uploaded file appears in future selections
-                await this.loadMediaLibrary();
-                this.hideLoading();
-              } else {
-                throw new Error();
+              // 2. Add to in-memory mediaFiles list so it is selectable instantly!
+              this.mediaFiles.unshift({
+                name: cleanName,
+                path: `assets/pieces/${cleanName}`,
+                size: file.size,
+                isPending: true,
+                blobUrl: blobUrl
+              });
+              
+              this.showToast('Görsel yerel kütüphaneye eklendi. Değişiklikleri yayınlamak için yukarıdaki gold butonu kullanın.', 'success');
+              
+              // 3. Immediately select the uploaded image path for the active field
+              if (this.mediaTargetObject === 'quill') {
+                const quill = this.mediaTargetProperty;
+                const range = quill.getSelection();
+                const index = range ? range.index : quill.getLength();
+                quill.insertEmbed(index, 'image', relativePath);
+              } else if (this.mediaTargetIndex !== -1 && this.mediaTargetObject) {
+                this.mediaTargetObject[this.mediaTargetIndex] = relativePath;
+              } else if (this.mediaTargetProperty && this.mediaTargetObject) {
+                this.mediaTargetObject[this.mediaTargetProperty] = relativePath;
               }
+              
+              this.mediaLibraryOpen = false;
+              this.hideLoading();
             } catch (err) {
               this.hideLoading();
-              this.showToast('Görsel yüklenemedi. Dosya çakışması, yetki hatası veya geçersiz API yanıtı.', 'error');
+              this.showToast('Görsel hazırlanırken hata oluştu.', 'error');
             }
           };
           reader.readAsDataURL(file);
@@ -835,64 +832,188 @@
         this.showToast('Kayıt silindi (yerel). Değişiklikleri yayınlamak için yukarıdaki gold butonu kullanın.', 'success');
       },
 
-      // BATCH PUBLISH TO GITHUB
+      // BATCH PUBLISH TO GITHUB (Atomic Single Commit!)
       async publishAllChanges() {
         const dirty = this.catalogs.filter(c => c.dirty);
-        if (dirty.length === 0) {
+        const pendingImages = this.pendingImageUploads || [];
+        const pendingDeletes = this.pendingImageDeletes || [];
+        
+        if (dirty.length === 0 && pendingImages.length === 0 && pendingDeletes.length === 0) {
           this.showToast('Yayınlanacak değişiklik yok.', 'info');
           return;
         }
         
-        if (!confirm(`${dirty.length} katalogta yaptığınız değişiklikleri toplu olarak GitHub'a göndermek ve canlı sitede yayınlamak istediğinize emin misiniz?`)) {
+        const summary = [];
+        if (dirty.length > 0) summary.push(`${dirty.length} katalog değişikliği`);
+        if (pendingImages.length > 0) summary.push(`${pendingImages.length} yeni görsel`);
+        if (pendingDeletes.length > 0) summary.push(`${pendingDeletes.length} silinecek görsel`);
+        
+        if (!confirm(`${summary.join(', ')} için yaptığınız tüm değişiklikleri TEK BİR COMMİT ile GitHub'a göndermek ve canlı sitede yayınlamak istediğinize emin misiniz?`)) {
           return;
         }
         
-        this.showLoading('Değişiklikler GitHub deposuna yayınlanıyor...');
+        this.showLoading('Değişiklikler tek bir paket halinde hazırlanıyor...');
         
         try {
-          for (let cat of dirty) {
-            let payload = {};
-            if (cat.type === 'single_object') {
-              payload = cat.data;
-            } else if (cat.type === 'pieces_list') {
-              payload = { pieces: cat.data };
-            } else if (cat.type === 'articles_list') {
-              payload = { heading: cat.heading, articles: cat.data };
-            } else if (cat.type === 'posts_list') {
-              payload = { posts: cat.data };
-            }
-            
-            const jsonString = JSON.stringify(payload, null, 2);
-            const base64Content = btoa(unescape(encodeURIComponent(jsonString)));
-            
-            const res = await fetch(`https://api.github.com/repos/${this.repoOwner}/${this.repoName}/contents/${cat.path}`, {
-              method: 'PUT',
-              headers: {
-                'Authorization': `token ${this.token}`,
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                message: `Publish batch updates for ${cat.label} via CMS Panel`,
-                content: base64Content,
-                sha: cat.sha,
-                branch: this.branch
-              })
-            });
-            
-            if (res.ok) {
-              const resJson = await res.json();
-              cat.sha = resJson.content.sha;
-              cat.dirty = false;
-            } else {
-              throw new Error(`GitHub ${cat.label} dosyasını güncelleyemedi.`);
+          const headers = {
+            'Authorization': `token ${this.token}`,
+            'Content-Type': 'application/json'
+          };
+          const baseApiUrl = `https://api.github.com/repos/${this.repoOwner}/${this.repoName}`;
+          
+          // 1. Get the latest commit SHA of the target branch
+          const refRes = await fetch(`${baseApiUrl}/git/ref/heads/${this.branch}`, { headers });
+          if (!refRes.ok) throw new Error('Son commit bilgisi alınamadı.');
+          const refJson = await refRes.json();
+          const parentCommitSha = refJson.object.sha;
+          
+          // 2. Get the tree SHA of that parent commit
+          const commitRes = await fetch(`${baseApiUrl}/git/commits/${parentCommitSha}`, { headers });
+          if (!commitRes.ok) throw new Error('Son ağaç bilgisi alınamadı.');
+          const commitJson = await commitRes.json();
+          const baseTreeSha = commitJson.tree.sha;
+          
+          // 3. Create blobs for images, deletions, and modified catalogs
+          const treeEntries = [];
+          
+          // 3.1. Upload staged images as blobs
+          if (pendingImages.length > 0) {
+            let count = 0;
+            for (let img of pendingImages) {
+              count++;
+              this.showLoading(`Görsel paketleri oluşturuluyor (${count}/${pendingImages.length})...`);
+              
+              const blobRes = await fetch(`${baseApiUrl}/git/blobs`, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify({
+                  content: img.content,
+                  encoding: 'base64'
+                })
+              });
+              
+              if (!blobRes.ok) throw new Error(`${img.name} blobu oluşturulamadı.`);
+              const blobJson = await blobRes.json();
+              
+              treeEntries.push({
+                path: img.path,
+                mode: '100644',
+                type: 'blob',
+                sha: blobJson.sha
+              });
             }
           }
           
-          this.showToast('Tüm değişiklikler başarıyla yayınlandı! Dağıtım süreci başlatıldı.', 'success');
+          // 3.2. Prepare staged deletions in tree entries
+          if (pendingDeletes.length > 0) {
+            for (let del of pendingDeletes) {
+              treeEntries.push({
+                path: del.path,
+                mode: '100644',
+                type: 'blob',
+                sha: null // setting sha to null in base_tree tells GitHub to delete the file!
+              });
+            }
+          }
+          
+          // 3.3. Create blobs for dirty catalogs
+          if (dirty.length > 0) {
+            let count = 0;
+            for (let cat of dirty) {
+              count++;
+              this.showLoading(`Veri paketleri hazırlanıyor (${count}/${dirty.length})...`);
+              
+              let payload = {};
+              if (cat.type === 'single_object') {
+                payload = cat.data;
+              } else if (cat.type === 'pieces_list') {
+                payload = { pieces: cat.data };
+              } else if (cat.type === 'articles_list') {
+                payload = { heading: cat.heading, articles: cat.data };
+              } else if (cat.type === 'posts_list') {
+                payload = { posts: cat.data };
+              }
+              
+              const jsonString = JSON.stringify(payload, null, 2);
+              const base64Content = btoa(unescape(encodeURIComponent(jsonString)));
+              
+              const blobRes = await fetch(`${baseApiUrl}/git/blobs`, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify({
+                  content: base64Content,
+                  encoding: 'base64'
+                })
+              });
+              
+              if (!blobRes.ok) throw new Error(`${cat.label} veri blobu oluşturulamadı.`);
+              const blobJson = await blobRes.json();
+              
+              treeEntries.push({
+                path: cat.path,
+                mode: '100644',
+                type: 'blob',
+                sha: blobJson.sha
+              });
+            }
+          }
+          
+          // 4. Create the new Tree
+          this.showLoading('Yeni git ağacı oluşturuluyor...');
+          const treeRes = await fetch(`${baseApiUrl}/git/trees`, {
+            method: 'POST',
+            headers,
+            body: JSON.stringify({
+              base_tree: baseTreeSha,
+              tree: treeEntries
+            })
+          });
+          if (!treeRes.ok) throw new Error('Yeni git ağacı oluşturulamadı.');
+          const treeJson = await treeRes.json();
+          const newTreeSha = treeJson.sha;
+          
+          // 5. Create the Commit
+          this.showLoading('Değişiklikler tek bir commit halinde imzalanıyor...');
+          const commitMessage = `Batch publish: Updated ${dirty.length} catalogs, added ${pendingImages.length} images, deleted ${pendingDeletes.length} assets via CMS Panel`;
+          
+          const newCommitRes = await fetch(`${baseApiUrl}/git/commits`, {
+            method: 'POST',
+            headers,
+            body: JSON.stringify({
+              message: commitMessage,
+              tree: newTreeSha,
+              parents: [parentCommitSha]
+            })
+          });
+          if (!newCommitRes.ok) throw new Error('Yeni commit nesnesi oluşturulamadı.');
+          const newCommitJson = await newCommitRes.json();
+          const newCommitSha = newCommitJson.sha;
+          
+          // 6. Update the reference (Fast-forward push!)
+          this.showLoading('Değişiklikler GitHub deposuna gönderiliyor...');
+          const refUpdateRes = await fetch(`${baseApiUrl}/git/refs/heads/${this.branch}`, {
+            method: 'PATCH',
+            headers,
+            body: JSON.stringify({
+              sha: newCommitSha,
+              force: false
+            })
+          });
+          if (!refUpdateRes.ok) throw new Error('GitHub dal referansı güncellenemedi.');
+          
+          // 7. Clear staged states on success
+          this.pendingImageUploads = [];
+          this.pendingImageDeletes = [];
+          dirty.forEach(cat => {
+            cat.dirty = false;
+          });
+          
+          this.showToast('Tüm değişiklikler, görseller ve silme işlemleri TEK BİR COMMİT ile başarıyla yayınlandı!', 'success');
           await this.loadAllCatalogs();
+          await this.loadMediaLibrary();
         } catch (err) {
           console.error(err);
-          this.showToast('Yayınlama sırasında bir hata oluştu. Bağlantınızı kontrol edin.', 'error');
+          this.showToast(`Yayınlama sırasında hata: ${err.message}`, 'error');
         } finally {
           this.hideLoading();
         }

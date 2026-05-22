@@ -196,7 +196,7 @@
                     <template x-for="(img, idx) in editingItem.images" :key="idx">
                       <div class="bg-slate-950/40 border border-slate-800 p-3 rounded-xl flex items-center gap-4">
                         <div class="w-14 h-14 bg-slate-950 rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center border border-slate-800">
-                          <img :src="'/' + img.replace(/^\/+/, '')" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/1e293b/a88653?text=Hata'" />
+                          <img :src="resolveImagePath(img)" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/1e293b/a88653?text=Hata'" />
                         </div>
                         <div class="flex-grow space-y-1.5">
                           <div class="flex space-x-2">
@@ -224,7 +224,7 @@
                     <button @click="openMediaLibraryModal(editingItem, 'featured_image')" class="px-4 py-3 bg-slate-900 border border-slate-800 text-gold-400 text-xs font-semibold rounded-xl flex-shrink-0">Galeri</button>
                   </div>
                   <div class="w-32 h-20 bg-slate-950 rounded-lg overflow-hidden border border-slate-800">
-                    <img :src="'/' + (editingItem.featured_image || '').replace(/^\/+/, '')" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/200x100/1e293b/a88653?text=Yok'" />
+                    <img :src="resolveImagePath(editingItem.featured_image)" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/200x100/1e293b/a88653?text=Yok'" />
                   </div>
                 </div>
 
@@ -330,7 +330,7 @@
                             <button @click="openMediaLibraryModal(sec, 'image')" class="px-2.5 py-1 bg-slate-900 border border-slate-800 text-gold-400 text-[10px] rounded flex-shrink-0">Seç</button>
                           </div>
                           <div class="w-24 h-16 bg-slate-900 rounded overflow-hidden border border-slate-850">
-                            <img :src="'/' + (sec.image || '').replace(/^\/+/, '')" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x50/1e293b/a88653?text=Yok'" />
+                            <img :src="resolveImagePath(sec.image)" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x50/1e293b/a88653?text=Yok'" />
                           </div>
                           <div class="grid grid-cols-2 gap-4">
                             <div class="space-y-1">

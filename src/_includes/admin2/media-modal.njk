@@ -88,6 +88,14 @@
             @click="toggleMediaSelection(file)"
             @dblclick="activeSelectedImages = ['/' + file.path.replace(/^\/+/, '')]; insertSelectedMedia()">
             
+            <!-- Pending / Staged Badge -->
+            <template x-if="file.isPending">
+              <div class="absolute top-2 left-2 px-1.5 py-0.5 bg-amber-500 text-slate-950 text-[8px] font-bold rounded flex items-center gap-1 z-10 select-none shadow">
+                <i class="fa-solid fa-clock animate-pulse"></i>
+                <span>Yayınlanmadı</span>
+              </div>
+            </template>
+
             <!-- Tick Indicator if selected -->
             <div x-show="isMediaSelected(file)" x-cloak class="absolute top-2 right-2 w-5 h-5 bg-gold-500 rounded-full flex items-center justify-center text-slate-950 text-[10px] z-10 font-bold shadow-md shadow-gold-500/20">
               <i class="fa-solid fa-check"></i>
@@ -95,7 +103,7 @@
 
             <!-- Thumbnail -->
             <div class="w-full aspect-square bg-slate-900 rounded-lg overflow-hidden flex items-center justify-center border border-slate-800 group-hover:scale-[1.01] transition-transform">
-              <img :src="'/' + file.path.replace(/^\/+/, '')" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/1e293b/a88653?text=Hata'" />
+              <img :src="file.isPending ? file.blobUrl : ('/' + file.path.replace(/^\/+/, ''))" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/1e293b/a88653?text=Hata'" />
             </div>
             <!-- Filename metadata -->
             <div class="mt-2 px-1">

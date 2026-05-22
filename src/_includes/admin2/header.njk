@@ -20,18 +20,20 @@
         <!-- Always Visible Global Publish Button (Transforms dynamically on unsaved changes) -->
         <button @click="publishAllChanges()" 
           class="px-3 sm:px-4 py-2.5 rounded-xl text-xs font-bold tracking-wider transition-all flex items-center space-x-1.5 active:scale-95 flex-shrink-0"
-          :class="catalogs.some(c => c.dirty) 
+          :class="(catalogs.some(c => c.dirty) || pendingImageUploads.length > 0 || pendingImageDeletes.length > 0) 
             ? 'bg-gradient-to-r from-amber-500 via-gold-500 to-gold-600 hover:from-amber-400 hover:to-gold-400 text-slate-950 shadow-lg shadow-gold-500/10 hover:shadow-gold-500/20 animate-pulse cursor-pointer' 
             : 'bg-slate-900 border border-slate-800 text-slate-600 cursor-not-allowed'"
-          :disabled="!catalogs.some(c => c.dirty)"
-          :title="catalogs.some(c => c.dirty) ? `${catalogs.filter(c => c.dirty).length} Değişikliği Yayınla` : 'Yayınlanacak Değişiklik Yok'">
-          <i class="fa-solid fa-cloud-arrow-up text-xs" :class="catalogs.some(c => c.dirty) ? 'text-slate-950' : 'text-slate-600'"></i>
+          :disabled="!(catalogs.some(c => c.dirty) || pendingImageUploads.length > 0 || pendingImageDeletes.length > 0)"
+          :title="(catalogs.some(c => c.dirty) || pendingImageUploads.length > 0 || pendingImageDeletes.length > 0) ? 'Tüm Değişiklikleri, Görselleri ve Silmeleri Yayınla' : 'Yayınlanacak Değişiklik Yok'">
+          <i class="fa-solid fa-cloud-arrow-up text-xs" :class="(catalogs.some(c => c.dirty) || pendingImageUploads.length > 0 || pendingImageDeletes.length > 0) ? 'text-slate-950' : 'text-slate-600'"></i>
           
           <!-- Hidden on Mobile, Shown on Desktop -->
-          <span class="hidden md:inline" x-text="catalogs.some(c => c.dirty) ? `${catalogs.filter(c => c.dirty).length} Değişikliği Yayınla` : 'Değişiklik Yok'"></span>
+          <span class="hidden md:inline" x-text="(catalogs.some(c => c.dirty) || pendingImageUploads.length > 0 || pendingImageDeletes.length > 0) ? 'Değişiklikleri Yayınla' : 'Değişiklik Yok'"></span>
           
           <!-- Compact red/gold indicator dot specifically for mobile screen space -->
-          <span class="md:hidden flex items-center justify-center w-4 h-4 text-[9px] bg-slate-950 text-gold-400 rounded-full font-bold leading-none border border-gold-500/20" x-show="catalogs.some(c => c.dirty)" x-text="catalogs.filter(c => c.dirty).length" x-cloak></span>
+          <span class="md:hidden flex items-center justify-center w-4 h-4 text-[9px] bg-slate-950 text-gold-400 rounded-full font-bold leading-none border border-gold-500/20" 
+            x-show="(catalogs.some(c => c.dirty) || pendingImageUploads.length > 0 || pendingImageDeletes.length > 0)" 
+            x-text="catalogs.filter(c => c.dirty).length + pendingImageUploads.length + pendingImageDeletes.length" x-cloak></span>
         </button>
 
         <!-- Top Media Library Button -->
