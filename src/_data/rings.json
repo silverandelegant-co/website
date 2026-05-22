@@ -1,3 +1,24 @@
 {
-  "pieces": []
+  "pieces": [
+    {
+      "id": "verdant-i-ring",
+      "collection": "rings",
+      "tagline": "The deep, hypnotic lines of natural malachite framed in structural gold.",
+      "materials": [
+        "bronze",
+        "gold plated"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "njal": "",
+      "video_url": "",
+      "images": [
+        "/assets/pieces/1.jpg"
+      ],
+      "name": "Verdant I Ring",
+      "story": "A striking, sculptural statement piece, Verdant I celebrates the hypnotic, fluid patterns of natural malachite. The design frames the rich green stone within bold, architectural lines of hand-shaped metal, balancing raw organic beauty with refined sophistication. It stands as a quietly powerful addition for the conscious collector of wearable art.\n\n  \n\nHandcrafted via the traditional lost-wax technique by a single master artisan, this limited-edition artefact is engineered for an elegant, comfortable fit. The deliberate surface marks and textures are preserved as the proud signature of the maker—serving as tangible proof of a human touch in a machine-made age.",
+      "_desc_field": ""
+    }
+  ]
 }
