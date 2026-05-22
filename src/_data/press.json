@@ -20,7 +20,7 @@
       "title": "PAUL COSTELLOE AW26 — London Fashion Week",
       "date": "2026-02-18",
       "summary": "We were proud to be one of the official jewellery partners for the Paul Costelloe Autumn/Winter 2026 collection, the debut show under William Costelloe’s creative direction at London Fashion Week.",
-      "featured_image": "assets/pieces/WhatsApp Image 2026-05-17 at 07.31.50 (2).jpeg",
+      "featured_image": "/assets/pieces/pcostelloe-fullset-0162-ds.jpg",
       "link": "",
       "sections": [
         {
@@ -30,8 +30,21 @@
         {
           "type": "blockquote",
           "quote": "This partnership served as a powerful expression of our traditional craft heritage and experimental architectural lines on the high-fashion stage."
+        },
+        {
+          "type": "image_block",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "type": "image_block",
+          "image": "",
+          "alt": "",
+          "caption": ""
         }
-      ]
+      ],
+      "_desc_field": ""
     },
     {
       "id": "borehamwood-times",
