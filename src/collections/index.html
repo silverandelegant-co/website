@@ -29,7 +29,11 @@ description: Browse all handcrafted silver jewellery by Silver & Elegant. Rings,
       <a href="/piece/{{ piece.id }}/index.html" class="piece-card reveal piece-item"
         data-category="{{ piece.collection }}">
         <div class="piece-image">
-          <img src="/{{ piece.images[0] | imgpath }}" alt="{{ piece.name }} frontend image" loading="lazy">
+          {% if piece.drive_images and piece.drive_images | length > 0 and piece.drive_images[0] %}
+            <img src="{{ piece.drive_images[0] | driveimage }}" alt="{{ piece.name }} frontend image" loading="lazy">
+          {% else %}
+            <img src="/{{ piece.images[0] | imgpath }}" alt="{{ piece.name }} frontend image" loading="lazy">
+          {% endif %}
         </div>
         <div class="piece-card-content">
           <h3 class="piece-name">{{ piece.name }}</h3>

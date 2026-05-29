@@ -256,6 +256,7 @@
                                    .map(f => ({
                                      name: f.name,
                                      path: f.path.replace(/^src\//, ''), // matches Passthrough copy output path
+                                     rawPath: f.path, // full repo path for raw.githubusercontent.com thumbnail
                                      sha: f.sha,
                                      size: f.size
                                    }));
@@ -273,14 +274,43 @@
         return this.mediaFiles.filter(f => f.name.toLowerCase().includes(q));
       },
 
+      // Convert any Google Drive share URL to a direct embeddable image URL
+      driveUrlToDirectLink(url) {
+        if (!url) return '';
+        // Already a direct link (drive.google.com/uc or lh3.googleusercontent.com)
+        if (url.includes('uc?export=view') || url.includes('lh3.googleusercontent.com')) return url;
+        // Standard share link: /file/d/FILE_ID/view
+        const fileMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+        if (fileMatch) return `https://drive.google.com/uc?export=view&id=${fileMatch[1]}`;
+        // Open link: /open?id=FILE_ID
+        const openMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+        if (openMatch) return `https://drive.google.com/uc?export=view&id=${openMatch[1]}`;
+        return url;
+      },
+
       resolveImagePath(path) {
         if (!path) return '';
+        // Google Drive URL — convert to direct link
+        if (path.includes('drive.google.com') || path.includes('googleusercontent.com')) {
+          return this.driveUrlToDirectLink(path);
+        }
         const clean = path.replace(/^\/+/, '');
         const pending = (this.pendingImageUploads || []).find(img => img.path === 'src/' + clean || img.path === clean || img.path.endsWith('/' + clean.split('/').pop()));
         if (pending) {
           return pending.blobUrl;
         }
         return path.startsWith('/') ? path : '/' + path;
+      },
+
+      // Returns the best displayable image URL for a piece (Drive > repo image)
+      resolveFirstPieceImage(piece) {
+        if (piece.drive_images && piece.drive_images.length > 0 && piece.drive_images[0]) {
+          return this.driveUrlToDirectLink(piece.drive_images[0]);
+        }
+        if (piece.images && piece.images.length > 0 && piece.images[0]) {
+          return this.resolveImagePath(piece.images[0]);
+        }
+        return 'https://placehold.co/100x100/1e293b/a88653?text=Görsel+Yok';
       },
 
       // Completely robust media modal open routine (Fixes header button NPE)
@@ -564,7 +594,8 @@
             more4id: '',
             njal: '',
             video_url: '',
-            images: ['']
+            images: [''],
+            drive_images: ['']
           };
         } else {
           this.editingItem = {
@@ -597,6 +628,7 @@
         if (this.getActiveCatalogType() === 'pieces_list') {
           if (!this.editingItem.materials) this.editingItem.materials = [''];
           if (!this.editingItem.images) this.editingItem.images = [''];
+          if (!this.editingItem.drive_images) this.editingItem.drive_images = [''];
         } else {
           if (!this.editingItem.sections) this.editingItem.sections = [{ type: 'text_block', body: '' }];
         }
@@ -792,9 +824,11 @@
           
           this.editingItem.materials = this.editingItem.materials.map(m => m.trim()).filter(m => m !== '');
           this.editingItem.images = this.editingItem.images.map(i => i.trim()).filter(i => i !== '');
+          this.editingItem.drive_images = (this.editingItem.drive_images || []).map(d => d.trim()).filter(d => d !== '');
           
           if (this.editingItem.materials.length === 0) this.editingItem.materials = ['Gümüş / Bronze Core'];
-          if (this.editingItem.images.length === 0) this.editingItem.images = ['/assets/pieces/WhatsApp Image 2026-05-19 at 11.59.29.jpeg'];
+          if (this.editingItem.images.length === 0 && this.editingItem.drive_images.length === 0) this.editingItem.images = [];
+          if (this.editingItem.drive_images.length === 0) delete this.editingItem.drive_images;
         } else {
           this.editingItem.title = this.editingItem._title_field.trim();
           this.editingItem.summary = this.editingItem._desc_field.trim();

@@ -103,7 +103,7 @@
 
             <!-- Thumbnail -->
             <div class="w-full aspect-square bg-slate-900 rounded-lg overflow-hidden flex items-center justify-center border border-slate-800 group-hover:scale-[1.01] transition-transform">
-              <img :src="file.isPending ? file.blobUrl : ('/' + file.path.replace(/^\/+/, ''))" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/1e293b/a88653?text=Hata'" />
+              <img :src="file.isPending ? file.blobUrl : `https://raw.githubusercontent.com/${repoOwner}/${repoName}/${branch}/${file.rawPath || ('src/' + file.path)}`" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/1e293b/a88653?text=Hata'" />
             </div>
             <!-- Filename metadata -->
             <div class="mt-2 px-1">

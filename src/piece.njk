@@ -13,18 +13,30 @@ eleventyComputed:
   <div id="piece-container">
 
     <!-- Hero Image Section -->
+    {# Determine effective image list: drive_images take priority if any are set #}
+    {% set effectiveImages = piece.drive_images if (piece.drive_images and piece.drive_images | length > 0 and piece.drive_images[0]) else piece.images %}
+    {% set isDrive = (piece.drive_images and piece.drive_images | length > 0 and piece.drive_images[0]) %}
+
     <div style="padding-top: 5rem; background: var(--c-cream); display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
       <div style="width: 100%; max-width: 800px; margin: 0 auto; display: flex; justify-content: center; padding: 0 2rem;">
-        <img id="piece-hero-img" class="piece-hero-img" src="/{{ piece.images[0] | imgpath }}" alt="{{ piece.name }}" style="max-height: 80vh; object-fit: contain; transition: opacity 0.3s ease;">
+        {% if isDrive %}
+          <img id="piece-hero-img" class="piece-hero-img" src="{{ effectiveImages[0] | driveimage }}" alt="{{ piece.name }}" style="max-height: 80vh; object-fit: contain; transition: opacity 0.3s ease;">
+        {% else %}
+          <img id="piece-hero-img" class="piece-hero-img" src="/{{ effectiveImages[0] | imgpath }}" alt="{{ piece.name }}" style="max-height: 80vh; object-fit: contain; transition: opacity 0.3s ease;">
+        {% endif %}
       </div>
       
-      {% if piece.images and piece.images.length > 1 %}
+      {% if effectiveImages and effectiveImages.length > 1 %}
       <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 2rem 2rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;" id="piece-gallery-thumbnails">
-        {% for img in piece.images %}
+        {% for img in effectiveImages %}
           <div style="width: 80px; height: 80px; cursor: pointer; border: 1px solid {% if loop.first %}var(--c-ink){% else %}var(--c-border){% endif %}; background: #fff; display: flex; align-items: center; justify-content: center; overflow: hidden; opacity: {% if loop.first %}1{% else %}0.6{% endif %}; transition: all 0.25s var(--ease);"
                class="piece-thumb"
-               onclick="updateHeroImage(this, '/{{ img | imgpath }}')">
-            <img src="/{{ img | imgpath }}" alt="{{ piece.name }} view {{ loop.index }}" style="width: 100%; height: 100%; object-fit: cover;">
+               onclick="updateHeroImage(this, '{% if isDrive %}{{ img | driveimage }}{% else %}/{{ img | imgpath }}{% endif %}')">
+            {% if isDrive %}
+              <img src="{{ img | driveimage }}" alt="{{ piece.name }} view {{ loop.index }}" style="width: 100%; height: 100%; object-fit: cover;">
+            {% else %}
+              <img src="/{{ img | imgpath }}" alt="{{ piece.name }} view {{ loop.index }}" style="width: 100%; height: 100%; object-fit: cover;">
+            {% endif %}
           </div>
         {% endfor %}
       </div>

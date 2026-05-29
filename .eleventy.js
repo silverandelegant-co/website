@@ -14,6 +14,18 @@ module.exports = function(eleventyConfig) {
     return path.replace(/^\/+/, "");
   });
 
+  // Convert Google Drive share URL to direct embeddable image URL
+  // Supports: /file/d/ID/view, /open?id=ID, already-direct uc?export=view
+  eleventyConfig.addFilter("driveimage", (url) => {
+    if (!url) return '';
+    if (url.includes('uc?export=view') || url.includes('lh3.googleusercontent.com')) return url;
+    const fileMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+    if (fileMatch) return `https://drive.google.com/uc?export=view&id=${fileMatch[1]}`;
+    const openMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+    if (openMatch) return `https://drive.google.com/uc?export=view&id=${openMatch[1]}`;
+    return url;
+  });
+
   // Beautiful date formatter (e.g., "18 May 2026")
   eleventyConfig.addFilter("postDate", (dateObj) => {
     if (!dateObj) return "";
