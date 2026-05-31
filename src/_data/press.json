@@ -46,6 +46,7 @@
           "caption": ""
         }
       ],
+      "featured": true,
       "_desc_field": ""
     },
     {
@@ -53,21 +54,23 @@
       "title": "BOREHAMWOOD TIMES: From Local Roots to Runway",
       "date": "2026-02-28",
       "summary": "Our journey, stretching from local roots to global runways, was featured in the editorial pages of the Borehamwood Times.",
-      "featured_image": "",
+      "featured_image": "/assets/pieces/ff.png",
       "link": "https://www.times-series.co.uk/news/25908149.silver-elegant-co-borehamwood-london-fashion-week/",
       "sections": [
         {
           "type": "text_block",
           "body": "Our journey, stretching from local roots to global runways, was featured in the editorial pages of the **Borehamwood Times**.\n\nThe article documents our design methodology—spanning from traditional silversmithing disciplines to the mathematical precision of software code—and our brand’s debut on the London Fashion Week opening show stage within its first year."
         }
-      ]
+      ],
+      "featured": true,
+      "_desc_field": ""
     },
     {
       "id": "flanelle-magazine",
       "title": "FLANELLE MAGAZINE: The Interaction of Shadow and Metal",
       "date": "2026-01-15",
       "summary": "Our hand-crafted silver and bronze structures were featured in an editorial for the prestigious avant-garde fashion publication, Flanelle Magazine.",
-      "featured_image": "",
+      "featured_image": "/assets/pieces/NEW4.jpg",
       "link": "",
       "sections": [
         {
@@ -94,7 +97,7 @@
       "title": "KALTBLUT MAGAZINE — \"THE DISH\"",
       "date": "2025-11-10",
       "summary": "Silver & Elegant designs were curated for \"THE DISH,\" a digital editorial in KALTBLUT Magazine exploring contemporary jewellery engineering and avant-garde creative direction.",
-      "featured_image": "",
+      "featured_image": "/assets/pieces/7.png",
       "link": "",
       "sections": [
         {
@@ -108,6 +111,7 @@
           "caption": ""
         }
       ],
+      "featured": true,
       "_desc_field": ""
     }
   ]
