@@ -439,14 +439,15 @@
         "Posts and Ear Contacts: 100% Sterling Silver",
         "100% Nickel-Free & Hypoallergenic"
       ],
-      "featured": false,
+      "featured": true,
       "wolfandbadger": "",
       "more4id": "",
       "njal": "",
       "video_url": "",
       "images": [
         "/assets/pieces/53.jpg"
-      ]
+      ],
+      "_desc_field": ""
     },
     {
       "id": "crater-pearl-drop-earrings",
