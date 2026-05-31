@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: The Collection — Silver & Elegant
-description: Browse all handcrafted silver jewellery by Silver & Elegant. Rings, necklaces, and bracelets — each with a story.
+description: Browse all wearable art jewellery by Silver & Elegant. Rings, necklaces, and bracelets — each with a story.
 ---
 <!-- Page Hero -->
 <div class="page-hero" id="page-hero">
@@ -30,9 +30,9 @@ description: Browse all handcrafted silver jewellery by Silver & Elegant. Rings,
         data-category="{{ piece.collection }}">
         <div class="piece-image">
           {% if piece.drive_images and piece.drive_images | length > 0 and piece.drive_images[0] %}
-            <img src="{{ piece.drive_images[0] | driveimage }}" alt="{{ piece.name }} frontend image" loading="lazy">
+          <img src="{{ piece.drive_images[0] | driveimage }}" alt="{{ piece.name }} frontend image" loading="lazy">
           {% else %}
-            <img src="/{{ piece.images[0] | imgpath }}" alt="{{ piece.name }} frontend image" loading="lazy">
+          <img src="/{{ piece.images[0] | imgpath }}" alt="{{ piece.name }} frontend image" loading="lazy">
           {% endif %}
         </div>
         <div class="piece-card-content">
