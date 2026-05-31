@@ -1,3 +1,80 @@
 {
-  "pieces": []
+  "pieces": [
+    {
+      "id": "aether",
+      "collection": "rings",
+      "tagline": "Ethereal depths captured in a textured golden frame.",
+      "materials": [
+        "Gümüş / Bronze Core"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "njal": "",
+      "video_url": "",
+      "images": [
+        "/assets/pieces/99887 (1).jpg"
+      ],
+      "name": "Aether",
+      "story": "Aether I is a quiet meditation on clarity and shadow, defined by the interplay of deep, lustrous stones and hand-hammered metal. The design evokes a sense of ancient wisdom, where the organic warmth of the frame cradles the mysterious, shifting hues of the natural gems. It is a piece designed for the wearer who finds beauty in the subtle nuances of light and the tactile history of the maker's hand.\n\n  \n\nHandcrafted via the traditional lost-wax technique by a single master artisan, this limited-edition artefact bridges the gap between antiquity and contemporary edge. Every shadow and contour is born from a deliberate strike of the hammer; the surface marks are preserved as the proud signature of the maker—serving as tangible proof of a human touch in a machine-made age.",
+      "_desc_field": ""
+    },
+    {
+      "id": "structura",
+      "collection": "rings",
+      "tagline": "Architectural precision reimagined as a modern, brutalist form.",
+      "materials": [
+        "Gümüş / Bronze Core"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "njal": "",
+      "video_url": "",
+      "images": [
+        "/assets/pieces/99887 (2).jpg"
+      ],
+      "name": "Structura",
+      "story": "Structura I is a study in geometry and tension, designed for those who view adornment as an extension of architectural form. With its bold, open-work silhouette and intricate, mesh-like surface texture, this piece captures the raw energy of modern construction softened by a human touch. It is an exploration of space and light, creating a dynamic presence on the hand that challenges traditional notions of jewellery.\n\n  \n\nHandcrafted via the traditional lost-wax technique by a single master artisan, this limited-edition artefact bridges the gap between industrial edge and refined grace. Every shadow and contour is born from a deliberate strike of the hammer; the surface marks are preserved as the proud signature of the maker—serving as tangible proof of a human touch in a machine-made age.",
+      "_desc_field": ""
+    },
+    {
+      "id": "marina",
+      "collection": "rings",
+      "tagline": "An ode to the ocean's hidden treasures, sculpted into a golden reverie.",
+      "materials": [
+        "Gümüş / Bronze Core"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "njal": "",
+      "video_url": "",
+      "images": [
+        "/assets/pieces/99887 (4).jpg"
+      ],
+      "name": "Marina",
+      "story": "Marina I serves as a poetic tribute to the ocean’s depth, capturing the delicate, intricate beauty of coral and shell formations. The design creates a dreamlike landscape on the hand, where natural, luminous stone is cradled by hand-shaped metal that mimics the organic rhythm of the sea. It is a piece for those who carry the serenity and mystery of the tides with them, finding elegance in the intricate details of nature.\n\n  \n\nHandcrafted via the traditional lost-wax technique by a single master artisan, this limited-edition artefact bridges the gap between natural wonder and refined artistry. Every shadow and contour is born from a deliberate strike of the hammer; the surface marks are preserved as the proud signature of the maker—serving as tangible proof of a human touch in a machine-made age.",
+      "_desc_field": ""
+    },
+    {
+      "id": "marina-ii",
+      "collection": "rings",
+      "tagline": "The ocean's silent depths, frozen in a golden, organic embrace.",
+      "materials": [
+        "Gümüş / Bronze Core"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "njal": "",
+      "video_url": "",
+      "images": [
+        "/assets/pieces/99887 (5).jpg"
+      ],
+      "name": "Marina II",
+      "story": "Marina II continues our poetic exploration of the ocean’s hidden realms. Where its counterpart celebrates the light, this iteration embraces the allure of the deep—featuring a central stone that mirrors the mysterious, shifting tones of twilight waters. Cradled by intricate coral and shell formations, the design feels like a relic recovered from a forgotten seabed, transformed into a piece of modern, wearable art.\n\n  \n\nHandcrafted via the traditional lost-wax technique by a single master artisan, this limited-edition artefact bridges the gap between natural wonder and refined artistry. Every shadow and contour is born from a deliberate strike of the hammer; the surface marks are preserved as the proud signature of the maker—serving as tangible proof of a human touch in a machine-made age.",
+      "_desc_field": ""
+    }
+  ]
 }
