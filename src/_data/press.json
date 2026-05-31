@@ -6,14 +6,16 @@
       "title": "NOT JUST A LABEL — 'Black Sheep' Selection",
       "date": "2026-03-20",
       "summary": "Our design house has been honoured with the 'Black Sheep' status by NOT JUST A LABEL (NJAL), one of the world's most significant authorities on independent fashion.",
-      "featured_image": "",
+      "featured_image": "/assets/pieces/4 (1).jpg",
       "link": "",
       "sections": [
         {
           "type": "text_block",
           "body": "Our design house has been honoured with the **'Black Sheep'** status by **NOT JUST A LABEL (NJAL)**, one of the world's most significant authorities on independent fashion.\n\nBeing showcased on NJAL’s global homepage as a brand with a pioneering vision marks a foundational turning point for Silver & Elegant. This selection—which rejects categorisation, pushes the boundaries of independent fashion, and advocates for ethical production—affirms our commitment to standing at the intersection of architectural innovation and enduring craftsmanship."
         }
-      ]
+      ],
+      "featured": true,
+      "_desc_field": ""
     },
     {
       "id": "paul-costelloe-lfw",
