@@ -1,3 +1,102 @@
 {
-  "pieces": []
+  "pieces": [
+    {
+      "id": "felina-i-cuff",
+      "collection": "bracelets",
+      "tagline": "A majestic emblem of strength, hand-sculpted to command presence.",
+      "materials": [
+        "Gümüş / Bronze Core"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "njal": "",
+      "video_url": "",
+      "images": [
+        "/assets/pieces/s (9).png"
+      ],
+      "name": "Felina",
+      "story": "A powerful statement of resilience, Felina I embodies the untamed spirit and majestic gaze of its namesake. The cuff wraps around the wrist as a bold, architectural talisman, with every sculpted feature captured in deep, evocative relief. It is more than a piece of adornment; it is a wearable totem for those who walk with purpose and quiet authority.\n\nHandcrafted via the traditional lost-wax technique by a single master artisan, this limited-edition artefact bridges the gap between ancient symbolism and modern design. The deliberate surface textures are preserved as the proud signature of the maker—serving as tangible proof of a human touch in a machine-made age.",
+      "_desc_field": ""
+    },
+    {
+      "id": "effigy-i-cuff",
+      "collection": "bracelets",
+      "tagline": "A wearable portrait, frozen in time and sculpted in silvered light.",
+      "materials": [
+        "Gümüş / Bronze Core"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "njal": "",
+      "video_url": "",
+      "images": [
+        "/assets/pieces/s (3).png",
+        "/assets/pieces/s (4).png"
+      ],
+      "name": "Effigy",
+      "story": "Effigy I is a profound meditation on presence and memory, captured in the tactile form of a wearable portrait. The relief sculpture, inspired by the timeless language of classical busts, brings a poetic, human intimacy to the wrist. It functions as a talisman of introspection—a conversation between the wearer and the art that adorns them.\n\nHandcrafted via the traditional lost-wax technique by a single master artisan, this limited-edition artefact bridges the gap between antiquity and contemporary edge. Every shadow and contour is born from a deliberate strike of the hammer; the surface marks are preserved as the proud signature of the maker—serving as tangible proof of a human touch in a machine-made age.",
+      "_desc_field": ""
+    },
+    {
+      "id": "mythos",
+      "collection": "bracelets",
+      "tagline": "A timeless battle between order and chaos, sculpted in relief.",
+      "materials": [
+        "Gümüş / Bronze Core"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "njal": "",
+      "video_url": "",
+      "images": [
+        "/assets/pieces/s (1).png"
+      ],
+      "name": "Mythos",
+      "story": "Mythos I is a wearable narrative, a deep relief sculpture that breathes life into the eternal struggle between order and chaos. Drawing inspiration from classical iconography, the intricate details are painstakingly hand-shaped to create a sense of movement and drama. It is a profound piece for those who view adornment not just as style, but as a commitment to the enduring power of myth.\n\n  \n\nHandcrafted via the traditional lost-wax technique by a single master artisan, this limited-edition artefact bridges the gap between antiquity and contemporary edge. Every shadow and contour is born from a deliberate strike of the hammer; the surface marks are preserved as the proud signature of the maker—serving as tangible proof of a human touch in a machine-made age.",
+      "_desc_field": ""
+    },
+    {
+      "id": "leonis",
+      "collection": "bracelets",
+      "tagline": "A majestic emblem of sovereignty, sculpted with enduring grace.",
+      "materials": [
+        "Gümüş / Bronze Core"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "njal": "",
+      "video_url": "",
+      "images": [
+        "/assets/pieces/s (1).jpg"
+      ],
+      "name": "Leonis",
+      "story": "Leonis I is a bold invocation of strength, sovereignty, and untamed spirit. The relief sculpture of the lion, rendered in intricate detail, serves as a talisman for those who command their own path with quiet conviction. Every line and curve of the mane has been painstakingly hand-sculpted, capturing a sense of regal presence that transcends the immediate.\n\n  \n\nHandcrafted via the traditional lost-wax technique by a single master artisan, this limited-edition artefact bridges the gap between antiquity and contemporary edge. Every shadow and contour is born from a deliberate strike of the hammer; the surface marks are preserved as the proud signature of the maker—serving as tangible proof of a human touch in a machine-made age.",
+      "_desc_field": ""
+    },
+    {
+      "id": "aries",
+      "collection": "bracelets",
+      "tagline": "An ancient narrative of protection and journey, cast in silvered shadow.",
+      "materials": [
+        "Gümüş / Bronze Core"
+      ],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "njal": "",
+      "video_url": "",
+      "images": [
+        "/assets/pieces/s (5).png",
+        "/assets/pieces/s (15).png",
+        "/assets/pieces/s (10).png"
+      ],
+      "name": "Aries",
+      "story": "Aries I is a wearable fragment of history, a deep relief sculpture that speaks to the archetypal themes of journey and guardianship. The intricate interplay between the figures evokes a timeless narrative, capturing a moment of profound significance frozen in metal. It is designed for those who carry art not merely as a fashion choice, but as a living piece of storytelling.\n\n  \n\nHandcrafted via the traditional lost-wax technique by a single master artisan, this limited-edition artefact bridges the gap between antiquity and contemporary edge. Every shadow and contour is born from a deliberate strike of the hammer; the surface marks are preserved as the proud signature of the maker—serving as tangible proof of a human touch in a machine-made age.",
+      "_desc_field": ""
+    }
+  ]
 }
