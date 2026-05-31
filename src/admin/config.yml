@@ -111,12 +111,13 @@ collections:
             name: "pieces"
             widget: "list"
             fields: &piece_fields
-              - { label: "ID (URL kalıcı bağlantısı - küçük harf, boşluksuz)", name: "id", widget: "string" }
-              - { label: "Ürün Adı", name: "name", widget: "string" }
+              - { label: "Detay Sayfası Olmasın (Yalnızca Görsel Göster)", name: "no_detail", widget: "boolean", default: false, required: false }
+              - { label: "ID (Detaylı ürünler için zorunlu - küçük harf, boşluksuz)", name: "id", widget: "string", required: false }
+              - { label: "Ürün Adı", name: "name", widget: "string", required: false }
               - { label: "Koleksiyon / Kategori", name: "collection", widget: "select", options: [{ label: "Yüzükler", value: "rings" }, { label: "Kolyeler", value: "necklaces" }, { label: "Bilezikler", value: "bracelets" }, { label: "Küpeler", value: "earrings" }] }
-              - { label: "Kısa Tanıtım Yazısı", name: "tagline", widget: "string" }
-              - { label: "Ürün Hikayesi", name: "story", widget: "text" }
-              - { label: "Kullanılan Malzemeler", name: "materials", widget: "list" }
+              - { label: "Kısa Tanıtım Yazısı", name: "tagline", widget: "string", required: false }
+              - { label: "Ürün Hikayesi", name: "story", widget: "text", required: false }
+              - { label: "Kullanılan Malzemeler", name: "materials", widget: "list", required: false }
               - { label: "Öne Çıkarılan (Ana sayfada gösterilsin mi?)", name: "featured", widget: "boolean", default: false }
               - { label: "Wolf & Badger Ürün Sayfası Linki (İsteğe Bağlı)", name: "wolfandbadger", widget: "string", required: false }
               - { label: "More4id Ürün Sayfası Linki (İsteğe Bağlı)", name: "more4id", widget: "string", required: false }

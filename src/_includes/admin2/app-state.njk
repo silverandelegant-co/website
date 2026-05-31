@@ -584,6 +584,7 @@
         if (type === 'pieces_list') {
           this.editingItem = {
             id: '',
+            no_detail: false,
             _title_field: '', // binding pointer
             collection: this.activeCatalog,
             tagline: '',
@@ -626,6 +627,7 @@
         this.editingItem._desc_field = item.story || item.summary || '';
         
         if (this.getActiveCatalogType() === 'pieces_list') {
+          this.editingItem.no_detail = !!item.no_detail;
           if (!this.editingItem.materials) this.editingItem.materials = [''];
           if (!this.editingItem.images) this.editingItem.images = [''];
           if (!this.editingItem.drive_images) this.editingItem.drive_images = [''];
@@ -766,6 +768,10 @@
       },
 
       validateSlug() {
+        if (this.editingItem.no_detail && !this.editingItem.id) {
+          this.errors.id = null;
+          return;
+        }
         if (!this.editingItem.id) {
           this.errors.id = '⚠️ Kalıcı bağlantı (ID) boş olamaz.';
           return;
@@ -805,6 +811,17 @@
 
       // Saves Product / Post items locally in-memory
       saveProduct() {
+        const type = this.getActiveCatalogType();
+
+        if (type === 'pieces_list' && this.editingItem.no_detail) {
+          if (!this.editingItem.id) {
+            this.editingItem.id = 'simple-' + Date.now();
+          }
+          if (!this.editingItem._title_field || !this.editingItem._title_field.trim()) {
+            this.editingItem._title_field = 'Detaysız Ürün (' + this.editingItem.id + ')';
+          }
+        }
+
         this.validateSlug();
         if (this.errors.id) {
           this.showToast('Formda hatalar var, lütfen düzeltin.', 'error');
@@ -815,18 +832,16 @@
           return;
         }
 
-        const type = this.getActiveCatalogType();
-        
         // Re-map binding values back to their schema names
         if (type === 'pieces_list') {
-          this.editingItem.name = this.editingItem._title_field.trim();
-          this.editingItem.story = this.editingItem._desc_field.trim();
+          this.editingItem.name = this.editingItem.no_detail ? "" : this.editingItem._title_field.trim();
+          this.editingItem.story = this.editingItem.no_detail ? "" : this.editingItem._desc_field.trim();
           
-          this.editingItem.materials = this.editingItem.materials.map(m => m.trim()).filter(m => m !== '');
+          this.editingItem.materials = this.editingItem.no_detail ? [] : this.editingItem.materials.map(m => m.trim()).filter(m => m !== '');
           this.editingItem.images = this.editingItem.images.map(i => i.trim()).filter(i => i !== '');
           this.editingItem.drive_images = (this.editingItem.drive_images || []).map(d => d.trim()).filter(d => d !== '');
           
-          if (this.editingItem.materials.length === 0) this.editingItem.materials = ['Gümüş / Bronze Core'];
+          if (!this.editingItem.no_detail && this.editingItem.materials.length === 0) this.editingItem.materials = ['Gümüş / Bronze Core'];
           if (this.editingItem.images.length === 0 && this.editingItem.drive_images.length === 0) this.editingItem.images = [];
           if (this.editingItem.drive_images.length === 0) delete this.editingItem.drive_images;
         } else {

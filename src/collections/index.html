@@ -26,20 +26,37 @@ description: Browse all wearable art jewellery by Silver & Elegant. Rings, neckl
     <!-- Grid -->
     <div class="collections-grid" id="collections-grid">
       {% for piece in pieces.pieces %}
-      <a href="/piece/{{ piece.id }}/index.html" class="piece-card reveal piece-item"
-        data-category="{{ piece.collection }}">
-        <div class="piece-image">
-          {% if piece.drive_images and piece.drive_images | length > 0 and piece.drive_images[0] %}
-          <img src="{{ piece.drive_images[0] | driveimage }}" alt="{{ piece.name }} frontend image" loading="lazy">
-          {% else %}
-          <img src="/{{ piece.images[0] | imgpath }}" alt="{{ piece.name }} frontend image" loading="lazy">
-          {% endif %}
-        </div>
-        <div class="piece-card-content">
-          <h3 class="piece-name">{{ piece.name }}</h3>
-          <p class="piece-collection">{{ piece.collection | capitalize }}</p>
-        </div>
-      </a>
+        {% if piece.no_detail %}
+          <!-- Simple Piece (Image-only, No details page) -->
+          <div class="piece-card reveal piece-item simple-piece-card"
+            data-category="{{ piece.collection }}"
+            style="cursor: pointer;"
+            onclick="openImageLightbox(this, '{% if piece.drive_images and piece.drive_images | length > 0 and piece.drive_images[0] %}{{ piece.drive_images[0] | driveimage }}{% else %}/{{ piece.images[0] | imgpath }}{% endif %}')">
+            <div class="piece-image">
+              {% if piece.drive_images and piece.drive_images | length > 0 and piece.drive_images[0] %}
+              <img src="{{ piece.drive_images[0] | driveimage }}" alt="{{ piece.collection | capitalize }} piece image" loading="lazy">
+              {% else %}
+              <img src="/{{ piece.images[0] | imgpath }}" alt="{{ piece.collection | capitalize }} piece image" loading="lazy">
+              {% endif %}
+            </div>
+          </div>
+        {% else %}
+          <!-- Detailed Piece -->
+          <a href="/piece/{{ piece.id }}/index.html" class="piece-card reveal piece-item"
+            data-category="{{ piece.collection }}">
+            <div class="piece-image">
+              {% if piece.drive_images and piece.drive_images | length > 0 and piece.drive_images[0] %}
+              <img src="{{ piece.drive_images[0] | driveimage }}" alt="{{ piece.name }} frontend image" loading="lazy">
+              {% else %}
+              <img src="/{{ piece.images[0] | imgpath }}" alt="{{ piece.name }} frontend image" loading="lazy">
+              {% endif %}
+            </div>
+            <div class="piece-card-content">
+              <h3 class="piece-name">{{ piece.name }}</h3>
+              <p class="piece-collection">{{ piece.collection | capitalize }}</p>
+            </div>
+          </a>
+        {% endif %}
       {% endfor %}
     </div>
 
