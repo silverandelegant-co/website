@@ -277,14 +277,22 @@
       // Convert any Google Drive share URL to a direct embeddable image URL
       driveUrlToDirectLink(url) {
         if (!url) return '';
-        // Already a direct link (drive.google.com/uc or lh3.googleusercontent.com)
-        if (url.includes('uc?export=view') || url.includes('lh3.googleusercontent.com')) return url;
-        // Standard share link: /file/d/FILE_ID/view
+        if (url.includes('lh3.googleusercontent.com')) return url;
+        
+        let fileId = '';
         const fileMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
-        if (fileMatch) return `https://drive.google.com/uc?export=view&id=${fileMatch[1]}`;
-        // Open link: /open?id=FILE_ID
-        const openMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-        if (openMatch) return `https://drive.google.com/uc?export=view&id=${openMatch[1]}`;
+        if (fileMatch) {
+          fileId = fileMatch[1];
+        } else {
+          const openMatch = url.match(/(?:[?&]|&amp;)id=([a-zA-Z0-9_-]+)/);
+          if (openMatch) {
+            fileId = openMatch[1];
+          }
+        }
+        
+        if (fileId) {
+          return `https://lh3.googleusercontent.com/d/${fileId}`;
+        }
         return url;
       },
 

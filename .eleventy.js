@@ -18,11 +18,22 @@ module.exports = function(eleventyConfig) {
   // Supports: /file/d/ID/view, /open?id=ID, already-direct uc?export=view
   eleventyConfig.addFilter("driveimage", (url) => {
     if (!url) return '';
-    if (url.includes('uc?export=view') || url.includes('lh3.googleusercontent.com')) return url;
+    if (url.includes('lh3.googleusercontent.com')) return url;
+    
+    let fileId = '';
     const fileMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
-    if (fileMatch) return `https://drive.google.com/uc?export=view&id=${fileMatch[1]}`;
-    const openMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-    if (openMatch) return `https://drive.google.com/uc?export=view&id=${openMatch[1]}`;
+    if (fileMatch) {
+      fileId = fileMatch[1];
+    } else {
+      const openMatch = url.match(/(?:[?&]|&amp;)id=([a-zA-Z0-9_-]+)/);
+      if (openMatch) {
+        fileId = openMatch[1];
+      }
+    }
+    
+    if (fileId) {
+      return `https://lh3.googleusercontent.com/d/${fileId}`;
+    }
     return url;
   });
 
