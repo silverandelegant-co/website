@@ -42,10 +42,76 @@
           <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Ana Sayfa Tanıtım Yazısı (Tagline)</label>
           <input type="text" x-model="singleObjectData.tagline" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-gold-500 focus:border-gold-500" />
         </div>
+
+        <!-- Navigation Menu Customization -->
+        <div class="border-t border-slate-800/80 pt-5 space-y-4">
+          <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-300 font-sans">Navigasyon Menü Linkleri (Menu Labels)</h4>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="space-y-1.5">
+              <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Collections Linki</label>
+              <input type="text" x-model="singleObjectData.menu_collections" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2 px-3 text-xs text-slate-200 focus:outline-none" />
+            </div>
+            <div class="space-y-1.5">
+              <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Maker / Artisan Linki</label>
+              <input type="text" x-model="singleObjectData.menu_artisan" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2 px-3 text-xs text-slate-200 focus:outline-none" />
+            </div>
+            <div class="space-y-1.5">
+              <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">About Linki</label>
+              <input type="text" x-model="singleObjectData.menu_about" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2 px-3 text-xs text-slate-200 focus:outline-none" />
+            </div>
+            <div class="space-y-1.5">
+              <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Press Linki</label>
+              <input type="text" x-model="singleObjectData.menu_press" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2 px-3 text-xs text-slate-200 focus:outline-none" />
+            </div>
+            <div class="space-y-1.5">
+              <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Blog Linki</label>
+              <input type="text" x-model="singleObjectData.menu_blog" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2 px-3 text-xs text-slate-200 focus:outline-none" />
+            </div>
+            <div class="space-y-1.5">
+              <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Contact Linki</label>
+              <input type="text" x-model="singleObjectData.menu_contact" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2 px-3 text-xs text-slate-200 focus:outline-none" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Collections & Blog Landing Pages SEO -->
+        <div class="border-t border-slate-800/80 pt-5 space-y-4">
+          <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-300 font-sans">Koleksiyon & Blog Sayfa Başlıkları (SEO)</h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+              <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Collections Sayfa Başlığı</label>
+              <input type="text" x-model="singleObjectData.title_collections" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2 px-3 text-xs text-slate-200 focus:outline-none" />
+            </div>
+            <div class="space-y-1.5">
+              <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Collections Açıklaması (Meta Description)</label>
+              <input type="text" x-model="singleObjectData.desc_collections" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2 px-3 text-xs text-slate-200 focus:outline-none" />
+            </div>
+            <div class="space-y-1.5">
+              <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Blog Sayfa Başlığı</label>
+              <input type="text" x-model="singleObjectData.title_blog" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2 px-3 text-xs text-slate-200 focus:outline-none" />
+            </div>
+            <div class="space-y-1.5">
+              <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Blog Açıklaması (Meta Description)</label>
+              <input type="text" x-model="singleObjectData.desc_blog" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2 px-3 text-xs text-slate-200 focus:outline-none" />
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- CONTACT fields -->
       <div x-show="activeCatalog === 'contact'" class="space-y-5">
+        <!-- Contact Page SEO -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-4 border-b border-slate-800/85">
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 font-sans">Sayfa Başlığı (Browser Title)</label>
+            <input type="text" x-model="singleObjectData.page_title" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none" />
+          </div>
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 font-sans">Meta Açıklaması (Description)</label>
+            <input type="text" x-model="singleObjectData.meta_description" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none" />
+          </div>
+        </div>
+        
         <div class="space-y-1.5">
           <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Ana Başlık</label>
           <input type="text" x-model="singleObjectData.heading" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none" />
@@ -112,6 +178,18 @@
 
       <!-- ABOUT (Hakkımızda) page -->
       <div x-show="activeCatalog === 'about'" class="space-y-6">
+        <!-- About Page SEO -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-4 border-b border-slate-800/85">
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 font-sans">Sayfa Başlığı (Browser Title)</label>
+            <input type="text" x-model="singleObjectData.page_title" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none" />
+          </div>
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 font-sans">Meta Açıklaması (Description)</label>
+            <input type="text" x-model="singleObjectData.meta_description" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none" />
+          </div>
+        </div>
+
         <!-- Hero Image selection -->
         <div class="space-y-2">
           <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 font-sans">Giriş (Hero) Görseli</label>
@@ -299,6 +377,210 @@
             <i class="fa-solid fa-plus text-[9px]"></i>
             <span>Yeni Adım Ekle</span>
           </button>
+        </div>
+      </div>
+
+      <!-- ARTISAN (Sanatçı / Maker) page -->
+      <div x-show="activeCatalog === 'artisan'" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Menü Link Adı (Menu Label)</label>
+            <input type="text" x-model="singleObjectData.menu_label" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-gold-500 focus:border-gold-500" />
+          </div>
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Sayfa Başlığı (Browser Title)</label>
+            <input type="text" x-model="singleObjectData.page_title" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-gold-500 focus:border-gold-500" />
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 font-sans">Sayfa İçi Başlık (Heading)</label>
+            <input type="text" x-model="singleObjectData.heading" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-gold-500 focus:border-gold-500" />
+          </div>
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 font-sans">Alt Başlık / İsim (Subheading)</label>
+            <input type="text" x-model="singleObjectData.subheading" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-gold-500 focus:border-gold-500" />
+          </div>
+        </div>
+        <div class="space-y-1.5">
+          <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Meta Açıklaması (Description)</label>
+          <input type="text" x-model="singleObjectData.meta_description" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-gold-500 focus:border-gold-500" />
+        </div>
+
+        <!-- Hero Image selection -->
+        <div class="space-y-2">
+          <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 font-sans">Giriş (Hero) Görseli</label>
+          <div class="flex items-center space-x-3">
+            <input type="text" x-model="singleObjectData.hero_image" class="block flex-grow bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs font-mono text-slate-300 focus:outline-none" readonly />
+            <button @click="openMediaLibraryModal(singleObjectData, 'hero_image')"
+              class="px-4 py-3 bg-slate-900 border border-slate-800 hover:border-gold-500/20 text-gold-400 text-xs font-semibold rounded-xl flex-shrink-0">
+              Görsel Seç
+            </button>
+          </div>
+          <!-- Image preview -->
+          <div class="mt-2 w-32 h-20 bg-slate-950 rounded-lg overflow-hidden border border-slate-800">
+            <img :src="'/' + (singleObjectData.hero_image || '').replace(/^\/+/, '')" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/200x100/1e293b/a88653?text=Yok'" />
+          </div>
+        </div>
+
+        <!-- Dynamic Layout Section Builder -->
+        <div class="space-y-3 pt-4 border-t border-slate-800/80">
+          <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-300 font-sans">Sayfa İçerik Blokları (Sections)</h4>
+          <div class="space-y-4">
+            <template x-for="(sec, idx) in singleObjectData.sections" :key="idx">
+              <div class="bg-slate-950 border border-slate-800/80 p-4 rounded-xl space-y-3 relative">
+                <!-- Block Toolbar buttons -->
+                <div class="absolute top-4 right-4 flex items-center space-x-2">
+                  <button type="button" @click="const temp = singleObjectData.sections[idx]; singleObjectData.sections.splice(idx, 1); singleObjectData.sections.splice(idx-1, 0, temp)" 
+                    class="text-slate-500 hover:text-gold-400 disabled:opacity-20 text-[10px]" :disabled="idx === 0">
+                    <i class="fa-solid fa-arrow-up"></i>
+                  </button>
+                  <button type="button" @click="const temp = singleObjectData.sections[idx]; singleObjectData.sections.splice(idx, 1); singleObjectData.sections.splice(idx+1, 0, temp)" 
+                    class="text-slate-500 hover:text-gold-400 disabled:opacity-20 text-[10px]" :disabled="idx === singleObjectData.sections.length - 1">
+                    <i class="fa-solid fa-arrow-down"></i>
+                  </button>
+                  <button type="button" @click="singleObjectData.sections.splice(idx, 1)" class="text-slate-500 hover:text-red-400 text-[10px] ml-1">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
+
+                <!-- Block Type Tag & Custom Label -->
+                <div class="flex flex-wrap items-center gap-4 pr-20">
+                  <span class="inline-flex px-2 py-0.5 rounded bg-gold-950/40 text-gold-300 text-[9px] uppercase tracking-wider font-semibold" x-text="getBlockLabel(sec.type)"></span>
+                  <div class="flex items-center space-x-1.5">
+                    <label class="text-[9px] uppercase tracking-wider text-slate-500 font-sans">Blok Etiketi (Label):</label>
+                    <input type="text" x-model="sec.label" placeholder="Örn: Narrative" class="bg-slate-900 border border-slate-800 rounded px-2 py-1 text-[10px] text-slate-300 w-36 focus:outline-none focus:border-gold-500/50" />
+                  </div>
+                </div>
+
+                <!-- Text Block details -->
+                <div x-show="sec.type === 'text_block'" class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <label class="text-[9px] uppercase tracking-wider text-slate-500">Metin İçeriği (Markdown destekler)</label>
+                    <button type="button"
+                      @click="openFullscreenEditor(
+                        'Metin İçerik Bloğu',
+                        'Distraction-free modunda sayfa içeriğinizi oluşturun.',
+                        sec.body,
+                        (val) => { sec.body = val; }
+                      )"
+                      class="px-2 py-0.5 bg-slate-900 border border-slate-800 hover:border-slate-700 text-gold-400 hover:text-gold-300 text-[9px] font-semibold rounded flex items-center space-x-1 transition-all">
+                      <i class="fa-solid fa-expand"></i>
+                      <span>Tam Ekran Yap</span>
+                    </button>
+                  </div>
+                  
+                  <!-- WYSIWYG block body editor -->
+                  <div 
+                    class="quill-wysiwyg-wrapper"
+                    x-init="
+                      const watch = $watch;
+                      $nextTick(() => {
+                        const container = $el.querySelector('.quill-editor');
+                        const quill = new Quill(container, {
+                          theme: 'snow',
+                          modules: {
+                            toolbar: [
+                              ['bold', 'italic', 'underline'],
+                              [{ 'header': [1, 2, 3, false] }],
+                              [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                              ['link', 'image', 'clean']
+                            ]
+                          }
+                        });
+                        
+                        quill.getModule('toolbar').addHandler('image', () => {
+                          openMediaLibraryModal('quill', quill);
+                        });
+                        
+                        quill.root.innerHTML = marked.parse(sec.body || '');
+                        const turndownService = new TurndownService({ headingStyle: 'atx' });
+                        quill.on('text-change', (delta, oldDelta, source) => {
+                          if (source === 'user') {
+                            const currentHtml = quill.root.innerHTML;
+                            const markdown = turndownService.turndown(currentHtml);
+                            if (sec.body !== markdown) {
+                              sec.body = markdown;
+                            }
+                          }
+                        });
+
+                        // Two-way binding watcher for repeated loop blocks
+                        watch('sec.body', (newVal) => {
+                          const currentMarkdown = turndownService.turndown(quill.root.innerHTML);
+                          if (newVal !== currentMarkdown) {
+                            quill.root.innerHTML = marked.parse(newVal || '');
+                          }
+                        });
+                      });
+                    "
+                  >
+                    <div class="quill-editor" style="height: 250px;"></div>
+                  </div>
+                </div>
+
+                <!-- Blockquote details -->
+                <div x-show="sec.type === 'blockquote'" class="space-y-2">
+                  <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-wider text-slate-500">Alıntı Metni</label>
+                    <input type="text" x-model="sec.quote" class="block w-full bg-slate-900 border border-slate-800 focus:outline-none focus:ring-1 focus:ring-gold-500/30 focus:border-gold-500/30 rounded-lg py-1.5 px-3 text-xs text-slate-200 transition-all" />
+                  </div>
+                  <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-wider text-slate-500">Kaynak / Yazar (İsteğe Bağlı)</label>
+                    <input type="text" x-model="sec.author" class="block w-full bg-slate-900 border border-slate-800 focus:outline-none focus:ring-1 focus:ring-gold-500/30 focus:border-gold-500/30 rounded-lg py-1.5 px-3 text-xs text-slate-200 transition-all" />
+                  </div>
+                </div>
+
+                <!-- Image Block details -->
+                <div x-show="sec.type === 'image_block'" class="space-y-3">
+                  <div class="flex items-center space-x-2">
+                    <input type="text" x-model="sec.image" class="block flex-grow bg-slate-900 border border-slate-800 rounded-lg py-1.5 px-3 text-xs font-mono text-slate-300 focus:outline-none" readonly />
+                    <button type="button" @click="openMediaLibraryModal(sec, 'image')" class="px-2.5 py-1 bg-slate-900 border border-slate-800 text-gold-400 text-[10px] rounded flex-shrink-0">Seç</button>
+                  </div>
+                  <div class="w-24 h-16 bg-slate-900 rounded overflow-hidden border border-slate-850">
+                    <img :src="'/' + (sec.image || '').replace(/^\/+/, '')" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x50/1e293b/a88653?text=Yok'" />
+                  </div>
+                  <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                      <label class="text-[9px] uppercase tracking-wider text-slate-500">Görsel Açıklaması (Alt)</label>
+                      <input type="text" x-model="sec.alt" class="block w-full bg-slate-900 border border-slate-800 focus:outline-none focus:ring-1 focus:ring-gold-500/30 focus:border-gold-500/30 rounded-lg py-1.5 px-3 text-xs text-slate-200 transition-all" />
+                    </div>
+                    <div class="space-y-1">
+                      <label class="text-[9px] uppercase tracking-wider text-slate-500">Alt Yazı / Başlık</label>
+                      <input type="text" x-model="sec.caption" class="block w-full bg-slate-900 border border-slate-800 focus:outline-none focus:ring-1 focus:ring-gold-500/30 focus:border-gold-500/30 rounded-lg py-1.5 px-3 text-xs text-slate-200 transition-all" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Video Block details -->
+                <div x-show="sec.type === 'video_block'" class="space-y-2">
+                  <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-wider text-slate-500">YouTube / Video Linki</label>
+                    <input type="text" x-model="sec.video_url" class="block w-full bg-slate-900 border border-slate-800 focus:outline-none focus:ring-1 focus:ring-gold-500/30 focus:border-gold-500/30 rounded-lg py-1.5 px-3 text-xs text-slate-200 transition-all" />
+                  </div>
+                  <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-wider text-slate-500">Video Başlığı (İsteğe Bağlı)</label>
+                    <input type="text" x-model="sec.caption" class="block w-full bg-slate-900 border border-slate-800 focus:outline-none focus:ring-1 focus:ring-gold-500/30 focus:border-gold-500/30 rounded-lg py-1.5 px-3 text-xs text-slate-200 transition-all" />
+                  </div>
+                </div>
+
+                <!-- Subheading Block details -->
+                <div x-show="sec.type === 'subheading'" class="space-y-1">
+                  <label class="text-[9px] uppercase tracking-wider text-slate-500">Alt Başlık Metni</label>
+                  <input type="text" x-model="sec.text" class="block w-full bg-slate-900 border border-slate-800 focus:outline-none focus:ring-1 focus:ring-gold-500/30 focus:border-gold-500/30 rounded-lg py-1.5 px-3 text-xs text-slate-200 transition-all" />
+                </div>
+              </div>
+            </template>
+          </div>
+
+          <!-- Block Insertion buttons -->
+          <div class="flex flex-wrap gap-2 pt-3">
+            <button type="button" @click="singleObjectData.sections.push({ type: 'text_block', body: '' })" class="px-2.5 py-1.5 bg-slate-950 border border-slate-800 text-[10px] font-semibold text-gold-400 hover:text-gold-300 rounded flex items-center space-x-1"><i class="fa-solid fa-plus text-[9px]"></i> <span>+ Metin Bloğu</span></button>
+            <button type="button" @click="singleObjectData.sections.push({ type: 'blockquote', quote: '', author: '' })" class="px-2.5 py-1.5 bg-slate-950 border border-slate-800 text-[10px] font-semibold text-gold-400 hover:text-gold-300 rounded flex items-center space-x-1"><i class="fa-solid fa-plus text-[9px]"></i> <span>+ Alıntı</span></button>
+            <button type="button" @click="singleObjectData.sections.push({ type: 'image_block', image: '', alt: '', caption: '' })" class="px-2.5 py-1.5 bg-slate-950 border border-slate-800 text-[10px] font-semibold text-gold-400 hover:text-gold-300 rounded flex items-center space-x-1"><i class="fa-solid fa-plus text-[9px]"></i> <span>+ Görsel</span></button>
+            <button type="button" @click="singleObjectData.sections.push({ type: 'video_block', video_url: '', caption: '' })" class="px-2.5 py-1.5 bg-slate-950 border border-slate-800 text-[10px] font-semibold text-gold-400 hover:text-gold-300 rounded flex items-center space-x-1"><i class="fa-solid fa-plus text-[9px]"></i> <span>+ Video</span></button>
+            <button type="button" @click="singleObjectData.sections.push({ type: 'subheading', text: '' })" class="px-2.5 py-1.5 bg-slate-950 border border-slate-800 text-[10px] font-semibold text-gold-400 hover:text-gold-300 rounded flex items-center space-x-1"><i class="fa-solid fa-plus text-[9px]"></i> <span>+ Alt Başlık</span></button>
+          </div>
         </div>
       </div>
 

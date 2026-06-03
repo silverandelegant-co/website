@@ -1,7 +1,8 @@
 ---
 layout: base.njk
-title: The Collection — Silver & Elegant
-description: Browse all wearable art jewellery by Silver & Elegant. Rings, necklaces, and bracelets — each with a story.
+eleventyComputed:
+  title: "{{ settings.title_collections | default('The Collection — Silver & Elegant') }}"
+  description: "{{ settings.desc_collections | default('Browse all wearable art jewellery by Silver & Elegant. Rings, necklaces, and bracelets — each with a story.') }}"
 ---
 <!-- Page Hero -->
 <div class="page-hero" id="page-hero">

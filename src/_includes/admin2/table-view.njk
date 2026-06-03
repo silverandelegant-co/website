@@ -16,16 +16,26 @@
   </div>
 
   <!-- Press Header Settings if active catalog is Press -->
-  <div x-show="activeCatalog === 'press'" class="bg-slate-900/20 border border-slate-800 p-5 rounded-2xl space-y-3">
+  <div x-show="activeCatalog === 'press'" class="bg-slate-900/20 border border-slate-800 p-5 rounded-2xl space-y-4">
     <div class="flex items-center justify-between">
-      <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-300">Basın Sayfası Ayarları</h4>
+      <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-300 font-sans">Basın Sayfası Ayarları</h4>
       <button @click="savePressHeadingOnly()" class="px-3.5 py-1.5 bg-slate-950 border border-slate-800 hover:border-gold-500/20 text-gold-400 text-[11px] font-semibold rounded-lg">
-        Sadece Başlığı Kaydet
+        Sayfa Ayarlarını Kaydet
       </button>
     </div>
-    <div class="space-y-1.5">
-      <label class="text-[10px] uppercase text-slate-500 font-semibold tracking-wider">Basın Ana Başlığı</label>
-      <input type="text" x-model="pressHeading" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2 px-3 text-xs text-slate-200 focus:outline-none" />
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="space-y-1.5">
+        <label class="text-[10px] uppercase text-slate-500 font-semibold tracking-wider">Basın Ana Başlığı</label>
+        <input type="text" x-model="pressHeading" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2 px-3 text-xs text-slate-200 focus:outline-none" />
+      </div>
+      <div class="space-y-1.5">
+        <label class="text-[10px] uppercase text-slate-500 font-semibold tracking-wider">Sayfa Başlığı (Browser Title)</label>
+        <input type="text" x-model="pressPageTitle" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2 px-3 text-xs text-slate-200 focus:outline-none" />
+      </div>
+      <div class="space-y-1.5">
+        <label class="text-[10px] uppercase text-slate-500 font-semibold tracking-wider">Meta Açıklaması (Description)</label>
+        <input type="text" x-model="pressMetaDescription" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2 px-3 text-xs text-slate-200 focus:outline-none" />
+      </div>
     </div>
   </div>
 

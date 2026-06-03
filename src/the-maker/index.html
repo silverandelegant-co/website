@@ -1,0 +1,109 @@
+---
+layout: "base.njk"
+eleventyComputed:
+  title: "{{ artisan.page_title | default('The Artisan — Silver & Elegant') }}"
+  description: "{{ artisan.meta_description | default('The personal story of Esen Tunalı Sarı, the silversmith and software engineer behind Silver & Elegant.') }}"
+---
+
+<!-- Artisan Hero -->
+<div style="padding-top:5rem;">
+  {% set resolvedHero = artisan.hero_image | default('assets/about-workshop.png') %}
+  {% if 'drive.google.com' in resolvedHero or 'googleusercontent.com' in resolvedHero %}
+    {% set heroUrl = resolvedHero | driveimage %}
+  {% else %}
+    {% set heroUrl = '/' + (resolvedHero | imgpath) %}
+  {% endif %}
+  <img src="{{ heroUrl }}" alt="Esen Tunalı Sarı - The Artisan" class="about-hero-img reveal">
+</div>
+
+<!-- Artisan Content -->
+<div class="about-layout">
+
+  <!-- Header -->
+  <div class="reveal" style="text-align: center; margin-bottom: 5rem;">
+    <span class="label" style="display: inline-block; margin-bottom: 1rem;">{{ artisan.heading | default('The Artisan') }}</span>
+    <h1 style="font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; letter-spacing: 0.05em;">
+      {{ artisan.subheading | default('Esen Tunalı Sarı') }}
+    </h1>
+    <div style="width: 40px; height: 1px; background: var(--c-border); margin: 2rem auto 0;"></div>
+  </div>
+
+  {% for block in artisan.sections %}
+  <!-- Block: {{ block.type }} -->
+  <div class="about-intro">
+    <div class="about-intro-label reveal">
+      {% if block.label %}
+        <span class="label">{{ block.label }}</span>
+      {% else %}
+        {% if block.type == "text_block" %}
+          <span class="label">Narrative</span>
+        {% elif block.type == "blockquote" %}
+          <span class="label">Philosophy</span>
+        {% elif block.type == "image_block" %}
+          <span class="label">Visual</span>
+        {% elif block.type == "video_block" %}
+          <span class="label">Process</span>
+        {% elif block.type == "subheading" %}
+          <span class="label">Chapter</span>
+        {% else %}
+          <span class="label">Story</span>
+        {% endif %}
+      {% endif %}
+    </div>
+    <div class="about-body">
+      {% if block.type == "text_block" %}
+        <div class="reveal">
+          {{ block.body | markdown | safe }}
+        </div>
+      {% elif block.type == "blockquote" %}
+        <blockquote class="reveal" style="margin: 0; padding: 2rem 0; border-top: 1px solid var(--c-border); border-bottom: 1px solid var(--c-border); text-align: left;">
+          <p style="font-family: var(--font-serif); font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-style: italic; line-height: 1.5; color: var(--c-ink); font-weight: 300; margin: 0 0 1.5rem 0; letter-spacing: 0.02em;">
+            "{{ block.quote }}"
+          </p>
+          {% if block.author %}
+            <cite style="display: block; font-family: var(--font-sans); font-size: 0.72rem; letter-spacing: 0.15em; color: var(--c-muted); text-transform: uppercase; font-style: normal;">
+              — {{ block.author }}
+            </cite>
+          {% endif %}
+        </blockquote>
+      {% elif block.type == "image_block" %}
+        <figure class="reveal" style="margin: 0; display: flex; flex-direction: column; gap: 1rem;">
+          {% set imgUrl = block.image %}
+          {% if 'drive.google.com' in imgUrl or 'googleusercontent.com' in imgUrl %}
+            {% set resolvedImg = imgUrl | driveimage %}
+          {% else %}
+            {% set resolvedImg = '/' + (imgUrl | imgpath) %}
+          {% endif %}
+          <img src="{{ resolvedImg }}" alt="{{ block.alt | default(artisan.subheading) }}" style="width: 100%; height: auto; border: 1px solid var(--c-border); filter: grayscale(10%);">
+          {% if block.caption %}
+            <figcaption style="font-family: var(--font-serif); font-style: italic; font-size: 0.9rem; color: var(--c-muted); margin-top: 0.2rem;">
+              {{ block.caption }}
+            </figcaption>
+          {% endif %}
+        </figure>
+      {% elif block.type == "video_block" and block.video_url | youtubeEmbed %}
+        <figure class="reveal" style="margin: 0; display: flex; flex-direction: column; gap: 1rem; width: 100%;">
+          <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; max-width:100%; border:1px solid var(--c-border); background:#000;">
+            <iframe 
+              src="{{ block.video_url | youtubeEmbed }}" 
+              style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+          {% if block.caption %}
+            <figcaption style="font-family: var(--font-serif); font-style: italic; font-size: 0.9rem; color: var(--c-muted); margin-top: 0.2rem;">
+              {{ block.caption }}
+            </figcaption>
+          {% endif %}
+        </figure>
+      {% elif block.type == "subheading" %}
+        <h2 class="reveal" style="margin: 0; font-family: var(--font-serif); font-weight: 300; font-size: clamp(1.8rem, 3.5vw, 2.8rem); letter-spacing: 0.05em; color: var(--c-ink);">
+          {{ block.text }}
+        </h2>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+
+</div>

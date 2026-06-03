@@ -1,7 +1,8 @@
 ---
 layout: "base.njk"
-title: "Contact — Silver & Elegant"
-description: "Get in touch with Silver & Elegant for private enquiries, commissions, and press."
+eleventyComputed:
+  title: "{{ contact.page_title | default('Contact — Silver & Elegant') }}"
+  description: "{{ contact.meta_description | default('Get in touch with Silver & Elegant for private enquiries, commissions, and press.') }}"
 ---
   <div class="contact-layout">
 

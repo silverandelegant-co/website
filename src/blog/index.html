@@ -1,7 +1,8 @@
 ---
 layout: base.njk
-title: "Blog — Silver & Elegant"
-description: "Insights, philosophies, craftsmanship notes, and LFW runway updates from Silver & Elegant."
+eleventyComputed:
+  title: "{{ settings.title_blog | default('Blog — Silver & Elegant') }}"
+  description: "{{ settings.desc_blog | default('Insights, philosophies, craftsmanship notes, and LFW runway updates from Silver & Elegant.') }}"
 ---
   <!-- Page Hero -->
   <div class="page-hero" id="page-hero">

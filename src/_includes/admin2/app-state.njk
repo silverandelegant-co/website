@@ -16,6 +16,7 @@
         { name: 'settings', label: 'Genel Ayarlar', path: 'src/_data/settings.json', type: 'single_object', data: {}, sha: '', dirty: false },
         { name: 'contact', label: 'İletişim Sayfası', path: 'src/_data/contact.json', type: 'single_object', data: {}, sha: '', dirty: false },
         { name: 'about', label: 'Hakkımızda Sayfası', path: 'src/_data/about.json', type: 'single_object', data: {}, sha: '', dirty: false },
+        { name: 'artisan', label: 'Sanatçı / Maker Sayfası', path: 'src/_data/artisan.json', type: 'single_object', data: {}, sha: '', dirty: false },
         
         // Pieces
         { name: 'earrings', label: 'Küpeler (Earrings)', path: 'src/_data/earrings.json', type: 'pieces_list', data: [], sha: '', dirty: false },
@@ -53,6 +54,8 @@
       // Single Object States (Direct forms)
       singleObjectData: {},
       pressHeading: '', // special handler for press heading
+      pressPageTitle: '',
+      pressMetaDescription: '',
       
       // Editor Panel States
       isEditing: false,
@@ -160,6 +163,8 @@
           } else if (name === 'press') {
             // Press has list and heading
             this.pressHeading = cat.heading || '';
+            this.pressPageTitle = cat.page_title || '';
+            this.pressMetaDescription = cat.meta_description || '';
           }
         }
       },
@@ -196,6 +201,53 @@
             const res = await fetch(`https://api.github.com/repos/${this.repoOwner}/${this.repoName}/contents/${cat.path}?ref=${this.branch}`, {
               headers: { 'Authorization': `token ${this.token}` }
             });
+            
+            if (res.status === 404) {
+              cat.sha = '';
+              if (cat.type === 'single_object') {
+                if (cat.name === 'artisan') {
+                  cat.data = {
+                    menu_label: "The Artisan",
+                    page_title: "The Artisan — Silver & Elegant",
+                    meta_description: "The personal story of Esen Tunalı Sarı, the silversmith and software engineer behind Silver & Elegant's mathematical jewellery.",
+                    hero_image: "/assets/about-workshop.png",
+                    heading: "The Artisan",
+                    subheading: "Esen Tunalı Sarı",
+                    sections: [
+                      {
+                        type: "text_block",
+                        label: "Heritage",
+                        body: "I am Esen Tunalı Sarı. The vision behind Silver & Elegant was forged in the historic jewellery quarters of Istanbul, where my childhood unfolded. As the child of a family that migrated from Bulgaria, I grew up amidst masters of silver and diamond setting, where craftsmanship was not merely a technique, but a daily discipline of life."
+                      },
+                      {
+                        type: "blockquote",
+                        label: "Philosophy",
+                        quote: "The software engineering background I acquired years later allowed me to merge this traditional craft with the millimetric precision of algorithms.",
+                        author: "Esen Tunalı Sarı"
+                      },
+                      {
+                        type: "text_block",
+                        label: "Modern Studio",
+                        body: "Today, in our home studio in Borehamwood, London, we melt these two opposing worlds into a single language. We do not manufacture like a factory, nor do we hide solely in the past; we bring together the intelligence of technology and the heart of craftsmanship."
+                      }
+                    ]
+                  };
+                } else {
+                  cat.data = {};
+                }
+              } else if (cat.type === 'pieces_list') {
+                cat.data = [];
+              } else if (cat.type === 'articles_list') {
+                cat.data = [];
+                cat.heading = '';
+                cat.page_title = '';
+                cat.meta_description = '';
+              } else if (cat.type === 'posts_list') {
+                cat.data = [];
+              }
+              return;
+            }
+
             if (!res.ok) throw new Error(`${cat.label} indirilemedi.`);
             
             const jsonRes = await res.json();
@@ -211,6 +263,8 @@
             } else if (cat.type === 'articles_list') {
               cat.data = parsed.articles || [];
               cat.heading = parsed.heading || ''; // bind page heading too
+              cat.page_title = parsed.page_title || '';
+              cat.meta_description = parsed.meta_description || '';
             } else if (cat.type === 'posts_list') {
               cat.data = parsed.posts || [];
             }
@@ -813,8 +867,10 @@
         if (!cat) return;
         
         cat.heading = this.pressHeading;
+        cat.page_title = this.pressPageTitle;
+        cat.meta_description = this.pressMetaDescription;
         cat.dirty = true;
-        this.showToast('Basın başlığı yerel belleğe kaydedildi. Değişiklikleri yayınlamak için yukarıdaki gold butonu kullanın.', 'success');
+        this.showToast('Basın ayarları yerel belleğe kaydedildi. Değişiklikleri yayınlamak için yukarıdaki gold butonu kullanın.', 'success');
       },
 
       // Saves Product / Post items locally in-memory
@@ -986,7 +1042,12 @@
               } else if (cat.type === 'pieces_list') {
                 payload = { pieces: cat.data };
               } else if (cat.type === 'articles_list') {
-                payload = { heading: cat.heading, articles: cat.data };
+                payload = { 
+                  page_title: cat.page_title, 
+                  meta_description: cat.meta_description, 
+                  heading: cat.heading, 
+                  articles: cat.data 
+                };
               } else if (cat.type === 'posts_list') {
                 payload = { posts: cat.data };
               }

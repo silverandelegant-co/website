@@ -1,7 +1,8 @@
 ---
 layout: "base.njk"
-title: "Press & Recognition — Silver & Elegant"
-description: "Press features and recognitions for Silver & Elegant handcrafted jewellery."
+eleventyComputed:
+  title: "{{ press.page_title | default('Press & Recognition — Silver & Elegant') }}"
+  description: "{{ press.meta_description | default('Press features and recognitions for Silver & Elegant handcrafted jewellery.') }}"
 ---
 <!-- Page Hero -->
 <div class="page-hero" id="page-hero">

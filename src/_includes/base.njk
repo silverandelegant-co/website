@@ -25,7 +25,7 @@
       <div class="nav-overlay" id="nav-overlay"></div>
       <ul class="nav-links" id="nav-links">
         <li class="nav-item has-dropdown">
-          <a href="/collections/index.html" id="nav-collections">Collections</a>
+          <a href="/collections/index.html" id="nav-collections">{{ settings.menu_collections | default('Collections') }}</a>
           <div class="nav-dropdown">
             <a href="/collections/index.html">All Pieces</a>
             <a href="/collections/index.html?filter=rings">Rings</a>
@@ -34,10 +34,11 @@
             <a href="/collections/index.html?filter=earrings">Earrings</a>
           </div>
         </li>
-        <li class="nav-item"><a href="/about/index.html">About</a></li>
-        <li class="nav-item"><a href="/press/index.html">Press</a></li>
-        <li class="nav-item"><a href="/blog/index.html">Blog</a></li>
-        <li class="nav-item"><a href="/contact/index.html">Contact</a></li>
+        <li class="nav-item"><a href="/the-maker/index.html">{{ settings.menu_artisan | default(artisan.menu_label) | default('The Artisan') }}</a></li>
+        <li class="nav-item"><a href="/about/index.html">{{ settings.menu_about | default('About') }}</a></li>
+        <li class="nav-item"><a href="/press/index.html">{{ settings.menu_press | default('Press') }}</a></li>
+        <li class="nav-item"><a href="/blog/index.html">{{ settings.menu_blog | default('Blog') }}</a></li>
+        <li class="nav-item"><a href="/contact/index.html">{{ settings.menu_contact | default('Contact') }}</a></li>
         <li class="nav-item">
           <a href="{{ settings.instagram | default('https://www.instagram.com/silverandelegantco/') }}" class="nav-icon" target="_blank" rel="noopener" aria-label="Instagram">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">

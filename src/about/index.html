@@ -1,8 +1,8 @@
 ---
 layout: "base.njk"
-title: "About — Silver & Elegant"
-description: "The story of Silver & Elegant — handcrafted sterling silver jewellery made in a small studio, one piece at
-a time."
+eleventyComputed:
+  title: "{{ about.page_title | default('About — Silver & Elegant') }}"
+  description: "{{ about.meta_description | default('The story of Silver & Elegant — handcrafted sterling silver jewellery made in a small studio, one piece at a time.') }}"
 ---
 <!-- Workshop Hero -->
 <div style="padding-top:5rem;">
