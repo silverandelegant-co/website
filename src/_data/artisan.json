@@ -9,18 +9,18 @@
     {
       "type": "text_block",
       "label": "Heritage",
-      "body": "I am Esen Tunalı Sarı. The vision behind Silver & Elegant was forged in the historic jewellery quarters of Istanbul, where my childhood unfolded. As the child of a family that migrated from Bulgaria, I grew up amidst masters of silver and diamond setting, where craftsmanship was not merely a technique, but a daily discipline of life."
+      "body": ""
     },
     {
       "type": "blockquote",
       "label": "Philosophy",
-      "quote": "The software engineering background I acquired years later allowed me to merge this traditional craft with the millimetric precision of algorithms.",
+      "quote": "",
       "author": "Esen Tunalı Sarı"
     },
     {
       "type": "text_block",
       "label": "Modern Studio",
-      "body": "Today, in our home studio in Borehamwood, London, we melt these two opposing worlds into a single language. We do not manufacture like a factory, nor do we hide solely in the past; we bring together the intelligence of technology and the heart of craftsmanship."
+      "body": ""
     }
   ]
 }
