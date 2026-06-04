@@ -1,25 +1,6 @@
 {
   "pieces": [
     {
-      "id": "aether",
-      "collection": "rings",
-      "tagline": "Ethereal depths captured in a textured golden frame.",
-      "materials": [
-        "Gümüş / Bronze Core"
-      ],
-      "featured": false,
-      "wolfandbadger": "",
-      "more4id": "",
-      "njal": "",
-      "video_url": "",
-      "images": [
-        "/assets/pieces/99887 (1).jpg"
-      ],
-      "name": "Aether",
-      "story": "Aether I is a quiet meditation on clarity and shadow, defined by the interplay of deep, lustrous stones and hand-hammered metal. The design evokes a sense of ancient wisdom, where the organic warmth of the frame cradles the mysterious, shifting hues of the natural gems. It is a piece designed for the wearer who finds beauty in the subtle nuances of light and the tactile history of the maker's hand.\n\n  \n\nHandcrafted via the traditional lost-wax technique by a single master artisan, this limited-edition artefact bridges the gap between antiquity and contemporary edge. Every shadow and contour is born from a deliberate strike of the hammer; the surface marks are preserved as the proud signature of the maker—serving as tangible proof of a human touch in a machine-made age.",
-      "_desc_field": ""
-    },
-    {
       "id": "structura",
       "collection": "rings",
       "tagline": "Architectural precision reimagined as a modern, brutalist form.",
@@ -349,24 +330,6 @@
       "images": [],
       "drive_images": [
         "https://drive.google.com/file/d/1q_8BD5WGwreNQgggbRmqQOsYynh0AOns/view?usp=drive_link"
-      ],
-      "name": "",
-      "story": ""
-    },
-    {
-      "id": "simple-1780565940266",
-      "no_detail": true,
-      "collection": "rings",
-      "tagline": "",
-      "materials": [],
-      "featured": false,
-      "wolfandbadger": "",
-      "more4id": "",
-      "njal": "",
-      "video_url": "",
-      "images": [],
-      "drive_images": [
-        "https://drive.google.com/file/d/1yWldMt_1ITYZHZkUAMnWolsD8P1MjSOt/view?usp=drive_link"
       ],
       "name": "",
       "story": ""
