@@ -1634,6 +1634,42 @@
       ],
       "name": "",
       "story": ""
+    },
+    {
+      "id": "simple-1780565119669",
+      "no_detail": true,
+      "collection": "earrings",
+      "tagline": "",
+      "materials": [],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "njal": "",
+      "video_url": "",
+      "images": [],
+      "drive_images": [
+        "https://drive.google.com/file/d/11qeie_2ja6zEyHPRSwFQ_bFRl86RTNtv/view?usp=drive_link"
+      ],
+      "name": "",
+      "story": ""
+    },
+    {
+      "id": "simple-1780565261725",
+      "no_detail": true,
+      "collection": "earrings",
+      "tagline": "",
+      "materials": [],
+      "featured": false,
+      "wolfandbadger": "",
+      "more4id": "",
+      "njal": "",
+      "video_url": "",
+      "images": [],
+      "drive_images": [
+        "https://drive.google.com/file/d/1kcgngUCPIVClnGmxutiKRQI_RcNzw1-7/view?usp=drive_link"
+      ],
+      "name": "",
+      "story": ""
     }
   ]
 }
