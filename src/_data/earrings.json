@@ -769,23 +769,6 @@
       "story": ""
     },
     {
-      "id": "simple-1780309624749",
-      "no_detail": true,
-      "collection": "earrings",
-      "tagline": "",
-      "materials": [],
-      "featured": false,
-      "wolfandbadger": "",
-      "more4id": "",
-      "njal": "",
-      "video_url": "",
-      "images": [
-        "/assets/pieces/3.jpg"
-      ],
-      "name": "",
-      "story": ""
-    },
-    {
       "id": "simple-1780309654069",
       "no_detail": true,
       "collection": "earrings",
@@ -866,40 +849,6 @@
       "video_url": "",
       "images": [
         "/assets/pieces/48.jpg"
-      ],
-      "name": "",
-      "story": ""
-    },
-    {
-      "id": "simple-1780309734909",
-      "no_detail": true,
-      "collection": "earrings",
-      "tagline": "",
-      "materials": [],
-      "featured": false,
-      "wolfandbadger": "",
-      "more4id": "",
-      "njal": "",
-      "video_url": "",
-      "images": [
-        "/assets/pieces/5 (1).jpg"
-      ],
-      "name": "",
-      "story": ""
-    },
-    {
-      "id": "simple-1780309744445",
-      "no_detail": true,
-      "collection": "earrings",
-      "tagline": "",
-      "materials": [],
-      "featured": false,
-      "wolfandbadger": "",
-      "more4id": "",
-      "njal": "",
-      "video_url": "",
-      "images": [
-        "/assets/pieces/5.jpg"
       ],
       "name": "",
       "story": ""
