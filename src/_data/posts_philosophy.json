@@ -1,27 +1,20 @@
 {
   "posts": [
     {
-      "id": "architecture-of-permanence",
-      "title": "The Architecture of Permanence: Generative Design in Jewellery",
-      "date": "2026-05-18",
+      "id": "from-ruse-to-london-the-structural-blueprint-of-adornment",
+      "date": "2026-06-05",
       "category": "Philosophy",
-      "summary": "An inside look at how we utilize software algorithms as our creative partner to discover geometric patterns that outlive transient trends.",
-      "featured_image": "/assets/pieces/SilvernElegant (3).jpg",
-      "featured": true,
+      "featured_image": "/assets/pieces/blog-yazilari-1.png",
+      "featured": false,
       "sections": [
         {
           "type": "text_block",
-          "body": "We do not design jewellery; we construct architectural narratives sealed in silver and bronze within the physical realm. In an era dominated by rapid consumption, transient trends, and disposable fashion, we believe that the most enduring objects are those calculated with mathematical intelligence and crafted with immense discipline.\n\nFor us, design begins not with a quick pencil sketch, but with a foundational question: How can we build permanence?"
-        },
-        {
-          "type": "blockquote",
-          "quote": "By fusing the logic of software with the soul of craft, we create 'Future Heirlooms' designed to outlive their makers."
-        },
-        {
-          "type": "text_block",
-          "body": "Yet, digital perfection is only half the story. To bring these rational models into our physical reality, we melt traditional craftsmanship with digital geometry. Every generative framework is cast using the ancient lost-wax casting technique and finished by hand. The tools leave microscopic hammer marks on the silver—intentional stamps of the human spirit. What the code proposes, the hand sculpts. What the hand finishes, time preserves."
+          "body": ""
         }
-      ]
+      ],
+      "title": "From Ruse to London: The Structural Blueprint of Adornment",
+      "summary": "The monolithic silhouettes of an early landscape engrave indelible lines onto a designer’s mind.\n\n  \n\nThe heavy, uncompromising, and raw geometry of brutalist structures along the Danube does not contradict our contemporary vision of luxury in London; rather, it anchors it.\n\n  \n\nEvery piece crafted at **SILVER & ELEGANT** serves as a micro-sculpture, translating monumental architectural volumes into human scale. The honesty of sterling silver, much like an exposed concrete facade, allows the strength of the form to speak for itself. It remains a timeless bridge between ancestral structural discipline and modern fluid design.",
+      "_desc_field": ""
     }
   ]
 }
