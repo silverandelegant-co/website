@@ -103,6 +103,38 @@
           "video_url": "https://youtu.be/h8iDG12lWM0"
         }
       ]
+    },
+    {
+      "id": "material-honesty-the-architecture-of-plastic-free-luxury-packaging",
+      "date": "2026-06-05",
+      "category": "Philosophy",
+      "featured_image": "/assets/pieces/blogyazilari2.png",
+      "featured": false,
+      "sections": [
+        {
+          "type": "text_block",
+          "body": ""
+        }
+      ],
+      "title": "Material Honesty: The Architecture of Plastic-Free Luxury Packaging",
+      "summary": "True luxury resides not merely within the object itself, but within the ethical responsibility of its presentation.\n\n  \n\nAt **SILVER & ELEGANT**, we consciously reject the artificial over-packaging dictated by modern consumer habits. The boxes protecting our designs are not ephemeral wrappers; they are high-quality, entirely plastic-free, and recyclable geometric structures.\n\n  \n\nThe tactile purity of raw paper stock complements the sculptural weight of the silver within. This represents a refined curatorial philosophy that chooses to leave an indelible mark on culture, whilst leaving zero footprint on the earth.",
+      "_desc_field": ""
+    },
+    {
+      "id": "generative-aesthetics-code-as-a-sculptural-tool",
+      "date": "2026-06-05",
+      "category": "Philosophy",
+      "featured_image": "/assets/pieces/gemini-generated-image-py54m5py54m5py54.png",
+      "featured": false,
+      "sections": [
+        {
+          "type": "text_block",
+          "body": ""
+        }
+      ],
+      "title": "Generative Aesthetics: Code as a Sculptural Tool",
+      "summary": "In the digital era, craftsmanship extends far beyond the physical dialogue between hand and hammer.\n\n  \n\nWithin our practice, mathematical algorithms and software parameters form a flawless partnership with traditional atelier discipline.\n\n  \n\nThe seamless symmetry and razor-sharp lines defining **SILVER & ELEGANT** designs are born from digital precision; yet, the manifestation of those coordinates into silver requires the raw force of fire, hammer, and human touch. While code constructs the skeletal blueprint of our creation, craftsmanship breathes life into its form. This is the new creative alchemy, where technology becomes art.",
+      "_desc_field": ""
     }
   ]
 }
