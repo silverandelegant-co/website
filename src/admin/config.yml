@@ -20,6 +20,10 @@ collections:
           - { label: "More4id Adresi", name: "more4id", widget: "string" }
           - { label: "Not Just A Label Adresi", name: "njal", widget: "string", required: false }
           - { label: "Ana Sayfa Tanıtım Yazısı", name: "tagline", widget: "string" }
+          - { label: "Ana Sayfa Basın Bölümü Etiketi", name: "home_press_label", widget: "string", default: "Recognition", required: false }
+          - { label: "Ana Sayfa Basın Bölümü Başlığı", name: "home_press_title", widget: "string", default: "In the Press", required: false }
+          - { label: "Ana Sayfa Ürünler Bölümü Etiketi", name: "home_pieces_label", widget: "string", default: "Featured Work", required: false }
+          - { label: "Ana Sayfa Ürünler Bölümü Başlığı", name: "home_pieces_title", widget: "string", default: "Selected Pieces", required: false }
 
   - name: "pages"
     label: "Sayfa İçerikleri"
@@ -59,6 +63,7 @@ collections:
               - { label: "Özet (Liste ekranı için kısa özet)", name: "summary", widget: "text" }
               - { label: "Öne Çıkan Görsel (İsteğe Bağlı)", name: "featured_image", widget: "image", required: false }
               - { label: "Harici Orijinal Makale Linki (İsteğe Bağlı)", name: "link", widget: "string", required: false }
+              - { label: "Ana Sayfada Göster", name: "featured", widget: "boolean", default: false, required: false }
               - label: "İçerik Bölümleri"
                 name: "sections"
                 widget: "list"
