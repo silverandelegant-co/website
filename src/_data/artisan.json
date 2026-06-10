@@ -8,13 +8,23 @@
   "sections": [
     {
       "type": "text_block",
-      "label": "Heritage",
-      "body": "**Every monument begins with an act of structural resilience.**\n\nFor Esen, the founder and creative director of SILVER & ELEGANT, the path to modern luxury was forged through adaptation, analytical discipline, and the quiet courage to build something entirely of her own.\n\nBorn in Bulgaria, her story is defined by a profound multicultural journey — through Turkey and the Netherlands, before anchoring in the United Kingdom. As a software developer navigating corporate ecosystems, she chose to transcend conventional boundaries—transforming an expansive vision into an independent design practice rooted in permanence.\n\nHer design language draws from the raw geometry of Eastern European brutalist architecture, organic form, and sculptural texture. By harmonising generative design intelligence with bespoke craftsmanship, she engineers jewellery as narrative objects — Future Heirlooms, built to outlast their moment."
+      "label": "Our Story",
+      "body": "When my family migrated from Bulgaria, the only treasures we could carry were the fragments of our history. Having lived in Bulgaria, Turkey, and the Netherlands before finally settling in the UK, the pieces of jewellery I hold are more than ornaments—they are a map of my life. This journey of resilience and adaptation is the heart of **SILVER & ELEGANT**; it is not merely a brand, but a collection of stories designed to endure."
     },
     {
       "type": "text_block",
-      "label": "Modern Studio",
-      "body": "The industry took notice swiftly. SILVER & ELEGANT was selected as an official jewellery partner for Paul Costelloe’s opening show at London Fashion Week AW26 — and shortly after, designated as a rising independent design talent globally by the contemporary fashion platform NOT JUST A LABEL, recognised as a defining voice in the future of independent fashion.\n\nToday, operating from her London-based atelier, Esen builds with quiet confidence — piece by piece, structure by structure. A testament that true creative authority is not proclaimed. It is constructed."
+      "label": "Design Philosophy",
+      "body": "Our process is a dual practice, where modern technology and traditional craftsmanship hold equal weight. We use generative design to explore complex, architectural forms, and we simultaneously engage in classical design and artisanal production within our Istanbul atelier. It is in this synthesis—where digital precision meets the human hand and the language of metal—that we find the signature balance of **SILVER & ELEGANT**. This is not a transition from one to the other, but a simultaneous integration of both worlds."
+    },
+    {
+      "type": "text_block",
+      "body": "We operate at the intersection of architectural minimalism and narrative jewellery. In a world of disposable consumption, **SILVER & ELEGANT** stands for the philosophy of 'Future Heirlooms'—objects crafted with the intent to outlast the fleeting moment of their creation, designed to be passed down through generations.",
+      "label": "Brand Vision"
+    },
+    {
+      "type": "text_block",
+      "body": "The brand’s emergence was marked by our participation as a jewellery partner for Paul Costelloe’s Autumn/Winter 2026 opening show at London Fashion Week. This milestone represents a significant step in our commitment to bringing high-concept, architectural jewellery into contemporary fashion.\n\nAs a **Fellow of the Royal Society of Arts (FRSA)**, my practice is defined by a dedication to design discipline, cultural heritage, and the continuous search for intellectual depth in aesthetic production.\n\nEsen Tunali Sari, FRSA\n\nFounder & Creative Director, SILVER & ELEGANT",
+      "label": "Career Highlights"
     }
   ]
 }
