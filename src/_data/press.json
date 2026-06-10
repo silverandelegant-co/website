@@ -109,7 +109,13 @@
         },
         {
           "type": "image_block",
-          "image": "/assets/pieces/ff.png",
+          "image": "/assets/pieces/SHOT 1_098.1.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "type": "image_block",
+          "image": "/assets/pieces/SHOT 3_383.jpg",
           "alt": "",
           "caption": ""
         }
