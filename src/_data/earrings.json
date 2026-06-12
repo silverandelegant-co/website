@@ -248,8 +248,10 @@
       "njal": "",
       "video_url": "",
       "images": [
-        "/assets/pieces/SilvernElegant (11).jpg"
-      ]
+        "/assets/pieces/16.jpg"
+      ],
+      "no_detail": false,
+      "_desc_field": ""
     },
     {
       "id": "laurel-coin-pearl-drop-earrings",
