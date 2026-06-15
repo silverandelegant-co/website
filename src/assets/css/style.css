@@ -156,6 +156,7 @@ h3 {
   background: var(--c-ink);
   color: var(--c-dark-text);
   padding: 0.9rem 2.4rem;
+  position: relative;
 }
 
 .btn-dark:hover {
@@ -1059,22 +1060,133 @@ h3 {
   min-height: 120px;
 }
 
+.contact-centerpiece {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.contact-centerpiece .label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-silver);
+  text-align: center;
+}
+
+.email-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  padding: 1.2rem 1.8rem;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 1rem;
+  position: relative;
+  transition: border-color 300ms var(--ease), box-shadow 300ms var(--ease);
+}
+
+.email-wrapper:hover {
+  border-color: var(--c-silver);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.contact-email-link {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+  color: var(--c-ink);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: opacity 200ms var(--ease);
+  word-break: break-all;
+}
+
+.contact-email-link:hover {
+  opacity: 0.7;
+}
+
+.copy-email-btn {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--c-silver);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: color 200ms var(--ease), transform 200ms var(--ease);
+  flex-shrink: 0;
+}
+
+.copy-email-btn:hover {
+  color: var(--c-ink);
+  transform: scale(1.08);
+}
+
+.copy-email-btn svg {
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}
+
+/* Clipboard Tooltip */
+.copy-email-btn .tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, -8px);
+  background: var(--c-dark);
+  color: var(--c-dark-text);
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 2px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 200ms var(--ease), transform 200ms var(--ease);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.copy-email-btn:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -4px);
+}
+
+.copy-email-btn.copied .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -4px);
+}
+
 .contact-links {
   margin-top: var(--space-lg);
   padding-top: var(--space-md);
   border-top: 1px solid var(--c-border);
   display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-md) var(--space-lg);
 }
 
 .contact-link {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.6rem;
   font-family: var(--font-sans);
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--c-muted);
   transition: color 200ms;
 }
@@ -1084,9 +1196,99 @@ h3 {
 }
 
 .contact-link svg {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   flex-shrink: 0;
+  opacity: 0.7;
+}
+
+/* Contact Form Enhancements & Alerts */
+.form-actions {
+  margin-top: 2rem;
+  position: relative;
+}
+
+.btn-loader {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  color: inherit;
+  border-radius: inherit;
+}
+
+.btn.loading .btn-loader {
+  display: flex;
+}
+
+.btn.loading .submit-text {
+  opacity: 0.35;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  animation: spinnerRotate 1.5s linear infinite;
+}
+
+@keyframes spinnerRotate {
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spinnerDash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+
+.form-result {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form-result h3 {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--c-ink);
+}
+
+.form-result p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--c-muted);
+  max-width: 45ch;
+  line-height: 1.6;
+}
+
+.alert-icon {
+  width: 44px;
+  height: 44px;
+}
+
+.success-result .alert-icon {
+  color: #10b981;
+}
+
+.error-result .alert-icon {
+  color: #ef4444;
 }
 
 /* ── 20. Responsive ────────────────────────────────────────── */

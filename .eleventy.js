@@ -14,6 +14,12 @@ module.exports = function(eleventyConfig) {
     return path.replace(/^\/+/, "");
   });
 
+  // Reverse string filter for email obfuscation
+  eleventyConfig.addFilter("reverseString", (str) => {
+    if (!str) return "";
+    return str.split("").reverse().join("");
+  });
+
   // Convert Google Drive share URL to direct embeddable image URL
   // Supports: /file/d/ID/view, /open?id=ID, already-direct uc?export=view
   eleventyConfig.addFilter("driveimage", (url) => {

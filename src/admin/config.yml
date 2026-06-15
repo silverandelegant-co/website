@@ -16,6 +16,7 @@ collections:
         fields:
           - { label: "Instagram Adresi", name: "instagram", widget: "string" }
           - { label: "E-posta Adresi", name: "email", widget: "string" }
+          - { label: "Web3Forms Erişim Anahtarı (API Key)", name: "web3forms_key", widget: "string", required: false }
           - { label: "Wolf & Badger Adresi", name: "wolfandbadger", widget: "string" }
           - { label: "More4id Adresi", name: "more4id", widget: "string" }
           - { label: "Not Just A Label Adresi", name: "njal", widget: "string", required: false }
