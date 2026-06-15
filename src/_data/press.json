@@ -154,6 +154,22 @@
       "title": "Recognition: Royal Society of Arts Fellowship",
       "summary": "Architectural narratives at the intersection of algorithmic logic and artisanal craftsmanship. An exploration of **SILVER & ELEGANT**'s design discipline and its evolving vision, marked by the recent Royal Society of Arts (RSA) Fellowship.",
       "_desc_field": ""
+    },
+    {
+      "id": "silver-elegant-in-the-wolf-badger-jewellery-guide",
+      "date": "2026-03-30",
+      "category": "Philosophy",
+      "featured_image": "/assets/pieces/images-2.png",
+      "featured": false,
+      "sections": [
+        {
+          "type": "text_block",
+          "body": "Wolf & Badger — the London-based independent fashion and design platform with its flagship store on Berwick Street, Soho — featured Silver & Elegant in its March 2026 Jewellery Guide, distributed to its global customer base.\n\n  \n\nFor an independent brand in its first year, inclusion in a curated guide of this kind represents something specific: external recognition that the work has found its audience beyond the immediate network of its making.\n\n  \n\nSilver & Elegant continues to engineer narrative objects of permanence. The work speaks for itself. Occasionally, others speak for it too."
+        }
+      ],
+      "title": "Silver & Elegant in the Wolf & Badger Jewellery Guide",
+      "summary": "Silver & Elegant was featured in the Wolf & Badger Jewellery Guide, March 2026 — distributed to the global customer base of the London-based independent fashion and design platform on Berwick Street, Soho.",
+      "_desc_field": ""
     }
   ]
 }
