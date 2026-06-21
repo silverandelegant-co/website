@@ -1,0 +1,22 @@
+{
+  "page_title": "Studio — Silver & Elegant",
+  "meta_description": "Inside the dual-city practice of Silver & Elegant — algorithmic code in London, master craftsmanship in Istanbul.",
+  "hero_image": "/assets/pieces/ff.png",
+  "sections": [
+    {
+      "label": "The Founder",
+      "title": "Esen Tunalı Sarı",
+      "body": "Esen Tunalı Sarı is the designer and software engineer behind **SILVER & ELEGANT**. Growing up in the historic silversmithing hubs of Kapalıçarşı, Istanbul, Esen developed a deep, intuitive understanding of metallurgy and hand-finished luxury. Years later, her academic and professional background in software engineering enabled her to view code not as a tool for automation, but as a sculpting chisel. Her practice bridges these two worlds—mathematical precision and historic craftsmanship."
+    },
+    {
+      "label": "The Craftsman",
+      "title": "Atelier Kapalıçarşı",
+      "body": "Every SILVER & ELEGANT piece is cast and hand-worked by our master artisan in Kapalıçarşı, Istanbul. With over three decades of experience at the workbench, our craftsman possesses an intuitive material intelligence. He reads the generative files from London, understanding where the silver wants to flow, where the hammer must strike, and where the surface should be softened. This human element ensures that no two pieces are identical, preserving authentic human touch in an age of machine replication."
+    },
+    {
+      "label": "The Workspace",
+      "title": "Borehamwood & Istanbul",
+      "body": "Our workspace exists in a state of continuous dialogue between two cities. In our quiet two-story studio in Borehamwood, London, the algorithms run, the geometries are computed, and the visual systems are generated. In Istanbul, the fire is lit, the crucible is poured, and the metal is finished. This dual model combines digital innovation with centuries-old metalworking traditions, creating a unique signature of wearable architecture."
+    }
+  ]
+}

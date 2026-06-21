@@ -1,0 +1,29 @@
+---
+layout: "base.njk"
+eleventyComputed:
+  title: "{{ how_we_work.page_title | default('How We Work — Silver & Elegant') }}"
+  description: "{{ how_we_work.meta_description | default('From London generative algorithms to Istanbul master silversmiths.') }}"
+---
+
+<!-- Hero Image -->
+<div style="padding-top:5rem;">
+  <img src="/{{ how_we_work.hero_image | default('assets/pieces/blog-yazilari-1.png') | imgpath }}" alt="Operational process banner"
+    class="about-hero-img reveal">
+</div>
+
+<!-- How We Work Content -->
+<div class="about-layout">
+  {% for section in how_we_work.sections %}
+  <div class="about-intro">
+    <div class="about-intro-label reveal">
+      <span class="label">{{ section.label }}</span>
+    </div>
+    <div class="about-body">
+      <h1 class="reveal" style="margin-bottom:2rem; font-size:clamp(2rem,4vw,3.5rem);">
+        {{ section.title }}
+      </h1>
+      <p class="reveal">{{ section.body | markdown | safe }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>

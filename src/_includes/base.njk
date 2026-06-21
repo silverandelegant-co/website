@@ -34,9 +34,19 @@
             <a href="/collections/index.html?filter=earrings">Earrings</a>
           </div>
         </li>
-        <li class="nav-item"><a href="/the-maker/index.html">{{ settings.menu_artisan | default(artisan.menu_label) | default('The Artisan') }}</a></li>
+        <li class="nav-item"><a href="/the-maker/index.html">{{ settings.menu_artisan | default(artisan.menu_label) | default('The Founder’s Note') }}</a></li>
         <li class="nav-item"><a href="/about/index.html">{{ settings.menu_about | default('About') }}</a></li>
-        <li class="nav-item"><a href="/press/index.html">{{ settings.menu_press | default('Press') }}</a></li>
+        <li class="nav-item"><a href="/the-journey/index.html">The Journey</a></li>
+        <li class="nav-item"><a href="/sustainability/index.html">Sustainability</a></li>
+        <li class="nav-item"><a href="/how-we-work/index.html">How We Work</a></li>
+        <li class="nav-item"><a href="/studio/index.html">Studio</a></li>
+        <li class="nav-item has-dropdown">
+          <a href="/press/index.html">{{ settings.menu_press | default('Press') }}</a>
+          <div class="nav-dropdown">
+            <a href="/press/index.html">Coverage</a>
+            <a href="/press-kit/index.html">Press Kit</a>
+          </div>
+        </li>
         <li class="nav-item"><a href="/blog/index.html">{{ settings.menu_blog | default('Blog') }}</a></li>
         <li class="nav-item"><a href="/contact/index.html">{{ settings.menu_contact | default('Contact') }}</a></li>
         <li class="nav-item">
@@ -64,11 +74,16 @@
         <span class="footer-logo">Silver &amp; Elegant</span>
         <p>Artistry in the making.</p>
       </div>
-      {% if settings.instagram or settings.email or settings.wolfandbadger or settings.more4id or settings.njal %}
       <div class="footer-center">
         <div class="footer-mark"></div>
       </div>
       <div class="footer-links">
+        <a href="/the-journey/index.html" class="footer-link">The Journey</a>
+        <a href="/sustainability/index.html" class="footer-link">Sustainability</a>
+        <a href="/how-we-work/index.html" class="footer-link">How We Work</a>
+        <a href="/studio/index.html" class="footer-link">Studio</a>
+        <a href="/press-kit/index.html" class="footer-link">Press Kit</a>
+        
         {% if settings.instagram %}
         <a href="{{ settings.instagram }}" class="footer-link" target="_blank" rel="noopener" id="footer-instagram">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
@@ -100,7 +115,6 @@
         </a>
         {% endif %}
       </div>
-      {% endif %}
     </div>
     <div class="footer-bottom">
       &copy; 2025 Silver &amp; Elegant. All rights reserved.

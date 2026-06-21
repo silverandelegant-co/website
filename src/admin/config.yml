@@ -106,6 +106,114 @@ collections:
           - { label: "Ana Başlık", name: "heading", widget: "string" }
           - { label: "Giriş Metni", name: "intro", widget: "text" }
 
+      - file: "src/_data/sustainability.json"
+        label: "Sürdürülebilirlik (Sustainability) Sayfası"
+        name: "sustainability"
+        fields:
+          - { label: "Sayfa Başlığı", name: "page_title", widget: "string" }
+          - { label: "Meta Açıklama (SEO)", name: "meta_description", widget: "string" }
+          - { label: "Giriş Görseli", name: "hero_image", widget: "image", required: false }
+          - label: "Bölümler"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "Etiket", name: "label", widget: "string" }
+              - { label: "Başlık", name: "title", widget: "string" }
+              - { label: "Metin", name: "body", widget: "markdown" }
+
+      - file: "src/_data/how_we_work.json"
+        label: "İş Modeli (How We Work) Sayfası"
+        name: "how_we_work"
+        fields:
+          - { label: "Sayfa Başlığı", name: "page_title", widget: "string" }
+          - { label: "Meta Açıklama (SEO)", name: "meta_description", widget: "string" }
+          - { label: "Giriş Görseli", name: "hero_image", widget: "image", required: false }
+          - label: "Bölümler"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "Etiket", name: "label", widget: "string" }
+              - { label: "Başlık", name: "title", widget: "string" }
+              - { label: "Metin", name: "body", widget: "markdown" }
+
+      - file: "src/_data/studio.json"
+        label: "Atölye & Stüdyo (Studio) Sayfası"
+        name: "studio"
+        fields:
+          - { label: "Sayfa Başlığı", name: "page_title", widget: "string" }
+          - { label: "Meta Açıklama (SEO)", name: "meta_description", widget: "string" }
+          - { label: "Giriş Görseli", name: "hero_image", widget: "image", required: false }
+          - label: "Bölümler"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "Etiket", name: "label", widget: "string" }
+              - { label: "Başlık", name: "title", widget: "string" }
+              - { label: "Metin", name: "body", widget: "markdown" }
+
+      - file: "src/_data/press_kit.json"
+        label: "Basın Kiti (Press Kit) Sayfası"
+        name: "press_kit"
+        fields:
+          - { label: "Sayfa Başlığı", name: "page_title", widget: "string" }
+          - { label: "Meta Açıklama (SEO)", name: "meta_description", widget: "string" }
+          - { label: "Basın İletişim E-postası", name: "press_email", widget: "string" }
+          - { label: "Marka Logosu (İndirilebilir)", name: "brand_logo", widget: "image", required: false }
+          - { label: "Kurucu Fotoğrafı (İndirilebilir)", name: "founder_photo", widget: "image", required: false }
+          - { label: "Marka Özeti Başlığı", name: "brand_summary_title", widget: "string" }
+          - { label: "Marka Özeti Metni", name: "brand_summary_body", widget: "text" }
+          - { label: "Kurucu Biyografisi Başlığı", name: "founder_bio_title", widget: "string" }
+          - { label: "Kurucu Biyografisi Metni", name: "founder_bio_body", widget: "text" }
+
+      - file: "src/_data/the_journey.json"
+        label: "The Journey Ana Sayfası"
+        name: "the_journey"
+        fields:
+          - { label: "Sayfa Başlığı", name: "page_title", widget: "string" }
+          - { label: "Meta Açıklama (SEO)", name: "meta_description", widget: "string" }
+          - { label: "Giriş Görseli", name: "hero_image", widget: "image", required: false }
+          - { label: "Giriş Metni", name: "intro_text", widget: "text" }
+
+      - file: "src/_data/journey_lore.json"
+        label: "The Journey - The Lore Alt Sayfası"
+        name: "journey_lore"
+        fields:
+          - { label: "Sayfa Başlığı", name: "page_title", widget: "string" }
+          - { label: "Giriş Görseli", name: "hero_image", widget: "image", required: false }
+          - { label: "İçerik", name: "body", widget: "markdown" }
+
+      - file: "src/_data/journey_metamorphosis.json"
+        label: "The Journey - On Metamorphosis Alt Sayfası"
+        name: "journey_metamorphosis"
+        fields:
+          - { label: "Sayfa Başlığı", name: "page_title", widget: "string" }
+          - { label: "Giriş Görseli", name: "hero_image", widget: "image", required: false }
+          - { label: "İçerik", name: "body", widget: "markdown" }
+
+      - file: "src/_data/journey_mask.json"
+        label: "The Journey - The Mask and the Hand Alt Sayfası"
+        name: "journey_mask"
+        fields:
+          - { label: "Sayfa Başlığı", name: "page_title", widget: "string" }
+          - { label: "Giriş Görseli", name: "hero_image", widget: "image", required: false }
+          - { label: "İçerik", name: "body", widget: "markdown" }
+
+      - file: "src/_data/journey_migration.json"
+        label: "The Journey - Migration Notes Alt Sayfası"
+        name: "journey_migration"
+        fields:
+          - { label: "Sayfa Başlığı", name: "page_title", widget: "string" }
+          - { label: "Giriş Görseli", name: "hero_image", widget: "image", required: false }
+          - { label: "İçerik", name: "body", widget: "markdown" }
+
+      - file: "src/_data/journey_materials.json"
+        label: "The Journey - Materials as Memory Alt Sayfası"
+        name: "journey_materials"
+        fields:
+          - { label: "Sayfa Başlığı", name: "page_title", widget: "string" }
+          - { label: "Giriş Görseli", name: "hero_image", widget: "image", required: false }
+          - { label: "İçerik", name: "body", widget: "markdown" }
+
   - name: "pieces"
     label: "Takı Kataloğu"
     files:

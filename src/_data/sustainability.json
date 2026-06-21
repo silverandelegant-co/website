@@ -1,0 +1,27 @@
+{
+  "page_title": "Sustainability — Silver & Elegant",
+  "meta_description": "Silver & Elegant's approach to sustainable sourcing, low-waste production, and plastic-free packaging.",
+  "hero_image": "/assets/about-workshop.png",
+  "sections": [
+    {
+      "label": "Materials",
+      "title": "Ethical Sourcing",
+      "body": "We select our metals with a deep commitment to environmental responsibility. Our sterling silver, 22K gold lustre, and structural bronze are sourced from certified ethical providers, minimizing the ecological footprint of raw material mining. By choosing noble metals that acquire patina rather than decay, we ensure that every piece ages beautifully alongside its wearer, remaining a permanent asset rather than a disposable accessory."
+    },
+    {
+      "label": "Craft",
+      "title": "Istanbul Atelier Craftsmanship",
+      "body": "Our production is deliberately kept small and centered around a single master craftsman in Istanbul's Kapalıçarşı. By utilizing the historic lost-wax casting technique, we produce jewellery in small batches and custom commissions. This low-waste approach prevents the overproduction common in mass-manufactured jewellery houses. Every filing, shaving, and metallic dust is collected and recycled back into the melting pot, ensuring near-zero waste during the fabrication process."
+    },
+    {
+      "label": "Presentation",
+      "title": "Plastic-Free Luxury Packaging",
+      "body": "True luxury resides not merely within the object itself, but within the ethical responsibility of its presentation. At **SILVER & ELEGANT**, we consciously reject the artificial over-packaging dictated by modern consumer habits. The boxes protecting our designs are not ephemeral wrappers; they are high-quality, entirely plastic-free, and recyclable geometric structures. The tactile purity of raw paper stock complements the sculptural weight of the silver within, leaving zero footprint on the earth."
+    },
+    {
+      "label": "Philosophy",
+      "title": "Future Heirlooms",
+      "body": "We believe the most sustainable object is the one that never needs to be replaced. Our 'Future Heirloom' philosophy dictates that every piece of jewellery we make is engineered for extreme structural durability. We study ergonomics, metal thickness, and joinery to guarantee that these pieces can be passed down through generations, resisting the transience of fast fashion."
+    }
+  ]
+}

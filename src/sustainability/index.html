@@ -1,0 +1,29 @@
+---
+layout: "base.njk"
+eleventyComputed:
+  title: "{{ sustainability.page_title | default('Sustainability — Silver & Elegant') }}"
+  description: "{{ sustainability.meta_description | default('Sustainably sourced metals, low-waste casting, and plastic-free luxury packaging.') }}"
+---
+
+<!-- Hero Image -->
+<div style="padding-top:5rem;">
+  <img src="/{{ sustainability.hero_image | default('assets/about-workshop.png') | imgpath }}" alt="Sustainable workshop"
+    class="about-hero-img reveal">
+</div>
+
+<!-- Sustainability Content -->
+<div class="about-layout">
+  {% for section in sustainability.sections %}
+  <div class="about-intro">
+    <div class="about-intro-label reveal">
+      <span class="label">{{ section.label }}</span>
+    </div>
+    <div class="about-body">
+      <h1 class="reveal" style="margin-bottom:2rem; font-size:clamp(2rem,4vw,3.5rem);">
+        {{ section.title }}
+      </h1>
+      <p class="reveal">{{ section.body | markdown | safe }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>

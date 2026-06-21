@@ -35,6 +35,12 @@
             cat.name === 'about' ? 'fa-circle-info' : '',
             cat.name === 'artisan' ? 'fa-palette' : '',
             cat.name === 'press' ? 'fa-newspaper' : '',
+            cat.name === 'sustainability' ? 'fa-leaf' : '',
+            cat.name === 'how_we_work' ? 'fa-diagram-project' : '',
+            cat.name === 'studio' ? 'fa-house-chimney' : '',
+            cat.name === 'press_kit' ? 'fa-file-zipper' : '',
+            cat.name === 'the_journey' ? 'fa-road' : '',
+            cat.name.startsWith('journey_') ? 'fa-scroll' : '',
             activeCatalog === cat.name ? 'text-gold-400' : 'text-slate-500'
           ]"></i>
           <span x-text="cat.label"></span>
@@ -105,6 +111,12 @@
           cat.name === 'about' ? 'fa-circle-info' : '',
           cat.name === 'artisan' ? 'fa-palette' : '',
           cat.name === 'press' ? 'fa-newspaper' : '',
+          cat.name === 'sustainability' ? 'fa-leaf' : '',
+          cat.name === 'how_we_work' ? 'fa-diagram-project' : '',
+          cat.name === 'studio' ? 'fa-house-chimney' : '',
+          cat.name === 'press_kit' ? 'fa-file-zipper' : '',
+          cat.name === 'the_journey' ? 'fa-road' : '',
+          cat.name.startsWith('journey_') ? 'fa-scroll' : '',
           activeCatalog === cat.name ? 'text-gold-400' : 'text-slate-500'
         ]"></i>
         <span x-text="cat.label"></span>

@@ -606,6 +606,330 @@
           </div>
         </div>
       </div>
+      <!-- SUSTAINABILITY / HOW WE WORK / STUDIO pages (shared sections-based layout) -->
+      <template x-if="['sustainability', 'how_we_work', 'studio'].includes(activeCatalog)">
+        <div class="space-y-6">
+          <!-- SEO fields -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-4 border-b border-slate-800/85">
+            <div class="space-y-1.5">
+              <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 font-sans">Sayfa Başlığı (Browser Title)</label>
+              <input type="text" x-model="singleObjectData.page_title" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none" />
+            </div>
+            <div class="space-y-1.5">
+              <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 font-sans">Meta Açıklaması (Description)</label>
+              <input type="text" x-model="singleObjectData.meta_description" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none" />
+            </div>
+          </div>
+
+          <!-- Hero Image -->
+          <div class="space-y-2">
+            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 font-sans">Giriş (Hero) Görseli</label>
+            <div class="flex items-center space-x-3">
+              <input type="text" x-model="singleObjectData.hero_image" class="block flex-grow bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs font-mono text-slate-300 focus:outline-none" readonly />
+              <button @click="openMediaLibraryModal(singleObjectData, 'hero_image')"
+                class="px-4 py-3 bg-slate-900 border border-slate-800 hover:border-gold-500/20 text-gold-400 text-xs font-semibold rounded-xl flex-shrink-0">
+                Görsel Seç
+              </button>
+            </div>
+            <div class="mt-2 w-32 h-20 bg-slate-950 rounded-lg overflow-hidden border border-slate-800">
+              <img :src="'/' + (singleObjectData.hero_image || '').replace(/^\/+/, '')" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/200x100/1e293b/a88653?text=Yok'" />
+            </div>
+          </div>
+
+          <!-- Sections list editing -->
+          <div class="space-y-3 pt-4 border-t border-slate-800/80">
+            <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-300">Bölümler (Sections)</h4>
+            <div class="space-y-3">
+              <template x-for="(sec, idx) in singleObjectData.sections" :key="idx">
+                <div class="bg-slate-950/40 border border-slate-800/80 p-4 rounded-xl space-y-3 relative">
+                  <button @click="singleObjectData.sections.splice(idx, 1)" class="absolute top-4 right-4 text-slate-500 hover:text-red-400 text-xs">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                  <div class="grid grid-cols-2 gap-4 pr-8">
+                    <div class="space-y-1">
+                      <label class="text-[9px] uppercase tracking-wider text-slate-500">Etiket</label>
+                      <input type="text" x-model="sec.label" class="block w-full bg-slate-900 border border-slate-800 rounded-lg py-1.5 px-3 text-xs text-slate-300" />
+                    </div>
+                    <div class="space-y-1">
+                      <label class="text-[9px] uppercase tracking-wider text-slate-500">Başlık</label>
+                      <input type="text" x-model="sec.title" class="block w-full bg-slate-900 border border-slate-800 rounded-lg py-1.5 px-3 text-xs text-slate-300" />
+                    </div>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                      <label class="text-[9px] uppercase tracking-wider text-slate-500 font-sans">Metin İçeriği</label>
+                      <button type="button"
+                        @click="openFullscreenEditor(
+                          sec.title || 'Bölüm Metni',
+                          'Sayfa bölüm metnini düzenleyin.',
+                          sec.body,
+                          (val) => { sec.body = val; }
+                        )"
+                        class="px-2 py-0.5 bg-slate-900 border border-slate-800 text-gold-400 hover:text-gold-300 text-[9px] font-semibold rounded flex items-center space-x-1 transition-all">
+                        <i class="fa-solid fa-expand"></i>
+                        <span>Tam Ekran Yap</span>
+                      </button>
+                    </div>
+                    <div 
+                      class="quill-wysiwyg-wrapper"
+                      x-init="
+                        const watch = $watch;
+                        $nextTick(() => {
+                          const container = $el.querySelector('.quill-editor');
+                          const quill = new Quill(container, {
+                            theme: 'snow',
+                            modules: {
+                              toolbar: [
+                                ['bold', 'italic', 'underline'],
+                                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                                ['link', 'image', 'clean']
+                              ]
+                            }
+                          });
+                          
+                          quill.getModule('toolbar').addHandler('image', () => {
+                            openMediaLibraryModal('quill', quill);
+                          });
+                          
+                          quill.root.innerHTML = marked.parse(sec.body || '');
+                          const turndownService = new TurndownService({ headingStyle: 'atx' });
+                          quill.on('text-change', (delta, oldDelta, source) => {
+                            if (source === 'user') {
+                              sec.body = turndownService.turndown(quill.root.innerHTML);
+                            }
+                          });
+                          watch('sec.body', (newVal) => {
+                            const currentMarkdown = turndownService.turndown(quill.root.innerHTML);
+                            if (newVal !== currentMarkdown) {
+                              quill.root.innerHTML = marked.parse(newVal || '');
+                            }
+                          });
+                        });
+                      "
+                    >
+                      <div class="quill-editor" style="height: 250px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </div>
+            <button @click="if (!singleObjectData.sections) singleObjectData.sections = []; singleObjectData.sections.push({ label: '', title: '', body: '' })"
+              class="px-3.5 py-2 bg-slate-950 hover:bg-slate-800 border border-slate-800 text-gold-400 text-xs font-semibold rounded-xl flex items-center space-x-1.5">
+              <i class="fa-solid fa-plus text-[9px]"></i>
+              <span>Yeni Bölüm Ekle</span>
+            </button>
+          </div>
+        </div>
+      </template>
+
+      <!-- PRESS KIT page -->
+      <div x-show="activeCatalog === 'press_kit'" class="space-y-6">
+        <!-- SEO fields -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-4 border-b border-slate-800/85">
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 font-sans">Sayfa Başlığı (Browser Title)</label>
+            <input type="text" x-model="singleObjectData.page_title" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none" />
+          </div>
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 font-sans">Meta Açıklaması (Description)</label>
+            <input type="text" x-model="singleObjectData.meta_description" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none" />
+          </div>
+        </div>
+        <div class="space-y-1.5">
+          <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Basın İletişim E-postası</label>
+          <input type="text" x-model="singleObjectData.press_email" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none" />
+        </div>
+        <!-- Brand Summary -->
+        <div class="border-t border-slate-800/80 pt-5 space-y-4">
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Marka Özeti Başlığı</label>
+            <input type="text" x-model="singleObjectData.brand_summary_title" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none" />
+          </div>
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Marka Özeti Metni</label>
+            <textarea x-model="singleObjectData.brand_summary_body" rows="5" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none"></textarea>
+          </div>
+        </div>
+        <!-- Founder Bio -->
+        <div class="border-t border-slate-800/80 pt-5 space-y-4">
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Kurucu Biyografisi Başlığı</label>
+            <input type="text" x-model="singleObjectData.founder_bio_title" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none" />
+          </div>
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Kurucu Biyografisi Metni</label>
+            <textarea x-model="singleObjectData.founder_bio_body" rows="5" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- THE JOURNEY main page -->
+      <div x-show="activeCatalog === 'the_journey'" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-4 border-b border-slate-800/85">
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 font-sans">Sayfa Başlığı (Browser Title)</label>
+            <input type="text" x-model="singleObjectData.page_title" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none" />
+          </div>
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 font-sans">Meta Açıklaması (Description)</label>
+            <input type="text" x-model="singleObjectData.meta_description" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none" />
+          </div>
+        </div>
+        <!-- Hero Image -->
+        <div class="space-y-2">
+          <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 font-sans">Giriş (Hero) Görseli</label>
+          <div class="flex items-center space-x-3">
+            <input type="text" x-model="singleObjectData.hero_image" class="block flex-grow bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs font-mono text-slate-300 focus:outline-none" readonly />
+            <button @click="openMediaLibraryModal(singleObjectData, 'hero_image')"
+              class="px-4 py-3 bg-slate-900 border border-slate-800 hover:border-gold-500/20 text-gold-400 text-xs font-semibold rounded-xl flex-shrink-0">
+              Görsel Seç
+            </button>
+          </div>
+          <!-- Image preview -->
+          <div class="mt-2 w-32 h-20 bg-slate-950 rounded-lg overflow-hidden border border-slate-800">
+            <img :src="'/' + (singleObjectData.hero_image || '').replace(/^\/+/, '')" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/200x100/1e293b/a88653?text=Yok'" />
+          </div>
+        </div>
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 font-sans">Giriş Metni</label>
+            <button type="button"
+              @click="openFullscreenEditor(
+                'The Journey Giriş Metni',
+                'Sayfa giriş yazısını düzenleyin.',
+                singleObjectData.intro_text,
+                (val) => { singleObjectData.intro_text = val; }
+              )"
+              class="px-2.5 py-1 bg-slate-950 border border-slate-800 text-gold-400 hover:text-gold-300 text-[10px] font-semibold rounded-lg flex items-center space-x-1.5 transition-all">
+              <i class="fa-solid fa-expand"></i>
+              <span>Tam Ekran Yap</span>
+            </button>
+          </div>
+          <div 
+            class="quill-wysiwyg-wrapper"
+            x-init="
+              const watch = $watch;
+              $nextTick(() => {
+                const container = $el.querySelector('.quill-editor');
+                const quill = new Quill(container, {
+                  theme: 'snow',
+                  modules: {
+                    toolbar: [
+                      ['bold', 'italic', 'underline'],
+                      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                      ['link', 'image', 'clean']
+                    ]
+                  }
+                });
+                
+                quill.getModule('toolbar').addHandler('image', () => {
+                  openMediaLibraryModal('quill', quill);
+                });
+                
+                quill.root.innerHTML = marked.parse(singleObjectData.intro_text || '');
+                const turndownService = new TurndownService({ headingStyle: 'atx' });
+                quill.on('text-change', (delta, oldDelta, source) => {
+                  if (source === 'user') {
+                    singleObjectData.intro_text = turndownService.turndown(quill.root.innerHTML);
+                  }
+                });
+                watch('singleObjectData.intro_text', (newVal) => {
+                  const currentMarkdown = turndownService.turndown(quill.root.innerHTML);
+                  if (newVal !== currentMarkdown) {
+                    quill.root.innerHTML = marked.parse(newVal || '');
+                  }
+                });
+              });
+            "
+          >
+            <div class="quill-editor" style="height: 250px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JOURNEY ESSAY SUB-PAGES (shared layout for all 5 essays) -->
+      <template x-if="['journey_lore', 'journey_metamorphosis', 'journey_mask', 'journey_migration', 'journey_materials'].includes(activeCatalog)">
+        <div class="space-y-6">
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 font-sans">Sayfa Başlığı</label>
+            <input type="text" x-model="singleObjectData.page_title" class="block w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs text-slate-200 focus:outline-none" />
+          </div>
+
+          <!-- Hero Image -->
+          <div class="space-y-2">
+            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 font-sans">Giriş (Hero) Görseli (İsteğe Bağlı)</label>
+            <div class="flex items-center space-x-3">
+              <input type="text" x-model="singleObjectData.hero_image" class="block flex-grow bg-slate-950/60 border border-slate-800 rounded-xl py-3 px-4 text-xs font-mono text-slate-300 focus:outline-none" readonly />
+              <button @click="openMediaLibraryModal(singleObjectData, 'hero_image')"
+                class="px-4 py-3 bg-slate-900 border border-slate-800 hover:border-gold-500/20 text-gold-400 text-xs font-semibold rounded-xl flex-shrink-0">
+                Görsel Seç
+              </button>
+            </div>
+            <!-- Image preview -->
+            <div class="mt-2 w-32 h-20 bg-slate-950 rounded-lg overflow-hidden border border-slate-800">
+              <img :src="'/' + (singleObjectData.hero_image || '').replace(/^\/+/, '')" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/200x100/1e293b/a88653?text=Yok'" />
+            </div>
+          </div>
+
+          <!-- Body content (Markdown) -->
+          <div class="space-y-2 border-t border-slate-800/80 pt-5">
+            <div class="flex items-center justify-between">
+              <label class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 font-sans">İçerik</label>
+              <button type="button"
+                @click="openFullscreenEditor(
+                  singleObjectData.page_title || 'Essay İçeriği',
+                  'Tam ekran modunda yazı içeriğinizi düzenleyin.',
+                  singleObjectData.body,
+                  (val) => { singleObjectData.body = val; }
+                )"
+                class="px-2.5 py-1 bg-slate-950 border border-slate-800 text-gold-400 hover:text-gold-300 text-[10px] font-semibold rounded-lg flex items-center space-x-1.5 transition-all">
+                <i class="fa-solid fa-expand"></i>
+                <span>Tam Ekran Yap</span>
+              </button>
+            </div>
+            <div 
+              class="quill-wysiwyg-wrapper"
+              x-init="
+                const watch = $watch;
+                $nextTick(() => {
+                  const container = $el.querySelector('.quill-editor');
+                  const quill = new Quill(container, {
+                    theme: 'snow',
+                    modules: {
+                      toolbar: [
+                        ['bold', 'italic', 'underline'],
+                        [{ 'header': [1, 2, 3, false] }],
+                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                        ['link', 'image', 'clean']
+                      ]
+                    }
+                  });
+                  
+                  quill.getModule('toolbar').addHandler('image', () => {
+                    openMediaLibraryModal('quill', quill);
+                  });
+                  
+                  quill.root.innerHTML = marked.parse(singleObjectData.body || '');
+                  const turndownService = new TurndownService({ headingStyle: 'atx' });
+                  quill.on('text-change', (delta, oldDelta, source) => {
+                    if (source === 'user') {
+                      singleObjectData.body = turndownService.turndown(quill.root.innerHTML);
+                    }
+                  });
+                  watch('singleObjectData.body', (newVal) => {
+                    const currentMarkdown = turndownService.turndown(quill.root.innerHTML);
+                    if (newVal !== currentMarkdown) {
+                      quill.root.innerHTML = marked.parse(newVal || '');
+                    }
+                  });
+                });
+              "
+            >
+              <div class="quill-editor" style="height: 350px;"></div>
+            </div>
+          </div>
+        </div>
+      </template>
 
     </div>
   </div>

@@ -17,6 +17,16 @@
         { name: 'contact', label: 'İletişim Sayfası', path: 'src/_data/contact.json', type: 'single_object', data: {}, sha: '', dirty: false },
         { name: 'about', label: 'Hakkımızda Sayfası', path: 'src/_data/about.json', type: 'single_object', data: {}, sha: '', dirty: false },
         { name: 'artisan', label: 'Sanatçı / Maker Sayfası', path: 'src/_data/artisan.json', type: 'single_object', data: {}, sha: '', dirty: false },
+        { name: 'sustainability', label: 'Sürdürülebilirlik Sayfası', path: 'src/_data/sustainability.json', type: 'single_object', data: {}, sha: '', dirty: false },
+        { name: 'how_we_work', label: 'İş Modeli Sayfası', path: 'src/_data/how_we_work.json', type: 'single_object', data: {}, sha: '', dirty: false },
+        { name: 'studio', label: 'Stüdyo Sayfası', path: 'src/_data/studio.json', type: 'single_object', data: {}, sha: '', dirty: false },
+        { name: 'press_kit', label: 'Basın Kiti Sayfası', path: 'src/_data/press_kit.json', type: 'single_object', data: {}, sha: '', dirty: false },
+        { name: 'the_journey', label: 'The Journey Sayfası', path: 'src/_data/the_journey.json', type: 'single_object', data: {}, sha: '', dirty: false },
+        { name: 'journey_lore', label: 'The Lore (Yazı)', path: 'src/_data/journey_lore.json', type: 'single_object', data: {}, sha: '', dirty: false },
+        { name: 'journey_metamorphosis', label: 'On Metamorphosis (Yazı)', path: 'src/_data/journey_metamorphosis.json', type: 'single_object', data: {}, sha: '', dirty: false },
+        { name: 'journey_mask', label: 'The Mask and the Hand (Yazı)', path: 'src/_data/journey_mask.json', type: 'single_object', data: {}, sha: '', dirty: false },
+        { name: 'journey_migration', label: 'Migration Notes (Yazı)', path: 'src/_data/journey_migration.json', type: 'single_object', data: {}, sha: '', dirty: false },
+        { name: 'journey_materials', label: 'Materials as Memory (Yazı)', path: 'src/_data/journey_materials.json', type: 'single_object', data: {}, sha: '', dirty: false },
         
         // Pieces
         { name: 'earrings', label: 'Küpeler (Earrings)', path: 'src/_data/earrings.json', type: 'pieces_list', data: [], sha: '', dirty: false },
@@ -231,6 +241,129 @@
                         body: "Today, in our home studio in Borehamwood, London, we melt these two opposing worlds into a single language. We do not manufacture like a factory, nor do we hide solely in the past; we bring together the intelligence of technology and the heart of craftsmanship."
                       }
                     ]
+                  };
+                } else if (cat.name === 'sustainability') {
+                  cat.data = {
+                    page_title: "Sustainability — Silver & Elegant",
+                    meta_description: "Silver & Elegant's approach to sustainable sourcing, low-waste production, and plastic-free packaging.",
+                    hero_image: "/assets/about-workshop.png",
+                    sections: [
+                      {
+                        label: "Materials",
+                        title: "Ethical Sourcing",
+                        body: "We select our metals with a deep commitment to environmental responsibility. Our sterling silver, 22K gold lustre, and structural bronze are sourced from certified ethical providers, minimizing the ecological footprint of raw material mining. By choosing noble metals that acquire patina rather than decay, we ensure that every piece ages beautifully alongside its wearer, remaining a permanent asset rather than a disposable accessory."
+                      },
+                      {
+                        label: "Craft",
+                        title: "Istanbul Atelier Craftsmanship",
+                        body: "Our production is deliberately kept small and centered around a single master craftsman in Istanbul's Kapalıçarşı. By utilizing the historic lost-wax casting technique, we produce jewellery in small batches and custom commissions. This low-waste approach prevents the overproduction common in mass-manufactured jewellery houses. Every filing, shaving, and metallic dust is collected and recycled back into the melting pot, ensuring near-zero waste during the fabrication process."
+                      },
+                      {
+                        label: "Presentation",
+                        title: "Plastic-Free Luxury Packaging",
+                        body: "True luxury resides not merely within the object itself, but within the ethical responsibility of its presentation. At SILVER & ELEGANT, we consciously reject the artificial over-packaging dictated by modern consumer habits. The boxes protecting our designs are not ephemeral wrappers; they are high-quality, entirely plastic-free, and recyclable geometric structures. The tactile purity of raw paper stock complements the sculptural weight of the silver within, leaving zero footprint on the earth."
+                      },
+                      {
+                        label: "Philosophy",
+                        title: "Future Heirlooms",
+                        body: "We believe the most sustainable object is the one that never needs to be replaced. Our 'Future Heirloom' philosophy dictates that every piece of jewellery we make is engineered for extreme structural durability. We study ergonomics, metal thickness, and joinery to guarantee that these pieces can be passed down through generations, resisting the transience of fast fashion."
+                      }
+                    ]
+                  };
+                } else if (cat.name === 'how_we_work') {
+                  cat.data = {
+                    page_title: "How We Work — Silver & Elegant",
+                    meta_description: "The operational model of Silver & Elegant — designing algorithmically in London, handcrafting in Istanbul.",
+                    hero_image: "/assets/pieces/blog-yazilari-1.png",
+                    sections: [
+                      {
+                        label: "Production",
+                        title: "From London Code to Istanbul Hammer",
+                        body: "Our design pipeline is a dual practice. Every piece starts in London, where we utilize generative design algorithms to draft and compute highly complex, organic geometries. Once the mathematical blueprint is completed, it is transmitted to our historic atelier in Kapalıçarşı, Istanbul. There, a single master craftsman brings the digital coordinates to life using the lost-wax casting technique, hand-filing, and finishing each piece with fire."
+                      },
+                      {
+                        label: "Distribution",
+                        title: "Curated Global Retailers",
+                        body: "To preserve exclusivity and reduce waste, we work only with selected retail partners who share our appreciation for slow fashion. Our collections are available worldwide through Wolf & Badger, More4id, and Not Just A Label. We do not run mass distribution channels, choosing instead to deliver directly to collectors who value permanent wearable art."
+                      },
+                      {
+                        label: "Scale",
+                        title: "Bespoke & Capsule Collections",
+                        body: "We grow deliberately and sustainably. Rather than releasing seasonal collections dictated by the traditional fashion calendar, we build small, highly conceptual capsule collections and take custom commissions. This allows us to dedicate maximum craft and attention to every single item, ensuring it meets our standard of permanence."
+                      }
+                    ]
+                  };
+                } else if (cat.name === 'studio') {
+                  cat.data = {
+                    page_title: "Studio — Silver & Elegant",
+                    meta_description: "Inside the dual-city practice of Silver & Elegant — algorithmic code in London, master craftsmanship in Istanbul.",
+                    hero_image: "/assets/pieces/ff.png",
+                    sections: [
+                      {
+                        label: "The Founder",
+                        title: "Esen Tunalı Sarı",
+                        body: "Esen Tunalı Sarı is the designer and software engineer behind SILVER & ELEGANT. Growing up in the historic silversmithing hubs of Kapalıçarşı, Istanbul, Esen developed a deep, intuitive understanding of metallurgy and hand-finished luxury. Years later, her academic and professional background in software engineering enabled her to view code not as a tool for automation, but as a sculpting chisel. Her practice bridges these two worlds—mathematical precision and historic craftsmanship."
+                      },
+                      {
+                        label: "The Craftsman",
+                        title: "Atelier Kapalıçarşı",
+                        body: "Every SILVER & ELEGANT piece is cast and hand-worked by our master artisan in Kapalıçarşı, Istanbul. With over three decades of experience at the workbench, our craftsman possesses an intuitive material intelligence. He reads the generative files from London, understanding where the silver wants to flow, where the hammer must strike, and where the surface should be softened. This human element ensures that no two pieces are identical, preserving authentic human touch in an age of machine replication."
+                      },
+                      {
+                        label: "The Workspace",
+                        title: "Borehamwood & Istanbul",
+                        body: "Our workspace exists in a state of continuous dialogue between two cities. In our quiet two-story studio in Borehamwood, London, the algorithms run, the geometries are computed, and the visual systems are generated. In Istanbul, the fire is lit, the crucible is poured, and the metal is finished. This dual model combines digital innovation with centuries-old metalworking traditions, creating a unique signature of wearable architecture."
+                      }
+                    ]
+                  };
+                } else if (cat.name === 'press_kit') {
+                  cat.data = {
+                    page_title: "Press Kit — Silver & Elegant",
+                    meta_description: "Press kit and media resources for Silver & Elegant — brand summary, founder biography, and media contacts.",
+                    press_email: "info@silverandelegant.co",
+                    brand_logo: "",
+                    founder_photo: "",
+                    brand_summary_title: "About Silver & Elegant",
+                    brand_summary_body: "SILVER & ELEGANT is an independent contemporary jewellery brand that stands at the intersection of architectural precision and traditional master craftsmanship. Sourcing certified ethical metals (sterling silver, gold, and bronze), the brand utilizes generative design algorithms to draft highly complex, organic structures that are subsequently cast and finished by hand in Istanbul's Kapalıçarşı. Known for its 'Future Heirlooms' philosophy, Silver & Elegant rejects fast fashion and temporal trends, creating wearable art engineered for permanence. Within thirteen months of its founding, the brand became a runway partner at London Fashion Week AW26.",
+                    founder_bio_title: "Esen Tunalı Sarı (Founder & Designer)",
+                    founder_bio_body: "Esen Tunalı Sarı is a software developer and designer who grew up in the historic silversmithing district of Kapalıçarşı, Istanbul. Her childhood amongst master jewellers, combined with her professional career in software engineering, led to a unique creative synthesis. Today, she designs sculptural wearable art from her studio in London using proprietary computational methodologies, which are subsequently brought into physical reality via ancient lost-wax casting and hand-working. Her dual practice has been recognized by the Royal Society of Arts, where she was admitted as a Fellow in 2026."
+                  };
+                } else if (cat.name === 'the_journey') {
+                  cat.data = {
+                    page_title: "The Journey — Silver & Elegant",
+                    meta_description: "The milestones and philosophical essays of Silver & Elegant — tracking our path from Borehamwood to London Fashion Week.",
+                    hero_image: "/assets/pieces/W&B (1).jpg",
+                    intro_text: "Our journey is a continuous exploration of the boundary between code and fire. From our quiet beginnings in a home studio in Borehamwood to debuting on the catwalks of London Fashion Week AW26, this page records our milestones, our publications, and the core essays detailing our design philosophy."
+                  };
+                } else if (cat.name === 'journey_lore') {
+                  cat.data = {
+                    page_title: "The Lore — Silver & Elegant",
+                    hero_image: "/assets/pieces/blog-yazilari-1.png",
+                    body: "### The Genesis of Form\n\nEvery physical object carries a narrative. At **SILVER & ELEGANT**, that narrative begins with a set of mathematical constraints—weight, ergonomics, and light interaction—which are computed through generative algorithms. The lore of our brand is the lore of synthesis: the marriage of London's computational logic with Istanbul's ancient craftsmanship.\n\n### The Living Metal\n\nSilver is not a passive canvas; it is a collaborator. It reacts to the heat of the fire, it remembers the strike of the hammer, and it patinates with the passage of time. We believe that by combining mathematical fractal geometries with the organic touch of a master craftsman, we write a new history of wearable architecture—objects that carry weight, permanence, and memory."
+                  };
+                } else if (cat.name === 'journey_metamorphosis') {
+                  cat.data = {
+                    page_title: "On Metamorphosis — Silver & Elegant",
+                    hero_image: "/assets/pieces/blog-yazilari-1.png",
+                    body: "### The Sacred Scarab Reimagined\n\nMetamorphosis represents change, transformation, and structural evolution. In our designs, the scarab is not a literal representation, but a geometric framework. It stands as a symbol of the transition from software code to physical bronze and silver.\n\n### Generative Metamorphosis\n\nWe design through variables—equations that define curves, ribs, and edges. Through this approach, form evolves dynamically. It is a digital metamorphosis that is subsequently petrified in noble metals through lost-wax casting, fusing algorithms with the heat of the crucible."
+                  };
+                } else if (cat.name === 'journey_mask') {
+                  cat.data = {
+                    page_title: "The Mask and the Hand — Silver & Elegant",
+                    hero_image: "/assets/pieces/blog-yazilari-1.png",
+                    body: "### The Shield of Identity\n\nA mask is both a shield and a statement. It defines a boundary between the self and the world. In wearable art, a ring, a cuff, or an earring serves a similar purpose—acting as sculptural armour for the body.\n\n### Handcrafted Metaphor\n\nWhile the code computes the boundaries of the mask, it is the master craftsman's hand that textures the surface. The files from London represent the design, but the hammer strikes in Istanbul represent the lived reality. It is in this tension that our jewellery finds its character."
+                  };
+                } else if (cat.name === 'journey_migration') {
+                  cat.data = {
+                    page_title: "Migration Notes — Silver & Elegant",
+                    hero_image: "/assets/pieces/blog-yazilari-1.png",
+                    body: "### From Bosphorus to Thames\n\nForm migrates across boundaries. The architectural memory of Istanbul—its skylines, its structural ironwork, its domed cathedrals—travels with us to London. Our designs carry these structural blueprints, bridging two distinct urban landscapes.\n\n### Transmitting Design\n\nThe dual-city model is a migration of concepts. We compute in London, send coordinates to Istanbul, and import the handcrafted objects back. This circle of design represents our migration notes—a constant translation of spatial aesthetics between two cultures."
+                  };
+                } else if (cat.name === 'journey_materials') {
+                  cat.data = {
+                    page_title: "Materials as Memory — Silver & Elegant",
+                    hero_image: "/assets/pieces/blog-yazilari-1.png",
+                    body: "### Silver Remembers\n\nNoble metals possess memory. Unlike plastic, silver and bronze age. They acquire character from the air, the touch of the skin, and the friction of wear. This memory is what makes a piece of jewellery a future heirloom.\n\n### The Chemistry of Time\n\nWe deliberately choose metals that patinate. We want the wearer's daily life to write its own pattern onto the metal's surface. Fusing generative patterns with this chemical reaction creates an object that is both mathematically complex and deeply personal."
                   };
                 } else {
                   cat.data = {};

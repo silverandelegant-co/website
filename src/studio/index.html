@@ -1,0 +1,34 @@
+---
+layout: "base.njk"
+eleventyComputed:
+  title: "{{ studio.page_title | default('Studio — Silver & Elegant') }}"
+  description: "{{ studio.meta_description | default('Inside the dual practice of London generative code and Istanbul metalworking.') }}"
+---
+
+<!-- Hero Image -->
+<div style="padding-top:5rem;">
+  <img src="/{{ studio.hero_image | default('assets/pieces/ff.png') | imgpath }}" alt="Studio and workshop layout"
+    class="about-hero-img reveal">
+</div>
+
+<!-- Studio Content -->
+<div class="about-layout">
+  {% for section in studio.sections %}
+  <div class="about-intro">
+    <div class="about-intro-label reveal">
+      <span class="label">{{ section.label }}</span>
+    </div>
+    <div class="about-body">
+      <h1 class="reveal" style="margin-bottom:2rem; font-size:clamp(2rem,4vw,3.5rem);">
+        {{ section.title }}
+      </h1>
+      <p class="reveal">
+        {{ section.body | markdown | safe }}
+        {% if section.label == "The Founder" %}
+          <a href="/the-maker/index.html" class="btn btn-text" style="display:block; margin-top:1.5rem; font-size:0.85rem; padding-left:0;">Read the Founder's Note &rarr;</a>
+        {% endif %}
+      </p>
+    </div>
+  </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,28 @@
+---
+layout: "base.njk"
+eleventyComputed:
+  title: "{{ journey_metamorphosis.page_title | default('On Metamorphosis — Silver & Elegant') }}"
+---
+
+<article class="post-layout" style="padding-top:10rem; max-width:800px; margin:0 auto; padding-left:2rem; padding-right:2rem; padding-bottom:6rem;">
+  <header class="post-header reveal" style="text-align:center; margin-bottom:4rem;">
+    <div class="post-meta" style="margin-bottom:1rem;">
+      <span class="label">The Journey</span>
+    </div>
+    <h1 class="post-title" style="font-family:var(--font-serif); font-weight:300; font-size:clamp(2.2rem,5vw,3.5rem);">{{ journey_metamorphosis.page_title }}</h1>
+  </header>
+
+  {% if journey_metamorphosis.hero_image %}
+  <div class="post-hero-image reveal reveal-delay-1" style="margin-bottom:4rem; overflow:hidden; border:1px solid var(--c-border); background:var(--c-cream);">
+    <img src="/{{ journey_metamorphosis.hero_image | imgpath }}" alt="{{ journey_metamorphosis.page_title }}" style="width:100%; max-height:60vh; object-fit:cover; display:block;">
+  </div>
+  {% endif %}
+
+  <div class="post-body reveal reveal-delay-2" style="font-family:var(--font-serif); font-size:1.2rem; line-height:1.95; color:var(--c-ink);">
+    {{ journey_metamorphosis.body | markdown | safe }}
+  </div>
+
+  <footer class="post-footer reveal" style="margin-top:6rem; border-top:1px solid var(--c-border); padding-top:2rem; text-align:center;">
+    <a href="/the-journey/index.html" class="btn btn-text" style="font-size:0.75rem; letter-spacing:0.1em; text-decoration:none; text-transform:uppercase; color:var(--c-muted); border-bottom:1px solid transparent;" onmouseover="this.style.borderColor='var(--c-muted)'" onmouseout="this.style.borderColor='transparent'">&larr; Back to The Journey</a>
+  </footer>
+</article>
