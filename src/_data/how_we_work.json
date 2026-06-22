@@ -1,12 +1,12 @@
 {
-  "page_title": "How We Work — Silver & Elegant",
-  "meta_description": "The operational model of Silver & Elegant — designing algorithmically in London, handcrafting in Istanbul.",
+  "page_title": "How We Work | Silver & Elegant",
+  "meta_description": "From generative design in London to hand-finishing in Istanbul — how Silver & Elegant builds each piece, distributes selectively, and grows deliberately.",
   "hero_image": "/assets/pieces/blog-yazilari-1.png",
   "sections": [
     {
-      "label": "Production",
-      "title": "From London Code to Istanbul Hammer",
-      "body": "Our design pipeline is a dual practice. Every piece starts in London, where we utilize generative design algorithms to draft and compute highly complex, organic geometries. Once the mathematical blueprint is completed, it is transmitted to our historic atelier in Kapalıçarşı, Istanbul. There, a single master craftsman brings the digital coordinates to life using the lost-wax casting technique, hand-filing, and finishing each piece with fire."
+      "label": "Design & Production",
+      "title": "Two Cities, One Process",
+      "body": "Our design pipeline is a dual practice. Every piece starts in London, where we use generative design algorithms to draft and compute highly complex, architectural geometries. Once the mathematical blueprint is complete, it is transmitted to our atelier in Istanbul's historic Kapalıçarşı district — the same quarter where our founder grew up surrounded by master silversmiths. There, a single craftsman brings the digital coordinates to life using the lost-wax casting technique, hand-filing and finishing each piece by hand."
     },
     {
       "label": "Distribution",
@@ -14,9 +14,14 @@
       "body": "To preserve exclusivity and reduce waste, we work only with selected retail partners who share our appreciation for slow fashion. Our collections are available worldwide through **Wolf & Badger**, **More4id**, and **Not Just A Label**. We do not run mass distribution channels, choosing instead to deliver directly to collectors who value permanent wearable art."
     },
     {
-      "label": "Scale",
-      "title": "Bespoke & Capsule Collections",
-      "body": "We grow deliberately and sustainably. Rather than releasing seasonal collections dictated by the traditional fashion calendar, we build small, highly conceptual capsule collections and take custom commissions. This allows us to dedicate maximum craft and attention to every single item, ensuring it meets our standard of permanence."
+      "label": "Distribution",
+      "title": "Selective by Design",
+      "body": "To preserve exclusivity and reduce waste, we work only with retail partners who share our commitment to considered, slow fashion. Our collections are available through Wolf & Badger, More4id, and Not Just A Label. We do not operate mass distribution channels — choosing instead to reach collectors who value permanent wearable art over seasonal consumption."
+    },
+    {
+      "label": "Growth",
+      "title": "Deliberately Small",
+      "body": "We grow deliberately and sustainably. Rather than releasing collections dictated by the traditional fashion calendar, we build small, highly conceptual capsule collections and take selective commissions. This allows us to dedicate maximum craft and attention to every single piece — ensuring it meets our standard of permanence, not just our deadline."
     }
   ]
 }
