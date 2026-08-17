@@ -22,11 +22,11 @@
         { name: 'studio', label: 'Stüdyo Sayfası', path: 'src/_data/studio.json', type: 'single_object', data: {}, sha: '', dirty: false },
         { name: 'press_kit', label: 'Basın Kiti Sayfası', path: 'src/_data/press_kit.json', type: 'single_object', data: {}, sha: '', dirty: false },
         { name: 'the_journey', label: 'The Journey Sayfası', path: 'src/_data/the_journey.json', type: 'single_object', data: {}, sha: '', dirty: false },
-        { name: 'journey_lore', label: 'The Lore (Yazı)', path: 'src/_data/journey_lore.json', type: 'single_object', data: {}, sha: '', dirty: false },
-        { name: 'journey_metamorphosis', label: 'On Metamorphosis (Yazı)', path: 'src/_data/journey_metamorphosis.json', type: 'single_object', data: {}, sha: '', dirty: false },
-        { name: 'journey_mask', label: 'The Mask and the Hand (Yazı)', path: 'src/_data/journey_mask.json', type: 'single_object', data: {}, sha: '', dirty: false },
-        { name: 'journey_migration', label: 'Migration Notes (Yazı)', path: 'src/_data/journey_migration.json', type: 'single_object', data: {}, sha: '', dirty: false },
-        { name: 'journey_materials', label: 'Materials as Memory (Yazı)', path: 'src/_data/journey_materials.json', type: 'single_object', data: {}, sha: '', dirty: false },
+        { name: 'journey_lore', label: 'The Lore', path: 'src/_data/journey_lore.json', type: 'single_object', parent: 'the_journey', data: {}, sha: '', dirty: false },
+        { name: 'journey_metamorphosis', label: 'On Metamorphosis', path: 'src/_data/journey_metamorphosis.json', type: 'single_object', parent: 'the_journey', data: {}, sha: '', dirty: false },
+        { name: 'journey_mask', label: 'The Mask and the Hand', path: 'src/_data/journey_mask.json', type: 'single_object', parent: 'the_journey', data: {}, sha: '', dirty: false },
+        { name: 'journey_migration', label: 'Migration Notes', path: 'src/_data/journey_migration.json', type: 'single_object', parent: 'the_journey', data: {}, sha: '', dirty: false },
+        { name: 'journey_materials', label: 'Materials as Memory', path: 'src/_data/journey_materials.json', type: 'single_object', parent: 'the_journey', data: {}, sha: '', dirty: false },
         
         // Pieces
         { name: 'earrings', label: 'Küpeler (Earrings)', path: 'src/_data/earrings.json', type: 'pieces_list', data: [], sha: '', dirty: false },
@@ -44,7 +44,16 @@
         { name: 'posts_exhibitions', label: 'Sergi Kayıtları', path: 'src/_data/posts_exhibitions.json', type: 'posts_list', data: [], sha: '', dirty: false }
       ],
 
+      // Tree View State
+      journeyTreeOpen: true,
+
       // Getters for Grouping Dashboard & Sidebar
+      get mainPagesCatalogs() {
+        return this.catalogs.filter(c => (c.type === 'single_object' || c.name === 'press') && !c.parent);
+      },
+      get journeySubCatalogs() {
+        return this.catalogs.filter(c => c.parent === 'the_journey');
+      },
       get pagesCatalogs() {
         return this.catalogs.filter(c => c.type === 'single_object' || c.name === 'press');
       },
@@ -188,6 +197,9 @@
       selectCatalog(name) {
         this.activeCatalog = name;
         this.searchQuery = '';
+        if (name === 'the_journey' || name.startsWith('journey_')) {
+          this.journeyTreeOpen = true;
+        }
         
         const cat = this.catalogs.find(c => c.name === name);
         if (cat) {

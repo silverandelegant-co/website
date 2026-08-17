@@ -24,30 +24,53 @@
       <span class="text-[10px] text-slate-600 font-semibold uppercase tracking-widest">Ayarlar & Sayfalar</span>
     </div>
     
-    <template x-for="cat in pagesCatalogs" :key="cat.name">
-      <button @click="selectCatalog(cat.name)" 
-        class="w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-medium transition-all group"
-        :class="activeCatalog === cat.name ? 'bg-gold-500/10 text-gold-300 border border-gold-500/20' : 'text-slate-400 hover:bg-slate-900/50 hover:text-slate-200 border border-transparent'">
-        <div class="flex items-center space-x-3">
-          <i class="fa-solid text-sm" :class="[
-            cat.name === 'settings' ? 'fa-sliders' : '',
-            cat.name === 'contact' ? 'fa-envelope-open-text' : '',
-            cat.name === 'about' ? 'fa-circle-info' : '',
-            cat.name === 'artisan' ? 'fa-palette' : '',
-            cat.name === 'press' ? 'fa-newspaper' : '',
-            cat.name === 'sustainability' ? 'fa-leaf' : '',
-            cat.name === 'how_we_work' ? 'fa-diagram-project' : '',
-            cat.name === 'studio' ? 'fa-house-chimney' : '',
-            cat.name === 'press_kit' ? 'fa-file-zipper' : '',
-            cat.name === 'the_journey' ? 'fa-road' : '',
-            cat.name.startsWith('journey_') ? 'fa-scroll' : '',
-            activeCatalog === cat.name ? 'text-gold-400' : 'text-slate-500'
-          ]"></i>
-          <span x-text="cat.label"></span>
-          <span x-show="cat.dirty" class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" title="Yayınlanmamış değişiklikler var" x-cloak></span>
-        </div>
-        <span x-show="cat.name === 'press'" class="px-2 py-0.5 text-[10px] bg-slate-950 border border-slate-800 rounded-full text-slate-400" x-text="cat.data.length"></span>
-      </button>
+    <template x-for="cat in mainPagesCatalogs" :key="cat.name">
+      <div>
+        <button @click="selectCatalog(cat.name)" 
+          class="w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-medium transition-all group"
+          :class="activeCatalog === cat.name || (cat.name === 'the_journey' && activeCatalog.startsWith('journey_')) ? 'bg-gold-500/10 text-gold-300 border border-gold-500/20' : 'text-slate-400 hover:bg-slate-900/50 hover:text-slate-200 border border-transparent'">
+          <div class="flex items-center space-x-3">
+            <i class="fa-solid text-sm" :class="[
+              cat.name === 'settings' ? 'fa-sliders' : '',
+              cat.name === 'contact' ? 'fa-envelope-open-text' : '',
+              cat.name === 'about' ? 'fa-circle-info' : '',
+              cat.name === 'artisan' ? 'fa-palette' : '',
+              cat.name === 'press' ? 'fa-newspaper' : '',
+              cat.name === 'sustainability' ? 'fa-leaf' : '',
+              cat.name === 'how_we_work' ? 'fa-diagram-project' : '',
+              cat.name === 'studio' ? 'fa-house-chimney' : '',
+              cat.name === 'press_kit' ? 'fa-file-zipper' : '',
+              cat.name === 'the_journey' ? 'fa-road' : '',
+              activeCatalog === cat.name || (cat.name === 'the_journey' && activeCatalog.startsWith('journey_')) ? 'text-gold-400' : 'text-slate-500'
+            ]"></i>
+            <span x-text="cat.label"></span>
+            <span x-show="cat.dirty" class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" title="Yayınlanmamış değişiklikler var" x-cloak></span>
+          </div>
+          <div class="flex items-center space-x-1.5">
+            <span x-show="cat.name === 'press'" class="px-2 py-0.5 text-[10px] bg-slate-950 border border-slate-800 rounded-full text-slate-400" x-text="cat.data.length"></span>
+            <span x-show="cat.name === 'the_journey'" @click.stop="journeyTreeOpen = !journeyTreeOpen" class="p-1 hover:text-slate-200 text-slate-500 transition-colors cursor-pointer">
+              <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200" :class="journeyTreeOpen ? 'rotate-180' : ''"></i>
+            </span>
+          </div>
+        </button>
+
+        <!-- Nested Tree for The Journey Essays -->
+        <template x-if="cat.name === 'the_journey'">
+          <div x-show="journeyTreeOpen" x-cloak class="ml-4 pl-3 border-l border-slate-800/80 space-y-1 my-1">
+            <template x-for="subCat in journeySubCatalogs" :key="subCat.name">
+              <button @click="selectCatalog(subCat.name)" 
+                class="w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-medium transition-all group"
+                :class="activeCatalog === subCat.name ? 'bg-gold-500/15 text-gold-300 border border-gold-500/30 font-semibold' : 'text-slate-400 hover:bg-slate-900/50 hover:text-slate-200 border border-transparent'">
+                <div class="flex items-center space-x-2.5">
+                  <i class="fa-solid fa-scroll text-[10px]" :class="activeCatalog === subCat.name ? 'text-gold-400' : 'text-slate-600'"></i>
+                  <span x-text="subCat.label"></span>
+                </div>
+                <span x-show="subCat.dirty" class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" title="Yayınlanmamış değişiklikler var" x-cloak></span>
+              </button>
+            </template>
+          </div>
+        </template>
+      </div>
     </template>
 
     <!-- Group 2: Jewelry Collections -->
@@ -101,27 +124,41 @@
     </button>
 
     <!-- Pages & Settings -->
-    <template x-for="cat in pagesCatalogs" :key="cat.name">
-      <button @click="selectCatalog(cat.name)" 
-        class="flex-shrink-0 flex items-center space-x-1.5 px-3.5 py-2 rounded-full text-xs font-semibold border transition-all"
-        :class="activeCatalog === cat.name ? 'bg-gold-500/10 text-gold-300 border-gold-500/30' : 'bg-slate-900/60 border-slate-800/80 text-slate-400'">
-        <i class="fa-solid text-[10px]" :class="[
-          cat.name === 'settings' ? 'fa-sliders' : '',
-          cat.name === 'contact' ? 'fa-envelope-open-text' : '',
-          cat.name === 'about' ? 'fa-circle-info' : '',
-          cat.name === 'artisan' ? 'fa-palette' : '',
-          cat.name === 'press' ? 'fa-newspaper' : '',
-          cat.name === 'sustainability' ? 'fa-leaf' : '',
-          cat.name === 'how_we_work' ? 'fa-diagram-project' : '',
-          cat.name === 'studio' ? 'fa-house-chimney' : '',
-          cat.name === 'press_kit' ? 'fa-file-zipper' : '',
-          cat.name === 'the_journey' ? 'fa-road' : '',
-          cat.name.startsWith('journey_') ? 'fa-scroll' : '',
-          activeCatalog === cat.name ? 'text-gold-400' : 'text-slate-500'
-        ]"></i>
-        <span x-text="cat.label"></span>
-        <span x-show="cat.dirty" class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" x-cloak></span>
-      </button>
+    <template x-for="cat in mainPagesCatalogs" :key="cat.name">
+      <div class="flex items-center space-x-2 flex-shrink-0">
+        <button @click="selectCatalog(cat.name)" 
+          class="flex-shrink-0 flex items-center space-x-1.5 px-3.5 py-2 rounded-full text-xs font-semibold border transition-all"
+          :class="activeCatalog === cat.name ? 'bg-gold-500/10 text-gold-300 border-gold-500/30' : 'bg-slate-900/60 border-slate-800/80 text-slate-400'">
+          <i class="fa-solid text-[10px]" :class="[
+            cat.name === 'settings' ? 'fa-sliders' : '',
+            cat.name === 'contact' ? 'fa-envelope-open-text' : '',
+            cat.name === 'about' ? 'fa-circle-info' : '',
+            cat.name === 'artisan' ? 'fa-palette' : '',
+            cat.name === 'press' ? 'fa-newspaper' : '',
+            cat.name === 'sustainability' ? 'fa-leaf' : '',
+            cat.name === 'how_we_work' ? 'fa-diagram-project' : '',
+            cat.name === 'studio' ? 'fa-house-chimney' : '',
+            cat.name === 'press_kit' ? 'fa-file-zipper' : '',
+            cat.name === 'the_journey' ? 'fa-road' : '',
+            activeCatalog === cat.name ? 'text-gold-400' : 'text-slate-500'
+          ]"></i>
+          <span x-text="cat.label"></span>
+          <span x-show="cat.dirty" class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" x-cloak></span>
+        </button>
+        <template x-if="cat.name === 'the_journey'">
+          <div class="flex items-center space-x-1.5">
+            <template x-for="subCat in journeySubCatalogs" :key="subCat.name">
+              <button @click="selectCatalog(subCat.name)" 
+                class="flex-shrink-0 flex items-center space-x-1 px-3 py-1.5 rounded-full text-[11px] font-medium border transition-all"
+                :class="activeCatalog === subCat.name ? 'bg-gold-500/20 text-gold-200 border-gold-500/40' : 'bg-slate-900/40 border-slate-800/60 text-slate-400'">
+                <span class="text-slate-600">↳</span>
+                <span x-text="subCat.label"></span>
+                <span x-show="subCat.dirty" class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" x-cloak></span>
+              </button>
+            </template>
+          </div>
+        </template>
+      </div>
     </template>
 
     <!-- Pieces -->
