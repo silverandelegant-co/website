@@ -96,39 +96,62 @@
       
       allSlugs: [],
 
-      initApp() {
+      getAuthHeader(overrideToken = null) {
+        const raw = (overrideToken || this.token || '').trim();
+        if (!raw) return '';
+        if (raw.startsWith('Bearer ') || raw.startsWith('token ')) return raw;
+        return `Bearer ${raw}`;
+      },
+
+      async initApp() {
         const savedToken = localStorage.getItem('admin_pat');
         if (savedToken) {
           this.token = savedToken;
           this.tokenInput = savedToken;
-          this.isAuthenticated = true;
-          this.loadAllCatalogs();
-          this.loadMediaLibrary();
+          try {
+            const res = await fetch(`https://api.github.com/repos/${this.repoOwner}/${this.repoName}`, {
+              headers: { 'Authorization': this.getAuthHeader(savedToken) }
+            });
+            if (res.ok) {
+              this.isAuthenticated = true;
+              this.loadAllCatalogs();
+              this.loadMediaLibrary();
+            } else {
+              this.logout();
+              this.showToast('Kaydedilmiş GitHub Token süresi dolmuş veya yetkisiz. Lütfen tekrar giriş yapın.', 'error');
+            }
+          } catch (e) {
+            this.isAuthenticated = true;
+            this.loadAllCatalogs();
+            this.loadMediaLibrary();
+          }
         }
       },
 
       async authenticate() {
-        if (!this.tokenInput.trim()) {
+        const rawToken = this.tokenInput.trim();
+        if (!rawToken) {
           this.showToast('Lütfen geçerli bir GitHub Token (PAT) girin.', 'error');
           return;
         }
         this.showLoading('Token doğrulanıyor...');
         try {
           const res = await fetch(`https://api.github.com/repos/${this.repoOwner}/${this.repoName}`, {
-            headers: { 'Authorization': `token ${this.tokenInput.trim()}` }
+            headers: { 'Authorization': this.getAuthHeader(rawToken) }
           });
           if (res.ok) {
-            this.token = this.tokenInput.trim();
+            this.token = rawToken;
             localStorage.setItem('admin_pat', this.token);
             this.isAuthenticated = true;
             this.showToast('Giriş başarılı.', 'success');
             await this.loadAllCatalogs();
             await this.loadMediaLibrary();
           } else {
-            throw new Error();
+            const errData = await res.json().catch(() => ({}));
+            throw new Error(errData.message || `HTTP ${res.status}`);
           }
         } catch (err) {
-          this.showToast('Giriş başarısız. Token bilgilerinizi kontrol edin.', 'error');
+          this.showToast(`Giriş başarısız: ${err.message || 'Token bilgilerinizi kontrol edin.'}`, 'error');
         } finally {
           this.hideLoading();
         }
@@ -209,7 +232,7 @@
         try {
           const promises = this.catalogs.map(async (cat) => {
             const res = await fetch(`https://api.github.com/repos/${this.repoOwner}/${this.repoName}/contents/${cat.path}?ref=${this.branch}`, {
-              headers: { 'Authorization': `token ${this.token}` }
+              headers: { 'Authorization': this.getAuthHeader() }
             });
             
             if (res.status === 404) {
@@ -435,7 +458,7 @@
         this.mediaLoading = true;
         try {
           const res = await fetch(`https://api.github.com/repos/${this.repoOwner}/${this.repoName}/contents/src/assets/pieces?ref=${this.branch}`, {
-            headers: { 'Authorization': `token ${this.token}` }
+            headers: { 'Authorization': this.getAuthHeader() }
           });
           if (res.ok) {
             const files = await res.json();
@@ -1102,20 +1125,35 @@
         
         try {
           const headers = {
-            'Authorization': `token ${this.token}`,
+            'Authorization': this.getAuthHeader(),
             'Content-Type': 'application/json'
           };
           const baseApiUrl = `https://api.github.com/repos/${this.repoOwner}/${this.repoName}`;
+
+          const handleResError = async (res, stepName) => {
+            if (!res.ok) {
+              const errJson = await res.json().catch(() => ({}));
+              const msg = errJson.message || `HTTP ${res.status}`;
+              if (res.status === 401) {
+                throw new Error(`GitHub Token süresi dolmuş veya geçersiz (401 Unauthorized). Lütfen oturumu kapatıp yeni bir Token (PAT) girin.`);
+              }
+              if (res.status === 403) {
+                throw new Error(`GitHub Token yetkisi yetersiz (403 Forbidden). Token alırken 'repo' yetkisi verdiğinizden emin olun.`);
+              }
+              throw new Error(`${stepName}: ${msg}`);
+            }
+            return res;
+          };
           
           // 1. Get the latest commit SHA of the target branch
           const refRes = await fetch(`${baseApiUrl}/git/ref/heads/${this.branch}`, { headers });
-          if (!refRes.ok) throw new Error('Son commit bilgisi alınamadı.');
+          await handleResError(refRes, 'Son commit bilgisi alınamadı');
           const refJson = await refRes.json();
           const parentCommitSha = refJson.object.sha;
           
           // 2. Get the tree SHA of that parent commit
           const commitRes = await fetch(`${baseApiUrl}/git/commits/${parentCommitSha}`, { headers });
-          if (!commitRes.ok) throw new Error('Son ağaç bilgisi alınamadı.');
+          await handleResError(commitRes, 'Son ağaç bilgisi alınamadı');
           const commitJson = await commitRes.json();
           const baseTreeSha = commitJson.tree.sha;
           
@@ -1137,8 +1175,7 @@
                   encoding: 'base64'
                 })
               });
-              
-              if (!blobRes.ok) throw new Error(`${img.name} blobu oluşturulamadı.`);
+              await handleResError(blobRes, `${img.name} blobu oluşturulamadı`);
               const blobJson = await blobRes.json();
               
               treeEntries.push({
@@ -1196,8 +1233,7 @@
                   encoding: 'base64'
                 })
               });
-              
-              if (!blobRes.ok) throw new Error(`${cat.label} veri blobu oluşturulamadı.`);
+              await handleResError(blobRes, `${cat.label} veri blobu oluşturulamadı`);
               const blobJson = await blobRes.json();
               
               treeEntries.push({
@@ -1219,7 +1255,7 @@
               tree: treeEntries
             })
           });
-          if (!treeRes.ok) throw new Error('Yeni git ağacı oluşturulamadı.');
+          await handleResError(treeRes, 'Yeni git ağacı oluşturulamadı');
           const treeJson = await treeRes.json();
           const newTreeSha = treeJson.sha;
           
@@ -1236,7 +1272,7 @@
               parents: [parentCommitSha]
             })
           });
-          if (!newCommitRes.ok) throw new Error('Yeni commit nesnesi oluşturulamadı.');
+          await handleResError(newCommitRes, 'Yeni commit nesnesi oluşturulamadı');
           const newCommitJson = await newCommitRes.json();
           const newCommitSha = newCommitJson.sha;
           
@@ -1250,7 +1286,7 @@
               force: false
             })
           });
-          if (!refUpdateRes.ok) throw new Error('GitHub dal referansı güncellenemedi.');
+          await handleResError(refUpdateRes, 'GitHub dal referansı güncellenemedi');
           
           // 7. Clear staged states on success
           this.pendingImageUploads = [];
@@ -1264,7 +1300,11 @@
           await this.loadMediaLibrary();
         } catch (err) {
           console.error(err);
-          this.showToast(`Yayınlama sırasında hata: ${err.message}`, 'error');
+          let userMsg = err.message || '';
+          if (userMsg.includes('Failed to fetch') || userMsg.includes('NetworkError')) {
+            userMsg = 'GitHub API bağlantı hatası (Failed to fetch). Tarayıcı eklentisi (AdBlocker/VPN) engelliyor olabilir veya GitHub Token süreniz dolmuş olabilir. Lütfen Çıkış yapıp yeni bir Token ile giriş yapmayı deneyin.';
+          }
+          this.showToast(`Yayınlama sırasında hata: ${userMsg}`, 'error');
         } finally {
           this.hideLoading();
         }
