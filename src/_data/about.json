@@ -6,23 +6,24 @@
     {
       "label": "Philosophy",
       "title": "The Architecture of Possibilities",
-      "body": "We do not design jewellery; we construct architectural narratives sealed in silver and bronze.\n\nSilver & Elegant was founded on the belief that the most enduring objects are those calculated with high mathematical intelligence and crafted with immense discipline. Each piece is a Future Heirloom — complex enough to be computed algorithmically, yet durable enough to outlive its creator.\n\nBy distancing ourselves from the reflexes of fast consumption and transient trends, we establish permanence as our definitive design standard."
+      "body": "We do not design jewellery; we construct architectural narratives sealed in silver, bronze, and gold.\n\nSilver & Elegant was founded on the belief that the most enduring objects are those shaped with rigorous intelligence and immense discipline. Each piece is a Future Heirloom — durable enough to outlive its creator.\n\nBy distancing ourselves from the reflexes of fast consumption and transient trends, we establish permanence as our definitive design standard."
     },
     {
       "label": "Process",
       "title": "Code and Hammer",
-      "body": "Every design begins not with a sketch, but with a structural problem: what form should permanence take? We use generative design algorithms as a creative partner.\n\n  \n\nThe code and simulations analyse thousands of structural possibilities simultaneously, allowing forms of a complexity unattainable by the human hand alone to emerge. To bring this rational architecture into the physical world, it is refined through traditional craftsmanship in our Istanbul atelier — shaped by the hands of a single master, using the lost-wax casting technique. The metal bears the marks of human judgement and intention, set against digital precision. What the code proposes, the hand shapes. What the hand creates, time preserves."
+      "body": "Every design begins not simply with a sketch, but with a structural problem: what form should permanence take?\n\nTo bring this rational architecture into the physical world, each form is refined through traditional craftsmanship in our Istanbul atelier — shaped by the hands of a master, using the lost-wax casting technique. The metal bears the marks of human judgement and intention. What the hand creates, time preserves."
     },
     {
       "label": "Creator",
       "title": "A Union of Two Worlds",
-      "body": "I am Esen Tunalı Sarı. I was born in Ruse, Bulgaria, a city shaped by the heavy, uncompromising geometry of Brutalist architecture along the Danube. As a child, my family moved to Istanbul and settled in Bakırköy. Our neighbours there were almost entirely silversmiths and jewellers, most working daily in the historic Kapalıçarşı district. I grew up surrounded by that craft — not as a visitor, but as someone who watched it practised next door, every day, as an ordinary part of life.\n\n  \n\nMy family's path then continued to the Netherlands, and finally to the United Kingdom. The software development background I built along the way allowed me to merge the traditional craft I grew up around with the millimetric precision of algorithms. Today, in our home studio in Borehamwood, London, I bring these two worlds into a single language — designing with generative code in London, and returning to the same Istanbul district where I first learned to understand metal, to have each piece finished by hand."
+      "body": "I am Esen Tunalı Sarı FRSA. I was born in Ruse, Bulgaria, a city shaped by the heavy, uncompromising geometry of Brutalist architecture along the Danube. As a child, my family moved to Istanbul and settled in Bakırköy. Our neighbours were almost entirely silversmiths and jewellers, most working daily in the historic Kapalıçarşı district. I grew up surrounded by that craft — not as a visitor, but as someone who watched it practiced next door, every day, as an ordinary part of life.\n\n  \n\nMy family's path then continued to the Netherlands, and finally to the United Kingdom. Today, in our home studio in Borehamwood, London, I bring these influences into a single language — designing narrative forms, and returning to the same Istanbul district where I first learned to understand metal, to have each piece finished by hand."
     },
     {
       "label": "00",
       "title": "Design",
-      "body": "Some pieces begin with a structural problem fed into generative algorithms — the code proposes thousands of forms simultaneously. Others begin with a hand sketch, a material study, or a memory. Both paths lead to the same question: what form should permanence take?"
+      "body": "Some pieces begin with a structural problem; others begin with a hand sketch, a material study, or a memory.\n\nBoth paths lead to the same question: what form should permanence take?"
     }
   ],
-  "process_steps": []
+  "process_steps": [],
+  "intro": ""
 }
