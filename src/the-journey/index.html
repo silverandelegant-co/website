@@ -7,7 +7,7 @@ eleventyComputed:
 
 <!-- Journey Hero -->
 <div style="padding-top:5rem;">
-  <img src="/{{ the_journey.hero_image | default('assets/pieces/W&B (1).jpg') | imgpath }}" alt="London Fashion Week Catwalk Showcase"
+  <img src="{% if 'drive.google.com' in the_journey.hero_image or 'googleusercontent.com' in the_journey.hero_image %}{{ the_journey.hero_image | driveimage }}{% else %}/{{ the_journey.hero_image | default('assets/pieces/W&B (1).jpg') | imgpath  }}{% endif %}" alt="London Fashion Week Catwalk Showcase"
     class="about-hero-img reveal">
 </div>
 

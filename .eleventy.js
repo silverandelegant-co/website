@@ -81,7 +81,12 @@ module.exports = function(eleventyConfig) {
   // Markdown renderer filter
   eleventyConfig.addFilter("markdown", (content) => {
     if (!content) return "";
-    return markdownIt.render(content);
+    // Automatically convert any Google Drive image URLs embedded in Markdown to direct lh3 CDN links
+    let processed = content.replace(/(https?:\/\/(?:drive\.google\.com|googleusercontent\.com)[^\s"'\)]+)/g, (match) => {
+      const fileId = extractDriveFileId(match);
+      return fileId ? `https://lh3.googleusercontent.com/d/${fileId}` : match;
+    });
+    return markdownIt.render(processed);
   });
 
   // Extract YouTube ID and return the standard embed URL

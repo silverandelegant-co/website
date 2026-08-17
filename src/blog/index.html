@@ -31,7 +31,11 @@ eleventyComputed:
       {% if featuredPost %}
       <article class="blog-featured reveal" id="featured-post">
         <a href="/blog/{{ featuredPost.id }}/index.html" class="blog-featured-image">
-          <img src="/{{ featuredPost.featured_image | imgpath }}" alt="{{ featuredPost.title }} featured image" loading="lazy">
+          {% if 'drive.google.com' in featuredPost.featured_image or 'googleusercontent.com' in featuredPost.featured_image %}
+            <img src="{{ featuredPost.featured_image | drivethumb(800) }}" alt="{{ featuredPost.title }} featured image" loading="lazy">
+          {% else %}
+            <img src="{% if 'drive.google.com' in featuredPost.featured_image or 'googleusercontent.com' in featuredPost.featured_image %}{{ featuredPost.featured_image | driveimage }}{% else %}/{{ featuredPost.featured_image | imgpath  }}{% endif %}" alt="{{ featuredPost.title }} featured image" loading="lazy">
+          {% endif %}
         </a>
         <div class="blog-featured-content">
           <div class="blog-featured-meta">
@@ -54,7 +58,11 @@ eleventyComputed:
           {% if post.id != featuredPost.id %}
           <article class="blog-card reveal" id="post-card-{{ loop.index }}">
             <a href="/blog/{{ post.id }}/index.html" class="blog-card-image">
-              <img src="/{{ post.featured_image | imgpath }}" alt="{{ post.title }} card thumbnail" loading="lazy">
+              {% if 'drive.google.com' in post.featured_image or 'googleusercontent.com' in post.featured_image %}
+                <img src="{{ post.featured_image | drivethumb(600) }}" alt="{{ post.title }} card thumbnail" loading="lazy">
+              {% else %}
+                <img src="{% if 'drive.google.com' in post.featured_image or 'googleusercontent.com' in post.featured_image %}{{ post.featured_image | driveimage }}{% else %}/{{ post.featured_image | imgpath  }}{% endif %}" alt="{{ post.title }} card thumbnail" loading="lazy">
+              {% endif %}
             </a>
             <div class="blog-card-meta">
               <span class="blog-category">{{ post.category | default("Craftsmanship") }}</span>

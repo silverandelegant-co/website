@@ -21,7 +21,11 @@ permalink: "/blog/{{ post.id }}/index.html"
     <!-- Post Hero Image -->
     {% if post.featured_image %}
     <div class="post-hero-image reveal reveal-delay-1">
-      <img src="/{{ post.featured_image | imgpath }}" alt="{{ post.title }} hero image">
+      {% if 'drive.google.com' in post.featured_image or 'googleusercontent.com' in post.featured_image %}
+        <img src="{{ post.featured_image | driveimage }}" alt="{{ post.title }} hero image">
+      {% else %}
+        <img src="{% if 'drive.google.com' in post.featured_image or 'googleusercontent.com' in post.featured_image %}{{ post.featured_image | driveimage }}{% else %}/{{ post.featured_image | imgpath  }}{% endif %}" alt="{{ post.title }} hero image">
+      {% endif %}
     </div>
     {% endif %}
 
@@ -39,7 +43,7 @@ permalink: "/blog/{{ post.id }}/index.html"
           </blockquote>
         {% elif section.type == "image_block" %}
           <figure class="post-image-block">
-            <img src="/{{ section.image | imgpath }}" alt="{{ section.alt | default(post.title) }}" loading="lazy">
+            <img src="{% if 'drive.google.com' in section.image or 'googleusercontent.com' in section.image %}{{ section.image | driveimage }}{% else %}/{{ section.image | imgpath  }}{% endif %}" alt="{{ section.alt | default(post.title) }}" loading="lazy">
             {% if section.caption %}
               <figcaption>{{ section.caption }}</figcaption>
             {% endif %}
@@ -82,7 +86,7 @@ permalink: "/blog/{{ post.id }}/index.html"
             {% set count = count + 1 %}
             <article class="blog-card reveal" id="suggested-card-{{ loop.index }}">
               <a href="/blog/{{ otherPost.id }}/index.html" class="blog-card-image">
-                <img src="/{{ otherPost.featured_image | imgpath }}" alt="{{ otherPost.title }} card thumbnail" loading="lazy">
+                <img src="{% if 'drive.google.com' in otherPost.featured_image or 'googleusercontent.com' in otherPost.featured_image %}{{ otherPost.featured_image | driveimage }}{% else %}/{{ otherPost.featured_image | imgpath  }}{% endif %}" alt="{{ otherPost.title }} card thumbnail" loading="lazy">
               </a>
               <div class="blog-card-meta">
                 <span class="blog-category">{{ otherPost.category | default("Craftsmanship") }}</span>

@@ -6,7 +6,7 @@ eleventyComputed:
 ---
 <!-- Workshop Hero -->
 <div style="padding-top:5rem;">
-  <img src="/{{ about.hero_image | default('assets/about-workshop.png') | imgpath }}" alt="Silversmith at work"
+  <img src="{% if 'drive.google.com' in about.hero_image or 'googleusercontent.com' in about.hero_image %}{{ about.hero_image | driveimage }}{% else %}/{{ about.hero_image | default('assets/about-workshop.png') | imgpath  }}{% endif %}" alt="Silversmith at work"
     class="about-hero-img reveal">
 </div>
 

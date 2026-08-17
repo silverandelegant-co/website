@@ -14,11 +14,23 @@
 
     <!-- Toolbar: Upload & Search -->
     <div class="px-6 py-4 bg-slate-950/40 border-b border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4 flex-shrink-0">
-      <!-- Search input -->
-      <div class="relative flex-grow max-w-sm">
-        <i class="fa-solid fa-search text-slate-500 absolute left-3.5 top-3"></i>
-        <input type="text" x-model="mediaSearchQuery" placeholder="Görsel adına göre ara..."
-          class="w-full bg-slate-950 border border-slate-800 rounded-xl py-2 pl-9 pr-4 text-xs text-slate-300 focus:outline-none" />
+      <!-- Search & Google Drive Input -->
+      <div class="flex flex-col sm:flex-row gap-3 flex-grow max-w-xl">
+        <!-- Search input -->
+        <div class="relative flex-grow">
+          <i class="fa-solid fa-search text-slate-500 absolute left-3.5 top-3"></i>
+          <input type="text" x-model="mediaSearchQuery" placeholder="Görsel adına göre ara..."
+            class="w-full bg-slate-950 border border-slate-800 rounded-xl py-2 pl-9 pr-4 text-xs text-slate-300 focus:outline-none focus:border-gold-500/50" />
+        </div>
+        <!-- Google Drive URL input -->
+        <div class="relative flex-grow" x-data="{ driveInput: '' }">
+          <input type="text" x-model="driveInput" placeholder="https://drive.google.com/file/d/..."
+            class="w-full bg-slate-950 border border-slate-800 rounded-xl py-2 pl-3 pr-16 text-xs text-slate-300 focus:outline-none focus:border-gold-500/50 font-mono" />
+          <button type="button" @click="if (driveInput.trim()) { activeSelectedImages = [driveUrlToDirectLink(driveInput.trim())]; insertSelectedMedia(); driveInput = ''; }"
+            class="absolute right-1 top-1 bottom-1 px-2.5 bg-gold-500 hover:bg-gold-400 text-slate-950 text-[10px] font-bold rounded-lg transition-all">
+            Drive Ekle
+          </button>
+        </div>
       </div>
 
       <!-- Selected Items Actions (Sveltia style!) -->

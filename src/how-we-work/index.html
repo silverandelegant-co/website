@@ -7,7 +7,7 @@ eleventyComputed:
 
 <!-- Hero Image -->
 <div style="padding-top:5rem;">
-  <img src="/{{ how_we_work.hero_image | default('assets/pieces/blog-yazilari-1.png') | imgpath }}" alt="Operational process banner"
+  <img src="{% if 'drive.google.com' in how_we_work.hero_image or 'googleusercontent.com' in how_we_work.hero_image %}{{ how_we_work.hero_image | driveimage }}{% else %}/{{ how_we_work.hero_image | default('assets/pieces/blog-yazilari-1.png') | imgpath  }}{% endif %}" alt="Operational process banner"
     class="about-hero-img reveal">
 </div>
 

@@ -20,7 +20,11 @@ eleventyComputed:
       
       {% if article.featured_image %}
       <a href="/press/{{ article.id }}/index.html" class="press-article-image">
-        <img src="/{{ article.featured_image | imgpath }}" alt="{{ article.title }}" loading="lazy">
+        {% if 'drive.google.com' in article.featured_image or 'googleusercontent.com' in article.featured_image %}
+          <img src="{{ article.featured_image | drivethumb(600) }}" alt="{{ article.title }}" loading="lazy">
+        {% else %}
+          <img src="{% if 'drive.google.com' in article.featured_image or 'googleusercontent.com' in article.featured_image %}{{ article.featured_image | driveimage }}{% else %}/{{ article.featured_image | imgpath  }}{% endif %}" alt="{{ article.title }}" loading="lazy">
+        {% endif %}
       </a>
       {% endif %}
 

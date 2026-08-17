@@ -26,7 +26,11 @@ eleventyComputed:
   <!-- Press Hero Image -->
   {% if article.featured_image %}
   <div class="post-hero-image reveal reveal-delay-1" style="max-width: 800px; margin-bottom: 4rem;">
-    <img src="/{{ article.featured_image | imgpath }}" alt="{{ article.title }}">
+    {% if 'drive.google.com' in article.featured_image or 'googleusercontent.com' in article.featured_image %}
+      <img src="{{ article.featured_image | driveimage }}" alt="{{ article.title }}">
+    {% else %}
+      <img src="{% if 'drive.google.com' in article.featured_image or 'googleusercontent.com' in article.featured_image %}{{ article.featured_image | driveimage }}{% else %}/{{ article.featured_image | imgpath  }}{% endif %}" alt="{{ article.title }}">
+    {% endif %}
   </div>
   {% endif %}
 
@@ -44,7 +48,11 @@ eleventyComputed:
         </blockquote>
       {% elif section.type == "image_block" %}
         <figure class="post-image-block">
-          <img src="/{{ section.image | imgpath }}" alt="{{ section.alt | default(article.title) }}" loading="lazy">
+          {% if 'drive.google.com' in section.image or 'googleusercontent.com' in section.image %}
+            <img src="{{ section.image | driveimage }}" alt="{{ section.alt | default(article.title) }}" loading="lazy">
+          {% else %}
+            <img src="{% if 'drive.google.com' in section.image or 'googleusercontent.com' in section.image %}{{ section.image | driveimage }}{% else %}/{{ section.image | imgpath  }}{% endif %}" alt="{{ section.alt | default(article.title) }}" loading="lazy">
+          {% endif %}
           {% if section.caption %}
             <figcaption>{{ section.caption }}</figcaption>
           {% endif %}

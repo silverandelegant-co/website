@@ -7,7 +7,7 @@ eleventyComputed:
 
 <!-- Hero Image -->
 <div style="padding-top:5rem;">
-  <img src="/{{ studio.hero_image | default('assets/pieces/ff.png') | imgpath }}" alt="Studio and workshop layout"
+  <img src="{% if 'drive.google.com' in studio.hero_image or 'googleusercontent.com' in studio.hero_image %}{{ studio.hero_image | driveimage }}{% else %}/{{ studio.hero_image | default('assets/pieces/ff.png') | imgpath  }}{% endif %}" alt="Studio and workshop layout"
     class="about-hero-img reveal">
 </div>
 
