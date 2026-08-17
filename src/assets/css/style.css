@@ -241,13 +241,18 @@ h3 {
 }
 
 .nav-logo {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  font-weight: 400;
-  letter-spacing: 0.25em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: white;
-  text-transform: uppercase;
   transition: color 350ms var(--ease);
+}
+
+.nav-logo svg {
+  height: 3.4rem;
+  width: auto;
+  fill: currentColor;
+  transition: fill 350ms var(--ease);
 }
 
 .nav.scrolled .nav-logo {
@@ -708,11 +713,26 @@ h3 {
 }
 
 .footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
   font-family: var(--font-serif);
   font-size: 1.1rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--c-dark-text);
+}
+
+.footer-logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-logo-mark svg {
+  height: 1.3rem;
+  width: auto;
+  fill: currentColor;
 }
 
 .footer-brand p {
