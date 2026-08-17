@@ -20,23 +20,37 @@ module.exports = function(eleventyConfig) {
     return str.split("").reverse().join("");
   });
 
-  // Convert Google Drive share URL to direct embeddable image URL
-  // Supports: /file/d/ID/view, /open?id=ID, already-direct uc?export=view
+  // Helper: Extract FILE_ID from various Google Drive URL formats
+  function extractDriveFileId(url) {
+    if (!url) return '';
+    if (url.includes('lh3.googleusercontent.com/d/')) {
+      const parts = url.split('lh3.googleusercontent.com/d/');
+      return parts[1] ? parts[1].split('?')[0].split('/')[0] : '';
+    }
+    const fileMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+    if (fileMatch) return fileMatch[1];
+
+    const openMatch = url.match(/(?:[?&]|&amp;)id=([a-zA-Z0-9_-]+)/);
+    if (openMatch) return openMatch[1];
+
+    if (/^[a-zA-Z0-9_-]{25,}$/.test(url)) return url;
+    return '';
+  }
+
+  // Optimized Thumbnail using direct lh3 CDN with size parameter (default sz=s600)
+  eleventyConfig.addFilter("drivethumb", (url, width = 600) => {
+    if (!url) return '';
+    const fileId = extractDriveFileId(url);
+    if (fileId) {
+      return `https://lh3.googleusercontent.com/d/${fileId}=s${width}`;
+    }
+    return url;
+  });
+
+  // Full-size direct image URL for Lightbox, Hero & Full View
   eleventyConfig.addFilter("driveimage", (url) => {
     if (!url) return '';
-    if (url.includes('lh3.googleusercontent.com')) return url;
-    
-    let fileId = '';
-    const fileMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
-    if (fileMatch) {
-      fileId = fileMatch[1];
-    } else {
-      const openMatch = url.match(/(?:[?&]|&amp;)id=([a-zA-Z0-9_-]+)/);
-      if (openMatch) {
-        fileId = openMatch[1];
-      }
-    }
-    
+    const fileId = extractDriveFileId(url);
     if (fileId) {
       return `https://lh3.googleusercontent.com/d/${fileId}`;
     }

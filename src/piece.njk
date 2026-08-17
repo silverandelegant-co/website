@@ -33,7 +33,7 @@ eleventyComputed:
                class="piece-thumb"
                onclick="updateHeroImage(this, '{% if isDrive %}{{ img | driveimage }}{% else %}/{{ img | imgpath }}{% endif %}')">
             {% if isDrive %}
-              <img src="{{ img | driveimage }}" alt="{{ piece.name }} view {{ loop.index }}" style="width: 100%; height: 100%; object-fit: cover;">
+              <img src="{{ img | drivethumb(160) }}" alt="{{ piece.name }} view {{ loop.index }}" style="width: 100%; height: 100%; object-fit: cover;">
             {% else %}
               <img src="/{{ img | imgpath }}" alt="{{ piece.name }} view {{ loop.index }}" style="width: 100%; height: 100%; object-fit: cover;">
             {% endif %}
@@ -151,7 +151,7 @@ eleventyComputed:
                   onclick="openImageLightbox(this, '{% if other_piece.drive_images and other_piece.drive_images | length > 0 and other_piece.drive_images[0] %}{{ other_piece.drive_images[0] | driveimage }}{% else %}/{{ other_piece.images[0] | imgpath }}{% endif %}')">
                   <div class="piece-image" style="aspect-ratio: 3/4; overflow: hidden; background: var(--c-cream);">
                     {% if other_piece.drive_images and other_piece.drive_images | length > 0 and other_piece.drive_images[0] %}
-                      <img src="{{ other_piece.drive_images[0] | driveimage }}" alt="{{ other_piece.collection | capitalize }} piece image" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(8%); transition: transform 600ms var(--ease), filter 300ms;">
+                      <img src="{{ other_piece.drive_images[0] | drivethumb(600) }}" alt="{{ other_piece.collection | capitalize }} piece image" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(8%); transition: transform 600ms var(--ease), filter 300ms;">
                     {% else %}
                       <img src="/{{ other_piece.images[0] | imgpath }}" alt="{{ other_piece.collection | capitalize }} piece image" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(8%); transition: transform 600ms var(--ease), filter 300ms;">
                     {% endif %}
@@ -162,7 +162,7 @@ eleventyComputed:
                 <a href="/piece/{{ other_piece.id }}/index.html" class="piece-card reveal">
                   <div class="piece-image" style="aspect-ratio: 3/4; overflow: hidden; background: var(--c-cream);">
                     {% if other_piece.drive_images and other_piece.drive_images | length > 0 and other_piece.drive_images[0] %}
-                      <img src="{{ other_piece.drive_images[0] | driveimage }}" alt="{{ other_piece.name }} frontend image" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(8%); transition: transform 600ms var(--ease), filter 300ms;">
+                      <img src="{{ other_piece.drive_images[0] | drivethumb(600) }}" alt="{{ other_piece.name }} frontend image" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(8%); transition: transform 600ms var(--ease), filter 300ms;">
                     {% else %}
                       <img src="/{{ other_piece.images[0] | imgpath }}" alt="{{ other_piece.name }} frontend image" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(8%); transition: transform 600ms var(--ease), filter 300ms;">
                     {% endif %}
