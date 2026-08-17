@@ -18,11 +18,17 @@ eleventyComputed:
     {% set isDrive = (piece.drive_images and piece.drive_images | length > 0 and piece.drive_images[0]) %}
 
     <div style="padding-top: 5rem; background: var(--c-cream); display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
-      <div style="width: 100%; max-width: 800px; margin: 0 auto; display: flex; justify-content: center; padding: 0 2rem;">
+      <div style="width: 100%; max-width: 800px; margin: 0 auto; display: flex; justify-content: center; padding: 0 2rem; position: relative; min-height: 300px; align-items: center;">
+        <div id="hero-loader" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none;">
+          <div style="width: 36px; height: 36px; border: 2px solid var(--c-border); border-top-color: var(--c-ink); border-radius: 50%; animation: hero-spin 0.8s linear infinite;"></div>
+        </div>
+        <style>
+          @keyframes hero-spin { to { transform: rotate(360deg); } }
+        </style>
         {% if isDrive %}
-          <img id="piece-hero-img" class="piece-hero-img" src="{{ effectiveImages[0] | driveimage }}" alt="{{ piece.name }}" style="max-height: 80vh; object-fit: contain; transition: opacity 0.3s ease;">
+          <img id="piece-hero-img" class="piece-hero-img" src="{{ effectiveImages[0] | driveimage }}" alt="{{ piece.name }}" style="max-height: 80vh; object-fit: contain; transition: opacity 0.35s ease; opacity: 0;" onload="this.style.opacity='1'; document.getElementById('hero-loader').style.display='none';">
         {% else %}
-          <img id="piece-hero-img" class="piece-hero-img" src="/{{ effectiveImages[0] | imgpath }}" alt="{{ piece.name }}" style="max-height: 80vh; object-fit: contain; transition: opacity 0.3s ease;">
+          <img id="piece-hero-img" class="piece-hero-img" src="/{{ effectiveImages[0] | imgpath }}" alt="{{ piece.name }}" style="max-height: 80vh; object-fit: contain; transition: opacity 0.35s ease; opacity: 0;" onload="this.style.opacity='1'; document.getElementById('hero-loader').style.display='none';">
         {% endif %}
       </div>
       
@@ -44,11 +50,24 @@ eleventyComputed:
       <script>
         function updateHeroImage(thumbElement, newSrc) {
           const hero = document.getElementById('piece-hero-img');
-          hero.style.opacity = '0';
-          setTimeout(() => {
-            hero.src = newSrc;
-            hero.style.opacity = '1';
-          }, 200);
+          const loader = document.getElementById('hero-loader');
+          if (hero) {
+            hero.style.opacity = '0';
+            if (loader) loader.style.display = 'flex';
+            
+            const tempImg = new Image();
+            tempImg.onload = function() {
+              hero.src = newSrc;
+              hero.style.opacity = '1';
+              if (loader) loader.style.display = 'none';
+            };
+            tempImg.src = newSrc;
+            if (tempImg.complete) {
+              hero.src = newSrc;
+              hero.style.opacity = '1';
+              if (loader) loader.style.display = 'none';
+            }
+          }
           
           const thumbs = document.querySelectorAll('.piece-thumb');
           thumbs.forEach(thumb => {
