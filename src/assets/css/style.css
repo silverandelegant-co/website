@@ -1949,3 +1949,7 @@ h3 {
     aspect-ratio: 4/3;
   }
 }
+
+@keyframes heroSpin {
+  100% { transform: rotate(360deg); }
+}

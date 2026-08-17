@@ -7,13 +7,18 @@ eleventyComputed:
 
 <!-- Artisan Hero -->
 <div style="padding-top:5rem;">
-  {% set resolvedHero = artisan.hero_image | default('assets/about-workshop.png') %}
+  <div style="position:relative; width:100%; min-height:55vh; background:var(--c-surface); overflow:hidden;">
+    <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:var(--c-surface); z-index:2; transition:opacity 0.4s ease;" id="hero-loader-box">
+      <div style="width:32px; height:32px; border:2px solid var(--c-border); border-top-color:var(--c-ink); border-radius:50%; animation:heroSpin 0.8s linear infinite;"></div>
+    </div>
+    {% set resolvedHero = artisan.hero_image | default('assets/about-workshop.png') %}
   {% if 'drive.google.com' in resolvedHero or 'googleusercontent.com' in resolvedHero %}
     {% set heroUrl = resolvedHero | driveimage %}
   {% else %}
     {% set heroUrl = '/' + (resolvedHero | imgpath) %}
   {% endif %}
-  <img src="{{ heroUrl }}" alt="Esen Tunalı Sarı - The Artisan" class="about-hero-img reveal">
+  <img src="{{ heroUrl }}" alt="Esen Tunalı Sarı - The Artisan" class="about-hero-img reveal" style="opacity:0; transition:opacity 0.5s ease;" onload="this.style.opacity='1'; var l=this.previousElementSibling; if(l){l.style.opacity='0'; setTimeout(()=>l.style.display='none',400);}">
+  </div>
 </div>
 
 <!-- Artisan Content -->

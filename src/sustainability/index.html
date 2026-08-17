@@ -7,8 +7,13 @@ eleventyComputed:
 
 <!-- Hero Image -->
 <div style="padding-top:5rem;">
-  <img src="{% if 'drive.google.com' in sustainability.hero_image or 'googleusercontent.com' in sustainability.hero_image %}{{ sustainability.hero_image | driveimage }}{% else %}/{{ sustainability.hero_image | default('assets/about-workshop.png') | imgpath  }}{% endif %}" alt="Sustainable workshop"
-    class="about-hero-img reveal">
+  <div style="position:relative; width:100%; min-height:55vh; background:var(--c-surface); overflow:hidden;">
+    <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:var(--c-surface); z-index:2; transition:opacity 0.4s ease;" id="hero-loader-box">
+      <div style="width:32px; height:32px; border:2px solid var(--c-border); border-top-color:var(--c-ink); border-radius:50%; animation:heroSpin 0.8s linear infinite;"></div>
+    </div>
+    <img src="{% if 'drive.google.com' in sustainability.hero_image or 'googleusercontent.com' in sustainability.hero_image %}{{ sustainability.hero_image | driveimage }}{% else %}/{{ sustainability.hero_image | default('assets/about-workshop.png') | imgpath  }}{% endif %}" alt="Sustainable workshop"
+    class="about-hero-img reveal" style="opacity:0; transition:opacity 0.5s ease;" onload="this.style.opacity='1'; var l=this.previousElementSibling; if(l){l.style.opacity='0'; setTimeout(()=>l.style.display='none',400);}">
+  </div>
 </div>
 
 <!-- Sustainability Content -->
