@@ -1,22 +1,22 @@
 {
   "page_title": "Studio | Silver & Elegant",
-  "meta_description": "Yeni Hali: Inside the dual-city practice of Silver & Elegant — London design and Istanbul master craftsmanship.",
+  "meta_description": "Inside the dual-city practice of Silver & Elegant — London design and Istanbul master craftsmanship.",
   "hero_image": "https://drive.google.com/open?id=1bgaIZ30tWhYin87Zxnv5kI4wxKjda--q&usp=drive_copy",
   "sections": [
     {
       "label": "The Founder",
-      "title": "Esen Tunalı Sarı",
-      "body": "SILVER & ELEGANT is shaped by the independent vision of its founder, uniting architectural discipline with the heritage of craftsmanship. Our practice is built on the commitment to constructing timeless, structural forms beyond the reach of fleeting trends."
+      "title": "Esen Tunalı Sarı FRSA",
+      "body": "SILVER & ELEGANT reflects the design discipline and creative direction of its founder, Esen Tunalı Sarı, FRSA. Bridging architectural structure, classical jewellery traditions, and computational design, the London studio develops sculptural works conceived for permanence. The practice rejects trend-driven cycles in favour of resolved, enduring form."
     },
     {
-      "label": "The Craftsman",
+      "label": "The Craft / Production",
       "title": "Atelier Kapalıçarşı",
-      "body": "Every SILVER & ELEGANT piece is cast and hand-worked by our master artisan in Kapalıçarşı, Istanbul. Trained over decades in techniques passed down rather than taught in a classroom, our craftsman possesses a deep, intuitive material intelligence — understanding where the metal wants to flow, where the hammer must strike, and where the surface should be softened. This human element ensures that no two pieces are identical, preserving authentic human touch in an age of machine replication.\n\nWe choose not to share individual identities beyond the brand itself. The work speaks for the practice."
+      "body": "Our collection encompasses two distinct design paths: classical pieces developed through traditional design methods in Türkiye, and computational concepts developed within our studio. Physical production is concentrated entirely in Istanbul’s Grand Bazaar, brought into reality by a single master artisan. Completed physical editions are hand-finished individually, while pending algorithmic designs remain precisely resolved prior to physical execution."
     },
     {
       "label": "The Workspace",
       "title": "Borehamwood & Istanbul",
-      "body": "Our workspace exists in a state of continuous dialogue between two cities. In our studio in Borehamwood, London, the structural forms are shaped, the proportions are studied, and the design language is refined. In Istanbul, the fire is lit, the crucible is poured, and the metal is finished by hand. This dual model combines contemporary architectural vision with centuries-old metalworking traditions, creating a unique signature of wearable art."
+      "body": "The studio operates between London and Istanbul. Design direction, computational development, and material alignment under the Physical Fidelity Protocol take place in London. Classical design iterations and single-artisan physical casting are executed in Istanbul’s Grand Bazaar. This dual structure maintains both conceptual rigor and master-level metal discipline."
     }
   ]
 }
