@@ -9,22 +9,37 @@
     {
       "type": "text_block",
       "label": "My story",
-      "body": "I was born in Ruse, Bulgaria, a city on the Danube where the architecture carries the memory of every era that passed through it. Baroque facades, Soviet concrete, and the river itself, indifferent, enduring, older than all of it.\n\nWhen I was a child, my family moved to Istanbul and settled in Bakırköy. Our neighbours were almost entirely silversmiths and jewellers, many of them working daily in the Grand Bazaar, a market that has operated continuously for more than five centuries and remains one of the world’s oldest and largest centres of jewellery craftsmanship. I grew up surrounded by that work, not as a visitor to it, but as someone who saw it practised next door every day as an ordinary part of life."
+      "body": "Esen Tunalı Sarı is the Founder and Creative Director of SILVER & ELEGANT. A Fellow of the Royal Society of Arts (FRSA), her practice merges architectural rigor, computational form, and traditional metal discipline. Shaped by living and working across Bulgaria, Turkey, the Netherlands, and the United Kingdom, her London-based studio approaches jewellery not as ornament, but as structural art intended for permanence."
     },
     {
       "type": "text_block",
       "label": "Design Philosophy",
-      "body": "Our process is rooted in the synthesis of architectural precision and traditional craftsmanship. We engage in classical design and artisanal production within our Istanbul atelier, bringing complex structural forms into reality through the hands of a master.\n\nIt is in this balance — where digital intent meets human touch and the language of metal — that we find the signature permanence of SILVER & ELEGANT."
+      "body": "SILVER & ELEGANT operates at the intersection of architectural precision and singular craftsmanship. Our work spans classical physical production and algorithmic concepts, each piece engineered for single-artisan physical execution in Istanbul. Through the Physical Fidelity Protocol, our digital and physical iterations maintain absolute geometric alignment.\n\nPermanence is structural. The work exists where calculated form meets the discipline of metal."
     },
     {
       "type": "text_block",
-      "body": "We operate at the intersection of architectural minimalism and narrative jewellery. In a world of disposable consumption, SILVER & ELEGANT stands for the philosophy of Future Heirlooms — objects crafted with the intent to outlast the fleeting moment of their creation, designed to be passed down through generations.",
+      "body": "We build sculptural forms informed by architectural minimalism. SILVER & ELEGANT rejects disposable design in favour of deliberate permanence. Every work is conceived as a future heirloom: structural, enduring, and resolved.",
       "label": "Brand Vision"
     },
     {
       "type": "text_block",
-      "body": "The brand's emergence was marked by our participation as a jewellery partner for Paul Costelloe's Autumn/Winter 2026 opening show. This milestone represents a significant step in our commitment to bringing high-concept, architectural jewellery into contemporary fashion.\n\nAs a Fellow of the Royal Society of Arts (FRSA), my practice is defined by a dedication to design discipline, cultural heritage, and the continuous search for intellectual depth in aesthetic production.",
+      "body": "Founded in London in January 2025 by Esen Tunalı Sarı, FRSA, the studio develops high-concept sculptural jewellery with rigorous design discipline.\n\n  \n\n1.  **London Fashion Week AW26:** Official Jewellery Partner to Paul Costelloe for the runway opening presentation.\n2.  **Industry Recognition:** Finalist for Business Innovation at the SME Hertfordshire Business Awards 2026; Featured Designer at Not Just A Label (NJAL); selected for Wolf & Badger Editor's Picks.\n3.  **Editorial:** Featured in _Flanelle Magazine_ and _KALTBLUT Magazine_.",
       "label": "Career Highlights"
+    },
+    {
+      "type": "text_block",
+      "body": "The studio develops work across two distinct streams: classical physical designs and algorithmic concepts. To govern this duality, we created the Physical Fidelity Protocol — an internal system ensuring absolute geometric and material accuracy between digital generation and the true physical object. Visuals never distort reality.\n\n###",
+      "label": "Methodology: Physical Fidelity Protocol"
+    },
+    {
+      "type": "text_block",
+      "body": "Every piece is conceived in London and engineered for single-artisan physical execution in Istanbul's Grand Bazaar. We prioritize singular, focused craftsmanship over mass assembly. Physical editions are completed entirely by hand by a master artisan; pending algorithmic concepts remain formally resolved prior to fabrication.",
+      "label": "Production & Execution"
+    },
+    {
+      "type": "text_block",
+      "body": "**London Fashion Week AW26:** Official Jewellery Partner to Paul Costelloe for the opening runway presentation.\n\n**Awards:** Finalist for Business Innovation, SME Hertfordshire Business Awards 2026.\n\n**Curation:** Featured Designer at Not Just A Label (NJAL); selected for Wolf & Badger Editor's Picks.\n\n**Press:** Featured in _Flanelle Magazine_ and _KALTBLUT Magazine_.",
+      "label": "Selected Recognition & Press"
     }
   ]
 }
