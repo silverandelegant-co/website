@@ -1,51 +1,14 @@
 {
   "posts": [
     {
-      "id": "from-ruse-to-london-the-structural-blueprint-of-adornment",
-      "date": "2026-06-05",
-      "category": "Philosophy",
-      "featured_image": "https://drive.google.com/open?id=1Fgo-e2VDK7Qtb_TLLedYQpgGigVfqI78&usp=drive_copy",
-      "featured": false,
-      "sections": [
-        {
-          "type": "text_block",
-          "body": "The monolithic silhouettes of an early landscape engrave indelible lines onto a designer’s mind.\n\nThe heavy, uncompromising, and raw geometry of brutalist structures along the Danube does not contradict our contemporary vision of luxury in London; rather, it anchors it.\n\nEvery piece crafted at **SILVER & ELEGANT** serves as a micro-sculpture, translating monumental architectural volumes into human scale. The honesty of sterling silver, much like an exposed concrete facade, allows the strength of the form to speak for itself. It remains a timeless bridge between ancestral structural discipline and modern fluid design."
-        }
-      ],
-      "title": "From Ruse to London: The Structural Blueprint of Adornment",
-      "summary": "The monolithic silhouettes of an early landscape engrave indelible lines onto a designer’s mind.\n\nThe heavy, uncompromising, and raw geometry of brutalist structures along the Danube does not contradict our contemporary vision of luxury in London; rather, it anchors it.\n\nEvery piece crafted at **SILVER & ELEGANT** serves as a micro-sculpture, translating monumental architectural volumes into human scale. The honesty of sterling silver, much like an exposed concrete facade, allows the strength of the form to speak for itself. It remains a timeless bridge between ancestral structural discipline and modern fluid design.",
-      "_desc_field": ""
-    },
-    {
       "id": "the-scale-relationship-between-sculpture-and-jewellery",
       "date": "2026-06-05",
       "category": "Philosophy",
       "featured_image": "https://drive.google.com/open?id=1GOBD7FHIqvO4Dp3GUnhDZFCYMvvm01IY&usp=drive_copy",
       "featured": false,
-      "sections": [
-        {
-          "type": "text_block",
-          "body": "Our design philosophy approaches jewellery not merely as adornment, but as micro-architectural structures worn on the body and completed through movement.\n\n  \n\nThe contrast between the monumental rigidity of large-scale brutalist structures and the soft contours of the human anatomy serves as our creative departure point.\n\n  \n\n**SILVER & ELEGANT** pushes the physical limits of sterling silver to forge voluminous yet ergonomic, sharp yet wearable contours. It stands as a contemporary manifesto of wearable sculpture."
-        }
-      ],
-      "title": "The Scale Relationship Between Sculpture and Jewellery",
-      "summary": "Our design philosophy approaches jewellery not merely as adornment, but as micro-architectural structures worn on the body and completed through movement.\n\nThe contrast between the monumental rigidity of large-scale brutalist structures and the soft contours of the human anatomy serves as our creative departure point.\n\n**SILVER & ELEGANT** pushes the physical limits of sterling silver to forge voluminous yet ergonomic, sharp yet wearable contours. It stands as a contemporary manifesto of wearable sculpture.",
-      "_desc_field": ""
-    },
-    {
-      "id": "the-object-after-you-are-gone",
-      "date": "2026-06-05",
-      "category": "Philosophy",
-      "featured_image": "https://drive.google.com/open?id=1WyjCj0L5aSHE_wZzIk0ABnvxdRct3m2I&usp=drive_copy",
-      "featured": false,
-      "sections": [
-        {
-          "type": "text_block",
-          "body": ""
-        }
-      ],
-      "title": "The Object After You Are Gone",
-      "summary": "On permanence, design intent, and what it means to make something that outlasts the moment it was created in.\n\n  \n\nThere is a particular kind of object that resists obsolescence. Not because it is impervious to time — nothing is — but because it was made with time in mind. Its structure accounts for the decade ahead. Its form carries the weight of the question: who will hold this next?\n\n  \n\nAt Silver & Elegant, we call these Future Heirlooms. The term is not marketing language. It is a design brief.\n\nBefore a single line is drawn or a single algorithm runs, every commission begins with the same question: what needs to be true of this object for it to be passed on? That question changes everything — the weight distribution, the surface treatment, the structural complexity, the way light falls across an edge at a particular hour of the day. Permanence is not an aesthetic quality. It is an engineering decision made very early in the process.\n\n  \n\nPermanence is not an aesthetic quality. It is an engineering decision made very early in the process.\n\nWe work at the intersection of generative design and bespoke craftsmanship. The algorithm offers structural possibilities that no human hand could draft in a reasonable timeframe — lattice geometries, recursive forms, load-bearing architectures that happen to be beautiful. But the algorithm does not know what it means for an object to matter. That is where the maker enters.\n\nThe maker decides which possibilities are worth pursuing. The maker reads the form in three dimensions — not on a screen, but in the hand — and understands which surfaces need to be softened, which edges need to remain sharp, which weights feel right for the wrist that will wear this for the next forty years.\n\n  \n\nThis is not a romantic notion of craft. It is a practical one. The most structurally perfect form is useless if it fails to create the sensation of inevitability — that feeling, when you hold a well-made object, that it could not have been any other way.\n\nFuture Heirlooms are objects designed to be discovered in a drawer decades from now and held with the same attention they were made with. Not relics. Not nostalgia. Objects whose structural logic is still legible, still surprising, still worth the question: how was this made?\n\n  \n\nThat question is the only measure of permanence that interests us.",
+      "sections": [],
+      "title": "On Structure and Permanence",
+      "summary": "SILVER & ELEGANT approaches jewellery not as ornament, but as micro-sculpture. The work focuses on mass, negative space, and the physical presence of metal against the body.\n\nEvery design begins with uncompromising geometric intent. Whether conceived through classical drawing methods or computational frameworks, each form is engineered for single-artisan physical execution in Istanbul's Grand Bazaar. We do not produce for seasonal turnover. We construct Future Heirlooms — resolved, enduring objects built to retain their structural weight across generations.\n\nThe form does not decorate. It remains.",
       "_desc_field": ""
     }
   ]
