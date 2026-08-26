@@ -1,22 +1,22 @@
 {
-  "page_title": "Sustainability | Silver & Elegant",
-  "meta_description": "Silver & Elegant's approach to sustainable sourcing, low-waste production, and enduring design.",
+  "page_title": "Sustainability — SILVER & ELEGANT",
+  "meta_description": "Low-volume production, structural permanence, and single-artisan craftsmanship. London.",
   "hero_image": "/assets/about-workshop.png",
   "sections": [
     {
       "label": "Materials",
-      "title": "A Structural Choice, Not a Marketing Claim",
-      "body": "We do not treat sustainability as a campaign. It is a consequence of how we choose to work.\n\nOur silver, gold and bronze are sourced through suppliers committed to responsible and traceable practices. We work in small quantities, by design — this is not a constraint we accept reluctantly, but a structural feature of how every piece is made."
+      "title": "Structural Integrity Over Volume",
+      "body": "Sustainability is an operational consequence, not an aesthetic claim.\n\nSILVER & ELEGANT works exclusively with small-scale, responsible sourcing for bronze, silver, and gold plating. By maintaining low-volume editions, material extraction and waste remain strictly controlled from the outset."
     },
     {
       "label": "Production",
-      "title": "Near-Zero Waste by Design",
-      "body": "Every piece passes through a single pair of hands in our Istanbul atelier. Hand-finishing at this scale produces a fraction of the waste associated with mass manufacturing — there is no overproduction to discard, no unsold stock accumulating in a warehouse.\n\nEvery filing, shaving, and metallic dust is collected and recycled back into the melting pot, ensuring near-zero waste during the fabrication process."
+      "title": "The Closed-Loop Workshop",
+      "body": "Every physical piece is executed by a single master artisan in Istanbul's Grand Bazaar.\n\nThis single-artisan model eliminates overproduction and unsold inventory. Within the workshop, metal filings, shavings, and cutoffs are systematically collected and returned to the melting crucible, maintaining an efficient, closed-loop fabrication cycle."
     },
     {
       "label": "Philosophy",
-      "title": "The Most Sustainable Object Is the One That Never Needs Replacing",
-      "body": "We build Future Heirlooms — pieces intended to be worn for decades, not seasons. We study ergonomics, metal thickness, and joinery to guarantee that every piece can be passed down through generations, resisting the transience of fast fashion.\n\nWe believe the most sustainable object is the one that never needs to be replaced. This is not an aesthetic preference. It is the foundation of how we define value."
+      "title": "Permanence as Standard",
+      "body": "The most sustainable object is one built to outlast its temporal context.\n\nWe construct Future Heirlooms — sculptural forms engineered through structural mass, precise joinery, and durable metalwork. Rejecting seasonal obsolescence, we define sustainability through physical permanence."
     }
   ]
 }
