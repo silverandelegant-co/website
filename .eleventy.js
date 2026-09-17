@@ -5,6 +5,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("CNAME");
+  eleventyConfig.addPassthroughCopy("googleeec3b0b30282a012.html");
 
   // Normalize image paths — strips leading slash to prevent double-slash
   // when templates already prepend "/" (e.g. src="/{{ path }}")
