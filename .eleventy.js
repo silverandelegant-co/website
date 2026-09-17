@@ -20,6 +20,17 @@ module.exports = function(eleventyConfig) {
     return str.split("").reverse().join("");
   });
 
+  // Clean meta & title strings to prevent double-escaping when rendered in Nunjucks layouts
+  eleventyConfig.addFilter("cleanMeta", (str) => {
+    if (!str) return "";
+    return str
+      .replace(/&amp;/g, "&")
+      .replace(/&#39;/g, "'")
+      .replace(/&quot;/g, '"')
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">");
+  });
+
   // Helper: Extract FILE_ID from various Google Drive URL formats
   function extractDriveFileId(url) {
     if (!url) return '';

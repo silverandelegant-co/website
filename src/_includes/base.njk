@@ -13,9 +13,34 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-  <title>{{ title | default("Silver & Elegant — Wearable Art Jewellery") }}</title>
-  <meta name="description" content="{{ description | default('Wearable art jewellery. Each piece carries a story — shaped by hand, finished by fire.') }}">
+  {% set cleanPageTitle = (title | default("Silver & Elegant — Wearable Art Jewellery")) | cleanMeta %}
+  {% set cleanPageDescription = (description | default('Wearable art jewellery. Each piece carries a story — shaped by hand, finished by fire.')) | cleanMeta %}
+  <title>{{ cleanPageTitle }}</title>
+  <meta name="description" content="{{ cleanPageDescription }}">
+  <link rel="canonical" href="https://silverandelegant.co{{ page.url }}">
   <meta name="referrer" content="no-referrer">
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:site_name" content="Silver &amp; Elegant">
+  <meta property="og:type" content="{{ og_type | default('website') }}">
+  <meta property="og:title" content="{{ cleanPageTitle }}">
+  <meta property="og:description" content="{{ cleanPageDescription }}">
+  <meta property="og:url" content="https://silverandelegant.co{{ page.url }}">
+  {% if og_image %}
+  <meta property="og:image" content="{{ og_image }}">
+  {% else %}
+  <meta property="og:image" content="https://silverandelegant.co/assets/brand-logo-full.png">
+  {% endif %}
+
+  <!-- Twitter Meta -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ cleanPageTitle }}">
+  <meta name="twitter:description" content="{{ cleanPageDescription }}">
+  {% if og_image %}
+  <meta name="twitter:image" content="{{ og_image }}">
+  {% else %}
+  <meta name="twitter:image" content="https://silverandelegant.co/assets/brand-logo-full.png">
+  {% endif %}
 </head>
 <body>
 

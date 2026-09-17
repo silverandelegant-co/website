@@ -3,6 +3,8 @@ layout: "base.njk"
 eleventyComputed:
   title: "{{ artisan.page_title | default('The Artisan — Silver & Elegant') }}"
   description: "{{ artisan.meta_description | default('The personal story of Esen Tunalı Sarı, the silversmith and software engineer behind Silver & Elegant.') }}"
+  og_image: "https://silverandelegant.co{{ artisan.hero_image | default('/assets/pieces/esentunalisari-1.jpeg') }}"
+  og_type: "profile"
 ---
 
 <!-- Artisan Hero -->
@@ -17,7 +19,7 @@ eleventyComputed:
   {% else %}
     {% set heroUrl = '/' + (resolvedHero | imgpath) %}
   {% endif %}
-  <img src="{{ heroUrl }}" alt="Esen Tunalı Sarı - The Artisan" class="about-hero-img reveal" style="opacity:0; transition:opacity 0.5s ease;" onload="this.style.opacity='1'; var l=this.previousElementSibling; if(l){l.style.opacity='0'; setTimeout(()=>l.style.display='none',400);}">
+  <img src="{{ heroUrl }}" alt="Esen Tunalı Sarı — Founder &amp; Creative Director" class="about-hero-img reveal" style="opacity:0; transition:opacity 0.5s ease; object-position: center 25%;" onload="this.style.opacity='1'; var l=this.previousElementSibling; if(l){l.style.opacity='0'; setTimeout(()=>l.style.display='none',400);}">
   </div>
 </div>
 
@@ -112,3 +114,28 @@ eleventyComputed:
   {% endfor %}
 
 </div>
+
+<!-- Structured Data for Google (ProfilePage & Person) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Esen Tunalı Sarı",
+    "alternateName": "Esen Tunali Sari",
+    "jobTitle": "Founder & Creative Director",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "SILVER & ELEGANT",
+      "url": "https://silverandelegant.co"
+    },
+    "image": "https://silverandelegant.co/assets/pieces/esentunalisari-1.jpeg",
+    "description": "Esen Tunalı Sarı is the Founder and Creative Director of SILVER & ELEGANT. A Fellow of the Royal Society of Arts (FRSA), her practice merges architectural rigor, computational form, and traditional metal discipline.",
+    "url": "https://silverandelegant.co/the-maker/",
+    "sameAs": [
+      "https://www.instagram.com/silverandelegantco/"
+    ]
+  }
+}
+</script>
