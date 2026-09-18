@@ -166,7 +166,7 @@
       "date": "2026-07-02",
       "category": "Philosophy",
       "featured_image": "https://drive.google.com/open?id=12VUqIJGk7pEvk3msV5BIUUhtMQSMW--c&usp=drive_copy",
-      "featured": true,
+      "featured": false,
       "sections": [
         {
           "type": "text_block",
