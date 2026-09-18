@@ -166,7 +166,7 @@
       "date": "2026-07-02",
       "category": "Philosophy",
       "featured_image": "https://drive.google.com/open?id=12VUqIJGk7pEvk3msV5BIUUhtMQSMW--c&usp=drive_copy",
-      "featured": false,
+      "featured": true,
       "sections": [
         {
           "type": "text_block",
@@ -175,6 +175,22 @@
       ],
       "title": "Award Recognition: Finalist at the SME Hertfordshire Business Awards 2026",
       "summary": "SILVER & ELEGANT has been named a Business Innovation Finalist at the SME Hertfordshire Business Awards 2026, recognizing the studio’s generative methodology and production discipline.",
+      "_desc_field": ""
+    },
+    {
+      "id": "business-innovation-silver-winner-2026",
+      "date": "2026-09-18",
+      "category": "Philosophy",
+      "featured_image": "/assets/pieces/sme-herts-2026-silver-winner-1.jpg",
+      "featured": true,
+      "sections": [
+        {
+          "type": "text_block",
+          "body": ""
+        }
+      ],
+      "title": "Business Innovation Silver Winner, 2026",
+      "summary": "SILVER & ELEGANT was named Silver Winner in the Business Innovation category at the SME Hertfordshire Business Awards 2026.\n\n###",
       "_desc_field": ""
     }
   ]
