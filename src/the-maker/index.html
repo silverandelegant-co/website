@@ -7,33 +7,81 @@ eleventyComputed:
   og_type: "profile"
 ---
 
-<!-- Artisan Hero -->
-<div style="padding-top:5rem;">
-  <div style="position:relative; width:100%; min-height:55vh; background:var(--c-surface); overflow:hidden;">
+<style>
+  .maker-header-wrap {
+    padding-top: clamp(6rem, 10vw, 8.5rem);
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+  .maker-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    margin: 0.5rem 0 1rem;
+    color: var(--c-ink);
+  }
+  .maker-portrait-container {
+    display: flex;
+    justify-content: center;
+    margin: 2.5rem auto 4.5rem;
+    padding: 0 var(--space-md);
+  }
+  .maker-portrait-frame {
+    position: relative;
+    max-width: 440px;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border: 1px solid var(--c-border);
+    background: var(--c-surface);
+    overflow: hidden;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.06);
+  }
+  .maker-portrait-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 12%;
+    display: block;
+    transition: opacity 0.5s ease;
+  }
+  @media (max-width: 600px) {
+    .maker-portrait-frame {
+      max-width: 320px;
+    }
+  }
+</style>
+
+<!-- Header -->
+<div class="maker-header-wrap reveal">
+  <span class="label" style="display: inline-block; margin-bottom: 0.8rem;">{{ artisan.heading | default('The Creative Technologist') }}</span>
+  <h1 class="maker-title">
+    {{ artisan.subheading | default('Esen Tunalı Sarı') }}
+  </h1>
+  <div style="width: 40px; height: 1px; background: var(--c-border); margin: 1.8rem auto 0;"></div>
+</div>
+
+<!-- Centered Editorial Portrait Frame -->
+<div class="maker-portrait-container reveal">
+  <div class="maker-portrait-frame">
     <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:var(--c-surface); z-index:2; transition:opacity 0.4s ease;" id="hero-loader-box">
       <div style="width:32px; height:32px; border:2px solid var(--c-border); border-top-color:var(--c-ink); border-radius:50%; animation:heroSpin 0.8s linear infinite;"></div>
     </div>
-    {% set resolvedHero = artisan.hero_image | default('assets/about-workshop.png') %}
-  {% if 'drive.google.com' in resolvedHero or 'googleusercontent.com' in resolvedHero %}
-    {% set heroUrl = resolvedHero | driveimage %}
-  {% else %}
-    {% set heroUrl = '/' + (resolvedHero | imgpath) %}
-  {% endif %}
-  <img src="{{ heroUrl }}" alt="Esen Tunalı Sarı — Founder &amp; Creative Director" class="about-hero-img reveal" style="opacity:0; transition:opacity 0.5s ease; object-position: center 25%;" onload="this.style.opacity='1'; var l=this.previousElementSibling; if(l){l.style.opacity='0'; setTimeout(()=>l.style.display='none',400);}">
+    {% set resolvedHero = artisan.hero_image | default('assets/pieces/esentunalisari-1.jpeg') %}
+    {% if 'drive.google.com' in resolvedHero or 'googleusercontent.com' in resolvedHero %}
+      {% set heroUrl = resolvedHero | driveimage %}
+    {% else %}
+      {% set heroUrl = '/' + (resolvedHero | imgpath) %}
+    {% endif %}
+    <img src="{{ heroUrl }}" alt="Esen Tunalı Sarı — Founder &amp; Creative Director" class="maker-portrait-img" style="opacity:0;" onload="this.style.opacity='1'; var l=this.previousElementSibling; if(l){l.style.opacity='0'; setTimeout(()=>l.style.display='none',400);}">
   </div>
 </div>
 
 <!-- Artisan Content -->
-<div class="about-layout">
-
-  <!-- Header -->
-  <div class="reveal" style="text-align: center; margin-bottom: 5rem;">
-    <span class="label" style="display: inline-block; margin-bottom: 1rem;">{{ artisan.heading | default('The Artisan') }}</span>
-    <h1 style="font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; letter-spacing: 0.05em;">
-      {{ artisan.subheading | default('Esen Tunalı Sarı') }}
-    </h1>
-    <div style="width: 40px; height: 1px; background: var(--c-border); margin: 2rem auto 0;"></div>
-  </div>
+<div class="about-layout" style="padding-top: 0;">
 
   {% for block in artisan.sections %}
   <!-- Block: {{ block.type }} -->
