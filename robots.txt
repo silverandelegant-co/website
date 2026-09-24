@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Disallow internal admin & preview routes
+Disallow: /admin/
+Disallow: /admin2/
+Disallow: /preview/
+Disallow: /under-construction/
+
+# Canonical Sitemap
+Sitemap: https://silverandelegant.co/sitemap.xml

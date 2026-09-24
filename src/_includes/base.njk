@@ -47,36 +47,36 @@
   <!-- Navigation -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
-      <a href="/index.html" class="nav-logo" aria-label="Silver &amp; Elegant Home">
+      <a href="/" class="nav-logo" aria-label="Silver &amp; Elegant Home">
         {% include "brand-logo-full.svg" %}
       </a>
       <div class="nav-overlay" id="nav-overlay"></div>
       <ul class="nav-links" id="nav-links">
         <li class="nav-item has-dropdown">
-          <a href="/collections/index.html" id="nav-collections">{{ settings.menu_collections | default('Collections') }}</a>
+          <a href="/collections/" id="nav-collections">{{ settings.menu_collections | default('Collections') }}</a>
           <div class="nav-dropdown">
-            <a href="/collections/index.html">All Pieces</a>
-            <a href="/collections/index.html?filter=rings">Rings</a>
-            <a href="/collections/index.html?filter=necklaces">Necklaces</a>
-            <a href="/collections/index.html?filter=bracelets">Bracelets</a>
-            <a href="/collections/index.html?filter=earrings">Earrings</a>
+            <a href="/collections/">All Pieces</a>
+            <a href="/collections/?filter=rings">Rings</a>
+            <a href="/collections/?filter=necklaces">Necklaces</a>
+            <a href="/collections/?filter=bracelets">Bracelets</a>
+            <a href="/collections/?filter=earrings">Earrings</a>
           </div>
         </li>
-        <li class="nav-item"><a href="/the-maker/index.html">{{ settings.menu_artisan | default(artisan.menu_label) | default('The Founder’s Note') }}</a></li>
-        <li class="nav-item"><a href="/about/index.html">{{ settings.menu_about | default('About') }}</a></li>
-        <li class="nav-item"><a href="/the-journey/index.html">The Journey</a></li>
-        <li class="nav-item"><a href="/sustainability/index.html">Sustainability</a></li>
-        <li class="nav-item"><a href="/how-we-work/index.html">How We Work</a></li>
-        <li class="nav-item"><a href="/studio/index.html">Studio</a></li>
+        <li class="nav-item"><a href="/the-maker/">{{ settings.menu_artisan | default(artisan.menu_label) | default('The Founder’s Note') }}</a></li>
+        <li class="nav-item"><a href="/about/">{{ settings.menu_about | default('About') }}</a></li>
+        <li class="nav-item"><a href="/the-journey/">The Journey</a></li>
+        <li class="nav-item"><a href="/sustainability/">Sustainability</a></li>
+        <li class="nav-item"><a href="/how-we-work/">How We Work</a></li>
+        <li class="nav-item"><a href="/studio/">Studio</a></li>
         <li class="nav-item has-dropdown">
-          <a href="/press/index.html">{{ settings.menu_press | default('Press') }}</a>
+          <a href="/press/">{{ settings.menu_press | default('Press') }}</a>
           <div class="nav-dropdown">
-            <a href="/press/index.html">Coverage</a>
-            <a href="/press-kit/index.html">Press Kit</a>
+            <a href="/press/">Coverage</a>
+            <a href="/press-kit/">Press Kit</a>
           </div>
         </li>
-        <li class="nav-item"><a href="/blog/index.html">{{ settings.menu_blog | default('Blog') }}</a></li>
-        <li class="nav-item"><a href="/contact/index.html">{{ settings.menu_contact | default('Contact') }}</a></li>
+        <li class="nav-item"><a href="/blog/">{{ settings.menu_blog | default('Blog') }}</a></li>
+        <li class="nav-item"><a href="/contact/">{{ settings.menu_contact | default('Contact') }}</a></li>
         <li class="nav-item">
           <a href="{{ settings.instagram | default('https://www.instagram.com/silverandelegantco/') }}" class="nav-icon" target="_blank" rel="noopener" aria-label="Instagram">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -106,11 +106,11 @@
         <div class="footer-mark"></div>
       </div>
       <div class="footer-links">
-        <a href="/the-journey/index.html" class="footer-link">The Journey</a>
-        <a href="/sustainability/index.html" class="footer-link">Sustainability</a>
-        <a href="/how-we-work/index.html" class="footer-link">How We Work</a>
-        <a href="/studio/index.html" class="footer-link">Studio</a>
-        <a href="/press-kit/index.html" class="footer-link">Press Kit</a>
+        <a href="/the-journey/" class="footer-link">The Journey</a>
+        <a href="/sustainability/" class="footer-link">Sustainability</a>
+        <a href="/how-we-work/" class="footer-link">How We Work</a>
+        <a href="/studio/" class="footer-link">Studio</a>
+        <a href="/press-kit/" class="footer-link">Press Kit</a>
         
         {% if settings.instagram %}
         <a href="{{ settings.instagram }}" class="footer-link" target="_blank" rel="noopener" id="footer-instagram">

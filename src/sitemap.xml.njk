@@ -1,0 +1,19 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for item in collections.all %}
+  {%- if item.url and not ('/admin' in item.url or '/preview' in item.url or '/under-construction' in item.url or '404' in item.url or 'google' in item.url or '.xml' in item.url) and not item.data.excludeFromSitemap %}
+  <url>
+    <loc>https://silverandelegant.co{{ item.url }}</loc>
+    {%- if item.date %}
+    <lastmod>{{ item.date | dateIso }}</lastmod>
+    {%- endif %}
+    <changefreq>{% if item.url == '/' %}weekly{% elif '/collections' in item.url or '/piece/' in item.url %}weekly{% elif '/blog' in item.url %}weekly{% else %}monthly{% endif %}</changefreq>
+    <priority>{% if item.url == '/' %}1.0{% elif item.url == '/the-maker/' or item.url == '/collections/' %}0.9{% elif '/piece/' in item.url %}0.8{% else %}0.7{% endif %}</priority>
+  </url>
+  {%- endif %}
+{%- endfor %}
+</urlset>
